@@ -1,0 +1,1 @@
+{"time":1706717679370,"data":{"code":1,"message":"ok","result":{"owner":{"owner_name":"_owner","owner_address":"0xc2edad668740f1aa35e4d8f227fb8e17dca888cd","owner_type":"contract"},"privilege_withdraw":0,"withdraw_missing":0,"is_open_source":1,"blacklist":0,"contract_name":"SushiToken","selfdestruct":0,"is_proxy":0,"approval_abuse":0}}}

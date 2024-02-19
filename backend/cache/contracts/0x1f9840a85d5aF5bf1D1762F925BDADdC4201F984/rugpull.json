@@ -1,0 +1,1 @@
+{"time":1706531131883,"data":{"code":1,"message":"ok","result":{"owner":{"owner_name":"minter","owner_address":"0x1a9c8182c09f50c8318d769245bea52c32be35bc","owner_type":"contract"},"privilege_withdraw":0,"withdraw_missing":0,"is_open_source":1,"blacklist":0,"contract_name":"Uni","selfdestruct":0,"is_proxy":0,"approval_abuse":0}}}
