@@ -1,11 +1,46 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
-  provider = "prisma-client-js"
+    provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
 }
+
+model audit_requests {
+    request_id Int      @id @default(autoincrement())
+    contract   String   @unique
+    status     String   @db.VarChar(50)
+    status_log String?
+    created_on DateTime @default(now())
+    updated_on DateTime @default(now())
+
+    @@map(name: "audit_requests")
+}
+
+
+
+model bounties {
+    id                           Int       @id @default(autoincrement())
+    bounty_id                    String
+    name                         String
+    link                         String?
+    max_reward                   Int?
+    vault_tvl                    Int?
+    logo                         String?
+    date                         DateTime?
+    last_updated_date            DateTime?
+    response_time_metric_enabled Boolean
+    med_response_time            Int?
+    total_paid_metric_enabled    Boolean
+    total_paid_amount            Int?
+    rating                       Float?
+    firm                         Json
+    category_list                String[]
+    language_list                String[]
+    source_code_list             String[]
+    reference_list               String[]
+}
+
