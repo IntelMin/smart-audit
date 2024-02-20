@@ -31,7 +31,7 @@ const { wallets } = getDefaultWallets({
 })
 
 const demoAppInfo = {
-  appName: "Rainbowkit Demo",
+  appName: "SnartAudit Dapp",
 }
 
 const connectors = connectorsForWallets([
@@ -64,8 +64,8 @@ export function Providers({ children }: { children: React.ReactNode }) {
         chains={chains}
         appInfo={demoAppInfo}
         theme={darkTheme({
-          accentColor: "#F44336",
-          accentColorForeground: "white",
+          accentColor: "transparent",
+          accentColorForeground: "",
           borderRadius: "large",
           fontStack: "system",
           overlayBlur: "small",
