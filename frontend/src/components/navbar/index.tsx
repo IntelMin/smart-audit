@@ -1,43 +1,53 @@
 "use client";
 
+import { formatAddress } from "@/lib/utils";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 import { useAccount } from "wagmi";
+import { navEle } from "./constant";
 
 type Props = {};
 
-const navEle = [
-  {
-    name: "Token Audit",
-    href: "/token-audit",
-    icon: "/icons/coin-active.svg", //!TODO Change the icon
-    activeIcon: "/icons/coin-active.svg",
-  },
-  {
-    name: "Code Audit",
-    href: "/code-audit",
-    icon: "/icons/code.svg",
-    activeIcon: "/icons/code.svg", //!TODO Change the icon
-  },
-];
-
 export const Navbar = (props: Props) => {
-  const { isConnected } = useAccount();
+  const { isConnected, address } = useAccount();
   const pathName = usePathname();
   const path = pathName.split("/")[1];
   const isActive = (ele: string) => ele.substring(1) === path;
   return (
-    <nav className="fixed top-0 left-0 w-full">
-      <div className="px-8 pt-6 pb-[18px] flex items-center justify-between border-b border-[#27272A]">
+    <header className="top-0 left-0 z-[99] fixed w-full">
+      <div className="flex items-center justify-between px-8 pt-6 pb-[18px] border-b border-[#27272A]">
         <div className="flex items-center gap-4">
           <Image src="/icons/logo.svg" alt="logo" width={48} height={48} />
-          <h1 className="text-white font-semibold text-lg">SmartAudit Dapp</h1>
+          <h1 className="font-semibold text-lg text-white">SmartAudit Dapp</h1>
         </div>
         {isConnected ? (
-          <button type="button">Disconnect</button>
+          <div className="flex items-center gap-4">
+            <button
+              type="button"
+              className="flex gap-2 px-[22px] py-[11px] border border-[#3F3F46] rounded-[100px]"
+            >
+              <h1 className="font-[500] text-[#fff] text-[16px]">
+                {formatAddress(address as string)}
+              </h1>
+            </button>
+            <button
+              type="button"
+              className="flex gap-2 px-[22px] py-[11px] border border-[#F44336] rounded-[100px]"
+            >
+              <Image
+                src="/icons/disconnect.svg"
+                alt="setting"
+                width={24}
+                height={24}
+              />
+              <h1 className="font-[500] text-[#F44336] text-[16px]">
+                Disconnect
+              </h1>
+            </button>
+          </div>
         ) : (
           <div
             className="flex items-center rounded-[24px]"
@@ -50,7 +60,7 @@ export const Navbar = (props: Props) => {
           </div>
         )}
       </div>
-      <div className="pt-[18px] border-b border-[#272727] flex items-center pl-6 gap-12">
+      <nav className="flex items-center gap-12 pt-[18px] pl-6 border-b border-[#272727]">
         {navEle?.map((ele, i) => (
           <Link
             href={ele.href}
@@ -70,7 +80,7 @@ export const Navbar = (props: Props) => {
             </h1>
           </Link>
         ))}
-      </div>
-    </nav>
+      </nav>
+    </header>
   );
 };
