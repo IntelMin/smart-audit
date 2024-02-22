@@ -1,6 +1,11 @@
 import Image from "next/image";
 import React from "react";
-
+import SocialIcons from "../../../components/token-audit/socialIcons";
+import StatsComponent from "../../../components/token-audit/statscomp";
+import SecurityScore from "../../../components/token-audit/securityScore";
+import MarketCap from "../../../components/token-audit/market-cap";
+import AuditHistory from "../../../components/token-audit/audit-history";
+import ContractCard from "@/components/token-audit/contract-card";
 type Props = {
   params: {
     id: string;
@@ -9,7 +14,7 @@ type Props = {
 
 const TokenResult = ({ params }: Props) => {
   return (
-    <div className="bg-[url(/backgrounds/token-result.svg)] bg-cover bg-center pt-[148px] min-h-screen">
+    <div className="bg-[url(/backgrounds/token-result.svg)]  bg-cover bg-center pt-[148px] min-h-screen">
       <div className="flex flex-col gap-8 p-6 min-h-[calc(100vh-148px)]">
         {/* Token Address Section */}
         <div className="relative flex flex-col items-center gap-8 bg-[#FFFFFF0D] p-6 rounded-[16px] text-center overflow-hidden">
@@ -45,25 +50,20 @@ const TokenResult = ({ params }: Props) => {
           </div>
         </div>
         {/* Token Result Section */}
-        <div className="grid grid-cols-4 flex-1 gap-8">
-          <div className="col-span-1 bg-[#18181B] p-6 rounded-[24px] w-full h-full">
-            <div className="flex flex-col items-center gap-4 text-center">
-              <Image alt="logo" src="/icons/logo.svg" width={80} height={80} />
-              <div className="flex flex-col text-center">
-                <h1 className="font-[700] text-[28px] text-white leading-[36px]">
-                  SmartAudit AI
-                </h1>
-                <h3 className="font-[500] text-[#737373] text-[16px]">
-                  $AUDIT
-                </h3>
-              </div>
-              <p className="font-[500] text-[#A1A1AA] text-sm">
-                SmartAudit AI: AI-powered smart contract security. Proactive
-                audits, bug bounties, and real-time monitoring.{" "}
-              </p>
-            </div>
-          </div>
-        </div>
+        <div className="grid grid-cols-4 gap-8">
+  <ContractCard/>
+
+  <div className="rounded-[24px] space-y-10 w-full col-span-2">
+    <StatsComponent />
+    <SecurityScore />
+  </div>
+
+  <div className="rounded-[24px] space-y-10 ">
+    <MarketCap />
+    <AuditHistory />
+  </div>
+</div>
+
       </div>
     </div>
   );

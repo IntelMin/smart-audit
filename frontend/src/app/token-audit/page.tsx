@@ -68,7 +68,7 @@ export default function TokenAudit() {
             token, before making your trade decision.
           </p>
         </div>
-        <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+        <form className="flex flex-col gap-4" onSubmit={handleSubmit }>
           <input
             type="text"
             placeholder="Enter contract Address"
