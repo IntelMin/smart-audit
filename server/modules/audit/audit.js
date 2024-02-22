@@ -13,6 +13,7 @@ const { getCached } = require('../../lib/file');
 async function generateAudit(source_code) {
   const processed_source_code = removeAnnotations(source_code);
   try {
+    console.log('Running GPT-4 Auditor');
     const bugInfoList = await runAudit(
       processed_source_code,
       'gpt-4',
