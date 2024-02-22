@@ -1,13 +1,66 @@
 "use client";
 
+import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function TokenAudit() {
   const router = useRouter();
   const [tokenAddress, setTokenAddress] = useState("");
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const [loading, setLoading] = useState(false);
+  const [isTokenValid, setIsTokenValid] = useState(false);
+  const {toast} = useToast()  
+  useEffect(() => {
+    setIsTokenValid(false);
+    async function checkToken() {
+      if (tokenAddress === "") return;
+      setLoading(true);
+      try {
+        const res = await fetch(`/api/token/check?token=${tokenAddress}`);
+        if(!res.ok) {
+return
+        }
+        const data = await res.json();
+        if(data.address) {
+          setIsTokenValid(true);
+        } else {
+return
+        }
+      } finally {
+        setLoading(false);
+      }
+    }
+    checkToken();
+  }, [tokenAddress]);
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if(!isTokenValid) {
+      toast({
+        title: "Error",
+        message: "Token address is invalid",
+        type: "error",
+      })
+      return;
+    }
+    const status = await fetch(`/api/audit/status`,{
+      method: "POST",
+      body: JSON.stringify({address: tokenAddress}),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  console.log(status);
+    const statusData = await status.json();
+  console.log(statusData);
+    const request = await fetch(`/api/audit/request`, {
+      method: "POST",
+      body: JSON.stringify({ address: tokenAddress }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await request.json();
+  console.log(data);
     if (tokenAddress === "") return;
     router.push(`/token-audit/${tokenAddress}`);
   };
