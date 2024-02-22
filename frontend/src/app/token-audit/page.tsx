@@ -9,7 +9,7 @@ export default function TokenAudit() {
   const [tokenAddress, setTokenAddress] = useState("");
   const [loading, setLoading] = useState(false);
   const [isTokenValid, setIsTokenValid] = useState(false);
-  const {toast} = useToast()  
+  const { toast } = useToast();
   useEffect(() => {
     setIsTokenValid(false);
     async function checkToken() {
@@ -17,14 +17,14 @@ export default function TokenAudit() {
       setLoading(true);
       try {
         const res = await fetch(`/api/token/check?token=${tokenAddress}`);
-        if(!res.ok) {
-return
+        if (!res.ok) {
+          return;
         }
         const data = await res.json();
-        if(data.address) {
+        if (data.address) {
           setIsTokenValid(true);
         } else {
-return
+          return;
         }
       } finally {
         setLoading(false);
@@ -34,24 +34,17 @@ return
   }, [tokenAddress]);
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if(!isTokenValid) {
+    if (!isTokenValid) {
       toast({
-        title: "Error",
-        message: "Token address is invalid",
-        type: "error",
-      })
+        title: "Token address is invalid",
+        desription: "Token address is invalid",
+
+        variant: "destructive",
+        autodismiss: true,
+      });
       return;
     }
-    const status = await fetch(`/api/audit/status`,{
-      method: "POST",
-      body: JSON.stringify({address: tokenAddress}),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-  console.log(status);
-    const statusData = await status.json();
-  console.log(statusData);
+
     const request = await fetch(`/api/audit/request`, {
       method: "POST",
       body: JSON.stringify({ address: tokenAddress }),
@@ -59,8 +52,9 @@ return
         "Content-Type": "application/json",
       },
     });
+    console.log(request);
     const data = await request.json();
-  console.log(data);
+    console.log(data);
     if (tokenAddress === "") return;
     router.push(`/token-audit/${tokenAddress}`);
   };
