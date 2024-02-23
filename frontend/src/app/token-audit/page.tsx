@@ -5,9 +5,9 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function TokenAudit() {
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const [tokenAddress, setTokenAddress] = useState("");
-  const [loading, setLoading] = useState(false);
   const [isTokenValid, setIsTokenValid] = useState(false);
   const {toast} = useToast()  
   useEffect(() => {
@@ -36,9 +36,8 @@ return
     e.preventDefault();
     if(!isTokenValid) {
       toast({
-        title: "Error",
-        message: "Token address is invalid",
-        type: "error",
+        title: "Token address is invalid",
+        variant:"destructive"
       })
       return;
     }

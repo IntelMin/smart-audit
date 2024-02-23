@@ -7,12 +7,12 @@ import copy from 'copy-to-clipboard';
 import { useToast } from '../ui/use-toast'
 
 function ContractCard({token,scanData,finding}:any) {
+  const { toast } = useToast();
   if(!token) return (
     <div className="bg-[#18181B] flex justify-center items-center p-6 rounded-[24px]">
       <MoonLoader color='white' />
       </div>
   )
-  const { toast } = useToast();
   const copyToClipboard = () => {
     copy(token.address);
     toast({
