@@ -4,6 +4,7 @@ import SocialIcons from './socialIcons'
 import { MoonLoader } from 'react-spinners'
 import { formatAddress } from '@/lib/utils'
 import copy from 'copy-to-clipboard';
+import { useToast } from '../ui/use-toast'
 
 function ContractCard({token,scanData,finding}:any) {
   if(!token) return (
@@ -11,10 +12,16 @@ function ContractCard({token,scanData,finding}:any) {
       <MoonLoader color='white' />
       </div>
   )
+  const { toast } = useToast();
   const copyToClipboard = () => {
     copy(token.address);
+    toast({
+      title: "Adrress copied to clipboard",
+      variant: "default",
+    });
   };
   function trimSentences(str:string) {
+    if (!str) return '';
     const sentences = str.split('.');
     const firstFiveSentences = sentences.slice(0, 2);
     return firstFiveSentences.join('.') + '.';

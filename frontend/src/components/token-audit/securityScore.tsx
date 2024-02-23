@@ -28,7 +28,7 @@ function securityScore({scanData}:any) {
         <div className='relative '>
         <Progress value={scanData.auditScore??0} className='h-[100px] '/>
         <p className='absolute text-white p-3 right-2 flex flex-col text-center top-2' >
-            <p className='font-bold text-xl'>{scanData.auditScore.toFixed(2)??0}%</p>
+            <p className='font-bold text-xl'>{(scanData.auditScore??0).toFixed(2)??0}%</p>
             <p>Audit Score</p>
         </p>
         </div>

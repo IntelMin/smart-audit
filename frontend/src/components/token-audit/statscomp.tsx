@@ -13,11 +13,11 @@ if(!scanData || !tokenData) return (
     const statsData = [
         {
             title: "Community Trust",
-            value: scanData.communityScore
+            value: scanData?.communityScore
         },
         {
             title: "Volume (24h)",
-            value: "$"+(Number(scanData.tradingVolume.toFixed(0))).toLocaleString("en-US")
+            value: "$"+(Number((scanData.tradingVolume??0).toFixed(0))).toLocaleString("en-US")
         },
         {
             title: "Supply",
