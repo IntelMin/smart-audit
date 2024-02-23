@@ -156,7 +156,7 @@ console.log(tokenData);
   <ContractCard scanData={scanData}/>
 
   <div className="rounded-[24px] space-y-10 w-full col-span-2">
-    <StatsComponent scanData={scanData}/>
+    <StatsComponent scanData={scanData} tokenData={tokenData}/>
     <SecurityScore scanData={scanData} />
   </div>
 
