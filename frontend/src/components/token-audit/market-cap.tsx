@@ -2,7 +2,7 @@ import Image from 'next/image'
 import React from 'react'
 
 
-function marketCap() {
+function marketCap({token}:any) {
   return (
     <div className='bg-[#18181B]  h-[180px] rounded-xl flex flex-col justify-center items-center text-white space-y-3'>
         <div className='flex space-x-2'>

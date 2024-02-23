@@ -2,7 +2,7 @@ import Image from 'next/image'
 import React from 'react'
 import SocialIcons from './socialIcons'
 
-function ContractCard() {
+function ContractCard({scanData}:any) {
   return (
     <div className="bg-[#18181B] p-6 rounded-[24px]">
     <div className="flex flex-col items-center gap-4 text-center space-y-6 h-full">

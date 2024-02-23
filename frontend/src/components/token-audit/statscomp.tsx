@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function statscomp() {
+export default function statscomp({scanData}:any) {
     const statsData = [
         {
             title: "Community Trust",

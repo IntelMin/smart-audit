@@ -1,18 +1,120 @@
+"use client";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SocialIcons from "../../../components/token-audit/socialIcons";
 import StatsComponent from "../../../components/token-audit/statscomp";
 import SecurityScore from "../../../components/token-audit/securityScore";
 import MarketCap from "../../../components/token-audit/market-cap";
 import AuditHistory from "../../../components/token-audit/audit-history";
 import ContractCard from "@/components/token-audit/contract-card";
+import { useParams } from "next/navigation";
+import { NEW_AUDIT_RETURN_CODE,AUDIT_STATUS_RETURN_CODE } from "@/utils/audit-statuses";
+
 type Props = {
   params: {
     id: string;
   };
 };
-
+type statusType = {
+  eta:number,
+  progress:number,
+  status:number
+}
 const TokenResult = ({ params }: Props) => {
+  const{id} = useParams();
+  const [loading, setLoading] = useState(true);
+  const [findings, setFindings] = useState<any[]>([] as any[]);
+  const [infoData, setInfoData] = useState<any | null>(null);
+  const [metaData, setMetaData] = useState<any | null>(null);
+  const [tokenData, setTokenData] = useState<any | null>(null);
+  const [scanData, setScanData] = useState<any | null>(null);
+  const [status, setStatus] = useState<statusType>({
+    eta: 0,
+    progress: 0,
+    status: 0
+  });
+  useEffect(() => {
+      async function fetchStatus(){
+        const status = await fetch(`/api/audit/status`,{
+          method: "POST",
+          body: JSON.stringify({address: id}),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        console.log(status);
+        const statusData = await status.json();
+        console.log(statusData);
+        setStatus(statusData);
+        if(statusData.status === AUDIT_STATUS_RETURN_CODE.complete){
+          setLoading(false);
+        }
+      }
+      fetchStatus();
+  }, [id])
+  useEffect(() => {
+    async function checkToken() {
+      if (id === "") return;
+      try {
+        const res = await fetch(`/api/token/check?token=${id}`);
+        if (!res.ok) {
+          return;
+        }
+        const data = await res.json();
+        if (data.address) {
+          return;
+        } else {
+          return;
+        }
+      } finally {
+        return;
+      }
+    }
+
+    // checkToken();
+    async function fetchAudit(){
+      checkToken()
+
+      const request = await fetch(`/api/audit/findings?address=${id}`);
+      console.log(request);
+      const data = await request.json();
+      console.log(data);
+      setFindings(data);
+
+      const res_fetch = await fetch(`/api/audit/fetch`, {
+        method: "POST",
+        body: JSON.stringify({ address: id }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const scan_res  = await fetch(`/api/audit/info`, {
+        method: "POST",
+        body: JSON.stringify({ address: id, type: "scan" }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const scan_data = await scan_res.json();
+      console.log(scan_data);
+      setScanData(scan_data);
+      const data_fetch = await res_fetch.json();
+      data_fetch.token["marketcap"] = scan_data.marketcap || {};
+      data_fetch.token["holders"] = data_fetch.token["holders"] || data_fetch.security["holder_count"]
+      console.log(data_fetch);
+      setInfoData(data_fetch.info);
+      setMetaData(data_fetch.meta);
+      setTokenData(data_fetch.token);
+
+    }
+    fetchAudit();
+  }, [id])
+console.log(tokenData);
+  // if(loading){
+  //   //ratan put loader here
+  //   return <div>Loading...</div>
+  // }
+  
   return (
     <div className="bg-[url(/backgrounds/token-result.svg)]  bg-cover bg-center pt-[148px] min-h-screen">
       <div className="flex flex-col gap-8 p-6 min-h-[calc(100vh-148px)]">
@@ -51,16 +153,16 @@ const TokenResult = ({ params }: Props) => {
         </div>
         {/* Token Result Section */}
         <div className="grid grid-cols-4 gap-8">
-  <ContractCard/>
+  <ContractCard scanData={scanData}/>
 
   <div className="rounded-[24px] space-y-10 w-full col-span-2">
-    <StatsComponent />
-    <SecurityScore />
+    <StatsComponent scanData={scanData}/>
+    <SecurityScore scanData={scanData} />
   </div>
 
   <div className="rounded-[24px] space-y-10 ">
-    <MarketCap />
-    <AuditHistory />
+    <MarketCap token={tokenData} />
+    <AuditHistory findings={findings} />
   </div>
 </div>
 
