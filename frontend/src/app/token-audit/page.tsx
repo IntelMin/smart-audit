@@ -12,7 +12,10 @@ export default function TokenAudit() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
+  const [isTokenValid, setIsTokenValid] = useState(false);
+  useEffect(() => {
+    setIsTokenValid(false);
+    async function checkToken() {
       if (tokenAddress === "") return;
         const res = await fetch(`/api/token/check?token=${tokenAddress}`);
         if (!res.ok) {
@@ -37,8 +40,9 @@ export default function TokenAudit() {
         "Content-Type": "application/json",
       },
     });
+    console.log(request);
     const data = await request.json();
-  console.log(data);
+    console.log(data);
     if (tokenAddress === "") return;
     router.push(`/token-audit/${tokenAddress}`);
   };
