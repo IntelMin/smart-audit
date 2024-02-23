@@ -14,6 +14,7 @@ import {
 } from "@/utils/audit-statuses";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
+import { Progress } from "@/components/ui/progress";
 
 type Props = {
   params: {
@@ -40,6 +41,7 @@ const TokenResult = ({ params }: Props) => {
   });
   useEffect(() => {
     async function fetchStatus() {
+      console.log("fetching status")
       const status = await fetch(`/api/audit/status`, {
         method: "POST",
         body: JSON.stringify({ address: id }),
@@ -55,7 +57,6 @@ const TokenResult = ({ params }: Props) => {
         setLoading(false);
       }
     }
-
     const pollStatus = () => {
       if (loading) {
         fetchStatus();
@@ -158,6 +159,16 @@ const TokenResult = ({ params }: Props) => {
     router.push(`/token-audit/${tokenAddress}`);
   };
   if (loading) {
+    // return(
+    //   <div className="absolute inset-0 backdrop-blur-xl text-white text-2xl font-semibold flex flex-col justify-center items-center space-y-2">
+    //     <div>
+    //     <span>Estimated time remaining.. {status.eta} </span> <button className="text-white px-4 py-2 outline-dotted">{status.status}</button>
+    //     </div>
+
+    //       <Progress value={status.progress} className="w-1/2"/>
+          
+    //   </div>
+    // )
   }
 
   return (

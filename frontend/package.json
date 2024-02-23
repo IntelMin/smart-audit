@@ -25,6 +25,7 @@
     "react-spinners": "^0.13.8",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",
+    "usehooks-ts": "^2.15.1",
     "viem": "^1.21.4",
     "wagmi": "^1.4.13",
     "zod": "^3.22.4"

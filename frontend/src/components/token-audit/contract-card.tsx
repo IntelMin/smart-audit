@@ -41,10 +41,8 @@ function ContractCard({token,scanData,finding}:any) {
       <p className="font-[500] text-[#A1A1AA] text-sm">
         {trimSentences(finding?.text)}{" "}
       </p>
-      <SocialIcons 
-      scanData={scanData}
-      />
-      <div className="flex flex-col flex-end h-full justify-end w-full space-y-2 ">
+      <SocialIcons />
+      <div className="flex flex-col flex-end h-full justify-end w-full space-y-2 relative">
         <label className="font-[500] text-[16px] text-white flex justify-between px-3">
           Contract Address
           <Image
@@ -61,10 +59,16 @@ function ContractCard({token,scanData,finding}:any) {
           // value={formatAddress(token.address)}
           
         > */}
-          <button onClick={copyToClipboard} className="bg-[#FFFFFF14] px-4 py-[10px] rounded-[24px] w-full font-[500] text-[16px] text-white placeholder:text-[#D1D5DB] outline-none">
+          <button onClick={copyToClipboard} className="bg-[#FFFFFF14] px-4 py-[10px] rounded-[24px] flex justify-between w-full font-[500] text-[16px] text-white placeholder:text-[#D1D5DB] outline-none">
             {formatAddress(token.address)}
+            <Image src="/icons/tokenaudit/document-copy.svg" width={20} height={20} alt="copy"/>
           </button>
         {/* </input> */}
+        
+        {/* <button  className='absolute bottom-3 right-3' onClick={copyToClipboard}>
+        <Image src="/icons/tokenaudit/document-copy.svg" width={20} height={20} alt="copy"/>
+        </button> */}
+       
       </div>
     </div>
   </div>
