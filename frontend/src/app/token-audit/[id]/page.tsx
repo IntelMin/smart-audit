@@ -161,9 +161,12 @@ const TokenResult = ({ params }: Props) => {
   if (loading) {
     return(
       <div className="absolute inset-0 backdrop-blur-xl text-white text-2xl font-semibold flex flex-col justify-center items-center space-y-2">
-          <span>Estimated time remaining.. {status.eta} </span>
+        <div>
+        <span>Estimated time remaining.. {status.eta} </span> <button className="text-white px-4 py-2 outline-dotted">{status.status}</button>
+        </div>
+
           <Progress value={status.progress} className="w-1/2"/>
-          <button className="text-white">{status.status}</button>
+          
       </div>
     )
   }
