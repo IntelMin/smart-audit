@@ -153,7 +153,7 @@ console.log(tokenData);
         </div>
         {/* Token Result Section */}
         <div className="grid grid-cols-4 gap-8">
-  <ContractCard scanData={scanData}/>
+  <ContractCard finding={findings} token={tokenData} scanData={scanData}/>
 
   <div className="rounded-[24px] space-y-10 w-full col-span-2">
     <StatsComponent scanData={scanData} tokenData={tokenData}/>
@@ -161,7 +161,7 @@ console.log(tokenData);
   </div>
 
   <div className="rounded-[24px] space-y-10 ">
-    <MarketCap token={tokenData} />
+    <MarketCap scanData={scanData} />
     <AuditHistory findings={findings} />
   </div>
 </div>
