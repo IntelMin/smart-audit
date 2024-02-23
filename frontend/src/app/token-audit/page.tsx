@@ -13,7 +13,6 @@ export default function TokenAudit() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
-    async function checkToken() {
       if (tokenAddress === "") return;
         const res = await fetch(`/api/token/check?token=${tokenAddress}`);
         if (!res.ok) {
@@ -23,25 +22,14 @@ export default function TokenAudit() {
           });
           return;
         }
-        const data = await res.json();
-        if (!data.address) {
-
+        const token_data = await res.json();
+        if (!token_data.address) {
+          toast({
+            title: "Token address is invalid",
+            variant: "destructive",
+          });
           return;
         } 
-      }
-    
-    checkToken();
-    
-    const status = await fetch(`/api/audit/status`,{
-      method: "POST",
-      body: JSON.stringify({address: tokenAddress}),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-  console.log(status);
-    const statusData = await status.json();
-  console.log(statusData);
     const request = await fetch(`/api/audit/request`, {
       method: "POST",
       body: JSON.stringify({ address: tokenAddress }),

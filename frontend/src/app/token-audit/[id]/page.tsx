@@ -55,22 +55,29 @@ const TokenResult = ({ params }: Props) => {
         setLoading(false);
       }
     }
-    fetchStatus();
+
+    const pollStatus = () => {
+      if (loading) {
+        fetchStatus();
+        setTimeout(pollStatus, 1000); // Poll every 1 second
+      }
+    };
+
+    pollStatus();
   }, [id]);
   useEffect(() => {
     async function checkToken() {
       if (id === "") return;
-        const res = await fetch(`/api/token/check?token=${id}`);
-        if (!res.ok) {
-          return;
-        }
-        const data = await res.json();
-        if (!data.address) {
-          return;
-        } else {
-          return;
-        }
-      
+      const res = await fetch(`/api/token/check?token=${id}`);
+      if (!res.ok) {
+        return;
+      }
+      const data = await res.json();
+      if (!data.address) {
+        return;
+      } else {
+        return;
+      }
     }
 
     // checkToken();
@@ -101,7 +108,7 @@ const TokenResult = ({ params }: Props) => {
       console.log(scan_data);
       setScanData(scan_data);
       const data_fetch = await res_fetch.json();
-      data_fetch.token["marketcap"] = scan_data.marketcap || {};
+      data_fetch.token["marketcap"] = scan_data?.marketcap || {};
       data_fetch.token["holders"] =
         data_fetch.token["holders"] || data_fetch.security["holder_count"];
       console.log(data_fetch);
@@ -120,25 +127,23 @@ const TokenResult = ({ params }: Props) => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    async function checkToken() {
-      if (id === "") return;
-        const res = await fetch(`/api/token/check?token=${id}`);
-        if (!res.ok) {
-          toast({
-            title: "Token address is invalid",
-            variant: "destructive",
-          });
-          return;
-        }
-        const data = await res.json();
-        if (!data.address) {
-
-          return;
-        } 
-      }
-    
-    checkToken();
-
+    if (id === "") return;
+    const res = await fetch(`/api/token/check?token=${id}`);
+    if (!res.ok) {
+      toast({
+        title: "Token address is invalid",
+        variant: "destructive",
+      });
+      return;
+    }
+    const token_data = await res.json();
+    if (!token_data.address) {
+      toast({
+        title: "Token address is invalid",
+        variant: "destructive",
+      });
+      return;
+    }
 
     const request = await fetch(`/api/audit/request`, {
       method: "POST",
@@ -152,10 +157,8 @@ const TokenResult = ({ params }: Props) => {
     if (tokenAddress === "") return;
     router.push(`/token-audit/${tokenAddress}`);
   };
- if(loading) {
-  
- }
-
+  if (loading) {
+  }
 
   return (
     <div className="bg-[url(/backgrounds/token-result.svg)]  bg-cover bg-center pt-[148px] min-h-screen">
@@ -164,11 +167,21 @@ const TokenResult = ({ params }: Props) => {
         <div className="relative flex flex-col items-center gap-8 bg-[#FFFFFF0D] p-6 rounded-[16px] text-center overflow-hidden">
           {/* Token Logo */}
           <div className="bottom-0 left-0 z-[-1] absolute rounded-full -translate-x-[calc(50%-20px)] translate-y-[10px] size-[136px]">
-            <Image alt="logo" src={tokenData?.icon_url??""} width={136} height={136} />
+            <Image
+              alt="logo"
+              src={tokenData?.icon_url ?? ""}
+              width={136}
+              height={136}
+            />
           </div>
           {/* Token Logo */}
           <div className="top-0 right-0 z-[-1] absolute rounded-full -translate-y-[20px] translate-x-[calc(50%-23px)] size-[136px]">
-            <Image alt="logo" src={tokenData?.icon_url??""} width={136} height={136} />
+            <Image
+              alt="logo"
+              src={tokenData?.icon_url ?? ""}
+              width={136}
+              height={136}
+            />
           </div>
           <div className="flex flex-col gap-2">
             <h1 className="font-[700] text-white text-xl">Token Audit</h1>
@@ -179,11 +192,11 @@ const TokenResult = ({ params }: Props) => {
           </div>
           <form onSubmit={handleSubmit}>
             <div className="flex items-center gap-4">
-                <input
-                  className="bg-[#FFFFFF14] px-[16px] py-[10px] rounded-[80px] font-[500] text-[16px] text-white"
-                  onChange={(e) => setTokenAddress(e.target.value)}
-                  value={tokenAddress}
-                  />
+              <input
+                className="bg-[#FFFFFF14] px-[16px] py-[10px] rounded-[80px] font-[500] text-[16px] text-white"
+                onChange={(e) => setTokenAddress(e.target.value)}
+                value={tokenAddress}
+              />
               {/* <div className="bg-[#FFFFFF14] px-[16px] py-[10px] rounded-[80px]"> */}
               {/* </div> */}
               <button
