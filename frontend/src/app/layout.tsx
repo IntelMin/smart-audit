@@ -21,6 +21,7 @@ export default function RootLayout({
           <Navbar />
           <Toaster />
           {children}
+          <Toaster/>
         </Providers>
       </body>
     </html>

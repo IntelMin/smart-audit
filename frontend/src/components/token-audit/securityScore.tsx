@@ -1,13 +1,23 @@
 import React from 'react'
 import { Progress } from "@/components/ui/progress"
+import { MoonLoader } from "react-spinners";
 
+function securityScore({scanData}:any) {
+    if(!scanData) return (
+        <div className=' flex justify-center items-center h-full space-y-8 bg-[#18181B] py-4 px-4 rounded-lg text-white '>
 
-function securityScore() {
+            <MoonLoader color='white' />
+
+        </div>
+    )
+    const onboardedDate = new Date(scanData.updatedAt??""); 
+    const options = { year: 'numeric', month: 'short', day: 'numeric' } as const;
+    const formattedDate = onboardedDate.toLocaleDateString('en-US', options);
     const statsData = [
         {"Audits": 1},
-        {"Onboarded Date": "Feb-19-2024"},
-        {"Market Stability": 96.22},
-        {"Code Security": 99.38}
+        {"Onboarded Date": formattedDate},
+        {"Market Stability": scanData.marketScore},
+        {"Code Security": scanData.securityScore}
     ];
 
   return (
@@ -16,9 +26,9 @@ function securityScore() {
             <h1>Security Score</h1>
         </header>
         <div className='relative '>
-        <Progress value={33} className='h-[100px] '/>
+        <Progress value={scanData.auditScore??0} className='h-[100px] '/>
         <p className='absolute text-white p-3 right-2 flex flex-col text-center top-2' >
-            <p className='font-bold text-xl'>98%</p>
+            <p className='font-bold text-xl'>{(scanData.auditScore??0).toFixed(2)??0}%</p>
             <p>Audit Score</p>
         </p>
         </div>

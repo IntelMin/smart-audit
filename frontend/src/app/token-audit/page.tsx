@@ -5,46 +5,34 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function TokenAudit() {
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const [tokenAddress, setTokenAddress] = useState("");
-  const [loading, setLoading] = useState(false);
+  const {toast} = useToast()  
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
   const [isTokenValid, setIsTokenValid] = useState(false);
-  const { toast } = useToast();
   useEffect(() => {
     setIsTokenValid(false);
     async function checkToken() {
       if (tokenAddress === "") return;
-      setLoading(true);
-      try {
         const res = await fetch(`/api/token/check?token=${tokenAddress}`);
         if (!res.ok) {
+          toast({
+            title: "Token address is invalid",
+            variant: "destructive",
+          });
           return;
         }
-        const data = await res.json();
-        if (data.address) {
-          setIsTokenValid(true);
-        } else {
+        const token_data = await res.json();
+        if (!token_data.address) {
+          toast({
+            title: "Token address is invalid",
+            variant: "destructive",
+          });
           return;
-        }
-      } finally {
-        setLoading(false);
-      }
-    }
-    checkToken();
-  }, [tokenAddress]);
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!isTokenValid) {
-      toast({
-        title: "Token address is invalid",
-        desription: "Token address is invalid",
-
-        variant: "destructive",
-        autodismiss: true,
-      });
-      return;
-    }
-
+        } 
     const request = await fetch(`/api/audit/request`, {
       method: "POST",
       body: JSON.stringify({ address: tokenAddress }),
