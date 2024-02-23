@@ -14,6 +14,7 @@ import {
 } from "@/utils/audit-statuses";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
+import { Progress } from "@/components/ui/progress";
 
 type Props = {
   params: {
@@ -158,6 +159,13 @@ const TokenResult = ({ params }: Props) => {
     router.push(`/token-audit/${tokenAddress}`);
   };
   if (loading) {
+    return(
+      <div className="absolute inset-0 backdrop-blur-xl text-white text-2xl font-semibold flex flex-col justify-center items-center space-y-2">
+          <span>Estimated time remaining.. {status.eta} </span>
+          <Progress value={status.progress} className="w-1/2"/>
+          <button className="text-white">{status.status}</button>
+      </div>
+    )
   }
 
   return (

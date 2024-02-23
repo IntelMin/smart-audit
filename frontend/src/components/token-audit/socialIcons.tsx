@@ -32,7 +32,7 @@ function socialIcons({scanData}:any) {
         {
             socialIcons.map((icon, index) => (
                 <button key={index} className=" rounded-full  border-neutral-400" >
-                    <a key={index} href={scanData[icon.name]??""}>
+                    <a key={index} href=''>
                     <Image src={icon.url
                     } width={24} height={24} alt="icon" className='w-[24px] h-[24px]'/>
                     </a>

@@ -4,7 +4,7 @@ import { MoonLoader } from "react-spinners";
 
 function securityScore({scanData}:any) {
     if(!scanData) return (
-        <div className='  flex flex justify-center items-center h-full space-y-8 bg-[#18181B] py-4 px-4 rounded-lg text-white '>
+        <div className=' flex justify-center items-center h-full space-y-8 bg-[#18181B] py-4 px-4 rounded-lg text-white '>
 
             <MoonLoader color='white' />
 

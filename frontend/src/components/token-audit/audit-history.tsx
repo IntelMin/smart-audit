@@ -19,15 +19,15 @@ function auditHistory({findings}:any) {
       "Value": findings.low,
       "url":"/icons/tokenaudit/progress2.svg"
     },
-    {
-      "Severity": "Info",
-      "Value": 0,
-      "url":"/icons/tokenaudit/progress3.svg"
-    }
+    // {
+    //   "Severity": "Info",
+    //   "Value": 45,
+    //   "url":"/icons/tokenaudit/progress.svg"
+    // }
   ];
   
   return (
-    <div className='text-white bg-[#18181B] rounded-xl p-4'>
+    <div className='text-white bg-[#18181B] rounded-xl p-4 space-y-5 '>
       <div className='flex w-full justify-between pt-2'>
         <p className='font-semibold'>
           Audit History
@@ -38,12 +38,14 @@ function auditHistory({findings}:any) {
         </div> */}
         
       </div>
-      <div className='flex space-x-4 justify-center items-end'>
+      <div className='flex space-x-10 justify-center items-end'>
         {
           auditData.map((data, index) => (
             <div className='flex flex-col items-center justify-center space-y-2' key={index}>
               <button className='text-white bg-[#FFFFFF1A] rounded-xl  px-3 py-1'>{data.Value}</button>
-              <Image src={data.url} alt='progress' width={56} height={(data.Value)??0} />
+              <div className={``}>
+              <Image src={data.url} alt='progress' width={data.Value??0} height={data.Value??0} className={`object-cover  h-[${data.Value}px]`} />
+              </div>
               <h1 className=''>{data.Severity}</h1>
             </div>
           ))

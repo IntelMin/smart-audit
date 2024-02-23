@@ -17,7 +17,7 @@ export const Navbar = (props: Props) => {
   const path = pathName.split("/")[1];
   const isActive = (ele: string) => ele.substring(1) === path;
   return (
-    <header className="top-0 left-0 z-[99] fixed w-full">
+    <header className="top-0 left-0 z-[99] fixed w-full backdrop-blur-2xl">
       <div className="flex items-center justify-between px-8 pt-6 pb-[18px] border-b border-[#27272A]">
         <div className="flex items-center gap-4">
           <Image src="/icons/logo.svg" alt="logo" width={48} height={48} />
@@ -43,20 +43,20 @@ export const Navbar = (props: Props) => {
                 width={24}
                 height={24}
               />
-              <h1 className="font-[500] text-[#F44336] text-[16px]">
+              <h1 className="font-[500] text-[#F44336] text-[16px] ">
                 Disconnect
               </h1>
             </button>
           </div>
         ) : (
           <div
-            className="flex items-center rounded-[24px]"
+            className="flex items-center rounded-[24px] text-white "
             style={{
               background:
                 "linear-gradient(93.06deg, #00C5EC -1.37%, #423FF1 45.43%, #E131FD 94.83%)",
             }}
           >
-            <ConnectButton />
+            <ConnectButton  />
           </div>
         )}
       </div>
