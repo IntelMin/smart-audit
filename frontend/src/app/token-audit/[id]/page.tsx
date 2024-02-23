@@ -60,20 +60,17 @@ const TokenResult = ({ params }: Props) => {
   useEffect(() => {
     async function checkToken() {
       if (id === "") return;
-      try {
         const res = await fetch(`/api/token/check?token=${id}`);
         if (!res.ok) {
           return;
         }
         const data = await res.json();
-        if (data.address) {
+        if (!data.address) {
           return;
         } else {
           return;
         }
-      } finally {
-        return;
-      }
+      
     }
 
     // checkToken();
@@ -120,38 +117,28 @@ const TokenResult = ({ params }: Props) => {
   const [tokenAddress, setTokenAddress] = useState("");
   const [isTokenValid, setIsTokenValid] = useState(false);
   const { toast } = useToast();
-  useEffect(() => {
-    setIsTokenValid(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     async function checkToken() {
-      if (tokenAddress === "") return;
-      setLoading(true);
-      try {
-        const res = await fetch(`/api/token/check?token=${tokenAddress}`);
+      if (id === "") return;
+        const res = await fetch(`/api/token/check?token=${id}`);
         if (!res.ok) {
+          toast({
+            title: "Token address is invalid",
+            variant: "destructive",
+          });
           return;
         }
         const data = await res.json();
-        if (data.address) {
-          setIsTokenValid(true);
-        } else {
+        if (!data.address) {
+
           return;
-        }
-      } finally {
-        setLoading(false);
+        } 
       }
-    }
+    
     checkToken();
-  }, [tokenAddress]);
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log(isTokenValid);
-    if (!isTokenValid) {
-      toast({
-        title: "Token address is invalid",
-        variant: "destructive",
-      });
-      return;
-    }
+
 
     const request = await fetch(`/api/audit/request`, {
       method: "POST",
@@ -165,6 +152,11 @@ const TokenResult = ({ params }: Props) => {
     if (tokenAddress === "") return;
     router.push(`/token-audit/${tokenAddress}`);
   };
+ if(loading) {
+  
+ }
+
+
   return (
     <div className="bg-[url(/backgrounds/token-result.svg)]  bg-cover bg-center pt-[148px] min-h-screen">
       <div className="flex flex-col gap-8 p-6 min-h-[calc(100vh-148px)]">

@@ -8,39 +8,30 @@ export default function TokenAudit() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const [tokenAddress, setTokenAddress] = useState("");
-  const [isTokenValid, setIsTokenValid] = useState(false);
   const {toast} = useToast()  
-  useEffect(() => {
-    setIsTokenValid(false);
-    async function checkToken() {
-      if (tokenAddress === "") return;
-      setLoading(true);
-      try {
-        const res = await fetch(`/api/token/check?token=${tokenAddress}`);
-        if(!res.ok) {
-return
-        }
-        const data = await res.json();
-        if(data.address) {
-          setIsTokenValid(true);
-        } else {
-return
-        }
-      } finally {
-        setLoading(false);
-      }
-    }
-    checkToken();
-  }, [tokenAddress]);
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if(!isTokenValid) {
-      toast({
-        title: "Token address is invalid",
-        variant:"destructive"
-      })
-      return;
-    }
+    
+    async function checkToken() {
+      if (tokenAddress === "") return;
+        const res = await fetch(`/api/token/check?token=${tokenAddress}`);
+        if (!res.ok) {
+          toast({
+            title: "Token address is invalid",
+            variant: "destructive",
+          });
+          return;
+        }
+        const data = await res.json();
+        if (!data.address) {
+
+          return;
+        } 
+      }
+    
+    checkToken();
+    
     const status = await fetch(`/api/audit/status`,{
       method: "POST",
       body: JSON.stringify({address: tokenAddress}),
