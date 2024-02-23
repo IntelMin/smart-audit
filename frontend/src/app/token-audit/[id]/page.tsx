@@ -40,6 +40,7 @@ const TokenResult = ({ params }: Props) => {
   });
   useEffect(() => {
     async function fetchStatus() {
+      console.log("fetching status")
       const status = await fetch(`/api/audit/status`, {
         method: "POST",
         body: JSON.stringify({ address: id }),
@@ -55,7 +56,6 @@ const TokenResult = ({ params }: Props) => {
         setLoading(false);
       }
     }
-
     const pollStatus = () => {
       if (loading) {
         fetchStatus();
