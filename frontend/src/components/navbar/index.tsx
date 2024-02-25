@@ -60,7 +60,7 @@ export const Navbar = (props: Props) => {
           </div>
         )}
       </div>
-      <nav className="flex items-center gap-12 pt-[18px] pl-6 border-b border-[#272727]">
+      {/* <nav className="flex items-center gap-12 pt-[18px] pl-6 border-b border-[#272727]">
         {navEle?.map((ele, i) => (
           <Link
             href={ele.href}
@@ -80,7 +80,7 @@ export const Navbar = (props: Props) => {
             </h1>
           </Link>
         ))}
-      </nav>
+      </nav> */}
     </header>
   );
 };
