@@ -12,7 +12,6 @@ export default function TokenAudit() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-  const [isTokenValid, setIsTokenValid] = useState(false);
     async function checkToken() {
       if (tokenAddress === "") return;
         const res = await fetch(`/api/token/check?token=${tokenAddress}`);
@@ -45,6 +44,7 @@ export default function TokenAudit() {
     if (tokenAddress === "") return;
     router.push(`/token-audit/${tokenAddress}`);
   };
+}
   return (
     <main className="relative flex items-center justify-center bg-[url(/backgrounds/token.svg)] bg-cover bg-center min-h-screen">
       <div className="flex flex-col justify-between gap-8 bg-[#FFFFFF0D] p-6 rounded-[16px] w-[430px] h-[260px] text-center">
