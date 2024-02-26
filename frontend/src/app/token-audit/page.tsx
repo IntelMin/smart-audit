@@ -8,29 +8,36 @@ export default function TokenAudit() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const [tokenAddress, setTokenAddress] = useState("");
-  const {toast} = useToast()  
+  const { toast } = useToast();
+  const [isTokenValid, setIsTokenValid] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsTokenValid(false);
     async function checkToken() {
       if (tokenAddress === "") return;
-        const res = await fetch(`/api/token/check?token=${tokenAddress}`);
-        if (!res.ok) {
-          toast({
-            title: "Token address is invalid",
-            variant: "destructive",
-          });
-          return;
-        }
-        const token_data = await res.json();
-        if (!token_data.address) {
-          toast({
-            title: "Token address is invalid",
-            variant: "destructive",
-          });
-          return;
-        } 
+      const res = await fetch(`/api/token/check?token=${tokenAddress}`);
+      if (!res.ok) {
+        toast({
+          title: "Token address is invalid",
+          variant: "destructive",
+        });
+        return;
+      }
+      const token_data = await res.json();
+      if (!token_data.address) {
+        toast({
+          title: "Token address is invalid",
+          variant: "destructive",
+        });
+        return;
+      }
+      setIsTokenValid(true);
+    }
     checkToken();
+    if (!isTokenValid) return;
+    console.log(tokenAddress);
+    setLoading(true);
     const request = await fetch(`/api/audit/request`, {
       method: "POST",
       body: JSON.stringify({ address: tokenAddress }),
@@ -43,8 +50,9 @@ export default function TokenAudit() {
     console.log(data);
     if (tokenAddress === "") return;
     router.push(`/token-audit/${tokenAddress}`);
+    setLoading(false);
   };
-}
+
   return (
     <main className="relative flex items-center justify-center bg-[url(/backgrounds/token.svg)] bg-cover bg-center min-h-screen">
       <div className="flex flex-col justify-between gap-8 bg-[#FFFFFF0D] p-6 rounded-[16px] w-[430px] h-[260px] text-center">
@@ -55,7 +63,7 @@ export default function TokenAudit() {
             token, before making your trade decision.
           </p>
         </div>
-        <form className="flex flex-col gap-4" onSubmit={handleSubmit }>
+        <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="Enter contract Address"

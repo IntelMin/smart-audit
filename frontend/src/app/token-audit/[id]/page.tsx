@@ -41,7 +41,7 @@ const TokenResult = ({ params }: Props) => {
   });
   useEffect(() => {
     async function fetchStatus() {
-      console.log("fetching status")
+      console.log("fetching status");
       const status = await fetch(`/api/audit/status`, {
         method: "POST",
         body: JSON.stringify({ address: id }),
@@ -70,13 +70,13 @@ const TokenResult = ({ params }: Props) => {
     async function checkToken() {
       if (id === "") return;
       const res = await fetch(`/api/token/check?token=${id}`);
+      console.log(res);
       if (!res.ok) {
         return;
       }
       const data = await res.json();
+      console.log(data);
       if (!data.address) {
-        return;
-      } else {
         return;
       }
     }
@@ -109,9 +109,11 @@ const TokenResult = ({ params }: Props) => {
       console.log(scan_data);
       setScanData(scan_data);
       const data_fetch = await res_fetch.json();
-      data_fetch.token["marketcap"] = scan_data?.marketcap || {};
-      data_fetch.token["holders"] =
-        data_fetch.token["holders"] || data_fetch.security["holder_count"];
+      if (data_fetch.token) {
+        data_fetch.token["marketcap"] = scan_data?.marketcap || {};
+        data_fetch.token["holders"] =
+          data_fetch.token["holders"] || data_fetch.security["holder_count"];
+      }
       console.log(data_fetch);
       setInfoData(data_fetch.info);
       setMetaData(data_fetch.meta);
@@ -128,24 +130,31 @@ const TokenResult = ({ params }: Props) => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (id === "") return;
-    const res = await fetch(`/api/token/check?token=${id}`);
-    if (!res.ok) {
-      toast({
-        title: "Token address is invalid",
-        variant: "destructive",
-      });
-      return;
+    setIsTokenValid(false);
+    async function checkToken() {
+      if (tokenAddress === "") return;
+      const res = await fetch(`/api/token/check?token=${tokenAddress}`);
+      if (!res.ok) {
+        toast({
+          title: "Token address is invalid",
+          variant: "destructive",
+        });
+        return;
+      }
+      const token_data = await res.json();
+      if (!token_data.address) {
+        toast({
+          title: "Token address is invalid",
+          variant: "destructive",
+        });
+        return;
+      }
+      setIsTokenValid(true);
     }
-    const token_data = await res.json();
-    if (!token_data.address) {
-      toast({
-        title: "Token address is invalid",
-        variant: "destructive",
-      });
-      return;
-    }
-
+    checkToken();
+    if (!isTokenValid) return;
+    console.log(tokenAddress);
+    setLoading(true);
     const request = await fetch(`/api/audit/request`, {
       method: "POST",
       body: JSON.stringify({ address: tokenAddress }),
@@ -153,22 +162,26 @@ const TokenResult = ({ params }: Props) => {
         "Content-Type": "application/json",
       },
     });
+    console.log(request);
     const data = await request.json();
     console.log(data);
     if (tokenAddress === "") return;
     router.push(`/token-audit/${tokenAddress}`);
+    setLoading(false);
   };
   if (loading) {
-    // return(
-    //   <div className="absolute inset-0 backdrop-blur-xl text-white text-2xl font-semibold flex flex-col justify-center items-center space-y-2">
-    //     <div>
-    //     <span>Estimated time remaining.. {status.eta} </span> <button className="text-white px-4 py-2 outline-dotted">{status.status}</button>
-    //     </div>
+    return (
+      <div className="absolute inset-0 backdrop-blur-xl text-white text-2xl font-semibold flex flex-col justify-center items-center space-y-2">
+        <div>
+          <span>Estimated time remaining.. {status.eta} </span>{" "}
+          <button className="text-white px-4 py-2 outline-dotted">
+            {status.status}
+          </button>
+        </div>
 
-    //       <Progress value={status.progress} className="w-1/2"/>
-          
-    //   </div>
-    // )
+        <Progress value={status.progress} className="w-1/2" />
+      </div>
+    );
   }
 
   return (
