@@ -1,0 +1,2059 @@
+{
+    "network": "ETH",
+    "address": "0x514910771af9ca656af840dff83e8264ecf986ca",
+    "id": "653fd5fc26e3790188da91c1",
+    "slug": "coin-chainlink",
+    "addressDetails": {
+      "0x514910771af9ca656af840dff83e8264ecf986ca": {
+        "balance": 0,
+        "contract": true,
+        "label": ""
+      },
+      "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2": {
+        "balance": 0,
+        "contract": true,
+        "label": ""
+      },
+      "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": {
+        "balance": 82.15871017,
+        "contract": true,
+        "label": ""
+      },
+      "0xdac17f958d2ee523a2206206994597c13d831ec7": {
+        "balance": 633.4449161230983,
+        "contract": true,
+        "label": "USDT Blacklist"
+      },
+      "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984": {
+        "balance": 1005,
+        "contract": true,
+        "label": ""
+      },
+      "0x4fabb145d64652a948d72533023f6e7a623c7c53": {
+        "balance": 0,
+        "contract": true,
+        "label": ""
+      },
+      "0x6b175474e89094c44da98b954eedeac495271d0f": {
+        "balance": 0,
+        "contract": true,
+        "label": ""
+      },
+      "0xf55037738604fddfc4043d12f25124e94d7d1780": {
+        "balance": 0,
+        "contract": false,
+        "label": ""
+      },
+      "0xbc10f2e862ed4502144c7d632a3459f49dfcdb5e": {
+        "balance": 40875000,
+        "contract": true,
+        "label": ""
+      },
+      "0xf977814e90da44bfa03b6295a0616a897441acec": {
+        "balance": 36000000,
+        "contract": false,
+        "label": "Binance 8"
+      },
+      "0xe0b66bfc7344a80152bfec954942e2926a6fca80": {
+        "balance": 30000000,
+        "contract": true,
+        "label": ""
+      },
+      "0xa42d0a18b834f52e41beddeaa2940165db3da9a3": {
+        "balance": 30000000,
+        "contract": true,
+        "label": ""
+      },
+      "0x9c17f630dbde24eece8fd248faa2e51f690ff79b": {
+        "balance": 30000000,
+        "contract": true,
+        "label": ""
+      },
+      "0x9bbb46637a1df7cadec2afca19c2920cddcc8db8": {
+        "balance": 30000000,
+        "contract": true,
+        "label": ""
+      },
+      "0x8652fb672253607c0061677bdcafb77a324de081": {
+        "balance": 30000000,
+        "contract": true,
+        "label": ""
+      },
+      "0x76287e0f7b107d1c9f8f01d5afac314ea8461a04": {
+        "balance": 30000000,
+        "contract": true,
+        "label": ""
+      },
+      "0x7594eb0ca0a7f313befd59afe9e95c2201a443e4": {
+        "balance": 30000000,
+        "contract": true,
+        "label": ""
+      },
+      "0x5a8e77bc30948cc9a51ae4e042d96e145648bb4c": {
+        "balance": 30000000,
+        "contract": true,
+        "label": ""
+      },
+      "0x35a5dc3fd1210fe7173add3c01144cf1693b5e45": {
+        "balance": 30000000,
+        "contract": true,
+        "label": ""
+      },
+      "0x0dffd343c2d3460a7ead2797a687304beb394ce0": {
+        "balance": 30000000,
+        "contract": true,
+        "label": ""
+      },
+      "0xfb682b0de4e0093835ea21cfabb5449ca9ac9e5e": {
+        "balance": 23000000,
+        "contract": true,
+        "label": ""
+      },
+      "0x4a87ece3efffcb012fbe491aa028032e07b6f6cf": {
+        "balance": 23000000,
+        "contract": true,
+        "label": ""
+      },
+      "0xd48133c96c5fe8d41d0cbd598f65bf4548941e27": {
+        "balance": 22000000,
+        "contract": true,
+        "label": ""
+      },
+      "0x157235a3cc6011d9c26a010875c2550246aabcca": {
+        "balance": 22000000,
+        "contract": true,
+        "label": ""
+      },
+      "0x55b0ba1994d68c2ab0c01c3332ec9473de296137": {
+        "balance": 19000000,
+        "contract": true,
+        "label": ""
+      },
+      "0x0757e27ac1631beeb37eed3270cc6301dd3d57d4": {
+        "balance": 11977384.372007428,
+        "contract": false,
+        "label": ""
+      },
+      "0xda9dfa130df4de4673b89022ee50ff26f6ea73cf": {
+        "balance": 9500000,
+        "contract": false,
+        "label": "Kraken 13"
+      },
+      "0x47ac0fb4f2d84898e4d9e7b4dab3c24507a6d503": {
+        "balance": 9100000,
+        "contract": false,
+        "label": ""
+      }
+    },
+    "auditScore": 71.36258282094948,
+    "auditSlug": "",
+    "coingecko": {
+      "rank": 13,
+      "id": "chainlink"
+    },
+    "coinmarketcap": {
+      "rank": 12,
+      "slug": "chainlink"
+    },
+    "coinscope": {
+      "votes": 5895,
+      "slug": "link",
+      "hasAudit": false,
+      "hasKyc": false,
+      "kycType": "",
+      "hasAma": false,
+      "hasAirdrop": false
+    },
+    "communityScore": 95,
+    "contract": {
+      "updatedAt": "2024-02-21T09:14:36.217Z",
+      "network": "ETH",
+      "address": "0x514910771af9ca656af840dff83e8264ecf986ca",
+      "contractName": "LinkToken",
+      "contractVersion": "v0.4.16+commit.d7661dd9",
+      "runs": "200",
+      "licenseType": "",
+      "proxy": false,
+      "unverified": false,
+      "renounced": false,
+      "contractOwner": "",
+      "decimals": 18,
+      "deadAmount": 7077738113044894000,
+      "symbol": "LINK",
+      "totalSupply": 1e+27,
+      "error": "",
+      "commonAddresses": [],
+      "geckoTerminalUrl": "https://www.geckoterminal.com/eth/pools/0xa6cc3c2531fdaa6ae1a3ca84c2855806728693e8",
+      "geckoTerminalUrlUpdatedAt": "2024-02-21T09:14:36.217Z"
+    },
+    "createdAt": "2023-10-30T16:12:44.145Z",
+    "decentralisationScore": 76,
+    "description": "🔥 BRAND NEW ARBITRAGE 🔥\n\n🚨🚨We've just updated our new arbitrage opportunity. Many of our community members already made huge profits. Read the text below carefully to find out more!\n\n🔺STATUS: Updated, Working\n🔺PROFIT: About 25%\n🔺RISK LEVEL: Risk Free\n\nWe're bringing you an updated step-by-step guide for a new arbitrage opportunity we found recently. This arbitrage involves Ethereum (ETH) to ChainLink (LINK) swap. By the current market price the profit is about 25%! That means we can turn every 1 ETH to about 1.25 ETH in a few minutes only.",
+    "dextools": {
+      "chain": "ether",
+      "pair": "0xa6cc3c2531fdaa6ae1a3ca84c2855806728693e8"
+    },
+    "discord": "",
+    "domainInfo": {
+      "lighthouse": {
+        "audits": {
+          "is-on-https": {
+            "title": "Uses HTTPS",
+            "description": "All sites should be protected with HTTPS, even ones that don't handle sensitive data. This includes avoiding [mixed content](https://developers.google.com/web/fundamentals/security/prevent-mixed-content/what-is-mixed-content), where some resources are loaded over HTTP despite the initial request being served over HTTPS. HTTPS prevents intruders from tampering with or passively listening in on the communications between your app and your users, and is a prerequisite for HTTP/2 and many new web platform APIs. [Learn more about HTTPS](https://developer.chrome.com/docs/lighthouse/pwa/is-on-https/).",
+            "score": 1
+          },
+          "viewport": {
+            "title": "Has a `<meta name=\"viewport\">` tag with `width` or `initial-scale`",
+            "description": "A `<meta name=\"viewport\">` not only optimizes your app for mobile screen sizes, but also prevents [a 300 millisecond delay to user input](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/). [Learn more about using the viewport meta tag](https://developer.chrome.com/docs/lighthouse/pwa/viewport/).",
+            "score": 1
+          },
+          "first-contentful-paint": {
+            "title": "First Contentful Paint",
+            "description": "First Contentful Paint marks the time at which the first text or image is painted. [Learn more about the First Contentful Paint metric](https://developer.chrome.com/docs/lighthouse/performance/first-contentful-paint/).",
+            "score": 0.13
+          },
+          "largest-contentful-paint": {
+            "title": "Largest Contentful Paint",
+            "description": "Largest Contentful Paint marks the time at which the largest text or image is painted. [Learn more about the Largest Contentful Paint metric](https://developer.chrome.com/docs/lighthouse/performance/lighthouse-largest-contentful-paint/)",
+            "score": 0.18
+          },
+          "speed-index": {
+            "title": "Speed Index",
+            "description": "Speed Index shows how quickly the contents of a page are visibly populated. [Learn more about the Speed Index metric](https://developer.chrome.com/docs/lighthouse/performance/speed-index/).",
+            "score": 0.04
+          },
+          "total-blocking-time": {
+            "title": "Total Blocking Time",
+            "description": "Sum of all time periods between FCP and Time to Interactive, when task length exceeded 50ms, expressed in milliseconds. [Learn more about the Total Blocking Time metric](https://developer.chrome.com/docs/lighthouse/performance/lighthouse-total-blocking-time/).",
+            "score": 0.28
+          },
+          "cumulative-layout-shift": {
+            "title": "Cumulative Layout Shift",
+            "description": "Cumulative Layout Shift measures the movement of visible elements within the viewport. [Learn more about the Cumulative Layout Shift metric](https://web.dev/cls/).",
+            "score": 1
+          },
+          "errors-in-console": {
+            "title": "Browser errors were logged to the console",
+            "description": "Errors logged to the console indicate unresolved problems. They can come from network request failures and other browser concerns. [Learn more about this errors in console diagnostic audit](https://developer.chrome.com/docs/lighthouse/best-practices/errors-in-console/)",
+            "score": 0
+          },
+          "installable-manifest": {
+            "title": "Web app manifest or service worker do not meet the installability requirements",
+            "description": "Service worker is the technology that enables your app to use many Progressive Web App features, such as offline, add to homescreen, and push notifications. With proper service worker and manifest implementations, browsers can proactively prompt users to add your app to their homescreen, which can lead to higher engagement. [Learn more about manifest installability requirements](https://developer.chrome.com/docs/lighthouse/pwa/installable-manifest/).",
+            "score": 0
+          },
+          "splash-screen": {
+            "title": "Is not configured for a custom splash screen",
+            "description": "A themed splash screen ensures a high-quality experience when users launch your app from their homescreens. [Learn more about splash screens](https://developer.chrome.com/docs/lighthouse/pwa/splash-screen/).",
+            "score": 0
+          },
+          "themed-omnibox": {
+            "title": "Does not set a theme color for the address bar.",
+            "description": "The browser address bar can be themed to match your site. [Learn more about theming the address bar](https://developer.chrome.com/docs/lighthouse/pwa/themed-omnibox/).",
+            "score": 0
+          },
+          "maskable-icon": {
+            "title": "Manifest doesn't have a maskable icon",
+            "description": "A maskable icon ensures that the image fills the entire shape without being letterboxed when installing the app on a device. [Learn about maskable manifest icons](https://developer.chrome.com/docs/lighthouse/pwa/maskable-icon-audit/).",
+            "score": 0
+          },
+          "image-aspect-ratio": {
+            "title": "Displays images with correct aspect ratio",
+            "description": "Image display dimensions should match natural aspect ratio. [Learn more about image aspect ratio](https://developer.chrome.com/docs/lighthouse/best-practices/image-aspect-ratio/).",
+            "score": 1
+          },
+          "image-size-responsive": {
+            "title": "Serves images with appropriate resolution",
+            "description": "Image natural dimensions should be proportional to the display size and the pixel ratio to maximize image clarity. [Learn how to provide responsive images](https://web.dev/serve-responsive-images/).",
+            "score": 1
+          },
+          "deprecations": {
+            "title": "Avoids deprecated APIs",
+            "description": "Deprecated APIs will eventually be removed from the browser. [Learn more about deprecated APIs](https://developer.chrome.com/docs/lighthouse/best-practices/deprecations/).",
+            "score": 1
+          },
+          "no-unload-listeners": {
+            "title": "Avoids `unload` event listeners",
+            "description": "The `unload` event does not fire reliably and listening for it can prevent browser optimizations like the Back-Forward Cache. Use `pagehide` or `visibilitychange` events instead. [Learn more about unload event listeners](https://web.dev/bfcache/#never-use-the-unload-event)",
+            "score": 1
+          },
+          "aria-allowed-attr": {
+            "title": "`[aria-*]` attributes match their roles",
+            "description": "Each ARIA `role` supports a specific subset of `aria-*` attributes. Mismatching these invalidates the `aria-*` attributes. [Learn how to match ARIA attributes to their roles](https://dequeuniversity.com/rules/axe/4.7/aria-allowed-attr).",
+            "score": 1
+          },
+          "aria-allowed-role": {
+            "title": "Values assigned to `role=\"\"` are valid ARIA roles.",
+            "description": "ARIA `role`s enable assistive technologies to know the role of each element on the web page. If the `role` values are misspelled, not existing ARIA `role` values, or abstract roles, then the purpose of the element will not be communicated to users of assistive technologies. [Learn more about ARIA roles](https://dequeuniversity.com/rules/axe/4.7/aria-allowed-roles).",
+            "score": 1
+          },
+          "aria-command-name": {
+            "title": "`button`, `link`, and `menuitem` elements have accessible names",
+            "description": "When an element doesn't have an accessible name, screen readers announce it with a generic name, making it unusable for users who rely on screen readers. [Learn how to make command elements more accessible](https://dequeuniversity.com/rules/axe/4.7/aria-command-name).",
+            "score": 1
+          },
+          "aria-hidden-body": {
+            "title": "`[aria-hidden=\"true\"]` is not present on the document `<body>`",
+            "description": "Assistive technologies, like screen readers, work inconsistently when `aria-hidden=\"true\"` is set on the document `<body>`. [Learn how `aria-hidden` affects the document body](https://dequeuniversity.com/rules/axe/4.7/aria-hidden-body).",
+            "score": 1
+          },
+          "aria-input-field-name": {
+            "title": "ARIA input fields have accessible names",
+            "description": "When an input field doesn't have an accessible name, screen readers announce it with a generic name, making it unusable for users who rely on screen readers. [Learn more about input field labels](https://dequeuniversity.com/rules/axe/4.7/aria-input-field-name).",
+            "score": 1
+          },
+          "aria-required-attr": {
+            "title": "`[role]`s have all required `[aria-*]` attributes",
+            "description": "Some ARIA roles have required attributes that describe the state of the element to screen readers. [Learn more about roles and required attributes](https://dequeuniversity.com/rules/axe/4.7/aria-required-attr).",
+            "score": 1
+          },
+          "aria-required-children": {
+            "title": "Elements with an ARIA `[role]` that require children to contain a specific `[role]` have all required children.",
+            "description": "Some ARIA parent roles must contain specific child roles to perform their intended accessibility functions. [Learn more about roles and required children elements](https://dequeuniversity.com/rules/axe/4.7/aria-required-children).",
+            "score": 1
+          },
+          "aria-required-parent": {
+            "title": "`[role]`s are contained by their required parent element",
+            "description": "Some ARIA child roles must be contained by specific parent roles to properly perform their intended accessibility functions. [Learn more about ARIA roles and required parent element](https://dequeuniversity.com/rules/axe/4.7/aria-required-parent).",
+            "score": 1
+          },
+          "aria-roles": {
+            "title": "`[role]` values are valid",
+            "description": "ARIA roles must have valid values in order to perform their intended accessibility functions. [Learn more about valid ARIA roles](https://dequeuniversity.com/rules/axe/4.7/aria-roles).",
+            "score": 1
+          },
+          "aria-valid-attr-value": {
+            "title": "`[aria-*]` attributes have valid values",
+            "description": "Assistive technologies, like screen readers, can't interpret ARIA attributes with invalid values. [Learn more about valid values for ARIA attributes](https://dequeuniversity.com/rules/axe/4.7/aria-valid-attr-value).",
+            "score": 1
+          },
+          "aria-valid-attr": {
+            "title": "`[aria-*]` attributes are valid and not misspelled",
+            "description": "Assistive technologies, like screen readers, can't interpret ARIA attributes with invalid names. [Learn more about valid ARIA attributes](https://dequeuniversity.com/rules/axe/4.7/aria-valid-attr).",
+            "score": 1
+          },
+          "color-contrast": {
+            "title": "Background and foreground colors do not have a sufficient contrast ratio.",
+            "description": "Low-contrast text is difficult or impossible for many users to read. [Learn how to provide sufficient color contrast](https://dequeuniversity.com/rules/axe/4.7/color-contrast).",
+            "score": 0
+          },
+          "document-title": {
+            "title": "Document has a `<title>` element",
+            "description": "The title gives screen reader users an overview of the page, and search engine users rely on it heavily to determine if a page is relevant to their search. [Learn more about document titles](https://dequeuniversity.com/rules/axe/4.7/document-title).",
+            "score": 1
+          },
+          "duplicate-id-active": {
+            "title": "`[id]` attributes on active, focusable elements are unique",
+            "description": "All focusable elements must have a unique `id` to ensure that they're visible to assistive technologies. [Learn how to fix duplicate `id`s](https://dequeuniversity.com/rules/axe/4.7/duplicate-id-active).",
+            "score": 1
+          },
+          "duplicate-id-aria": {
+            "title": "ARIA IDs are unique",
+            "description": "The value of an ARIA ID must be unique to prevent other instances from being overlooked by assistive technologies. [Learn how to fix duplicate ARIA IDs](https://dequeuniversity.com/rules/axe/4.7/duplicate-id-aria).",
+            "score": 1
+          },
+          "heading-order": {
+            "title": "Heading elements appear in a sequentially-descending order",
+            "description": "Properly ordered headings that do not skip levels convey the semantic structure of the page, making it easier to navigate and understand when using assistive technologies. [Learn more about heading order](https://dequeuniversity.com/rules/axe/4.7/heading-order).",
+            "score": 1
+          },
+          "html-has-lang": {
+            "title": "`<html>` element has a `[lang]` attribute",
+            "description": "If a page doesn't specify a `lang` attribute, a screen reader assumes that the page is in the default language that the user chose when setting up the screen reader. If the page isn't actually in the default language, then the screen reader might not announce the page's text correctly. [Learn more about the `lang` attribute](https://dequeuniversity.com/rules/axe/4.7/html-has-lang).",
+            "score": 1
+          },
+          "html-lang-valid": {
+            "title": "`<html>` element has a valid value for its `[lang]` attribute",
+            "description": "Specifying a valid [BCP 47 language](https://www.w3.org/International/questions/qa-choosing-language-tags#question) helps screen readers announce text properly. [Learn how to use the `lang` attribute](https://dequeuniversity.com/rules/axe/4.7/html-lang-valid).",
+            "score": 1
+          },
+          "image-alt": {
+            "title": "Image elements have `[alt]` attributes",
+            "description": "Informative elements should aim for short, descriptive alternate text. Decorative elements can be ignored with an empty alt attribute. [Learn more about the `alt` attribute](https://dequeuniversity.com/rules/axe/4.7/image-alt).",
+            "score": 1
+          },
+          "image-redundant-alt": {
+            "title": "Image elements do not have `[alt]` attributes that are redundant text.",
+            "description": "Informative elements should aim for short, descriptive alternative text. Alternative text that is exactly the same as the text adjacent to the link or image is potentially confusing for screen reader users, because the text will be read twice. [Learn more about the `alt` attribute](https://dequeuniversity.com/rules/axe/4.7/image-redundant-alt).",
+            "score": 1
+          },
+          "input-button-name": {
+            "title": "Input buttons have discernible text.",
+            "description": "Adding discernable and accessible text to input buttons may help screen reader users understand the purpose of the input button. [Learn more about input buttons](https://dequeuniversity.com/rules/axe/4.7/input-button-name).",
+            "score": 1
+          },
+          "label-content-name-mismatch": {
+            "title": "Elements with visible text labels do not have matching accessible names.",
+            "description": "Visible text labels that do not match the accessible name can result in a confusing experience for screen reader users. [Learn more about accessible names](https://dequeuniversity.com/rules/axe/4.7/label-content-name-mismatch).",
+            "score": 0
+          },
+          "label": {
+            "title": "Form elements have associated labels",
+            "description": "Labels ensure that form controls are announced properly by assistive technologies, like screen readers. [Learn more about form element labels](https://dequeuniversity.com/rules/axe/4.7/label).",
+            "score": 1
+          },
+          "link-name": {
+            "title": "Links have a discernible name",
+            "description": "Link text (and alternate text for images, when used as links) that is discernible, unique, and focusable improves the navigation experience for screen reader users. [Learn how to make links accessible](https://dequeuniversity.com/rules/axe/4.7/link-name).",
+            "score": 1
+          },
+          "listitem": {
+            "title": "List items (`<li>`) are contained within `<ul>`, `<ol>` or `<menu>` parent elements",
+            "description": "Screen readers require list items (`<li>`) to be contained within a parent `<ul>`, `<ol>` or `<menu>` to be announced properly. [Learn more about proper list structure](https://dequeuniversity.com/rules/axe/4.7/listitem).",
+            "score": 1
+          },
+          "meta-viewport": {
+            "title": "`[user-scalable=\"no\"]` is not used in the `<meta name=\"viewport\">` element and the `[maximum-scale]` attribute is not less than 5.",
+            "description": "Disabling zooming is problematic for users with low vision who rely on screen magnification to properly see the contents of a web page. [Learn more about the viewport meta tag](https://dequeuniversity.com/rules/axe/4.7/meta-viewport).",
+            "score": 1
+          },
+          "tabindex": {
+            "title": "No element has a `[tabindex]` value greater than 0",
+            "description": "A value greater than 0 implies an explicit navigation ordering. Although technically valid, this often creates frustrating experiences for users who rely on assistive technologies. [Learn more about the `tabindex` attribute](https://dequeuniversity.com/rules/axe/4.7/tabindex).",
+            "score": 1
+          },
+          "valid-lang": {
+            "title": "`[lang]` attributes have a valid value",
+            "description": "Specifying a valid [BCP 47 language](https://www.w3.org/International/questions/qa-choosing-language-tags#question) on elements helps ensure that text is pronounced correctly by a screen reader. [Learn how to use the `lang` attribute](https://dequeuniversity.com/rules/axe/4.7/valid-lang).",
+            "score": 1
+          },
+          "doctype": {
+            "title": "Page has the HTML doctype",
+            "description": "Specifying a doctype prevents the browser from switching to quirks-mode. [Learn more about the doctype declaration](https://developer.chrome.com/docs/lighthouse/best-practices/doctype/).",
+            "score": 1
+          },
+          "charset": {
+            "title": "Properly defines charset",
+            "description": "A character encoding declaration is required. It can be done with a `<meta>` tag in the first 1024 bytes of the HTML or in the Content-Type HTTP response header. [Learn more about declaring the character encoding](https://developer.chrome.com/docs/lighthouse/best-practices/charset/).",
+            "score": 1
+          },
+          "geolocation-on-start": {
+            "title": "Avoids requesting the geolocation permission on page load",
+            "description": "Users are mistrustful of or confused by sites that request their location without context. Consider tying the request to a user action instead. [Learn more about the geolocation permission](https://developer.chrome.com/docs/lighthouse/best-practices/geolocation-on-start/).",
+            "score": 1
+          },
+          "inspector-issues": {
+            "title": "Issues were logged in the `Issues` panel in Chrome Devtools",
+            "description": "Issues logged to the `Issues` panel in Chrome Devtools indicate unresolved problems. They can come from network request failures, insufficient security controls, and other browser concerns. Open up the Issues panel in Chrome DevTools for more details on each issue.",
+            "score": 0
+          },
+          "notification-on-start": {
+            "title": "Avoids requesting the notification permission on page load",
+            "description": "Users are mistrustful of or confused by sites that request to send notifications without context. Consider tying the request to user gestures instead. [Learn more about responsibly getting permission for notifications](https://developer.chrome.com/docs/lighthouse/best-practices/notification-on-start/).",
+            "score": 1
+          },
+          "paste-preventing-inputs": {
+            "title": "Allows users to paste into input fields",
+            "description": "Preventing input pasting is a bad practice for the UX, and weakens security by blocking password managers.[Learn more about user-friendly input fields](https://developer.chrome.com/docs/lighthouse/best-practices/paste-preventing-inputs/).",
+            "score": 1
+          },
+          "meta-description": {
+            "title": "Document has a meta description",
+            "description": "Meta descriptions may be included in search results to concisely summarize page content. [Learn more about the meta description](https://developer.chrome.com/docs/lighthouse/seo/meta-description/).",
+            "score": 1
+          },
+          "http-status-code": {
+            "title": "Page has successful HTTP status code",
+            "description": "Pages with unsuccessful HTTP status codes may not be indexed properly. [Learn more about HTTP status codes](https://developer.chrome.com/docs/lighthouse/seo/http-status-code/).",
+            "score": 1
+          },
+          "link-text": {
+            "title": "Links have descriptive text",
+            "description": "Descriptive link text helps search engines understand your content. [Learn how to make links more accessible](https://developer.chrome.com/docs/lighthouse/seo/link-text/).",
+            "score": 1
+          },
+          "crawlable-anchors": {
+            "title": "Links are crawlable",
+            "description": "Search engines may use `href` attributes on links to crawl websites. Ensure that the `href` attribute of anchor elements links to an appropriate destination, so more pages of the site can be discovered. [Learn how to make links crawlable](https://support.google.com/webmasters/answer/9112205)",
+            "score": 1
+          },
+          "is-crawlable": {
+            "title": "Page isn’t blocked from indexing",
+            "description": "Search engines are unable to include your pages in search results if they don't have permission to crawl them. [Learn more about crawler directives](https://developer.chrome.com/docs/lighthouse/seo/is-crawlable/).",
+            "score": 1
+          },
+          "robots-txt": {
+            "title": "robots.txt is valid",
+            "description": "If your robots.txt file is malformed, crawlers may not be able to understand how you want your website to be crawled or indexed. [Learn more about robots.txt](https://developer.chrome.com/docs/lighthouse/seo/invalid-robots-txt/).",
+            "score": 1
+          },
+          "hreflang": {
+            "title": "Document has a valid `hreflang`",
+            "description": "hreflang links tell search engines what version of a page they should list in search results for a given language or region. [Learn more about `hreflang`](https://developer.chrome.com/docs/lighthouse/seo/hreflang/).",
+            "score": 1
+          },
+          "plugins": {
+            "title": "Document avoids plugins",
+            "description": "Search engines can't index plugin content, and many devices restrict plugins or don't support them. [Learn more about avoiding plugins](https://developer.chrome.com/docs/lighthouse/seo/plugins/).",
+            "score": 1
+          },
+          "canonical": {
+            "title": "Document has a valid `rel=canonical`",
+            "description": "Canonical links suggest which URL to show in search results. [Learn more about canonical links](https://developer.chrome.com/docs/lighthouse/seo/canonical/).",
+            "score": 1
+          }
+        },
+        "metrics": {
+          "performance": 0.4,
+          "accessibility": 0.93,
+          "bestPractices": 0.91,
+          "seo": 1,
+          "pwa": 0.29,
+          "security": 0.67
+        }
+      },
+      "whois": {
+        "creationDate": "2017-07-27T01:04:37.000Z"
+      },
+      "dns": {
+        "missingSPF": false,
+        "missingDMARC": false,
+        "missingDKIM": false,
+        "ineffectiveSPF": false,
+        "softfailWithoutDMARC": false,
+        "nameServerVersion": false,
+        "recursiveQueries": false,
+        "cNameInNS": false,
+        "mxPrivateIPs": false,
+        "mxInvalidChars": false
+      }
+    },
+    "facebook": "",
+    "fundamentalsScore": 69.57230405893219,
+    "github": "https://github.com/smartcontractkit",
+    "githubRepositoryStats": {
+      "stars": 10496,
+      "repositoryAge": "2022-01-17T01:15:22.000Z",
+      "forks": 2632,
+      "openIssues": 75,
+      "watchers": 10496,
+      "commits": 155,
+      "contributors": 27,
+      "contributionsPerDay": [
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1673136000
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1673740800
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1674345600
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1674950400
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1675555200
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1676160000
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1676764800
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1677369600
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1677974400
+        },
+        {
+          "days": [
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 1,
+          "week": 1678579200
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1679184000
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1679788800
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1680393600
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1680998400
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1681603200
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1682208000
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1682812800
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1683417600
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1684022400
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1684627200
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1685232000
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1685836800
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1686441600
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1687046400
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1687651200
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1688256000
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1688860800
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1689465600
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1690070400
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1690675200
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1691280000
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1691884800
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1692489600
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          "total": 1,
+          "week": 1693094400
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1693699200
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1694304000
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1694908800
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1695513600
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1696118400
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1696723200
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1697328000
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1697932800
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1698537600
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1699142400
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1699747200
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1700352000
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1700956800
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1701561600
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1702166400
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1702771200
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1703376000
+        },
+        {
+          "days": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "week": 1703980800
+        }
+      ],
+      "owner": "smartcontractkit",
+      "repo": "full-blockchain-solidity-course-js"
+    },
+    "logo": "https://firebasestorage.googleapis.com/v0/b/coinscopeassets.appspot.com/o/1649410909019_da6ff82e-7d88-41c0-b5a4-820cfee635c2?alt=media&token=c3f0433e-c147-4046-b0f4-a20e143bb4ae",
+    "marketScore": 97,
+    "marketcap": 11684148520.493103,
+    "name": "ChainLink Arbitrage",
+    "pools": {
+      "pairs": [
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "worth": 47491068.98661148,
+          "reserve0": 1274607.238462175,
+          "reserve1": 4763.20014451699,
+          "address": "0xa6cc3c2531fdaa6ae1a3ca84c2855806728693e8",
+          "factory": "0x1f98431c8ad98523631ae4a59f267346ea31f984"
+        },
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "worth": 3723414.275375665,
+          "reserve0": 99264.29350542605,
+          "reserve1": 634.3703954981221,
+          "address": "0xa2107fa5b38d9bbd2c461d6edf11b11a50f6b974",
+          "factory": "0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f"
+        },
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "worth": 2381151.477419538,
+          "reserve0": 63426.217499281716,
+          "reserve1": 403.64349146340174,
+          "address": "0xc40d16476380e4037e6b1a2594caf6a6cc8da967",
+          "factory": "0xc0aee478e3658e2610c5f7a4a2e1777ce9e4f2ac"
+        },
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "worth": 669692.0011500968,
+          "reserve0": 17563.369814971215,
+          "reserve1": 27.23289969224727,
+          "address": "0x3510e96226894fabc37d1eb0e3122e33791da225",
+          "factory": "0x70fe4a44ea505cfa3a57b95cf2862d4fd5f0f687"
+        },
+        {
+          "token": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+          "worth": 668250.1264950436,
+          "reserve0": 17854.56432745192,
+          "reserve1": 470282.287396,
+          "address": "0xfad57d2039c21811c8f2b5d5b65308aa99d31559",
+          "factory": "0x1f98431c8ad98523631ae4a59f267346ea31f984"
+        },
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "worth": 174235.99655260172,
+          "reserve0": 4672.499187829094,
+          "reserve1": 29.658724931282734,
+          "address": "0x8b59be2fc6fccc2256cc4841843a13ce29da16bd",
+          "factory": "0x9deb29c9a4c7a88a3c0257393b7f3335338d9a9d"
+        },
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "worth": 74817.8571859252,
+          "reserve0": 1989.2416182623351,
+          "reserve1": 53460.994596,
+          "address": "0xac5a2c404ebba22a869998089ac7893ff4e1f0a7",
+          "factory": "0x1f98431c8ad98523631ae4a59f267346ea31f984"
+        },
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "worth": 59854.255576996235,
+          "reserve0": 1582.664294649243,
+          "reserve1": 1.019560913461594,
+          "address": "0x3a0f221ea8b150f3d3d27de8928851ab5264bb65",
+          "factory": "0x1f98431c8ad98523631ae4a59f267346ea31f984"
+        },
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "worth": 53844.90080286317,
+          "reserve0": 1406.5153857776977,
+          "reserve1": 9.073972715228848,
+          "address": "0xf15fd4dc6a1d3c0aa8bbab46db6400f53a49f737",
+          "factory": "0x115934131916c8b277dd010ee02de363c09d037c"
+        },
+        {
+          "token": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+          "worth": 33314.92176419333,
+          "reserve0": 838.2021234043118,
+          "reserve1": 12105.904205662191,
+          "address": "0x9f178e86e42ddf2379cb3d2acf9ed67a1ed2550a",
+          "factory": "0x1f98431c8ad98523631ae4a59f267346ea31f984"
+        },
+        {
+          "token": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+          "worth": 22556.987480982476,
+          "reserve0": 571.1175538924413,
+          "reserve1": 1484.1644266676094,
+          "address": "0x9b2662dc8b80b0fe79310ad316b943cb5bb15e8b",
+          "factory": "0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f"
+        },
+        {
+          "token": "0x4fabb145d64652a948d72533023f6e7a623c7c53",
+          "worth": 20780.209087427826,
+          "reserve0": 517.2443942809718,
+          "reserve1": 10417.3126022298,
+          "address": "0x983c9a1bcf0eb980a232d1b17bffd6bbf68fe4ce",
+          "factory": "0x696708db871b77355d6c2be7290b27cf0bb9b24b"
+        },
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "worth": 7352.006524593606,
+          "reserve0": 190.81051774915693,
+          "reserve1": 1.2231479621312986,
+          "address": "0x9f1d5621896c4d075adcd327b0deba48007093cb",
+          "factory": "0x696708db871b77355d6c2be7290b27cf0bb9b24b"
+        },
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "worth": 5709.85208642774,
+          "reserve0": 156.12697510942596,
+          "reserve1": 3036.7442,
+          "address": "0xf36c9fc3c2abe4132019444aff914fc8dc9785a9",
+          "factory": "0x696708db871b77355d6c2be7290b27cf0bb9b24b"
+        },
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "worth": 4999.587732522201,
+          "reserve0": 122.03307102925343,
+          "reserve1": 2447.603764,
+          "address": "0xa856139af24e63cc24d888728cd5eef574601374",
+          "factory": "0x9deb29c9a4c7a88a3c0257393b7f3335338d9a9d"
+        },
+        {
+          "token": "0x6b175474e89094c44da98b954eedeac495271d0f",
+          "worth": 4519.637745154036,
+          "reserve0": 114.58271807060547,
+          "reserve1": 2229.043206098795,
+          "address": "0x6d4fd456edeca58cf53a8b586cd50754547dbdb2",
+          "factory": "0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f"
+        },
+        {
+          "token": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+          "worth": 4053.4600922768304,
+          "reserve0": 98.95165923810615,
+          "reserve1": 2072.870489,
+          "address": "0x9d996bdd1f65c835ee92cd0b94e15d886ef14d63",
+          "factory": "0x696708db871b77355d6c2be7290b27cf0bb9b24b"
+        },
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "worth": 2355.660626791804,
+          "reserve0": 55.5277272363521,
+          "reserve1": 0.3996149646090634,
+          "address": "0xca3d6a94759cb675f0ac10a76fc0da6ee6bf6e7b",
+          "factory": "0x75e48c954594d64ef9613aeef97ad85370f13807"
+        },
+        {
+          "token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "worth": 818.6053011565597,
+          "reserve0": 20.266660809564268,
+          "reserve1": 402.676434,
+          "address": "0x9db10c305c671153662119d453c4d2c123725566",
+          "factory": "0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f"
+        },
+        {
+          "token": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+          "worth": 0.0024656124255595033,
+          "reserve0": 0.000194743767010959,
+          "reserve1": 0.010588,
+          "address": "0xd24b1542323096ccbf9cba3b13c5b9eb4a92c506",
+          "factory": "0x1f98431c8ad98523631ae4a59f267346ea31f984"
+        },
+        {
+          "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "worth": 0,
+          "reserve0": 0,
+          "reserve1": 0,
+          "address": "0xde1621bc3e8be5927e8a8be068cea62f74f876ce",
+          "factory": "0xf028f723ed1d0fe01cc59973c49298aa95c57472"
+        }
+      ],
+      "tokens": [
+        {
+          "address": "0x514910771af9ca656af840dff83e8264ecf986ca",
+          "decimals": 18,
+          "symbol": "LINK",
+          "name": "ChainLink Token"
+        },
+        {
+          "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "decimals": 18,
+          "symbol": "WETH",
+          "name": "Wrapped Ether"
+        },
+        {
+          "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+          "decimals": 6,
+          "symbol": "USDC",
+          "name": "USD Coin"
+        },
+        {
+          "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "decimals": 6,
+          "symbol": "USDT",
+          "name": "Tether USD"
+        },
+        {
+          "address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+          "decimals": 18,
+          "symbol": "UNI",
+          "name": "Uniswap"
+        },
+        {
+          "address": "0x4fabb145d64652a948d72533023f6e7a623c7c53",
+          "decimals": 18,
+          "symbol": "BUSD",
+          "name": "BUSD"
+        },
+        {
+          "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+          "decimals": 18,
+          "symbol": "DAI",
+          "name": "Dai Stablecoin"
+        }
+      ],
+      "dexes": [
+        {
+          "address": "0x9deb29c9a4c7a88a3c0257393b7f3335338d9a9d",
+          "name": "Crodex",
+          "icon": "assets/images/swap/crodex.png"
+        },
+        {
+          "address": "0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f",
+          "name": "Uniswap",
+          "icon": "assets/images/swap/uniswap.png"
+        },
+        {
+          "address": "0x1f98431c8ad98523631ae4a59f267346ea31f984",
+          "name": "Uniswap",
+          "icon": "assets/images/swap/uniswap.png"
+        },
+        {
+          "address": "0xc0aee478e3658e2610c5f7a4a2e1777ce9e4f2ac",
+          "name": "SushiSwap",
+          "icon": "assets/images/swap/sushiswap.png"
+        },
+        {
+          "address": "0x70fe4a44ea505cfa3a57b95cf2862d4fd5f0f687",
+          "name": "",
+          "icon": "assets/images/swap/exchange.png"
+        },
+        {
+          "address": "0xf028f723ed1d0fe01cc59973c49298aa95c57472",
+          "name": "",
+          "icon": "assets/images/swap/exchange.png"
+        },
+        {
+          "address": "0x115934131916c8b277dd010ee02de363c09d037c",
+          "name": "ShibaInu",
+          "icon": "assets/images/swap/shibainu.png"
+        },
+        {
+          "address": "0x696708db871b77355d6c2be7290b27cf0bb9b24b",
+          "name": "",
+          "icon": "assets/images/swap/exchange.png"
+        },
+        {
+          "address": "0x75e48c954594d64ef9613aeef97ad85370f13807",
+          "name": "",
+          "icon": "assets/images/swap/exchange.png"
+        }
+      ]
+    },
+    "price": 19.901463308679755,
+    "projectAge": "2017-09-20T00:00:00.000Z",
+    "rank": "Very Low",
+    "rawAuditScore": 86,
+    "rawCommunityScore": 95,
+    "rawDecentralisationScore": 76,
+    "rawFundamentalsScore": 100,
+    "rawMarketScore": 100,
+    "rawSecurityScore": 100,
+    "rawTotalScore": null,
+    "reddit": "https://reddit.com/r/chainlink",
+    "securityScore": 97,
+    "similarity": {
+      "ranks": [],
+      "contracts": []
+    },
+    "slowPollUpdatedAt": "2023-12-31T00:02:22.309Z",
+    "smartAudit": {
+      "burn": [],
+      "mint": [],
+      "blacklist": [],
+      "blacklistMany": [],
+      "whitelist": [],
+      "setFees": [],
+      "maxTxAmount": [],
+      "pause": [],
+      "cooldown": [],
+      "reflections": false,
+      "rebase": false,
+      "pinksaleAntiBot": false,
+      "autogeneratedPool": false,
+      "dividendDistributor": false,
+      "buyback": false,
+      "safeMath": true,
+      "redundantSafeMath": false,
+      "nonImmutables": [],
+      "nonDescriptiveErrorMessages": [
+        {
+          "range": [
+            9019,
+            9082
+          ]
+        }
+      ],
+      "multiplePragmaVersions": [],
+      "interfaces": 0,
+      "libraries": 1,
+      "contracts": 8,
+      "versions": [
+        "^0.4.16"
+      ],
+      "lines": 294
+    },
+    "socialCounters": {
+      "twitter": 1123749,
+      "telegram": 23605
+    },
+    "taxes": {
+      "buyTax": 0,
+      "buyDeadTax": 0,
+      "buyContractTax": 0,
+      "sellTax": 0,
+      "sellDeadTax": 0,
+      "sellContractTax": 0
+    },
+    "telegram": "https://t.me/chainlinkarbitrage",
+    "tokenCreation": {
+      "contractCreator": "0xf55037738604fddfc4043d12f25124e94d7d1780",
+      "value": 0,
+      "generatedAt": "2017-09-16T21:26:29.000Z",
+      "txHash": "0x5488510df045770efbff57f25d0c6d2c1404d58c1199b21eb8dc5072b22d91d7"
+    },
+    "topHolders": {
+      "total": 720583,
+      "addresses": [
+        "0xbc10f2e862ed4502144c7d632a3459f49dfcdb5e",
+        "0xf977814e90da44bfa03b6295a0616a897441acec",
+        "0xe0b66bfc7344a80152bfec954942e2926a6fca80",
+        "0xa42d0a18b834f52e41beddeaa2940165db3da9a3",
+        "0x9c17f630dbde24eece8fd248faa2e51f690ff79b",
+        "0x9bbb46637a1df7cadec2afca19c2920cddcc8db8",
+        "0x8652fb672253607c0061677bdcafb77a324de081",
+        "0x76287e0f7b107d1c9f8f01d5afac314ea8461a04",
+        "0x7594eb0ca0a7f313befd59afe9e95c2201a443e4",
+        "0x5a8e77bc30948cc9a51ae4e042d96e145648bb4c",
+        "0x35a5dc3fd1210fe7173add3c01144cf1693b5e45",
+        "0x0dffd343c2d3460a7ead2797a687304beb394ce0",
+        "0xfb682b0de4e0093835ea21cfabb5449ca9ac9e5e",
+        "0x4a87ece3efffcb012fbe491aa028032e07b6f6cf",
+        "0xd48133c96c5fe8d41d0cbd598f65bf4548941e27",
+        "0x157235a3cc6011d9c26a010875c2550246aabcca",
+        "0x55b0ba1994d68c2ab0c01c3332ec9473de296137",
+        "0x0757e27ac1631beeb37eed3270cc6301dd3d57d4",
+        "0xda9dfa130df4de4673b89022ee50ff26f6ea73cf",
+        "0x47ac0fb4f2d84898e4d9e7b4dab3c24507a6d503"
+      ]
+    },
+    "totalScore": 88,
+    "tradingVolume": 391160599.52128893,
+    "twitter": "https://twitter.com/chainlink",
+    "updatedAt": "2024-02-21T09:14:40.804Z",
+    "website": "https://chain.link/",
+    "expiresAt": null,
+    "bitcointalk": "",
+    "linkedin": "",
+    "medium": "https://medium.com/chainlink",
+    "price30": 24.37963595,
+    "price60": 32.83690235,
+    "auditFindings": null,
+    "auditScoreHistory": [
+      {
+        "v": 72,
+        "t": "2024-01-22T12:55:19.257Z"
+      },
+      {
+        "v": 72,
+        "t": "2024-01-26T00:57:58.988Z"
+      },
+      {
+        "v": 72,
+        "t": "2024-01-29T03:54:16.678Z"
+      },
+      {
+        "v": 72,
+        "t": "2024-02-01T09:28:22.644Z"
+      },
+      {
+        "v": 72,
+        "t": "2024-02-04T15:21:51.278Z"
+      },
+      {
+        "v": 70.39631952339931,
+        "t": "2024-02-07T23:16:39.008Z"
+      },
+      {
+        "v": 69.38218522464386,
+        "t": "2024-02-11T08:18:09.757Z"
+      },
+      {
+        "v": 71.27488361221319,
+        "t": "2024-02-14T18:56:10.083Z"
+      },
+      {
+        "v": 71.73673301075019,
+        "t": "2024-02-18T03:30:03.654Z"
+      },
+      {
+        "v": 71.36258282094948,
+        "t": "2024-02-21T09:14:40.804Z"
+      }
+    ],
+    "auditScorePercentile": 63.50611425442599,
+    "communityScoreHistory": [
+      {
+        "v": 95,
+        "t": "2024-01-22T12:55:19.257Z"
+      },
+      {
+        "v": 95,
+        "t": "2024-01-26T00:57:58.988Z"
+      },
+      {
+        "v": 95,
+        "t": "2024-01-29T03:54:16.678Z"
+      },
+      {
+        "v": 95,
+        "t": "2024-02-01T09:28:22.644Z"
+      },
+      {
+        "v": 95,
+        "t": "2024-02-04T15:21:51.278Z"
+      },
+      {
+        "v": 95,
+        "t": "2024-02-07T23:16:39.008Z"
+      },
+      {
+        "v": 95,
+        "t": "2024-02-11T08:18:09.757Z"
+      },
+      {
+        "v": 95,
+        "t": "2024-02-14T18:56:10.083Z"
+      },
+      {
+        "v": 95,
+        "t": "2024-02-18T03:30:03.654Z"
+      },
+      {
+        "v": 95,
+        "t": "2024-02-21T09:14:40.804Z"
+      }
+    ],
+    "communityScorePercentile": 96.9976273042526,
+    "decentralisationScoreHistory": [
+      {
+        "v": 97,
+        "t": "2024-01-22T12:55:19.257Z"
+      },
+      {
+        "v": 97,
+        "t": "2024-01-26T00:57:58.988Z"
+      },
+      {
+        "v": 97,
+        "t": "2024-01-29T03:54:16.678Z"
+      },
+      {
+        "v": 76,
+        "t": "2024-02-01T09:28:22.644Z"
+      },
+      {
+        "v": 76,
+        "t": "2024-02-04T15:21:51.278Z"
+      },
+      {
+        "v": 76,
+        "t": "2024-02-07T23:16:39.008Z"
+      },
+      {
+        "v": 76,
+        "t": "2024-02-11T08:18:09.757Z"
+      },
+      {
+        "v": 76,
+        "t": "2024-02-14T18:56:10.083Z"
+      },
+      {
+        "v": 76,
+        "t": "2024-02-18T03:30:03.654Z"
+      },
+      {
+        "v": 76,
+        "t": "2024-02-21T09:14:40.804Z"
+      }
+    ],
+    "decentralisationScorePercentile": 88.33728782624567,
+    "fundamentalsScoreHistory": [
+      {
+        "v": 97,
+        "t": "2024-01-22T12:55:19.257Z"
+      },
+      {
+        "v": 97,
+        "t": "2024-01-26T00:57:58.988Z"
+      },
+      {
+        "v": 97,
+        "t": "2024-01-29T03:54:16.678Z"
+      },
+      {
+        "v": 97,
+        "t": "2024-02-01T09:28:22.644Z"
+      },
+      {
+        "v": 97,
+        "t": "2024-02-04T15:21:51.278Z"
+      },
+      {
+        "v": 70.6268252936529,
+        "t": "2024-02-07T23:16:39.008Z"
+      },
+      {
+        "v": 70.46469280815023,
+        "t": "2024-02-11T08:18:09.757Z"
+      },
+      {
+        "v": 69.6164090798777,
+        "t": "2024-02-14T18:56:10.083Z"
+      },
+      {
+        "v": 69.79210422178672,
+        "t": "2024-02-18T03:30:03.654Z"
+      },
+      {
+        "v": 69.57230405893219,
+        "t": "2024-02-21T09:14:40.804Z"
+      }
+    ],
+    "fundamentalsScorePercentile": 48.40299324694287,
+    "marketScoreHistory": [
+      {
+        "v": 97,
+        "t": "2024-01-22T12:55:19.257Z"
+      },
+      {
+        "v": 97,
+        "t": "2024-01-26T00:57:58.988Z"
+      },
+      {
+        "v": 97,
+        "t": "2024-01-29T03:54:16.678Z"
+      },
+      {
+        "v": 97,
+        "t": "2024-02-01T09:28:22.644Z"
+      },
+      {
+        "v": 97,
+        "t": "2024-02-04T15:21:51.278Z"
+      },
+      {
+        "v": 97,
+        "t": "2024-02-07T23:16:39.008Z"
+      },
+      {
+        "v": 97,
+        "t": "2024-02-11T08:18:09.757Z"
+      },
+      {
+        "v": 97,
+        "t": "2024-02-14T18:56:10.083Z"
+      },
+      {
+        "v": 97,
+        "t": "2024-02-18T03:30:03.654Z"
+      },
+      {
+        "v": 97,
+        "t": "2024-02-21T09:14:40.804Z"
+      }
+    ],
+    "marketScorePercentile": 99.79923343675853,
+    "securityScoreHistory": [
+      {
+        "v": 97,
+        "t": "2024-01-22T12:55:19.257Z"
+      },
+      {
+        "v": 97,
+        "t": "2024-01-26T00:57:58.988Z"
+      },
+      {
+        "v": 97,
+        "t": "2024-01-29T03:54:16.678Z"
+      },
+      {
+        "v": 97,
+        "t": "2024-02-01T09:28:22.644Z"
+      },
+      {
+        "v": 97,
+        "t": "2024-02-04T15:21:51.278Z"
+      },
+      {
+        "v": 97,
+        "t": "2024-02-07T23:16:39.008Z"
+      },
+      {
+        "v": 97,
+        "t": "2024-02-11T08:18:09.757Z"
+      },
+      {
+        "v": 97,
+        "t": "2024-02-14T18:56:10.083Z"
+      },
+      {
+        "v": 97,
+        "t": "2024-02-18T03:30:03.654Z"
+      },
+      {
+        "v": 97,
+        "t": "2024-02-21T09:14:40.804Z"
+      }
+    ],
+    "securityScorePercentile": 99.83573644825698,
+    "totalScorePercentile": 99.89961671837926,
+    "totalScoresHistory": [
+      {
+        "v": 94.33333333333333,
+        "t": "2024-01-22T12:55:19.257Z"
+      },
+      {
+        "v": 94.33333333333333,
+        "t": "2024-01-26T00:57:58.988Z"
+      },
+      {
+        "v": 94.33333333333333,
+        "t": "2024-01-29T03:54:16.678Z"
+      },
+      {
+        "v": 90.5,
+        "t": "2024-02-01T09:28:22.644Z"
+      },
+      {
+        "v": 90.5,
+        "t": "2024-02-04T15:21:51.278Z"
+      },
+      {
+        "v": 88,
+        "t": "2024-02-07T23:16:39.008Z"
+      },
+      {
+        "v": 88,
+        "t": "2024-02-11T08:18:09.757Z"
+      },
+      {
+        "v": 88,
+        "t": "2024-02-14T18:56:10.083Z"
+      },
+      {
+        "v": 88,
+        "t": "2024-02-18T03:30:03.654Z"
+      },
+      {
+        "v": 88,
+        "t": "2024-02-21T09:14:40.804Z"
+      }
+    ],
+    "addressDescriptors": [
+      {
+        "network": "ETH",
+        "address": "0x514910771af9ca656af840dff83e8264ecf986ca"
+      },
+      {
+        "network": "XDAI",
+        "address": "0xe2e73a1c69ecf83f464efce6a5be353a37ca09b2"
+      },
+      {
+        "network": "BSC",
+        "address": "0xf8a0bf9cf54bb92f17374d9e9a321e6a111a51bd"
+      },
+      {
+        "network": "MATIC",
+        "address": "0x53e0bca35ec356bd5dddfebbd1fc0fd03fabad39"
+      },
+      {
+        "network": "OPTIMISM",
+        "address": "0x350a791bfc2c21f9ed5d10980dad2e2638ffa7f6"
+      },
+      {
+        "network": "ONE",
+        "address": "0x218532a12a389a4a92fc0c5fb22901d1c19198aa"
+      },
+      {
+        "network": "AVAX",
+        "address": "0x5947bb275c521040051d82396192181b413227a3"
+      },
+      {
+        "network": "ARBITRUM",
+        "address": "0xf97f4df75117a78c1a5a0dbb814af92458539fb4"
+      },
+      {
+        "network": "FTM",
+        "address": "0xb3654dc3d10ea7645f8319668e8f54d2574fbdc8"
+      }
+    ],
+    "discordMembers": null,
+    "discordMembersHistory": [],
+    "facebookLikes": null,
+    "facebookLikesHistory": [],
+    "redditMembers": null,
+    "redditMembersHistory": [],
+    "telegramMembers": 23605,
+    "telegramMembersHistory": [
+      {
+        "v": 23775,
+        "t": "2024-01-22T12:55:19.256Z"
+      },
+      {
+        "v": 23743,
+        "t": "2024-01-26T00:57:58.988Z"
+      },
+      {
+        "v": 23743,
+        "t": "2024-01-29T03:54:16.678Z"
+      },
+      {
+        "v": 23647,
+        "t": "2024-02-01T09:28:22.644Z"
+      },
+      {
+        "v": 23647,
+        "t": "2024-02-04T15:21:51.277Z"
+      },
+      {
+        "v": 23672,
+        "t": "2024-02-07T23:16:39.008Z"
+      },
+      {
+        "v": 23672,
+        "t": "2024-02-11T08:18:09.756Z"
+      },
+      {
+        "v": 23637,
+        "t": "2024-02-14T18:56:10.083Z"
+      },
+      {
+        "v": 23625,
+        "t": "2024-02-18T03:30:03.653Z"
+      },
+      {
+        "v": 23605,
+        "t": "2024-02-21T09:14:40.803Z"
+      }
+    ],
+    "topHoldersHistory": [
+      {
+        "v": 714618,
+        "t": "2024-01-22T12:55:19.256Z"
+      },
+      {
+        "v": 715681,
+        "t": "2024-01-26T00:57:58.988Z"
+      },
+      {
+        "v": 716454,
+        "t": "2024-01-29T03:54:16.678Z"
+      },
+      {
+        "v": 716348,
+        "t": "2024-02-01T09:28:22.644Z"
+      },
+      {
+        "v": 716356,
+        "t": "2024-02-04T15:21:51.277Z"
+      },
+      {
+        "v": 717330,
+        "t": "2024-02-07T23:16:39.008Z"
+      },
+      {
+        "v": 717636,
+        "t": "2024-02-11T08:18:09.756Z"
+      },
+      {
+        "v": 718653,
+        "t": "2024-02-14T18:56:10.083Z"
+      },
+      {
+        "v": 719720,
+        "t": "2024-02-18T03:30:03.653Z"
+      },
+      {
+        "v": 720583,
+        "t": "2024-02-21T09:14:40.803Z"
+      }
+    ],
+    "twitterFollowers": 1123749,
+    "twitterFollowersHistory": [
+      {
+        "v": 1104241,
+        "t": "2024-01-26T00:57:58.988Z"
+      },
+      {
+        "v": 1108784,
+        "t": "2024-01-29T03:54:16.678Z"
+      },
+      {
+        "v": 1111035,
+        "t": "2024-02-01T09:28:22.644Z"
+      },
+      {
+        "v": 1111035,
+        "t": "2024-02-04T15:21:51.277Z"
+      },
+      {
+        "v": 1116089,
+        "t": "2024-02-07T23:16:39.008Z"
+      },
+      {
+        "v": 1117744,
+        "t": "2024-02-11T08:18:09.756Z"
+      },
+      {
+        "v": 1120837,
+        "t": "2024-02-14T18:56:10.083Z"
+      },
+      {
+        "v": 1122867,
+        "t": "2024-02-18T03:30:03.653Z"
+      },
+      {
+        "v": 1123749,
+        "t": "2024-02-21T09:14:40.803Z"
+      }
+    ],
+    "geckoTerminalUrl": "https://www.geckoterminal.com/eth/pools/0xa6cc3c2531fdaa6ae1a3ca84c2855806728693e8"
+  }
