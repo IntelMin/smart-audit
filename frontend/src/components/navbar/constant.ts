@@ -5,12 +5,12 @@ export const navEle = [
         icon: "/icons/coin.svg",
         activeIcon: "/icons/coin-active.svg",
     },
-    {
-        name: "Code Audit",
-        href: "/code-audit",
-        icon: "/icons/code.svg",
-        activeIcon: "/icons/code-active.svg",
-    },
+    // {
+    //     name: "Code Audit",
+    //     href: "/code-audit",
+    //     icon: "/icons/code.svg",
+    //     activeIcon: "/icons/code-active.svg",
+    // },
 ];
 
 export type NavEle = typeof navEle;
