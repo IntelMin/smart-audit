@@ -1,15 +1,15 @@
 "use client";
 
+import LoadingModal from "@/components/loadingModal";
 import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
-import LoadingModal from "@/components/loadingModal";
 import { useEffect, useState } from "react";
 
 export default function TokenAudit() {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
   const [tokenAddress, setTokenAddress] = useState("");
-  const { toast } = useToast();
+  const {toast} = useToast()  
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -30,6 +30,7 @@ export default function TokenAudit() {
             variant: "destructive",
           });
           return;
+
         } 
     const request = await fetch(`/api/audit/request`, {
       method: "POST",
@@ -40,7 +41,7 @@ export default function TokenAudit() {
     });
     setLoading(true);
     const data = await request.json();
-  console.log(data);
+      console.log(data);
     if (tokenAddress === "") return;
     router.push(`/token-audit/${tokenAddress}`);
   };
@@ -54,7 +55,7 @@ export default function TokenAudit() {
             token, before making your trade decision.
           </p>
         </div>
-        <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+        <form className="flex flex-col gap-4" onSubmit={handleSubmit }>
           <input
             type="text"
             placeholder="Enter contract Address"
@@ -74,11 +75,7 @@ export default function TokenAudit() {
           </button>
         </form>
       </div>
-      {loading && (
-        <div className="inset-0 absolute top-0 left-0 h-screen flex flex-col justify-center items-center backdrop-blur-lg">
-          <LoadingModal setLoading={setLoading} />.
-        </div>
-      )}
+   
     </main>
   );
 }
