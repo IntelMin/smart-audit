@@ -63,6 +63,7 @@ const getFindingsData = async findings => {
   let highCount = 0;
   let mediumCount = 0;
   let lowCount = 0;
+  let totalFindings = findings.length;
 
   findings.forEach(finding => {
     if (finding.severity === 'HIGH') {
@@ -73,7 +74,7 @@ const getFindingsData = async findings => {
       lowCount++;
     }
   });
-  return [highCount, mediumCount, lowCount];
+  return [highCount, mediumCount, lowCount, totalFindings];
 };
 
 const getGPTSummary = async prompt => {
@@ -268,6 +269,7 @@ async function createSummary(address) {
     number_of_medium_severity_issues: findingsData[1],
     number_of_high_severity_issues: findingsData[0],
     number_of_low_severity_issues: findingsData[2],
+    total_findings: findingsData[3],
     is_antiwhale: parsedSecurity.is_anti_whale,
     buy_tax: parsedSecurity.buy_tax,
     holder_count: parsedSecurity.holder_count,

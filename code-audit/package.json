@@ -6,10 +6,17 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+<<<<<<< HEAD
+    "lint": "next lint",
+    "postinstall": "prisma generate"
+  },
+  "dependencies": {
+=======
     "lint": "next lint"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.6.0",
+>>>>>>> bug-bounty
     "@prisma/client": "^5.10.2",
     "@radix-ui/react-progress": "^1.0.3",
     "@radix-ui/react-toast": "^1.1.5",

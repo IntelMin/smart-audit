@@ -3,6 +3,7 @@ import { Progress } from '../ui/progress'
 import Image from 'next/image'
 
 function auditHistory({findings}:any) {
+  console.log(findings)
   const auditData = [
     {
       "Severity": "High",
@@ -16,14 +17,14 @@ function auditHistory({findings}:any) {
     },
     {
       "Severity": "Low",
-      "Value": findings.low,
+      "Value": findings?.low,
       "url":"/icons/tokenaudit/progress2.svg"
     },
-    // {
-    //   "Severity": "Info",
-    //   "Value": 45,
-    //   "url":"/icons/tokenaudit/progress.svg"
-    // }
+    {
+      "Severity": "Info",
+      "Value": findings?.info,
+      "url":"/icons/tokenaudit/progress.svg"
+    }
   ];
   
   return (
