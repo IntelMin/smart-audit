@@ -44,7 +44,7 @@ const TokenResult = ({ params }: Props) => {
       console.log("fetching status");
       const status = await fetch(`/api/audit/status`, {
         method: "POST",
-        body: JSON.stringify({ address: id }),
+        body: JSON.stringify({ address: id.toLowerCase() }),
         headers: {
           "Content-Type": "application/json",
         },
@@ -157,7 +157,7 @@ const TokenResult = ({ params }: Props) => {
     setLoading(true);
     const request = await fetch(`/api/audit/request`, {
       method: "POST",
-      body: JSON.stringify({ address: tokenAddress }),
+      body: JSON.stringify({ address: tokenAddress.toLowerCase() }),
       headers: {
         "Content-Type": "application/json",
       },
@@ -173,10 +173,7 @@ const TokenResult = ({ params }: Props) => {
     return (
       <div className="absolute inset-0 backdrop-blur-xl text-white text-2xl font-semibold flex flex-col justify-center items-center space-y-2">
         <div>
-          <span>Estimated time remaining.. {status.eta} </span>{" "}
-          <button className="text-white px-4 py-2 outline-dotted">
-            {status.status}
-          </button>
+          <span>Loading... </span>{" "}
         </div>
 
         <Progress value={status.progress} className="w-1/2" />
