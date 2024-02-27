@@ -6,7 +6,7 @@ import { formatAddress } from '@/lib/utils'
 import copy from 'copy-to-clipboard';
 import { useToast } from '../ui/use-toast'
 
-function ContractCard({token,scanData,finding}:any) {
+function ContractCard({token,finding,metaData}:any) {
   const { toast } = useToast();
   if(!token) return (
     <div className="bg-[#18181B] flex justify-center items-center p-6 rounded-[24px]">

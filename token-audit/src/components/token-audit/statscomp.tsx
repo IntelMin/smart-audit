@@ -3,7 +3,7 @@ import React from 'react'
 import { MoonLoader } from 'react-spinners';
 import { formatUnits } from 'viem';
 
-export default function statscomp({scanData,tokenData}:any) {
+export default function statscomp({scanData,tokenData,liveData}:any) {
 if(!scanData || !tokenData) return (
 
 <div className='flex justify-center items-center space-x-4  h-[162px] '>
@@ -17,7 +17,7 @@ if(!scanData || !tokenData) return (
         },
         {
             title: "Volume (24h)",
-            value: "$"+(Number((scanData.tradingVolume??0).toFixed(0))).toLocaleString("en-US")
+            value: "$"+(Number((liveData?.volume?.h24??0).toFixed(0))).toLocaleString("en-US")
         },
         {
             title: "Supply",
