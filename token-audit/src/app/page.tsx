@@ -12,6 +12,7 @@ export default function TokenAudit() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    
       if (tokenAddress === "") return;
         const res = await fetch(`/api/token/check?token=${tokenAddress}`);
         if (!res.ok) {
@@ -37,17 +38,13 @@ export default function TokenAudit() {
       },
     });
     const data = await request.json();
-    console.log(data);
+  console.log(data);
     if (tokenAddress === "") return;
     router.push(`/token-audit/${tokenAddress}`);
   };
   return (
-    <main className="relative flex flex-col items-center justify-center bg-[url(/backgrounds/token.svg)] bg-cover bg-center min-h-screen space-y-10">
-      <div className="flex flex-col justify-center items-center text-white mx-8 text-center md:w-[680px] space-y-6">
-        <h1 className="text-2xl font-semibold">Token Audit</h1>
-        <p className="text-sm">Experience unparalleled security with our AI-driven Token Audit, meticulously analyzing technical, financial, and regulatory aspects for comprehensive assurance. Our advanced algorithms provide transparent insights, ensuring trust and confidence for token issuers and investors.</p>
-      </div>
-      <div className="flex flex-col justify-between gap-8 bg-[#FFFFFF0D] p-6 rounded-[16px] md:w-[430px] md:h-[260px] text-center mt-6 m-4">
+    <main className="relative flex items-center justify-center bg-[url(/backgrounds/token.svg)] bg-cover bg-center min-h-screen">
+      <div className="flex flex-col justify-between gap-8 bg-[#FFFFFF0D] p-6 rounded-[16px] w-[430px] h-[260px] text-center">
         <div className="flex flex-col gap-2">
           <h1 className="font-[700] text-lg text-white">Token Audit</h1>
           <p className="text-sm text-white">
