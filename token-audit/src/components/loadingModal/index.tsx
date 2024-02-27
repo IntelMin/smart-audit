@@ -6,7 +6,7 @@ function UserDetails() {
     <div className='flex flex-col text-center'>
       <h1>Requested audit</h1>
       <p className='font-normal text-sm'>
-        Request Audit in progress. Thank you for your patience; we'll inform you once it's done.
+        Request Audit in progress. Thank you for your patience; we&apos;ll inform you once it&apos;s done.
       </p>
     </div>
   );

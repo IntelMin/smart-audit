@@ -45,7 +45,7 @@ function auditHistory({findings}:any) {
             <div className='flex flex-col items-center justify-center space-y-2' key={index}>
               <button className='text-white bg-[#FFFFFF1A] rounded-xl  px-3 py-1'>{data.Value}</button>
               <div className={``}>
-              <Image src={data.url} alt='progress' width={data.Value??0} height={data.Value??0} className={`object-cover  h-[${data.Value}px]`} />
+              <Image src={data.url} alt='progress' width={data.Value===0?0:30} height={data.Value??0} className={`object-cover  h-[${data.Value}px]`} />
               </div>
               <h1 className=''>{data.Severity}</h1>
             </div>
