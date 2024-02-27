@@ -26,10 +26,12 @@ export async function GET(req: NextRequest) {
         const high = findings.table.number_of_high_severity_issues
         const low = findings.table.number_of_low_severity_issues
         const text = findings.text
+        const info = findings.table.total_findings
+        console.log({findings});
 
 
     
-        return NextResponse.json({high,med,low,text}, { status: 200 });
+        return NextResponse.json({high,med,low,info,text}, { status: 200 });
     } catch (error) {
         console.error(error);
         return NextResponse.json(error, { status: 404 });

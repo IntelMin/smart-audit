@@ -1,11 +1,11 @@
 "use client";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import SocialIcons from "../../../components/token-audit/socialIcons";
-import StatsComponent from "../../../components/token-audit/statscomp";
-import SecurityScore from "../../../components/token-audit/securityScore";
-import MarketCap from "../../../components/token-audit/market-cap";
-import AuditHistory from "../../../components/token-audit/audit-history";
+import SocialIcons from "@/components/token-audit/socialIcons";
+import StatsComponent from "@/components/token-audit/statscomp";
+import SecurityScore from "@/components/token-audit/securityScore";
+import MarketCap from "@/components/token-audit/market-cap";
+import AuditHistory from "@/components/token-audit/audit-history";
 import ContractCard from "@/components/token-audit/contract-card";
 import { useParams } from "next/navigation";
 import {
@@ -15,6 +15,7 @@ import {
 import { useRouter } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
 import { Progress } from "@/components/ui/progress";
+import LoadingModal from "@/components/loadingModal";
 
 type Props = {
   params: {
@@ -27,6 +28,8 @@ type statusType = {
   status: number;
 };
 const TokenResult = ({ params }: Props) => {
+  const router = useRouter();
+
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [findings, setFindings] = useState<any[]>([] as any[]);
@@ -34,61 +37,101 @@ const TokenResult = ({ params }: Props) => {
   const [metaData, setMetaData] = useState<any | null>(null);
   const [tokenData, setTokenData] = useState<any | null>(null);
   const [scanData, setScanData] = useState<any | null>(null);
+  const [liveData, setLiveData] = useState<any | null>(null);
+  const [isTokenValid, setIsTokenValid] = useState(false);
+  const [isinputTokenValid, setIsinputTokenValid] = useState(false);
+  
+  const [tokenAddress, setTokenAddress] = useState("");
+  const { toast } = useToast();
   const [status, setStatus] = useState<statusType>({
     eta: 0,
     progress: 0,
     status: 0,
   });
+
   useEffect(() => {
     async function fetchStatus() {
+      if(!loading) return;
+      if (id === "") return;
+      const res = await fetch(`/api/token/check?token=${id}`);
+      if (!res.ok) {
+        toast({
+          title: "Token address is invalid",
+          variant: "destructive",
+        });
+        router.push("/")
+        
+      }
+      const token_data = await res.json();
+      if(!token_data.address){
+        toast({
+          title: "Token address is invalid",
+          variant: "destructive",
+        });
+        router.push("/")
+        
+      }else{
+        setIsTokenValid(true);
+      }
+      if(isTokenValid){
       console.log("fetching status");
       const status = await fetch(`/api/audit/status`, {
         method: "POST",
-        body: JSON.stringify({ address: id.toLowerCase() }),
+        body: JSON.stringify({ address: id }),
         headers: {
           "Content-Type": "application/json",
         },
       });
+      if (!status.ok) {
+        return;
+      }
+
+
       console.log(status);
       const statusData = await status.json();
+      if(statusData.status ===  AUDIT_STATUS_RETURN_CODE.notRequested){
+        const req = await fetch(`/api/audit/request`, {
+          method: "POST",
+          body: JSON.stringify({ address: (id as string).toLowerCase() }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const req_data = await req.json();
+        console.log(req_data);
+      }
       console.log(statusData);
       setStatus(statusData);
       if (statusData.status === AUDIT_STATUS_RETURN_CODE.complete) {
         setLoading(false);
       }
     }
+  }
     const pollStatus = () => {
-      if (loading) {
+      if (loading ) {
         fetchStatus();
+        if(!isTokenValid) return;
+        console.log("polling status");
         setTimeout(pollStatus, 1000); // Poll every 1 second
       }
     };
-
+    // fetchStatus()
     pollStatus();
-  }, [id]);
+
+  }, [id,isTokenValid]);
   useEffect(() => {
-    async function checkToken() {
-      if (id === "") return;
-      const res = await fetch(`/api/token/check?token=${id}`);
-      console.log(res);
-      if (!res.ok) {
-        return;
-      }
+    async function fetchMeta(){
+      if(!isTokenValid) return;
+      const res = await fetch(`/api/token/info?address=${id}&type=meta`);
       const data = await res.json();
-      console.log(data);
-      if (!data.address) {
-        return;
-      }
+      setMetaData(data);
     }
-
-    // checkToken();
     async function fetchAudit() {
-      checkToken();
-
+      if(!isTokenValid) return;
       const request = await fetch(`/api/audit/findings?address=${id}`);
       console.log(request);
       const data = await request.json();
-      console.log(data);
+      console.log({data});
       setFindings(data);
 
       const res_fetch = await fetch(`/api/audit/fetch`, {
@@ -115,22 +158,34 @@ const TokenResult = ({ params }: Props) => {
           data_fetch.token["holders"] || data_fetch.security["holder_count"];
       }
       console.log(data_fetch);
-      setInfoData(data_fetch.info);
-      setMetaData(data_fetch.meta);
       setTokenData(data_fetch.token);
     }
-    fetchAudit();
-  }, [id]);
-  console.log(tokenData);
+    async function fetchliveData() {
+      const res = await fetch(`/api/token/live?address=${id}`);
+      const data = await res.json();
+      setLiveData(data);
+    }
+    async function fetchInfo() {
+      const res = await fetch(`/api/audit/info`, {
+        method: "POST",
+        body: JSON.stringify({ address: id, type: "info" }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await res.json();
+      setInfoData(data);
+    } 
+    async function fetchData() {
+      await Promise.all([fetchAudit(),fetchInfo(), fetchliveData(),fetchMeta()]);
+    }
 
-  const router = useRouter();
-  const [tokenAddress, setTokenAddress] = useState("");
-  const [isTokenValid, setIsTokenValid] = useState(false);
-  const { toast } = useToast();
+    fetchData();
+  }, [id,isTokenValid]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsTokenValid(false);
+    setIsinputTokenValid(false);
     async function checkToken() {
       if (tokenAddress === "") return;
       const res = await fetch(`/api/token/check?token=${tokenAddress}`);
@@ -149,10 +204,10 @@ const TokenResult = ({ params }: Props) => {
         });
         return;
       }
-      setIsTokenValid(true);
+      setIsinputTokenValid(true);
     }
     checkToken();
-    if (!isTokenValid) return;
+    if (!setIsinputTokenValid) return;
     console.log(tokenAddress);
     setLoading(true);
     const request = await fetch(`/api/audit/request`, {
@@ -166,19 +221,15 @@ const TokenResult = ({ params }: Props) => {
     const data = await request.json();
     console.log(data);
     if (tokenAddress === "") return;
-    router.push(`/token-audit/${tokenAddress}`);
+    router.push(`/${tokenAddress}`);
     setLoading(false);
   };
   if (loading) {
-    return (
-      <div className="absolute inset-0 backdrop-blur-xl text-white text-2xl font-semibold flex flex-col justify-center items-center space-y-2">
-        <div>
-          <span>Loading... </span>{" "}
+    return(
+        <div className="inset-0 absolute top-0 left-0 h-screen flex flex-col justify-center items-center backdrop-blur-lg">
+          <LoadingModal activeStep={status.status} setLoading={setLoading} />.
         </div>
-
-        <Progress value={status.progress} className="w-1/2" />
-      </div>
-    );
+    )
   }
 
   return (
@@ -239,15 +290,16 @@ const TokenResult = ({ params }: Props) => {
             finding={findings}
             token={tokenData}
             scanData={scanData}
+            metaData={metaData}
           />
 
           <div className="rounded-[24px] space-y-10 w-full col-span-2">
-            <StatsComponent scanData={scanData} tokenData={tokenData} />
+            <StatsComponent scanData={scanData} liveData={liveData} tokenData={tokenData} />
             <SecurityScore scanData={scanData} />
           </div>
 
           <div className="rounded-[24px] space-y-10 ">
-            <MarketCap scanData={scanData} />
+            <MarketCap liveData={liveData} infoData={infoData} scanData={scanData} />
             <AuditHistory findings={findings} />
           </div>
         </div>

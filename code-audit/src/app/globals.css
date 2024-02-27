@@ -74,3 +74,26 @@
     @apply bg-background text-foreground;
   }
 }
+<<<<<<< HEAD
+=======
+.monaco-editor {
+  background-color: rgba(0, 0, 0, 0.5); /* Background color with transparency */
+  border-radius: 10px; /* Rounded border */
+  backdrop-filter: blur(10px); /* Backdrop blur */
+}
+.margin-view-overlays {
+  background: transparent !important;
+  /* border-radius: 200px; */
+}
+/* .margin{
+  background: #ee0000 !important;
+
+} */
+monaco-editor no-user-select mac  showUnused showDeprecated vs{
+  background: #ee0000 !important;
+  border-radius: 200px;
+}
+.custom-editor {
+  background: #ee0000 !important;
+}
+>>>>>>> bug-bounty

@@ -10,19 +10,22 @@ function socialIcons({scanData}:any) {
     const socialIcons = [
         {
             name: "twitter",
-            url: "/icons/tokenaudit/devicon_twitter.svg"
+            url: "/socialIcons/dis.svg"
+            
         },
         {
             name: "discord",
-            url: "/icons/tokenaudit/dis.svg"
+            url: "/socialIcons/x.svg"
+            
         },
         {
             name: "telegram",
-            url: "/icons/tokenaudit/tl.svg"
+            url: "/socialIcons/tele.svg"
         },
         {
             name: "website",
-            url: "/icons/tokenaudit/global.png"
+            url: "/socialIcons/block.svg"
+            
         },
         
     ];
@@ -34,7 +37,7 @@ function socialIcons({scanData}:any) {
                 <button key={index} className=" rounded-full  border-neutral-400" >
                     <a key={index} href=''>
                     <Image src={icon.url
-                    } width={24} height={24} alt="icon" className='w-[24px] h-[24px]'/>
+                    } width={40} height={40} alt="icon" className='w-[40px] h-[40px]'/>
                     </a>
                 </button>
             ))

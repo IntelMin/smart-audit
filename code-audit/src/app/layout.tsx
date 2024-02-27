@@ -19,7 +19,6 @@ export default function RootLayout({
       <body className={`bg-[#000] ${gilroy.className}`}>
         <Providers>
           <Navbar />
-          <Toaster />
           {children}
           <Toaster/>
         </Providers>

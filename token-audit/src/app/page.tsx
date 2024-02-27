@@ -2,7 +2,9 @@
 
 import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
+import LoadingModal from "@/components/loadingModal";
 import { useEffect, useState } from "react";
+import { MoonLoader } from "react-spinners";
 
 export default function TokenAudit() {
   const [loading, setLoading] = useState(false);
@@ -12,16 +14,24 @@ export default function TokenAudit() {
   const [isTokenValid, setIsTokenValid] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    console.log("submit");
+    setLoading(true);
     e.preventDefault();
     setIsTokenValid(false);
-    async function checkToken() {
-      if (tokenAddress === "") return;
+      if (tokenAddress === "") {
+        toast({
+          title: "Token address is required",
+          variant: "destructive",
+        });
+        setLoading(false);
+      };
       const res = await fetch(`/api/token/check?token=${tokenAddress}`);
       if (!res.ok) {
         toast({
           title: "Token address is invalid",
           variant: "destructive",
         });
+        setLoading(false);
         return;
       }
       const token_data = await res.json();
@@ -30,12 +40,18 @@ export default function TokenAudit() {
           title: "Token address is invalid",
           variant: "destructive",
         });
+        setLoading(false);
         return;
       }
       setIsTokenValid(true);
-    }
-    checkToken();
-    if (!isTokenValid) return;
+    if (!isTokenValid) {
+      toast({
+        title: "Token address is invalid",
+        variant: "destructive",
+      });
+      setLoading(false);
+      return;
+    };
     console.log(tokenAddress);
     setLoading(true);
     const request = await fetch(`/api/audit/request`, {
@@ -45,11 +61,11 @@ export default function TokenAudit() {
         "Content-Type": "application/json",
       },
     });
-    console.log(request);
+    setLoading(true);
     const data = await request.json();
     console.log(data);
     if (tokenAddress === "") return;
-    router.push(`/token-audit/${tokenAddress}`);
+    router.push(`/${tokenAddress}`);
     setLoading(false);
   };
 
@@ -71,18 +87,32 @@ export default function TokenAudit() {
             onChange={(e) => setTokenAddress(e.target.value)}
             className="bg-[#FFFFFF14] px-4 py-[10px] rounded-[24px] w-full font-[500] text-[16px] text-white placeholder:text-[#D1D5DB] outline-none"
           />
-          <button
+          {loading ?(
+            <button
+            type="submit"
+            className="h-[10px]] py-[10px] rounded-[24px] flex justify-center items-center w-full font-semibold text-[16px] text-white"
+            style={{
+              background:
+                "linear-gradient(93.06deg, #00C5EC -1.37%, #423FF1 45.43%, #E131FD 94.83%)",
+            }}
+            disabled={loading}
+          >
+            <MoonLoader color="white" size={20} />
+          </button>
+          ):(<button
             type="submit"
             className="py-[10px] rounded-[24px] w-full font-semibold text-[16px] text-white"
             style={{
               background:
                 "linear-gradient(93.06deg, #00C5EC -1.37%, #423FF1 45.43%, #E131FD 94.83%)",
             }}
+            disabled={loading}
           >
             Submit
-          </button>
+          </button>)}
         </form>
       </div>
+
     </main>
   );
 }

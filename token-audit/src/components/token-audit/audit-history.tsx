@@ -3,6 +3,7 @@ import { Progress } from '../ui/progress'
 import Image from 'next/image'
 
 function auditHistory({findings}:any) {
+  console.log(findings)
   const auditData = [
     {
       "Severity": "High",
@@ -16,14 +17,14 @@ function auditHistory({findings}:any) {
     },
     {
       "Severity": "Low",
-      "Value": findings.low,
+      "Value": findings?.low,
       "url":"/icons/tokenaudit/progress2.svg"
     },
-    // {
-    //   "Severity": "Info",
-    //   "Value": 45,
-    //   "url":"/icons/tokenaudit/progress.svg"
-    // }
+    {
+      "Severity": "Info",
+      "Value": findings?.info,
+      "url":"/icons/tokenaudit/progress.svg"
+    }
   ];
   
   return (
@@ -44,7 +45,7 @@ function auditHistory({findings}:any) {
             <div className='flex flex-col items-center justify-center space-y-2' key={index}>
               <button className='text-white bg-[#FFFFFF1A] rounded-xl  px-3 py-1'>{data.Value}</button>
               <div className={``}>
-              <Image src={data.url} alt='progress' width={data.Value??0} height={data.Value??0} className={`object-cover  h-[${data.Value}px]`} />
+              <Image src={data.url} alt='progress' width={data.Value===0?0:30} height={data.Value??0} className={`object-cover  h-[${data.Value}px]`} />
               </div>
               <h1 className=''>{data.Severity}</h1>
             </div>
