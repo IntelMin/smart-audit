@@ -128,24 +128,23 @@ const TokenResult = ({ params }: Props) => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (id === "") return;
-    const res = await fetch(`/api/token/check?token=${id}`);
-    if (!res.ok) {
-      toast({
-        title: "Token address is invalid",
-        variant: "destructive",
-      });
-      return;
-    }
-    const token_data = await res.json();
-    if (!token_data.address) {
-      toast({
-        title: "Token address is invalid",
-        variant: "destructive",
-      });
-      return;
-    }
-
+      if (tokenAddress === "") return;
+        const res = await fetch(`/api/token/check?token=${tokenAddress}`);
+        if (!res.ok) {
+          toast({
+            title: "Token address is invalid",
+            variant: "destructive",
+          });
+          return;
+        }
+        const token_data = await res.json();
+        if (!token_data.address) {
+          toast({
+            title: "Token address is invalid",
+            variant: "destructive",
+          });
+          return;
+        } 
     const request = await fetch(`/api/audit/request`, {
       method: "POST",
       body: JSON.stringify({ address: tokenAddress }),
@@ -172,10 +171,10 @@ const TokenResult = ({ params }: Props) => {
   }
 
   return (
-    <div className="bg-[url(/backgrounds/token-result.svg)]  bg-cover bg-center pt-[148px] min-h-screen">
+    <div className="bg-[url(/backgrounds/token-result.svg)]  bg-cover bg-center md:pt-[148px] pt-[89px] min-h-screen">
       <div className="flex flex-col gap-8 p-6 min-h-[calc(100vh-148px)]">
         {/* Token Address Section */}
-        <div className="relative flex flex-col items-center gap-8 bg-[#FFFFFF0D] p-6 rounded-[16px] text-center overflow-hidden">
+        <div className="relative hidden flex-col items-center gap-8 bg-[#FFFFFF0D] p-6 rounded-[16px] text-center overflow-hidden md:flex">
           {/* Token Logo */}
           <div className="bottom-0 left-0 z-[-1] absolute rounded-full -translate-x-[calc(50%-20px)] translate-y-[10px] size-[136px]">
             <Image
@@ -194,15 +193,15 @@ const TokenResult = ({ params }: Props) => {
               height={136}
             />
           </div>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 md:block" >
             <h1 className="font-[700] text-white text-xl">Token Audit</h1>
             <p className="font-[500] text-sm text-white">
               Submit token contract address to to get a detailed analysis <br />
               of the token, before making your trade decision.
             </p>
           </div>
-          <form onSubmit={handleSubmit}>
-            <div className="flex items-center gap-4">
+          <form onSubmit={handleSubmit} className="w-full flex justify-center items-center">
+            <div className="flex items-center gap-4 ">
               <input
                 className="bg-[#FFFFFF14] px-[16px] py-[10px] rounded-[80px] font-[500] text-[16px] text-white"
                 onChange={(e) => setTokenAddress(e.target.value)}
@@ -224,20 +223,26 @@ const TokenResult = ({ params }: Props) => {
           </form>
         </div>
         {/* Token Result Section */}
-        <div className="grid grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-4 gap-8">
           <ContractCard
             finding={findings}
             token={tokenData}
             scanData={scanData}
           />
+          <div className="md:hidden block"> 
 
-          <div className="rounded-[24px] space-y-10 w-full col-span-2">
+          <MarketCap scanData={scanData} />
+          </div>
+          <div className="rounded-[24px] md:space-y-10 space-y-6 md:w-full md:col-span-2">
             <StatsComponent scanData={scanData} tokenData={tokenData} />
             <SecurityScore scanData={scanData} />
           </div>
 
-          <div className="rounded-[24px] space-y-10 ">
+          <div className="rounded-[24px] md:space-y-10 ">
+            <div className="md:block hidden">
+
             <MarketCap scanData={scanData} />
+            </div>
             <AuditHistory findings={findings} />
           </div>
         </div>
