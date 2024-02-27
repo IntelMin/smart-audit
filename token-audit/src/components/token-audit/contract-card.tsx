@@ -6,17 +6,17 @@ import { formatAddress } from '@/lib/utils'
 import copy from 'copy-to-clipboard';
 import { useToast } from '../ui/use-toast'
 
-function ContractCard({token,finding,metaData}:any) {
+function ContractCard({token,scanData,finding}:any) {
   const { toast } = useToast();
   if(!token) return (
     <div className="bg-[#18181B] flex justify-center items-center p-6 rounded-[24px]">
-      <MoonLoader color='white' />
-      </div>
+        <Image src="/loadingAnimation.gif" width={100} height={100} alt=""/>
+            </div>
   )
   const copyToClipboard = () => {
     copy(token.address);
     toast({
-      title: "Adrress copied to clipboard",
+      title: "Addrress copied to clipboard",
       variant: "default",
     });
   };

@@ -1,12 +1,13 @@
 import React from 'react'
 import { Progress } from "@/components/ui/progress"
 import { MoonLoader } from "react-spinners";
+import Image from 'next/image';
 
 function securityScore({scanData}:any) {
     if(!scanData) return (
         <div className=' flex justify-center items-center h-full space-y-8 bg-[#18181B] py-4 px-4 rounded-lg text-white '>
 
-            <MoonLoader color='white' />
+        <Image src="/loadingAnimation.gif" width={100} height={100} alt=""/>
 
         </div>
     )
@@ -21,7 +22,7 @@ function securityScore({scanData}:any) {
     ];
 
   return (
-    <div className='  flex flex-col space-y-8 bg-[#18181B] py-4 px-4 rounded-lg text-white ' >
+    <div className='flex flex-col space-y-8 bg-[#18181B] py-4 px-4 rounded-lg text-white ' >
         <header className='border-b-white'>
             <h1>Security Score</h1>
         </header>

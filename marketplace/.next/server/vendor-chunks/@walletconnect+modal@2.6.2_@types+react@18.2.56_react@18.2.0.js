@@ -1,0 +1,25 @@
+"use strict";
+/*
+ * ATTENTION: An "eval-source-map" devtool has been used.
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file with attached SourceMaps in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+exports.id = "vendor-chunks/@walletconnect+modal@2.6.2_@types+react@18.2.56_react@18.2.0";
+exports.ids = ["vendor-chunks/@walletconnect+modal@2.6.2_@types+react@18.2.56_react@18.2.0"];
+exports.modules = {
+
+/***/ "(ssr)/./node_modules/.pnpm/@walletconnect+modal@2.6.2_@types+react@18.2.56_react@18.2.0/node_modules/@walletconnect/modal/dist/index.js":
+/*!*****************************************************************************************************************************************!*\
+  !*** ./node_modules/.pnpm/@walletconnect+modal@2.6.2_@types+react@18.2.56_react@18.2.0/node_modules/@walletconnect/modal/dist/index.js ***!
+  \*****************************************************************************************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   WalletConnectModal: () => (/* binding */ d)\n/* harmony export */ });\n/* harmony import */ var _walletconnect_modal_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @walletconnect/modal-core */ \"(ssr)/./node_modules/.pnpm/@walletconnect+modal-core@2.6.2_@types+react@18.2.56_react@18.2.0/node_modules/@walletconnect/modal-core/dist/index.js\");\n\nclass d {\n    constructor(e){\n        this.openModal = _walletconnect_modal_core__WEBPACK_IMPORTED_MODULE_0__.ModalCtrl.open, this.closeModal = _walletconnect_modal_core__WEBPACK_IMPORTED_MODULE_0__.ModalCtrl.close, this.subscribeModal = _walletconnect_modal_core__WEBPACK_IMPORTED_MODULE_0__.ModalCtrl.subscribe, this.setTheme = _walletconnect_modal_core__WEBPACK_IMPORTED_MODULE_0__.ThemeCtrl.setThemeConfig, _walletconnect_modal_core__WEBPACK_IMPORTED_MODULE_0__.ThemeCtrl.setThemeConfig(e), _walletconnect_modal_core__WEBPACK_IMPORTED_MODULE_0__.ConfigCtrl.setConfig(e), this.initUi();\n    }\n    async initUi() {\n        if (false) {}\n    }\n}\n //# sourceMappingURL=index.js.map\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHNzcikvLi9ub2RlX21vZHVsZXMvLnBucG0vQHdhbGxldGNvbm5lY3QrbW9kYWxAMi42LjJfQHR5cGVzK3JlYWN0QDE4LjIuNTZfcmVhY3RAMTguMi4wL25vZGVfbW9kdWxlcy9Ad2FsbGV0Y29ubmVjdC9tb2RhbC9kaXN0L2luZGV4LmpzIiwibWFwcGluZ3MiOiI7Ozs7O0FBQXNHO0FBQUEsTUFBTVE7SUFBRUMsWUFBWUMsQ0FBQyxDQUFDO1FBQUMsSUFBSSxDQUFDQyxTQUFTLEdBQUNWLGdFQUFDQSxDQUFDVyxJQUFJLEVBQUMsSUFBSSxDQUFDQyxVQUFVLEdBQUNaLGdFQUFDQSxDQUFDYSxLQUFLLEVBQUMsSUFBSSxDQUFDQyxjQUFjLEdBQUNkLGdFQUFDQSxDQUFDZSxTQUFTLEVBQUMsSUFBSSxDQUFDQyxRQUFRLEdBQUNkLGdFQUFDQSxDQUFDZSxjQUFjLEVBQUNmLGdFQUFDQSxDQUFDZSxjQUFjLENBQUNSLElBQUdMLGlFQUFDQSxDQUFDYyxTQUFTLENBQUNULElBQUcsSUFBSSxDQUFDVSxNQUFNO0lBQUU7SUFBQyxNQUFNQSxTQUFRO1FBQUMsSUFBRyxLQUFpQixFQUFDLEVBQTRKO0lBQUE7QUFBQztBQUFpQyxDQUM3ZixpQ0FBaUMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9zbWFydC1hdWRpdC8uL25vZGVfbW9kdWxlcy8ucG5wbS9Ad2FsbGV0Y29ubmVjdCttb2RhbEAyLjYuMl9AdHlwZXMrcmVhY3RAMTguMi41Nl9yZWFjdEAxOC4yLjAvbm9kZV9tb2R1bGVzL0B3YWxsZXRjb25uZWN0L21vZGFsL2Rpc3QvaW5kZXguanM/YTEzMyJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnR7TW9kYWxDdHJsIGFzIHQsVGhlbWVDdHJsIGFzIG8sQ29uZmlnQ3RybCBhcyBpLE9wdGlvbnNDdHJsIGFzIG59ZnJvbVwiQHdhbGxldGNvbm5lY3QvbW9kYWwtY29yZVwiO2NsYXNzIGR7Y29uc3RydWN0b3IoZSl7dGhpcy5vcGVuTW9kYWw9dC5vcGVuLHRoaXMuY2xvc2VNb2RhbD10LmNsb3NlLHRoaXMuc3Vic2NyaWJlTW9kYWw9dC5zdWJzY3JpYmUsdGhpcy5zZXRUaGVtZT1vLnNldFRoZW1lQ29uZmlnLG8uc2V0VGhlbWVDb25maWcoZSksaS5zZXRDb25maWcoZSksdGhpcy5pbml0VWkoKX1hc3luYyBpbml0VWkoKXtpZih0eXBlb2Ygd2luZG93PFwidVwiKXthd2FpdCBpbXBvcnQoXCJAd2FsbGV0Y29ubmVjdC9tb2RhbC11aVwiKTtjb25zdCBlPWRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJ3Y20tbW9kYWxcIik7ZG9jdW1lbnQuYm9keS5pbnNlcnRBZGphY2VudEVsZW1lbnQoXCJiZWZvcmVlbmRcIixlKSxuLnNldElzVWlMb2FkZWQoITApfX19ZXhwb3J0e2QgYXMgV2FsbGV0Q29ubmVjdE1vZGFsfTtcbi8vIyBzb3VyY2VNYXBwaW5nVVJMPWluZGV4LmpzLm1hcFxuIl0sIm5hbWVzIjpbIk1vZGFsQ3RybCIsInQiLCJUaGVtZUN0cmwiLCJvIiwiQ29uZmlnQ3RybCIsImkiLCJPcHRpb25zQ3RybCIsIm4iLCJkIiwiY29uc3RydWN0b3IiLCJlIiwib3Blbk1vZGFsIiwib3BlbiIsImNsb3NlTW9kYWwiLCJjbG9zZSIsInN1YnNjcmliZU1vZGFsIiwic3Vic2NyaWJlIiwic2V0VGhlbWUiLCJzZXRUaGVtZUNvbmZpZyIsInNldENvbmZpZyIsImluaXRVaSIsImRvY3VtZW50IiwiY3JlYXRlRWxlbWVudCIsImJvZHkiLCJpbnNlcnRBZGphY2VudEVsZW1lbnQiLCJzZXRJc1VpTG9hZGVkIiwiV2FsbGV0Q29ubmVjdE1vZGFsIl0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///(ssr)/./node_modules/.pnpm/@walletconnect+modal@2.6.2_@types+react@18.2.56_react@18.2.0/node_modules/@walletconnect/modal/dist/index.js\n");
+
+/***/ })
+
+};
+;
