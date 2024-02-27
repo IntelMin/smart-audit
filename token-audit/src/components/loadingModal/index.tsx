@@ -23,7 +23,7 @@ function Payment() {
   );
 }
 
-function Confirmation({ setLoading }) {
+function Confirmation({ setLoading }:any) {
   return (
     <div className='flex flex-col text-center space-y-3 w-full'>
       <h1>Complete</h1>
@@ -43,8 +43,8 @@ function Confirmation({ setLoading }) {
   );
 }
 
-export default function LoadingModal({ setLoading }) {
-  const [activeStep, setActiveStep] = useState(1);//status will be used 
+export default function LoadingModal({ setLoading,activeStep }:any) {
+  // const [activeStep, setActiveStep] = useState(1);//status will be used 
 
   return (
     <div className="flex inset-0 p-4 inner-shadow-xl flex-col justify-center items-center text-white rounded-xl bg-[#110b0b5b] ">

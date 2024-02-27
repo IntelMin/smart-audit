@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { MoonLoader } from "react-spinners";
 
 export default function TokenAudit() {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const [tokenAddress, setTokenAddress] = useState("");
   const { toast } = useToast();
@@ -90,14 +90,14 @@ export default function TokenAudit() {
           {loading ?(
             <button
             type="submit"
-            className="py-[10px] rounded-[24px] flex justify-center items-center w-full font-semibold text-[16px] text-white"
+            className="h-[10px]] py-[10px] rounded-[24px] flex justify-center items-center w-full font-semibold text-[16px] text-white"
             style={{
               background:
                 "linear-gradient(93.06deg, #00C5EC -1.37%, #423FF1 45.43%, #E131FD 94.83%)",
             }}
             disabled={loading}
           >
-            <MoonLoader color="white" />
+            <MoonLoader color="white" size={20} />
           </button>
           ):(<button
             type="submit"
@@ -112,11 +112,7 @@ export default function TokenAudit() {
           </button>)}
         </form>
       </div>
-      {loading && (
-        <div className="inset-0 absolute top-0 left-0 h-screen flex flex-col justify-center items-center backdrop-blur-lg">
-          <LoadingModal setLoading={setLoading} />.
-        </div>
-      )}
+
     </main>
   );
 }

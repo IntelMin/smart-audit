@@ -15,6 +15,7 @@ import {
 import { useRouter } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
 import { Progress } from "@/components/ui/progress";
+import LoadingModal from "@/components/loadingModal";
 
 type Props = {
   params: {
@@ -225,15 +226,9 @@ const TokenResult = ({ params }: Props) => {
   };
   if (loading) {
     return(
-      <div className="absolute inset-0 backdrop-blur-xl text-white text-2xl font-semibold flex flex-col justify-center items-center space-y-2">
-        {/* <div>
-        <span>Estimated time remaining.. {status.eta} </span> <button className="text-white px-4 py-2 outline-dotted">{status.status}</button>
+        <div className="inset-0 absolute top-0 left-0 h-screen flex flex-col justify-center items-center backdrop-blur-lg">
+          <LoadingModal activeStep={status.status} setLoading={setLoading} />.
         </div>
-
-          <Progress value={status.progress} className="w-1/2"/> */}
-          
-          
-      </div>
     )
   }
 
