@@ -50,6 +50,7 @@ const TokenResult = ({ params }: Props) => {
 
   useEffect(() => {
     async function fetchStatus() {
+      if(!loading) return;
       if (id === "") return;
       const res = await fetch(`/api/token/check?token=${id}`);
       if (!res.ok) {
@@ -129,7 +130,7 @@ const TokenResult = ({ params }: Props) => {
       const request = await fetch(`/api/audit/findings?address=${id}`);
       console.log(request);
       const data = await request.json();
-      console.log(data);
+      console.log({data});
       setFindings(data);
 
       const res_fetch = await fetch(`/api/audit/fetch`, {
