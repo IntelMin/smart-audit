@@ -121,7 +121,6 @@ const TokenResult = ({ params }: Props) => {
 
       if(status.status !== AUDIT_STATUS_RETURN_CODE.complete) return;
 
-      const res = await fetch(`/api/token/info?address=${id}&type=meta`);
 
 
       const res = await fetch(`/api/token/info?address=${(id as string).toLowerCase()}&type=meta`);
