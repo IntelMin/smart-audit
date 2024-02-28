@@ -2,6 +2,7 @@ import React from 'react'
 import { Progress } from "@/components/ui/progress"
 import { MoonLoader } from "react-spinners";
 import Image from 'next/image';
+import { url } from 'inspector';
 
 function securityScore({scanData}:any) {
     if(!scanData) return (
@@ -12,24 +13,30 @@ function securityScore({scanData}:any) {
         </div>
     )
     const onboardedDate = new Date(scanData.updatedAt??""); 
+    // const onboardedDate = new Date();
     const options = { year: 'numeric', month: 'short', day: 'numeric' } as const;
     const formattedDate = onboardedDate.toLocaleDateString('en-US', options);
     const statsData = [
         {"Audits": 1},
         {"Onboarded Date": formattedDate},
-        {"Market Stability": scanData.marketScore},
-        {"Code Security": scanData.securityScore}
+        {"Market Stability":scanData.marketScore }, //96.22
+        {"Code Security": scanData.securityScore }//99.38
+     
     ];
-
+const auditData =[
+    {url: "/icons/tokenaudit/progress.svg",
+    Value : 98}
+]
   return (
     <div className='flex flex-col space-y-8 bg-[#18181B] py-4 px-4 rounded-lg text-white ' >
         <header className='border-b-white'>
             <h1>Security Score</h1>
         </header>
         <div className='relative '>
-        <Progress value={scanData.auditScore??0} className='h-[100px] '/>
+        <Progress  value={scanData.auditScore??0} className='h-[100px] '/>
+
         <p className='absolute text-white p-3 right-2 flex flex-col text-center top-2' >
-            <p className='font-bold text-xl'>{(scanData.auditScore??0).toFixed(2)??0}%</p>
+            <p className='font-bold text-xl'>{( scanData.auditScore??0).toFixed(2)??0}%</p>
             <p>Audit Score</p>
         </p>
         </div>
@@ -46,3 +53,5 @@ function securityScore({scanData}:any) {
 }
 
 export default securityScore
+
+
