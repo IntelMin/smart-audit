@@ -5,7 +5,6 @@ import { toast, useToast } from "../ui/use-toast";
 import { MoonLoader } from "react-spinners";
 import Status from "./status";
 
-
 const Index = () => {
   loader.init().then((monaco) => {
     monaco.editor.defineTheme("custom-theme", {
@@ -26,7 +25,6 @@ const Index = () => {
   const [findings, setFindings] = useState([]);
   const [noFindings, setNoFindings] = useState(false);
   const { toast } = useToast();
-
 
   const generateHash = async () => {
     try {
@@ -178,6 +176,4 @@ console.log(noFindings)
   );
 };
 
-
 export default Index;
-
