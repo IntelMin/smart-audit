@@ -7,26 +7,26 @@ function auditHistory({ findings }: any) {
   const auditData = [
     {
       Severity: "High",
-      // "Value": findings.high,
-      Value: 180,
+      Value: findings.high,
+      // Value: 180,
       url: "/icons/tokenaudit/progress.svg",
     },
     {
       Severity: "Medium",
-      // "Value": findings.med,
-      Value: 140,
+      Value: findings.med,
+      // Value: 140,
       url: "/icons/tokenaudit/progress.svg",
     },
     {
       Severity: "Low",
-      // "Value": findings?.low,
-      Value: 40,
+      Value: findings?.low,
+      // Value: 40,
       url: "/icons/tokenaudit/progress.svg",
     },
     {
       Severity: "Info",
-      // "Value": findings?.info,
-      Value: 10,
+      Value: findings?.info,
+      // Value: 10,
       url: "/icons/tokenaudit/progress.svg",
     },
   ];
