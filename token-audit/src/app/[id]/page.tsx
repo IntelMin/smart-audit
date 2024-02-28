@@ -77,7 +77,7 @@ const TokenResult = ({ params }: Props) => {
         console.log("fetching status");
         const status = await fetch(`/api/audit/status`, {
           method: "POST",
-          body: JSON.stringify({ address: id }),
+          body: JSON.stringify({ address: String(id).toLowerCase() }),
           headers: {
             "Content-Type": "application/json",
           },
