@@ -14,6 +14,7 @@ const index = () => {
   const [noFindings, setNoFindings] = useState(false)
   const { toast } = useToast()
 
+
   const generateHash = async () => {
     try {
       const encoder = new TextEncoder()
@@ -159,4 +160,4 @@ const index = () => {
   )
 }
 
-export default index
+export default Index

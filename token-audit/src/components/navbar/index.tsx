@@ -5,13 +5,19 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+<<<<<<< HEAD
+import React from "react";
+=======
 import React, { useState } from "react";
+>>>>>>> 1f8a41f327c25547ff4786ee099e217e7546385d
 import { useAccount } from "wagmi";
 import { navEle } from "./constant";
 
 type Props = {};
 
 export const Navbar = (props: Props) => {
+<<<<<<< HEAD
+=======
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -21,12 +27,20 @@ export const Navbar = (props: Props) => {
   const closeMobileMenu = () => {
     setMobileMenuOpen(false); 
   };
+>>>>>>> 1f8a41f327c25547ff4786ee099e217e7546385d
   const { isConnected, address } = useAccount();
   const pathName = usePathname();
   const path = pathName.split("/")[1];
   const isActive = (ele: string) => ele.substring(1) === path;
   return (
     <header className="top-0 left-0 z-[99] fixed w-full backdrop-blur-2xl">
+<<<<<<< HEAD
+      <div className="flex items-center justify-between px-8 pt-6 pb-[18px] border-b border-[#27272A]">
+        <div className="flex items-center gap-4">
+          <Image src="/icons/logo.svg" alt="logo" width={48} height={48} />
+          <h1 className="font-semibold text-lg text-white">SmartAudit Dapp</h1>
+        </div>
+=======
       <div className="flex items-center justify-between md:px-8 px-4 pt-6 pb-[18px] border-b border-[#27272A]">
         <div className="flex items-center gap-4" >
           <Image src="/icons/logo.svg" alt="logo" width={48} height={48} />
@@ -35,6 +49,7 @@ export const Navbar = (props: Props) => {
         <button onClick={toggleMobileMenu}>
         <Image src="/icons/menu.png" alt="menu" width={48} height={48}  className="md:hidden block"/>
         </button>
+>>>>>>> 1f8a41f327c25547ff4786ee099e217e7546385d
         {isConnected ? (
           <div className="flex items-center gap-4">
             <button
@@ -62,7 +77,11 @@ export const Navbar = (props: Props) => {
           </div>
         ) : (
           <div
+<<<<<<< HEAD
+            className="flex items-center rounded-[24px] text-white "
+=======
             className="hidden items-center rounded-[24px] text-white md:flex"
+>>>>>>> 1f8a41f327c25547ff4786ee099e217e7546385d
             style={{
               background:
                 "linear-gradient(93.06deg, #00C5EC -1.37%, #423FF1 45.43%, #E131FD 94.83%)",
@@ -72,6 +91,9 @@ export const Navbar = (props: Props) => {
           </div>
         )}
       </div>
+<<<<<<< HEAD
+      <nav className="flex items-center gap-12 pt-[18px] pl-6 border-b border-[#272727]">
+=======
       {isMobileMenuOpen && (
         <div className="md:hidden  z-10 sticky top-0 left-0 w-full  backdrop-blur-sm bg-transparent">
             <div className="flex flex-col items-center gap-4 ">
@@ -116,6 +138,7 @@ export const Navbar = (props: Props) => {
         </div>
       )}
       {/* <nav className="flex items-center gap-12 pt-[18px] pl-6 border-b border-[#272727]">
+>>>>>>> 1f8a41f327c25547ff4786ee099e217e7546385d
         {navEle?.map((ele, i) => (
           <Link
             href={ele.href}
@@ -135,7 +158,11 @@ export const Navbar = (props: Props) => {
             </h1>
           </Link>
         ))}
+<<<<<<< HEAD
+      </nav>
+=======
       </nav> */}
+>>>>>>> 1f8a41f327c25547ff4786ee099e217e7546385d
     </header>
   );
 };
