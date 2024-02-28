@@ -66,7 +66,6 @@ const TokenResult = ({ params }: Props) => {
         setIsTokenValid(true);
 
         if (isTokenValid) {
-          console.log("fetching status");
           const statusRes = await fetch(`/api/audit/status`, {
             method: "POST",
             body: JSON.stringify({ address: id }),
@@ -78,7 +77,6 @@ const TokenResult = ({ params }: Props) => {
             throw new Error("Failed to fetch status");
           }
           const statusData = await statusRes.json();
-          console.log(statusData);
           setStatus(statusData);
           // if (statusData.status === AUDIT_STATUS_RETURN_CODE.complete) {
           //   setLoading(false);
@@ -98,7 +96,6 @@ const TokenResult = ({ params }: Props) => {
       if (loading) {
         fetchStatus();
         if (!isTokenValid) return;
-        console.log("polling status");
         setTimeout(pollStatus, 1000); // Poll every 1 second
       }
     };
@@ -120,9 +117,7 @@ const TokenResult = ({ params }: Props) => {
       if (!isTokenValid) return;
       if (status.status !== AUDIT_STATUS_RETURN_CODE.complete) return;
       const request = await fetch(`/api/audit/findings?address=${(id as string).toLowerCase()}`);
-      console.log(request);
       const data = await request.json();
-      console.log({ data });
       setFindings(data);
 
       if (status.status !== AUDIT_STATUS_RETURN_CODE.complete) return;
@@ -144,7 +139,6 @@ const TokenResult = ({ params }: Props) => {
         },
       });
       const scan_data = await scan_res.json();
-      console.log(scan_data);
       setScanData(scan_data);
       const data_fetch = await res_fetch.json();
       if (data_fetch.token) {
@@ -196,7 +190,6 @@ const TokenResult = ({ params }: Props) => {
 
     fetchData();
   }, [id, isTokenValid, status.status]);
-  console.log(loading, status.status);
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsinputTokenValid(false);
