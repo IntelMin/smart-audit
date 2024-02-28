@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-import { redirect } from "next/navigation";
-
-export default function Home() {
-  redirect("/token-audit");
-  return (
-    <main className="min-h-screen p-64">
-      <h1>Welcome! Redirecting to token-audit Page</h1>
-=======
 "use client";
 
 import { useToast } from "@/components/ui/use-toast";
@@ -111,7 +102,6 @@ export default function TokenAudit() {
         </form>
       </div>
 
->>>>>>> 1f8a41f327c25547ff4786ee099e217e7546385d
     </main>
   );
 }
