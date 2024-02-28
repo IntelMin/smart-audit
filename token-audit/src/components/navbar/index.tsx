@@ -1,27 +1,28 @@
 "use client";
 
 import { formatAddress } from "@/lib/utils";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { ConnectButton,useAccountModal, useConnectModal } from "@rainbow-me/rainbowkit";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 import { useAccount } from "wagmi";
-import { navEle } from "./constant";
 
 type Props = {};
 
 export const Navbar = (props: Props) => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-
+  
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!isMobileMenuOpen);
   };
-
   const closeMobileMenu = () => {
     setMobileMenuOpen(false); 
   };
   const { isConnected, address } = useAccount();
+  
+  const {openAccountModal} = useAccountModal();
+
   const pathName = usePathname();
   const path = pathName.split("/")[1];
   const isActive = (ele: string) => ele.substring(1) === path;
@@ -48,6 +49,7 @@ export const Navbar = (props: Props) => {
             <button
               type="button"
               className="flex gap-2 px-[22px] py-[11px] border border-[#F44336] rounded-[100px]"
+              onClick={openAccountModal}
             >
               <Image
                 src="/icons/disconnect.svg"
@@ -89,6 +91,7 @@ export const Navbar = (props: Props) => {
             <button
               type="button"
               className="flex gap-2 px-[22px] py-[11px] border border-[#F44336] rounded-[100px]"
+              onClick={openAccountModal}
             >
               <Image
                 src="/icons/disconnect.svg"
