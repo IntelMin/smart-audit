@@ -42,7 +42,7 @@ if(!scanData || !tokenData) return (
 
     //     ))}
     // </div>
-    <div className='flex flex-row  lg:space-x-4 md:space-x-0 gap-4 md:h-[162px]  overflow-x-scroll w-[88vw] md:w-auto'>
+    <div className='flex flex-row  lg:space-x-4 md:space-x-0 gap-4 md:h-[162px] md:overflow-hidden  overflow-x-scroll w-[88vw] md:w-auto'>
       {statsData.map((data, index) => (
         <div
           key={index}
