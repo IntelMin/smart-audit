@@ -1,0 +1,5 @@
+{
+  "/not-found": "app/not-found.js",
+  "/token-audit/[id]/page": "app/token-audit/[id]/page.js",
+  "/token-audit/page": "app/token-audit/page.js"
+}
