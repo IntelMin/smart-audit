@@ -1,11 +1,23 @@
 import React, { useEffect, useState } from "react";
-import Editor, { Monaco } from "@monaco-editor/react";
+import Editor, { Monaco, loader } from "@monaco-editor/react";
 import { useRef } from "react";
 import { toast, useToast } from "../ui/use-toast";
 import { MoonLoader } from "react-spinners";
 import Status from "./status";
 
-const index = () => {
+const Index = () => {
+  loader.init().then((monaco) => {
+    monaco.editor.defineTheme("custom-theme", {
+      base: "vs",
+      inherit: true,
+      rules: [],
+      colors: {
+        "editor.background": "#eeeeee00",
+        "editor.foreground": "#ffffff",
+        "editor.lineHighlightBackground": "#eeeeee00",
+      },
+    });
+  });
   const editorRef = useRef(null);
   const [contractCode, setContractCode] = useState("");
   const [codeHash, setCodeHash] = useState("");
@@ -90,14 +102,14 @@ const index = () => {
   };
 
   return (
-    <div className="flex flex-col backdrop-blur-xl p-3 justify-center items-center md:w-[830px]  w-full bg-[#FFFFFF0D] rounded-xl space-y-6 mt-8 md:px-8 px-4">
+    <div className="flex flex-col justify-center items-center space-y-6 bg-[#FFFFFF0D] backdrop-blur-xl mt-8 px-4 md:px-8 p-3 rounded-xl w-full md:w-[830px]">
       {findings ? (
         <>
           <Status findings={findings} />
         </>
       ) : (
         <>
-          <h1 className="text-2xl font-bold">Code Audit</h1>
+          <h1 className="font-bold text-2xl">Code Audit</h1>
           <p className="text-center text-sm">
             Cutting-edge technology meticulously examines software code,
             ensuring security and reliability for developers and users alike.
@@ -112,14 +124,14 @@ const index = () => {
         </p>
       </div>
 
-      <div className="w-full rounded-lg bg-[rgba(255, 255, 255, 0.05)]">
+      <div className="bg-[rgba(255, rounded-lg w-full 0.05)] 255, 255,">
         <Editor
           height="50vh"
           defaultLanguage="sol"
           defaultValue=""
           value={contractCode}
           onMount={handleEditorDidMount}
-          theme="vs-dark"
+          theme="custom-theme"
           className=""
           onChange={(value: any) => {
             setContractCode(value);
@@ -148,7 +160,7 @@ const index = () => {
         />
         <button
           type="submit"
-          className="w-full rounded-full py-1 text-center mt-2"
+          className="mt-2 py-1 rounded-full w-full text-center"
           style={{
             background:
               "linear-gradient(93.06deg, #00C5EC -1.37%, #423FF1 45.43%, #E131FD 94.83%)",
@@ -164,4 +176,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;
