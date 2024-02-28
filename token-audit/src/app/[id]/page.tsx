@@ -84,10 +84,10 @@ const TokenResult = ({ params }: Props) => {
             setLoading(false);
           }
         }
-      } catch (error) {
-        console.error("Error fetching status:", error.message);
-        toast({
-          title: error.message,
+      } catch (error:any) {
+        console.error("Error fetching status:", error);
+        toast({ 
+          title: error,
           variant: "destructive",
         });
         router.push("/");
