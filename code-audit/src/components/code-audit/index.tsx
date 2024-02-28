@@ -96,7 +96,7 @@ const index = () => {
             security and reliability for developers and users alike.
           </p>
         </>
-      )}
+       )} 
 
       <div className='text-center'>
         <h1 className='font-bold'>Code Audit</h1>
