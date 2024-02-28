@@ -76,7 +76,7 @@ const TokenResult = ({ params }: Props) => {
       if(isTokenValid){
         const status = await fetch(`/api/audit/status`, {
           method: "POST",
-          body: JSON.stringify({ address: id }),
+          body: JSON.stringify({ address: String(id).toLowerCase() }),
           headers: {
             "Content-Type": "application/json",
           },
@@ -115,15 +115,19 @@ const TokenResult = ({ params }: Props) => {
   useEffect(() => {
     async function fetchMeta(){
       if(!isTokenValid) return;
+
       if(status.status !== AUDIT_STATUS_RETURN_CODE.complete) return;
       const res = await fetch(`/api/token/info?address=${id}&type=meta`);
+
       const data = await res.json();
       setMetaData(data);
     }
     async function fetchAudit() {
       if(!isTokenValid) return;
+
       if(status.status !== AUDIT_STATUS_RETURN_CODE.complete) return;
       const request = await fetch(`/api/audit/findings?address=${id}`);
+
       const data = await request.json();
       setFindings(data);
       
@@ -162,7 +166,7 @@ const TokenResult = ({ params }: Props) => {
       if(status.status !== AUDIT_STATUS_RETURN_CODE.complete) return;
       const res = await fetch(`/api/audit/info`, {
         method: "POST",
-        body: JSON.stringify({ address: id, type: "info" }),
+        body: JSON.stringify({ address: String(id).toLowerCase(), type: "info" }),
         headers: {
           "Content-Type": "application/json",
         },
