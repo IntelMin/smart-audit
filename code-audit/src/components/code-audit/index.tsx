@@ -100,10 +100,10 @@ const Index = () => {
     console.log("hhh", editor, monaco);
     editorRef.current = editor;
   };
-
+console.log(noFindings)
   return (
     <div className="flex flex-col justify-center items-center space-y-6 bg-[#FFFFFF0D] backdrop-blur-xl mt-8 px-4 md:px-8 p-3 rounded-xl w-full md:w-[830px]">
-      {findings ? (
+      {findings?.length>0 ? (
         <>
           <Status findings={findings} />
         </>
