@@ -12,12 +12,12 @@ export default function TokenAudit() {
   const [tokenAddress, setTokenAddress] = useState("");
   const { toast } = useToast();
   const [isTokenValid, setIsTokenValid] = useState(false);
-
+  console.log(tokenAddress)
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     console.log("submit");
     setLoading(true);
-    e.preventDefault();
     setIsTokenValid(false);
+    e.preventDefault();
       if (tokenAddress === "") {
         toast({
           title: "Token address is required",
@@ -43,20 +43,14 @@ export default function TokenAudit() {
         setLoading(false);
         return;
       }
-      setIsTokenValid(true);
-    if (!isTokenValid) {
-      toast({
-        title: "Token address is invalid",
-        variant: "destructive",
-      });
-      setLoading(false);
-      return;
-    };
+    
+    setIsTokenValid(true);
+
     console.log(tokenAddress);
     setLoading(true);
     const request = await fetch(`/api/audit/request`, {
       method: "POST",
-      body: JSON.stringify({ address: tokenAddress.toLowerCase() }),
+      body: JSON.stringify({ address: tokenAddress }),
       headers: {
         "Content-Type": "application/json",
       },
@@ -67,8 +61,9 @@ export default function TokenAudit() {
     if (tokenAddress === "") return;
     router.push(`/${tokenAddress}`);
     setLoading(false);
-  };
 
+  };
+console.log({tokenAddress,isTokenValid,loading})
   return (
     <main className="relative flex items-center justify-center bg-[url(/backgrounds/token.svg)] bg-cover bg-center min-h-screen">
       <div className="flex flex-col justify-between gap-8 bg-[#FFFFFF0D] p-6 rounded-[16px] w-[430px] h-[260px] text-center">

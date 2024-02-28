@@ -3,7 +3,6 @@ import { Progress } from '../ui/progress'
 import Image from 'next/image'
 
 function auditHistory({findings}:any) {
-  console.log(findings)
   const auditData = [
     {
       "Severity": "High",
