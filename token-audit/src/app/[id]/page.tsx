@@ -118,8 +118,7 @@ const TokenResult = ({ params }: Props) => {
       if(!isTokenValid) return;
 
       if(status.status !== AUDIT_STATUS_RETURN_CODE.complete) return;
-      const res = await fetch(`/api/token/info?address=${id}&type=meta`);
-
+      const res = await fetch(`/api/token/info?address=${(id as string).toLowerCase()}&type=meta`);
       const data = await res.json();
       setMetaData(data);
     }
@@ -127,22 +126,22 @@ const TokenResult = ({ params }: Props) => {
       if(!isTokenValid) return;
 
       if(status.status !== AUDIT_STATUS_RETURN_CODE.complete) return;
-      const request = await fetch(`/api/audit/findings?address=${id}`);
-
+      const request = await fetch(`/api/audit/findings?address=${(id as string).toLowerCase()}`);
+      console.log(request);
       const data = await request.json();
       setFindings(data);
       
       if(status.status !== AUDIT_STATUS_RETURN_CODE.complete) return;
       const res_fetch = await fetch(`/api/audit/fetch`, {
         method: "POST",
-        body: JSON.stringify({ address: id }),
+        body: JSON.stringify({ address: (id as string).toLowerCase() }),
         headers: {
           "Content-Type": "application/json",
         },
       });
       const scan_res = await fetch(`/api/audit/info`, {
         method: "POST",
-        body: JSON.stringify({ address: id, type: "scan" }),
+        body: JSON.stringify({ address: (id as string).toLowerCase(), type: "scan" }),
         headers: {
           "Content-Type": "application/json",
         },

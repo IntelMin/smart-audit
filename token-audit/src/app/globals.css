@@ -74,6 +74,8 @@
     @apply bg-background text-foreground;
   }
 }
+<<<<<<< HEAD
+=======
 .monaco-editor {
   background-color: rgba(0, 0, 0, 0.5); /* Background color with transparency */
   border-radius: 10px; /* Rounded border */
@@ -94,3 +96,4 @@ monaco-editor no-user-select mac  showUnused showDeprecated vs{
 .custom-editor {
   background: #ee0000 !important;
 }
+>>>>>>> 1f8a41f327c25547ff4786ee099e217e7546385d
