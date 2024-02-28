@@ -10,13 +10,22 @@ function ContractCard({token,scanData,finding}:any) {
   const { toast } = useToast();
   if(!token) return (
     <div className="bg-[#18181B] flex justify-center items-center p-6 rounded-[24px]">
+<<<<<<< HEAD
       <MoonLoader color='white' />
       </div>
+=======
+        <Image src="/loadingAnimation.gif" width={100} height={100} alt=""/>
+            </div>
+>>>>>>> 1f8a41f327c25547ff4786ee099e217e7546385d
   )
   const copyToClipboard = () => {
     copy(token.address);
     toast({
+<<<<<<< HEAD
       title: "Adrress copied to clipboard",
+=======
+      title: "Addrress copied to clipboard",
+>>>>>>> 1f8a41f327c25547ff4786ee099e217e7546385d
       variant: "default",
     });
   };
@@ -29,7 +38,11 @@ function ContractCard({token,scanData,finding}:any) {
   return (
     <div className="bg-[#18181B] p-6 rounded-[24px]">
     <div className="flex flex-col items-center gap-4 text-center space-y-6 h-full">
+<<<<<<< HEAD
       <Image alt="logo"     src={token.icon_url??""} width={80} height={80} />
+=======
+      <Image alt="logo"     src={token.icon_url??scanData?.logo} width={80} height={80} />
+>>>>>>> 1f8a41f327c25547ff4786ee099e217e7546385d
       <div className="flex flex-col text-center">
         <h1 className="font-[700] text-[28px] text-white leading-[36px]">
           {token.name}
@@ -47,7 +60,11 @@ function ContractCard({token,scanData,finding}:any) {
           Contract Address
           <Image
             alt="logo"
+<<<<<<< HEAD
             src={token.icon_url??""}
+=======
+            src={token.icon_url??scanData?.logo}
+>>>>>>> 1f8a41f327c25547ff4786ee099e217e7546385d
             width={24}
             height={24}
           />
