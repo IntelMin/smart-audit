@@ -120,13 +120,13 @@ const TokenResult = ({ params }: Props) => {
   useEffect(() => {
     async function fetchMeta(){
       if(!isTokenValid) return;
-      const res = await fetch(`/api/token/info?address=${id}&type=meta`);
+      const res = await fetch(`/api/token/info?address=${String(id).toLowerCase()}&type=meta`);
       const data = await res.json();
       setMetaData(data);
     }
     async function fetchAudit() {
       if(!isTokenValid) return;
-      const request = await fetch(`/api/audit/findings?address=${id}`);
+      const request = await fetch(`/api/audit/findings?address=${String(id).toLowerCase()}`);
       console.log(request);
       const data = await request.json();
       console.log({data});
@@ -166,7 +166,7 @@ const TokenResult = ({ params }: Props) => {
     async function fetchInfo() {
       const res = await fetch(`/api/audit/info`, {
         method: "POST",
-        body: JSON.stringify({ address: id, type: "info" }),
+        body: JSON.stringify({ address: String(id).toLowerCase(), type: "info" }),
         headers: {
           "Content-Type": "application/json",
         },
