@@ -160,12 +160,16 @@ const TokenResult = ({ params }: Props) => {
       }
     }
     const pollStatus = () => {
-      if (loading) {
+      if(!loading) return;
+      if (loading ) {
         fetchStatus();
-        if (!isTokenValid) return;
-        console.log("polling status");
+        if(!isTokenValid) return;
+        
         setTimeout(pollStatus, 1000); // Poll every 1 second
+      }else{
+ 
       }
+
     };
 
     pollStatus();
