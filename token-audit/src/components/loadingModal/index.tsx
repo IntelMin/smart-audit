@@ -69,7 +69,7 @@ export default function LoadingModal({ setLoading,activeStep }:any) {
       </div>
 
       <div className="flex flex-col text-center px-7">
-        {activeStep === 0 && <UserDetails />}
+        {activeStep === 0 || activeStep === 4 && <UserDetails />}
         {activeStep === 1 && <Payment />}
         {activeStep === 2 && <Confirmation setLoading={setLoading} />}
       </div>
