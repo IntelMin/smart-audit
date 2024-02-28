@@ -8,6 +8,7 @@ import { useToast } from "../ui/use-toast";
 import Logo from "../../../public/icons/logo.svg";
 function ContractCard({ token, scanData, finding }: any) {
   const { toast } = useToast();
+
   if (!token)
     return (
       <div className='bg-[#18181B] flex justify-center items-center p-6 rounded-[24px]'>
@@ -20,6 +21,7 @@ function ContractCard({ token, scanData, finding }: any) {
       </div>
     );
   // const address = "0x514910771AF9Ca656af840dff83E8264EcF986CA";
+
   const copyToClipboard = () => {
     copy(token.address);
     toast({
@@ -34,6 +36,7 @@ function ContractCard({ token, scanData, finding }: any) {
     return firstFiveSentences.join(".") + ".";
   }
   return (
+
     <div className='bg-[#18181B] h-auto  md:p-6 p-3 rounded-[24px]'>
       <div className='flex flex-col items-center gap-4 text-center space-y-6 h-full'>
         <Image
@@ -72,6 +75,7 @@ function ContractCard({ token, scanData, finding }: any) {
             />
           </label>
           {/* <input
+
         disabled
           type="text"
           className="bg-[#FFFFFF14] px-4 py-[10px] rounded-[24px] w-full font-[500] text-[16px] text-white placeholder:text-[#D1D5DB] outline-none"

@@ -33,6 +33,7 @@ function socialIcons({scanData}:any) {
 
   return (
     <div className='flex space-x-8'>
+
       {socialIcons.map((icon, index) => (
         <button
           key={index}
@@ -49,6 +50,7 @@ function socialIcons({scanData}:any) {
           </div>
         </button>
       ))}
+
     </div>
   );
 }

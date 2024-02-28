@@ -32,6 +32,7 @@ if(!scanData || !tokenData) return (
         },
     ];
   return (
+
     // <div className='flex space-x-4 lg:flex-row flex-col gap-4 md:h-[162px] md:overflow-auto overflow-x-scroll w-[88vw] md:w-auto '>
     //     {statsData.map((data, index) => (
     //         <div key={index} className="flex flex-col rounded-md justify-between text-start bg-[#18181B]  md:w-full p-4 relative ">
@@ -59,6 +60,7 @@ if(!scanData || !tokenData) return (
           />
         </div>
       ))}
+
     </div>
   );
 }
