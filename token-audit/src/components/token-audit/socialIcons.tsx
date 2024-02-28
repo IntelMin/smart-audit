@@ -7,6 +7,7 @@ function socialIcons({scanData}:any) {
     //     <>
     //     </>
     // )
+    console.log("scan dtaa",scanData)
     const socialIcons = [
         {
             name: "twitter",
@@ -32,18 +33,24 @@ function socialIcons({scanData}:any) {
 
   return (
     <div className='flex space-x-8'>
-        {
-            socialIcons.map((icon, index) => (
-                <button key={index} className=" rounded-full  border-neutral-400" >
-                    <a key={index} href=''>
-                    <Image src={icon.url
-                    } width={40} height={40} alt="icon" className='w-[40px] h-[40px]'/>
-                    </a>
-                </button>
-            ))
-        }
+      {socialIcons.map((icon, index) => (
+        <button
+          key={index}
+          className=' rounded-full  border-neutral-400'
+        >
+          <div key={index}>
+            <Image
+              src={icon.url}
+              width={80}
+              height={80}
+              alt='icon'
+              className='w-[80px] h-[80px]'
+            />
+          </div>
+        </button>
+      ))}
     </div>
-  )
+  );
 }
 
 export default socialIcons
