@@ -9,6 +9,7 @@
     "lint": "next lint",
     "postinstall": "prisma generate"
   },
+
   "dependencies": {
     "@monaco-editor/react": "^4.6.0",
     "@prisma/client": "^5.10.2",

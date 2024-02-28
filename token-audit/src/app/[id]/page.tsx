@@ -74,7 +74,6 @@ const TokenResult = ({ params }: Props) => {
         setIsTokenValid(true);
       }
       if(isTokenValid){
-        console.log("fetching status");
         const status = await fetch(`/api/audit/status`, {
           method: "POST",
           body: JSON.stringify({ address: String(id).toLowerCase() }),
@@ -85,7 +84,6 @@ const TokenResult = ({ params }: Props) => {
         if (!status.ok) return;
 
 
-        console.log(status);
         const statusData = await status.json();
         if(statusData.status ===  AUDIT_STATUS_RETURN_CODE.notRequested){
         const req = await fetch(`/api/audit/request`, {
@@ -96,9 +94,7 @@ const TokenResult = ({ params }: Props) => {
           },
         });
         const req_data = await req.json();
-        console.log(req_data);
         }
-        console.log(statusData);
         setStatus(statusData);
         if (statusData.status === AUDIT_STATUS_RETURN_CODE.complete) {
           setLoading(false);
@@ -109,7 +105,6 @@ const TokenResult = ({ params }: Props) => {
       if (loading ) {
         fetchStatus();
         if(!isTokenValid) return;
-        console.log("polling status");
         setTimeout(pollStatus, 1000); // Poll every 1 second
       }
     };
@@ -120,18 +115,23 @@ const TokenResult = ({ params }: Props) => {
   useEffect(() => {
     async function fetchMeta(){
       if(!isTokenValid) return;
-      const res = await fetch(`/api/token/info?address=${String(id).toLowerCase()}&type=meta`);
+
+      if(status.status !== AUDIT_STATUS_RETURN_CODE.complete) return;
+      const res = await fetch(`/api/token/info?address=${id}&type=meta`);
+
       const data = await res.json();
       setMetaData(data);
     }
     async function fetchAudit() {
       if(!isTokenValid) return;
-      const request = await fetch(`/api/audit/findings?address=${String(id).toLowerCase()}`);
-      console.log(request);
-      const data = await request.json();
-      console.log({data});
-      setFindings(data);
 
+      if(status.status !== AUDIT_STATUS_RETURN_CODE.complete) return;
+      const request = await fetch(`/api/audit/findings?address=${id}`);
+
+      const data = await request.json();
+      setFindings(data);
+      
+      if(status.status !== AUDIT_STATUS_RETURN_CODE.complete) return;
       const res_fetch = await fetch(`/api/audit/fetch`, {
         method: "POST",
         body: JSON.stringify({ address: id }),
@@ -147,23 +147,23 @@ const TokenResult = ({ params }: Props) => {
         },
       });
       const scan_data = await scan_res.json();
-      console.log(scan_data);
       setScanData(scan_data);
       const data_fetch = await res_fetch.json();
       if (data_fetch.token) {
         data_fetch.token["marketcap"] = scan_data?.marketcap || {};
         data_fetch.token["holders"] =
-          data_fetch.token["holders"] || data_fetch.security["holder_count"];
+        data_fetch.token["holders"] || data_fetch.security["holder_count"];
       }
-      console.log(data_fetch);
       setTokenData(data_fetch.token);
     }
     async function fetchliveData() {
+      if(status.status !== AUDIT_STATUS_RETURN_CODE.complete) return;
       const res = await fetch(`/api/token/live?address=${id}`);
       const data = await res.json();
       setLiveData(data);
     }
     async function fetchInfo() {
+      if(status.status !== AUDIT_STATUS_RETURN_CODE.complete) return;
       const res = await fetch(`/api/audit/info`, {
         method: "POST",
         body: JSON.stringify({ address: String(id).toLowerCase(), type: "info" }),
@@ -179,8 +179,7 @@ const TokenResult = ({ params }: Props) => {
     }
 
     fetchData();
-  }, [id,isTokenValid]);
-
+  }, [id,isTokenValid, status.status]);
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsinputTokenValid(false);
@@ -206,7 +205,6 @@ const TokenResult = ({ params }: Props) => {
     }
     checkToken();
     if (!setIsinputTokenValid) return;
-    console.log(tokenAddress);
     setLoading(true);
     const request = await fetch(`/api/audit/request`, {
       method: "POST",
@@ -215,9 +213,7 @@ const TokenResult = ({ params }: Props) => {
         "Content-Type": "application/json",
       },
     });
-    console.log(request);
     const data = await request.json();
-    console.log(data);
     if (tokenAddress === "") return;
     router.push(`/${tokenAddress}`);
     setLoading(false);

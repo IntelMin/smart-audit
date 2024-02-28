@@ -49,7 +49,6 @@ export default function TokenAudit() {
     setLoading(true);
     const data = await request.json();
   
-    console.log(data);
   
     if (tokenAddress !== "") {
       router.push(`/${tokenAddress}`);

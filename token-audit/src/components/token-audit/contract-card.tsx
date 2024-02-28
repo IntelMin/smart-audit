@@ -29,7 +29,7 @@ function ContractCard({token,scanData,finding}:any) {
   return (
     <div className="bg-[#18181B] p-6 rounded-[24px]">
     <div className="flex flex-col items-center gap-4 text-center space-y-6 h-full">
-      <Image alt="logo"     src={token.icon_url??""} width={80} height={80} />
+      <Image alt="logo"     src={token.icon_url??scanData?.logo} width={80} height={80} />
       <div className="flex flex-col text-center">
         <h1 className="font-[700] text-[28px] text-white leading-[36px]">
           {token.name}
@@ -47,7 +47,7 @@ function ContractCard({token,scanData,finding}:any) {
           Contract Address
           <Image
             alt="logo"
-            src={token.icon_url??""}
+            src={token.icon_url??scanData?.logo}
             width={24}
             height={24}
           />
