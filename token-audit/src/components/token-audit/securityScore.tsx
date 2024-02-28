@@ -5,22 +5,22 @@ import Image from 'next/image';
 import { url } from 'inspector';
 
 function securityScore({scanData}:any) {
-    // if(!scanData) return (
-    //     <div className=' flex justify-center items-center h-full space-y-8 bg-[#18181B] py-4 px-4 rounded-lg text-white '>
+    if(!scanData) return (
+        <div className=' flex justify-center items-center h-full space-y-8 bg-[#18181B] py-4 px-4 rounded-lg text-white '>
 
-    //     <Image src="/loadingAnimation.gif" width={100} height={100} alt=""/>
+        <Image src="/loadingAnimation.gif" width={100} height={100} alt=""/>
 
-    //     </div>
-    // )
-    // const onboardedDate = new Date(scanData.updatedAt??""); 
-    const onboardedDate = new Date();
+        </div>
+    )
+    const onboardedDate = new Date(scanData.updatedAt??""); 
+    // const onboardedDate = new Date();
     const options = { year: 'numeric', month: 'short', day: 'numeric' } as const;
     const formattedDate = onboardedDate.toLocaleDateString('en-US', options);
     const statsData = [
         {"Audits": 1},
         {"Onboarded Date": formattedDate},
-        {"Market Stability": 96.22}, //scanData.marketScore
-        {"Code Security": 99.38 }//scanData.securityScore
+        {"Market Stability":scanData.marketScore }, //96.22
+        {"Code Security": scanData.securityScore }//99.38
      
     ];
 const auditData =[
@@ -33,10 +33,10 @@ const auditData =[
             <h1>Security Score</h1>
         </header>
         <div className='relative '>
-        <Progress value={98} className='h-[100px] '/>
+        <Progress  value={scanData.auditScore??0} className='h-[100px] '/>
 
         <p className='absolute text-white p-3 right-2 flex flex-col text-center top-2' >
-            <p className='font-bold text-xl'>{(98).toFixed(2)??0}%</p>
+            <p className='font-bold text-xl'>{( scanData.auditScore??0).toFixed(2)??0}%</p>
             <p>Audit Score</p>
         </p>
         </div>

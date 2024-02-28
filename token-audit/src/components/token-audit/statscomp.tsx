@@ -5,29 +5,29 @@ import { MoonLoader } from 'react-spinners';
 import { formatUnits } from 'viem';
 
 export default function statscomp({scanData,tokenData}:any) {
-// if(!scanData || !tokenData) return (
+if(!scanData || !tokenData) return (
 
-// <div className='flex justify-center items-center space-x-4  h-[162px] '>
-//     <Image src="/loadingAnimation.gif" width={100} height={100} alt=""/>
-// </div>
-// )
+<div className='flex justify-center items-center space-x-4  h-[162px] '>
+    <Image src="/loadingAnimation.gif" width={100} height={100} alt=""/>
+</div>
+)
     const statsData = [
         {
             title: "Community Trust",
-            // value: scanData?.communityScore,
-            value: 96.58,
+            value: scanData?.communityScore,
+            // value: 96.58,
             imgUrl:"/icons/people.png"
         },
         {
             title: "Volume (24h)",
-            // value: "$"+(Number((scanData.tradingVolume??0).toFixed(0))).toLocaleString("en-US"),
-            value: "$419,628",
+            value: "$"+(Number((scanData.tradingVolume??0).toFixed(0))).toLocaleString("en-US"),
+            // value: "$419,628",
             imgUrl:"/icons/moneys.png"
         },
         {
             title: "Supply",
-            // value: formatNumber(Number(formatUnits(tokenData.total_supply??"",Number(tokenData.decimals)))),
-            value: formatNumber(1000000),
+            value: formatNumber(Number(formatUnits(tokenData.total_supply??"",Number(tokenData.decimals)))),
+            // value: formatNumber(1000000),
             imgUrl:"/icons/convert-card.png"
         },
     ];
