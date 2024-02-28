@@ -110,7 +110,7 @@ const TokenResult = ({ params }: Props) => {
     async function fetchStatus() {
       if (!loading) return;
       if (id === "") return;
-      const res = await fetch(`/api/token/check?token=${id}`);
+      const res = await fetch(`/api/token/check?token=${(id as string).toLowerCase()}`);
       if (!res.ok) {
         toast({
           title: "Token address is invalid",
@@ -132,7 +132,7 @@ const TokenResult = ({ params }: Props) => {
         console.log("fetching status");
         const status = await fetch(`/api/audit/status`, {
           method: "POST",
-          body: JSON.stringify({ address: id }),
+          body: JSON.stringify({ address: (id as string).toLowerCase() }),
           headers: {
             "Content-Type": "application/json",
           },
@@ -179,14 +179,14 @@ const TokenResult = ({ params }: Props) => {
     async function fetchMeta() {
       if (!isTokenValid) return;
       if (status.status !== AUDIT_STATUS_RETURN_CODE.complete) return;
-      const res = await fetch(`/api/token/info?address=${id}&type=meta`);
+      const res = await fetch(`/api/token/info?address=${(id as string).toLowerCase()}&type=meta`);
       const data = await res.json();
       setMetaData(data);
     }
     async function fetchAudit() {
       if (!isTokenValid) return;
       if (status.status !== AUDIT_STATUS_RETURN_CODE.complete) return;
-      const request = await fetch(`/api/audit/findings?address=${id}`);
+      const request = await fetch(`/api/audit/findings?address=${(id as string).toLowerCase()}`);
       console.log(request);
       const data = await request.json();
       console.log({ data });
