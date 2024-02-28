@@ -3,7 +3,7 @@ import React from 'react'
 import Editor, { Monaco } from "@monaco-editor/react";
 import { useRef } from 'react';
 
-function index() {
+function Index() {
     const editorRef = useRef(null);
 
     function handleEditorDidMount(editor: any, monaco: Monaco) {
@@ -66,4 +66,4 @@ function index() {
   )
 }
 
-export default index
+export default Index
