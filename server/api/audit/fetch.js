@@ -76,9 +76,10 @@ router.get('/fetch/:address', async (req, res) => {
 
     delete solidity['additional_sources'];
   }
+  
 
-  let parse_meta = metadataCache['tokens'][0];
-  let parse_token = tokenCache;
+  let parse_meta = metadataCache && metadataCache['tokens'] ? metadataCache['tokens'][0] : {};
+    let parse_token = tokenCache;
   //   let parse_functions = functionsCache["data"];
   //   let parse_dependencies = dependenciesCache["data"];
   let parse_rugpull = rugpullCache['result'];

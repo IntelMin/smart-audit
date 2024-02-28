@@ -120,18 +120,21 @@ const TokenResult = ({ params }: Props) => {
   useEffect(() => {
     async function fetchMeta(){
       if(!isTokenValid) return;
+      if(status.status !== AUDIT_STATUS_RETURN_CODE.complete) return;
       const res = await fetch(`/api/token/info?address=${id}&type=meta`);
       const data = await res.json();
       setMetaData(data);
     }
     async function fetchAudit() {
       if(!isTokenValid) return;
+      if(status.status !== AUDIT_STATUS_RETURN_CODE.complete) return;
       const request = await fetch(`/api/audit/findings?address=${id}`);
       console.log(request);
       const data = await request.json();
       console.log({data});
       setFindings(data);
-
+      
+      if(status.status !== AUDIT_STATUS_RETURN_CODE.complete) return;
       const res_fetch = await fetch(`/api/audit/fetch`, {
         method: "POST",
         body: JSON.stringify({ address: id }),
@@ -153,17 +156,19 @@ const TokenResult = ({ params }: Props) => {
       if (data_fetch.token) {
         data_fetch.token["marketcap"] = scan_data?.marketcap || {};
         data_fetch.token["holders"] =
-          data_fetch.token["holders"] || data_fetch.security["holder_count"];
+        data_fetch.token["holders"] || data_fetch.security["holder_count"];
       }
       console.log(data_fetch);
       setTokenData(data_fetch.token);
     }
     async function fetchliveData() {
+      if(status.status !== AUDIT_STATUS_RETURN_CODE.complete) return;
       const res = await fetch(`/api/token/live?address=${id}`);
       const data = await res.json();
       setLiveData(data);
     }
     async function fetchInfo() {
+      if(status.status !== AUDIT_STATUS_RETURN_CODE.complete) return;
       const res = await fetch(`/api/audit/info`, {
         method: "POST",
         body: JSON.stringify({ address: id, type: "info" }),
@@ -179,8 +184,8 @@ const TokenResult = ({ params }: Props) => {
     }
 
     fetchData();
-  }, [id,isTokenValid]);
-
+  }, [id,isTokenValid, status.status]);
+console.log(scanData);
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsinputTokenValid(false);
