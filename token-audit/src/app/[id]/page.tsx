@@ -80,9 +80,9 @@ const TokenResult = ({ params }: Props) => {
           const statusData = await statusRes.json();
           console.log(statusData);
           setStatus(statusData);
-          if (statusData.status === AUDIT_STATUS_RETURN_CODE.complete) {
-            setLoading(false);
-          }
+          // if (statusData.status === AUDIT_STATUS_RETURN_CODE.complete) {
+          //   setLoading(false);
+          // }
         }
       } catch (error:any) {
         console.error("Error fetching status:", error);
@@ -106,74 +106,7 @@ const TokenResult = ({ params }: Props) => {
     pollStatus();
   }, [id, loading, isTokenValid, router, toast]);
 
-  useEffect(() => {
-    async function fetchStatus() {
-      if (!loading) return;
-      if (id === "") return;
-      const res = await fetch(`/api/token/check?token=${(id as string).toLowerCase()}`);
-      if (!res.ok) {
-        toast({
-          title: "Token address is invalid",
-          variant: "destructive",
-        });
-        router.push("/");
-      }
-      const token_data = await res.json();
-      if (!token_data.address) {
-        toast({
-          title: "Token address is invalid",
-          variant: "destructive",
-        });
-        router.push("/");
-      } else {
-        setIsTokenValid(true);
-      }
-      if (isTokenValid) {
-        console.log("fetching status");
-        const status = await fetch(`/api/audit/status`, {
-          method: "POST",
-          body: JSON.stringify({ address: (id as string).toLowerCase() }),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-        if (!status.ok) return;
 
-        console.log(status);
-        const statusData = await status.json();
-        if (statusData.status === AUDIT_STATUS_RETURN_CODE.notRequested) {
-          const req = await fetch(`/api/audit/request`, {
-            method: "POST",
-            body: JSON.stringify({ address: (id as string).toLowerCase() }),
-            headers: {
-              "Content-Type": "application/json",
-            },
-          });
-          const req_data = await req.json();
-          console.log(req_data);
-        }
-        console.log(statusData);
-        setStatus(statusData);
-        if (statusData.status === AUDIT_STATUS_RETURN_CODE.complete) {
-          setLoading(false);
-        }
-      }
-    }
-    const pollStatus = () => {
-      if(!loading) return;
-      if (loading ) {
-        fetchStatus();
-        if(!isTokenValid) return;
-        
-        setTimeout(pollStatus, 1000); // Poll every 1 second
-      }else{
- 
-      }
-
-    };
-
-    pollStatus();
-  }, [id, isTokenValid, loading, router, toast]);
 
   useEffect(() => {
     async function fetchMeta() {
@@ -243,17 +176,27 @@ const TokenResult = ({ params }: Props) => {
       setInfoData(data);
     }
     async function fetchData() {
-      await Promise.all([
-        fetchAudit(),
-        fetchInfo(),
-        fetchliveData(),
-        fetchMeta(),
-      ]);
+      try{
+
+        await Promise.all([
+          fetchAudit(),
+          fetchInfo(),
+          fetchliveData(),
+          fetchMeta(),
+        ])
+      }catch(e){
+        console.error(e);
+        toast({
+          title: "Failed to fetch data",
+          variant: "destructive",
+        });
+        // setLoading(false);
+      }
     }
 
     fetchData();
   }, [id, isTokenValid, status.status]);
-  console.log(scanData);
+  console.log(loading, status.status);
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsinputTokenValid(false);
