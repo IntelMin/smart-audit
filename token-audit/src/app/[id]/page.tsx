@@ -32,7 +32,7 @@ const TokenResult = ({ params }: Props) => {
   const router = useRouter();
 
   const { id } = useParams();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [findings, setFindings] = useState<any[]>([] as any[]);
   const [infoData, setInfoData] = useState<any | null>(null);
   const [metaData, setMetaData] = useState<any | null>(null);
