@@ -50,9 +50,65 @@ const TokenResult = ({ params }: Props) => {
     status: 0,
   });
 
-useEffect(() => {
+  useEffect(() => {
+    const fetchStatus = async () => {
+      if (!loading || id === "") return;
+
+      try {
+        const res = await fetch(`/api/token/check?token=${id}`);
+        if (!res.ok) {
+          throw new Error("Token address is invalid");
+        }
+        const tokenData = await res.json();
+        if (!tokenData.address) {
+          throw new Error("Token address is invalid");
+        }
+        setIsTokenValid(true);
+
+        if (isTokenValid) {
+          console.log("fetching status");
+          const statusRes = await fetch(`/api/audit/status`, {
+            method: "POST",
+            body: JSON.stringify({ address: id }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+          if (!statusRes.ok) {
+            throw new Error("Failed to fetch status");
+          }
+          const statusData = await statusRes.json();
+          console.log(statusData);
+          setStatus(statusData);
+          if (statusData.status === AUDIT_STATUS_RETURN_CODE.complete) {
+            setLoading(false);
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching status:", error.message);
+        toast({
+          title: error.message,
+          variant: "destructive",
+        });
+        router.push("/");
+      }
+    };
+
+    const pollStatus = () => {
+      if (loading) {
+        fetchStatus();
+        if (!isTokenValid) return;
+        console.log("polling status");
+        setTimeout(pollStatus, 1000); // Poll every 1 second
+      }
+    };
+
+    pollStatus();
+  }, [id, loading, isTokenValid, router, toast]);
+
+  useEffect(() => {
     async function fetchStatus() {
-      if(!loading) return;
+      if (!loading) return;
       if (id === "") return;
       const res = await fetch(`/api/token/check?token=${id}`);
       if (!res.ok) {
@@ -60,43 +116,43 @@ useEffect(() => {
           title: "Token address is invalid",
           variant: "destructive",
         });
-        router.push("/")
-        
+        router.push("/");
       }
       const token_data = await res.json();
-      if(!token_data.address){
+      if (!token_data.address) {
         toast({
           title: "Token address is invalid",
           variant: "destructive",
         });
-        router.push("/")
-        
-      }else{
+        router.push("/");
+      } else {
         setIsTokenValid(true);
       }
-      if(isTokenValid){
+      if (isTokenValid) {
+        console.log("fetching status");
         const status = await fetch(`/api/audit/status`, {
           method: "POST",
-          body: JSON.stringify({ address: String(id).toLowerCase() }),
+          body: JSON.stringify({ address: id }),
           headers: {
             "Content-Type": "application/json",
           },
         });
         if (!status.ok) return;
 
-
+        console.log(status);
         const statusData = await status.json();
-        if(statusData.status ===  AUDIT_STATUS_RETURN_CODE.notRequested){
-        const req = await fetch(`/api/audit/request`, {
-          method: "POST",
-          body: JSON.stringify({ address: (id as string).toLowerCase() }),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-        const req_data = await req.json();
-
+        if (statusData.status === AUDIT_STATUS_RETURN_CODE.notRequested) {
+          const req = await fetch(`/api/audit/request`, {
+            method: "POST",
+            body: JSON.stringify({ address: (id as string).toLowerCase() }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+          const req_data = await req.json();
+          console.log(req_data);
         }
+        console.log(statusData);
         setStatus(statusData);
         if (statusData.status === AUDIT_STATUS_RETURN_CODE.complete) {
           setLoading(false);
@@ -115,29 +171,28 @@ useEffect(() => {
       }
 
     };
-    // fetchStatus()
+
     pollStatus();
-
   }, [id, isTokenValid, loading, router, toast]);
-  useEffect(() => {
-    async function fetchMeta(){
-      if(!isTokenValid) return;
 
-      if(status.status !== AUDIT_STATUS_RETURN_CODE.complete) return;
-      const res = await fetch(`/api/token/info?address=${(id as string).toLowerCase()}&type=meta`);
+  useEffect(() => {
+    async function fetchMeta() {
+      if (!isTokenValid) return;
+      if (status.status !== AUDIT_STATUS_RETURN_CODE.complete) return;
+      const res = await fetch(`/api/token/info?address=${id}&type=meta`);
       const data = await res.json();
       setMetaData(data);
     }
     async function fetchAudit() {
-      if(!isTokenValid) return;
-
-      if(status.status !== AUDIT_STATUS_RETURN_CODE.complete) return;
-      const request = await fetch(`/api/audit/findings?address=${(id as string).toLowerCase()}`);
+      if (!isTokenValid) return;
+      if (status.status !== AUDIT_STATUS_RETURN_CODE.complete) return;
+      const request = await fetch(`/api/audit/findings?address=${id}`);
       console.log(request);
       const data = await request.json();
+      console.log({ data });
       setFindings(data);
-      
-      if(status.status !== AUDIT_STATUS_RETURN_CODE.complete) return;
+
+      if (status.status !== AUDIT_STATUS_RETURN_CODE.complete) return;
       const res_fetch = await fetch(`/api/audit/fetch`, {
         method: "POST",
         body: JSON.stringify({ address: (id as string).toLowerCase() }),
@@ -147,45 +202,58 @@ useEffect(() => {
       });
       const scan_res = await fetch(`/api/audit/info`, {
         method: "POST",
-        body: JSON.stringify({ address: (id as string).toLowerCase(), type: "scan" }),
+        body: JSON.stringify({
+          address: (id as string).toLowerCase(),
+          type: "scan",
+        }),
         headers: {
           "Content-Type": "application/json",
         },
       });
       const scan_data = await scan_res.json();
+      console.log(scan_data);
       setScanData(scan_data);
       const data_fetch = await res_fetch.json();
       if (data_fetch.token) {
         data_fetch.token["marketcap"] = scan_data?.marketcap || {};
         data_fetch.token["holders"] =
-        data_fetch.token["holders"] || data_fetch.security["holder_count"];
+          data_fetch.token["holders"] || data_fetch.security["holder_count"];
       }
       setTokenData(data_fetch.token);
     }
     async function fetchliveData() {
-      if(status.status !== AUDIT_STATUS_RETURN_CODE.complete) return;
+      if (status.status !== AUDIT_STATUS_RETURN_CODE.complete) return;
       const res = await fetch(`/api/token/live?address=${id}`);
       const data = await res.json();
       setLiveData(data);
     }
     async function fetchInfo() {
-      if(status.status !== AUDIT_STATUS_RETURN_CODE.complete) return;
+      if (status.status !== AUDIT_STATUS_RETURN_CODE.complete) return;
       const res = await fetch(`/api/audit/info`, {
         method: "POST",
-        body: JSON.stringify({ address: String(id).toLowerCase(), type: "info" }),
+        body: JSON.stringify({
+          address: String(id).toLowerCase(),
+          type: "info",
+        }),
         headers: {
           "Content-Type": "application/json",
         },
       });
       const data = await res.json();
       setInfoData(data);
-    } 
+    }
     async function fetchData() {
-      await Promise.all([fetchAudit(),fetchInfo(), fetchliveData(),fetchMeta()]);
+      await Promise.all([
+        fetchAudit(),
+        fetchInfo(),
+        fetchliveData(),
+        fetchMeta(),
+      ]);
     }
 
     fetchData();
-  }, [id,isTokenValid, status.status]);
+  }, [id, isTokenValid, status.status]);
+  console.log(scanData);
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsinputTokenValid(false);
@@ -294,10 +362,10 @@ useEffect(() => {
         {/* Token Result Section */}
         <div className='grid lg:grid-cols-4  grid-cols-1 md:gap-8 gap-4'>
           <ContractCard
-          finding={findings}
-          token={tokenData}
-          scanData={scanData}
-          metaData={metaData}
+            finding={findings}
+            token={tokenData}
+            scanData={scanData}
+            metaData={metaData}
           />
 
           <div className='rounded-[24px] space-y-10 w-full col-span-2'>
@@ -311,9 +379,9 @@ useEffect(() => {
 
           <div className='rounded-[24px] space-y-10 '>
             <MarketCap
-            liveData={liveData}
-            infoData={infoData}
-            scanData={scanData}
+              liveData={liveData}
+              infoData={infoData}
+              scanData={scanData}
             />
             <AuditHistory findings={findings} />
           </div>
