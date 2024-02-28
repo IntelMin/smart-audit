@@ -51,7 +51,6 @@ function index() {
             selectOnLineNumbers: true,
             roundedSelection: false,
             automaticLayout: true,
-            backgroundColor:"rgba(0,0,0,0)"
           }}
 
       />
