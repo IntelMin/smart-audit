@@ -12,7 +12,8 @@ function marketCap({scanData,liveData,infoData}:any) {
     )
     const marketCap = (Number(infoData?.circulating_market_cap??0)/Number(infoData?.exchange_rate??0))*Number(liveData?.priceUsd??0)
   return (
-    <div className='bg-[#18181B]  h-[180px] rounded-xl flex flex-col justify-center items-center text-white space-y-3 '>
+    <div>
+      <div className='bg-[#18181B]  h-[180px] rounded-xl flex flex-col justify-center items-center text-white space-y-3 '>
         <div className='flex space-x-2'>
             <p className='text-[32px] font-bold text-white'>${(scanData.price??0).toFixed(4)} </p>
             <div className='flex justify-center items-center  '><Image src={price_change > 0 ?"/icons/tokenaudit/arrow-up.svg":"/icons/tokenaudit/arrow-up.svg" } width={20} height={20} alt=''/><p>{price_change.toFixed(2)}% (30d)</p></div>
