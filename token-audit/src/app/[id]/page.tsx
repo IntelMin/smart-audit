@@ -74,22 +74,20 @@ const TokenResult = ({ params }: Props) => {
         setIsTokenValid(true);
       }
       if(isTokenValid){
-      console.log("fetching status");
-      const status = await fetch(`/api/audit/status`, {
-        method: "POST",
-        body: JSON.stringify({ address: id }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      if (!status.ok) {
-        return;
-      }
+        console.log("fetching status");
+        const status = await fetch(`/api/audit/status`, {
+          method: "POST",
+          body: JSON.stringify({ address: id }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        if (!status.ok) return;
 
 
-      console.log(status);
-      const statusData = await status.json();
-      if(statusData.status ===  AUDIT_STATUS_RETURN_CODE.notRequested){
+        console.log(status);
+        const statusData = await status.json();
+        if(statusData.status ===  AUDIT_STATUS_RETURN_CODE.notRequested){
         const req = await fetch(`/api/audit/request`, {
           method: "POST",
           body: JSON.stringify({ address: (id as string).toLowerCase() }),
@@ -99,14 +97,14 @@ const TokenResult = ({ params }: Props) => {
         });
         const req_data = await req.json();
         console.log(req_data);
-      }
-      console.log(statusData);
-      setStatus(statusData);
-      if (statusData.status === AUDIT_STATUS_RETURN_CODE.complete) {
-        setLoading(false);
+        }
+        console.log(statusData);
+        setStatus(statusData);
+        if (statusData.status === AUDIT_STATUS_RETURN_CODE.complete) {
+          setLoading(false);
+        }
       }
     }
-  }
     const pollStatus = () => {
       if (loading ) {
         fetchStatus();
@@ -118,7 +116,7 @@ const TokenResult = ({ params }: Props) => {
     // fetchStatus()
     pollStatus();
 
-  }, [id,isTokenValid]);
+  }, [id, isTokenValid, loading, router, toast]);
   useEffect(() => {
     async function fetchMeta(){
       if(!isTokenValid) return;

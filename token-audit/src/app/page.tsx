@@ -14,46 +14,30 @@ export default function TokenAudit() {
   const [isTokenValid, setIsTokenValid] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    console.log("submit");
-    setLoading(true);
     e.preventDefault();
-    setIsTokenValid(false);
-      if (tokenAddress === "") {
-        toast({
-          title: "Token address is required",
-          variant: "destructive",
-        });
-        setLoading(false);
-      };
-      const res = await fetch(`/api/token/check?token=${tokenAddress}`);
-      if (!res.ok) {
-        toast({
-          title: "Token address is invalid",
-          variant: "destructive",
-        });
-        setLoading(false);
-        return;
-      }
-      const token_data = await res.json();
-      if (!token_data.address) {
-        toast({
-          title: "Token address is invalid",
-          variant: "destructive",
-        });
-        setLoading(false);
-        return;
-      }
-      setIsTokenValid(true);
-    if (!isTokenValid) {
+    setLoading(true);
+  
+    if (tokenAddress === "") {
+      toast({
+        title: "Token address is required",
+        variant: "destructive",
+      });
+      setLoading(false);
+      return;
+    }
+  
+    const res = await fetch(`/api/token/check?token=${tokenAddress}`);  
+    if (!res.ok) {
       toast({
         title: "Token address is invalid",
         variant: "destructive",
       });
       setLoading(false);
       return;
-    };
-    console.log(tokenAddress);
+    }
+  
     setLoading(true);
+  
     const request = await fetch(`/api/audit/request`, {
       method: "POST",
       body: JSON.stringify({ address: tokenAddress.toLowerCase() }),
@@ -61,11 +45,16 @@ export default function TokenAudit() {
         "Content-Type": "application/json",
       },
     });
+  
     setLoading(true);
     const data = await request.json();
+  
     console.log(data);
-    if (tokenAddress === "") return;
-    router.push(`/${tokenAddress}`);
+  
+    if (tokenAddress !== "") {
+      router.push(`/${tokenAddress}`);
+    }
+  
     setLoading(false);
   };
 
