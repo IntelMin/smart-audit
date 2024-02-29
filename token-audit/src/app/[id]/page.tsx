@@ -52,11 +52,8 @@ const TokenResult = ({ params }: Props) => {
     progress: 0,
     status: 0,
   });
-  console.log("token", tokenAddress);
   useEffect(() => {
     const fetchStatus = async () => {
-      if(!loading) return
-      if(status.status === AUDIT_STATUS_RETURN_CODE.complete) return
       if (!loading || id === "") return;
 
       try {
@@ -82,6 +79,7 @@ const TokenResult = ({ params }: Props) => {
             throw new Error("Failed to fetch status");
           }
           const statusData = await statusRes.json();
+          console.log(statusData);
           setStatus(statusData);
           // if (statusData.status === AUDIT_STATUS_RETURN_CODE.complete) {
           //   setLoading(false);
@@ -98,7 +96,6 @@ const TokenResult = ({ params }: Props) => {
     };
 
     const pollStatus = () => {
-      console.log(status)
       if(!loading) {
         clearTimeout(timeoutid);
       };
