@@ -6,7 +6,7 @@ import { Navbar } from "@/components/navbar";
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://smart-audit-three.vercel.app/"),
+  metadataBase: new URL(`${process.env.NEXT_META_URL}`),
   title: "SmartAudit Dapp",
   description: "Handle auditing smartly",
   openGraph: {
