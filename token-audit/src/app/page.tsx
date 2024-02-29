@@ -1,21 +1,18 @@
 "use client";
-
-import { useToast } from "@/components/ui/use-toast";
-import { useRouter } from "next/navigation";
-import LoadingModal from "@/components/loadingModal";
 import { useEffect, useState } from "react";
-import { MoonLoader } from "react-spinners";
+import { useRouter } from "next/navigation";
+import { useToast } from "@/components/ui/use-toast";
+import LoadingModal from "@/components/loadingModal";
 import { useAccount } from "wagmi";
 
 export default function TokenAudit() {
   const [loading, setLoading] = useState(false);
-  const {isConnected} = useAccount()
-  const router = useRouter();
   const [tokenAddress, setTokenAddress] = useState("");
   const { toast } = useToast();
-  const [isTokenValid, setIsTokenValid] = useState(false);
+  const { isConnected } = useAccount();
+  const router = useRouter();
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     if (!isConnected) {
       toast({
@@ -67,11 +64,21 @@ export default function TokenAudit() {
     } finally {
       setLoading(false);
     }
-
   };
 
   return (
     <main className='relative flex items-center justify-center bg-[url(/backgrounds/token.svg)] bg-cover bg-center min-h-screen'>
+      {loading && (
+        <>
+          <div className='flex h-screen  justify-center items-center absolute z-10 backdrop-blur-3xl min-w-full  '>
+            <LoadingModal
+            // setLoading={setLoading}
+            // activeStep={0}
+            />
+          </div>
+        </>
+      )}{" "}
+      {/* Show loading modal if loading state is true */}
       <div className='flex flex-col justify-between gap-8 bg-[#FFFFFF0D] p-6 rounded-[16px] w-[430px] h-[260px] text-center'>
         <div className='flex flex-col gap-2'>
           <h1 className='font-[700] text-lg text-white'>Token Audit</h1>
@@ -80,6 +87,7 @@ export default function TokenAudit() {
             token, before making your trade decision.
           </p>
         </div>
+
         <form
           className='flex flex-col gap-4'
           onSubmit={handleSubmit}
@@ -94,27 +102,16 @@ export default function TokenAudit() {
 
           <button
             type='submit'
-            className='py-[10px] rounded-[24px] w-full font-semibold text-[16px] text-white'
+            className='py-2 flex justify-center w-full items-center rounded-[24px] text-white md:flex'
             style={{
               background:
                 "linear-gradient(93.06deg, #00C5EC -1.37%, #423FF1 45.43%, #E131FD 94.83%)",
             }}
           >
-            {loading ? (
-              <div className='flex items-center justify-center'>
-                <MoonLoader
-                  color='#FFFFFF'
-                  size={16}
-                  loading={true}
-                />
-              </div>
-            ) : (
-              "Submit"
-            )}
+            Submit
           </button>
         </form>
       </div>
-
     </main>
   );
 }

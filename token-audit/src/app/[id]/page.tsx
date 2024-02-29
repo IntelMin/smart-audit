@@ -243,99 +243,64 @@ const TokenResult = ({ params }: Props) => {
   if (!isConnected) {
     router.push("/");
   }
+  
 
-  if (loading) {
-    return (
-      <div className='inset-0 absolute top-0 left-0 h-screen flex flex-col justify-center items-center backdrop-blur-lg  bg-[url(/backgrounds/token.svg)] bg-cover bg-center  '>
-        <LoadingModal
-          activeStep={status.status}
-          setLoading={setLoading}
-        />
-      </div>
-    );
-  }
 
   return (
-    <div className='bg-[url(/backgrounds/token-result.svg)]  bg-cover bg-center pt-[148px] min-h-screen'>
-      <div className='flex flex-col gap-8 p-6 min-h-[calc(100vh-148px)]'>
-        {/* Token Address Section */}
-        <div className='relative flex flex-col items-center gap-8 bg-[#FFFFFF0D] p-6 rounded-[16px] text-center overflow-hidden'>
-          {/* Token Logo */}
-          <div className='bottom-0 left-0 z-[-1] absolute rounded-full -translate-x-[calc(50%-20px)] translate-y-[10px] size-[136px]'>
-            <Image
-              alt='logo'
-              src={"/icons/logo.svg"}
-              width={136}
-              height={136}
-            />
-          </div>
-          {/* Token Logo */}
-          <div className='top-0 right-0 z-[-1] absolute rounded-full -translate-y-[20px] translate-x-[calc(50%-23px)] size-[136px]'>
-            <Image
-              alt='logo'
-              src={"/icons/logo.svg"}
-              width={136}
-              height={136}
-            />
-          </div>
-          <div className='flex flex-col gap-2'>
-            <h1 className='font-[700] text-white text-xl'>Token Audit</h1>
-            <p className='font-[500] text-sm text-white'>
-              Submit token contract address to to get a detailed analysis <br />
-              of the token, before making your trade decision.
-            </p>
-          </div>
-          <form onSubmit={handleSubmit}>
-            <div className='flex items-center gap-4 flex-col md:flex-row'>
-              <input
-                className='bg-[#FFFFFF14] px-[16px] py-[10px] rounded-[80px] font-[500] text-[16px] text-white'
-                onChange={(e) => setTokenAddress(e.target.value)}
-                value={tokenAddress || liveData?.baseToken.address}
-                // value='0x514910771AF9Ca656af840dff83E8264EcF986CA'
-              />
-
-              <button
-                type='submit'
-                style={{
-                  background:
-                    "linear-gradient(93.06deg, #00C5EC -1.37%, #423FF1 45.43%, #E131FD 94.83%)",
-                }}
-                className='px-[39px] py-[10px] rounded-[24px] font-[700] text-[16px] text-white'
-              >
-                Submit
-              </button>
-            </div>
-          </form>
+    <div className='bg-[url(/backgrounds/token-result.svg)] bg-cover bg-center pt-[148px] min-h-screen'>
+    {loading && (
+      <div className='absolute inset-0 z-[1000] flex flex-col items-center justify-center backdrop-blur-lg bg-[#00000080]'>
+        <LoadingModal activeStep={status.status} setLoading={setLoading} />
+      </div>
+    )}
+    <div className='flex flex-col gap-8 p-6 min-h-[calc(100vh-148px)]'>
+      {/* Token Address Section */}
+      <div className='relative flex flex-col items-center gap-8 bg-[#FFFFFF0D] p-6 rounded-[16px] text-center overflow-hidden'>
+        {/* Token Logo */}
+        <div className='absolute bottom-0 left-0 z-[-1] rounded-full -translate-x-1/2 translate-y-[-10px] size-[136px]'>
+          <Image alt='logo' src={"/icons/logo.svg"} width={136} height={136} />
         </div>
-        {/* Token Result Section */}
-        <div className='grid lg:grid-cols-4  grid-cols-1 md:gap-8 gap-4'>
-          <ContractCard
-            finding={findings}
-            token={tokenData}
-            scanData={scanData}
-            metaData={metaData}
-          />
-
-          <div className='rounded-[24px] space-y-10 w-full col-span-2'>
-            <StatsComponent
-              scanData={scanData}
-              liveData={liveData}
-              tokenData={tokenData}
+        {/* Token Logo */}
+        <div className='absolute top-0 right-0 z-[-1] rounded-full -translate-y-[-20px] translate-x-1/2 size-[136px]'>
+          <Image alt='logo' src={"/icons/logo.svg"} width={136} height={136} />
+        </div>
+        <div className='flex flex-col gap-2'>
+          <h1 className='font-semibold text-lg text-white'>Token Audit</h1>
+          <p className='text-sm text-white'>
+            Submit token contract address to get a detailed analysis <br />
+            of the token, before making your trade decision.
+          </p>
+        </div>
+        <form onSubmit={handleSubmit}>
+          <div className='flex items-center gap-4 flex-col md:flex-row'>
+            <input
+              className='px-4 py-2 rounded-full font-medium text-sm text-white bg-[#FFFFFF14]'
+              onChange={(e) => setTokenAddress(e.target.value)}
+              value={tokenAddress || liveData?.baseToken.address}
             />
-            <SecurityScore scanData={scanData} />
+            <button
+              type='submit'
+              className='px-6 py-2 rounded-full font-semibold text-sm text-white bg-gradient-to-r from-[#00C5EC] via-[#423FF1] to-[#E131FD]'
+            >
+              Submit
+            </button>
           </div>
-
-          <div className='rounded-[24px] space-y-10 '>
-            <MarketCap
-              liveData={liveData}
-              infoData={infoData}
-              scanData={scanData}
-            />
-            <AuditHistory findings={findings} />
-          </div>
+        </form>
+      </div>
+      {/* Token Result Section */}
+      <div className='grid lg:grid-cols-4 gap-4'>
+        <ContractCard finding={findings} token={tokenData} scanData={scanData} metaData={metaData} />
+        <div className='rounded-lg space-y-10 col-span-2'>
+          <StatsComponent scanData={scanData} liveData={liveData} tokenData={tokenData} />
+          <SecurityScore scanData={scanData} />
+        </div>
+        <div className='rounded-lg space-y-10'>
+          <MarketCap liveData={liveData} infoData={infoData} scanData={scanData} />
+          <AuditHistory findings={findings} />
         </div>
       </div>
     </div>
+  </div>
   );
 };
 
