@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 import RewardCards from "@/components/bug-bounty/rewardCards";
 export default function CodeAudit() {
   return (
-    <main className="relative flex flex-col justify-start items-center space-y-10 bg-[url(/backgrounds/token.svg)] bg-cover bg-center pt-[156px] min-h-screen text-white ">
+    <main className="relative flex flex-col justify-start items-center space-y-10 bg-[url(/backgrounds/token.svg)] bg-cover bg-center pt-[156px] max-md:h-screen min-h-screen text-white max-md:overflow-y-scroll ">
       <div className="flex flex-col justify-center space-y-5 w-full text-center">
         <h1 className="font-bold text-2xl">Bug Bounty</h1>
         <p className="text-center text-sm">

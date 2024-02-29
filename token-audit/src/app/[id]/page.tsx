@@ -20,6 +20,7 @@ import axios from "axios";
 import { useAccount } from "wagmi";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 
+
 type Props = {
   params: {
     id: string;
@@ -32,7 +33,7 @@ type statusType = {
 };
 const TokenResult = ({ params }: Props) => {
   const router = useRouter();
-  const {isConnected}= useAccount()
+  const { isConnected } = useAccount();
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [findings, setFindings] = useState<any[]>([] as any[]);
@@ -43,7 +44,7 @@ const TokenResult = ({ params }: Props) => {
   const [liveData, setLiveData] = useState<any | null>(null);
   const [isTokenValid, setIsTokenValid] = useState(false);
   const [isinputTokenValid, setIsinputTokenValid] = useState(false);
-
+  const [timeoutid, setTimeoutid] = useState<any>(null);
   const [tokenAddress, setTokenAddress] = useState("");
   const { toast } = useToast();
   const [status, setStatus] = useState<statusType>({
@@ -51,7 +52,6 @@ const TokenResult = ({ params }: Props) => {
     progress: 0,
     status: 0,
   });
-
   useEffect(() => {
     const fetchStatus = async () => {
       if (!loading || id === "") return;
@@ -79,14 +79,15 @@ const TokenResult = ({ params }: Props) => {
             throw new Error("Failed to fetch status");
           }
           const statusData = await statusRes.json();
+          console.log(statusData);
           setStatus(statusData);
           // if (statusData.status === AUDIT_STATUS_RETURN_CODE.complete) {
           //   setLoading(false);
           // }
         }
-      } catch (error:any) {
+      } catch (error: any) {
         console.error("Error fetching status:", error);
-        toast({ 
+        toast({
           title: error.message,
           variant: "destructive",
         });
@@ -95,29 +96,36 @@ const TokenResult = ({ params }: Props) => {
     };
 
     const pollStatus = () => {
+      if(!loading) {
+        clearTimeout(timeoutid);
+      };
       if (loading) {
         fetchStatus();
         if (!isTokenValid) return;
-        setTimeout(pollStatus, 1000); // Poll every 1 second
+        const tid = setTimeout(pollStatus, 1000); 
+        setTimeoutid(tid);
       }
     };
 
     pollStatus();
   }, [id, loading, isTokenValid, router, toast]);
 
-
   useEffect(() => {
     async function fetchMeta() {
       if (!isTokenValid) return;
       if (status.status !== AUDIT_STATUS_RETURN_CODE.complete) return;
-      const res = await fetch(`/api/token/info?address=${(id as string).toLowerCase()}&type=meta`);
+      const res = await fetch(
+        `/api/token/info?address=${(id as string).toLowerCase()}&type=meta`
+      );
       const data = await res.json();
       setMetaData(data);
     }
     async function fetchAudit() {
       if (!isTokenValid) return;
       if (status.status !== AUDIT_STATUS_RETURN_CODE.complete) return;
-      const request = await fetch(`/api/audit/findings?address=${(id as string).toLowerCase()}`);
+      const request = await fetch(
+        `/api/audit/findings?address=${(id as string).toLowerCase()}`
+      );
       const data = await request.json();
       setFindings(data);
 
@@ -151,7 +159,9 @@ const TokenResult = ({ params }: Props) => {
     }
     async function fetchliveData() {
       if (status.status !== AUDIT_STATUS_RETURN_CODE.complete) return;
-      const res = await fetch(`/api/token/live?address=${(id as string).toLowerCase()}`);
+      const res = await fetch(
+        `/api/token/live?address=${(id as string).toLowerCase()}`
+      );
       const data = await res.json();
       setLiveData(data);
     }
@@ -171,15 +181,14 @@ const TokenResult = ({ params }: Props) => {
       setInfoData(data);
     }
     async function fetchData() {
-      try{
-
+      try {
         await Promise.all([
           fetchAudit(),
           fetchInfo(),
           fetchliveData(),
           fetchMeta(),
-        ])
-      }catch(e){
+        ]);
+      } catch (e) {
         console.error(e);
         toast({
           title: "Failed to fetch data",
@@ -190,7 +199,7 @@ const TokenResult = ({ params }: Props) => {
     }
 
     fetchData();
-  }, [id, isTokenValid, status.status]);
+  }, [id, isTokenValid,loading, status.status]);
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsinputTokenValid(false);
@@ -217,7 +226,7 @@ const TokenResult = ({ params }: Props) => {
     checkToken();
     if (!setIsinputTokenValid) return;
 
-    setLoading(true);
+    if (tokenAddress === "") return;
     const request = await fetch(`/api/audit/request`, {
       method: "POST",
       body: JSON.stringify({ address: tokenAddress.toLowerCase() }),
@@ -225,16 +234,15 @@ const TokenResult = ({ params }: Props) => {
         "Content-Type": "application/json",
       },
     });
+    router.push(`/${tokenAddress}`);
 
     const data = await request.json();
 
-    if (tokenAddress === "") return;
-    router.push(`/${tokenAddress}`);
     setLoading(false);
   };
-if(!isConnected){
-  router.push('/')
-    }
+  if (!isConnected) {
+    router.push("/");
+  }
 
   if (loading) {
     return (
@@ -256,7 +264,7 @@ if(!isConnected){
           <div className='bottom-0 left-0 z-[-1] absolute rounded-full -translate-x-[calc(50%-20px)] translate-y-[10px] size-[136px]'>
             <Image
               alt='logo'
-              src={ "/icons/logo.svg"}
+              src={"/icons/logo.svg"}
               width={136}
               height={136}
             />
@@ -282,11 +290,10 @@ if(!isConnected){
               <input
                 className='bg-[#FFFFFF14] px-[16px] py-[10px] rounded-[80px] font-[500] text-[16px] text-white'
                 onChange={(e) => setTokenAddress(e.target.value)}
-                value={tokenAddress}
+                value={tokenAddress || liveData?.baseToken.address}
                 // value='0x514910771AF9Ca656af840dff83E8264EcF986CA'
               />
-              {/* <div className="bg-[#FFFFFF14] px-[16px] py-[10px] rounded-[80px]"> */}
-              {/* </div> */}
+
               <button
                 type='submit'
                 style={{

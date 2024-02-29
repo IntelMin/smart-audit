@@ -9,6 +9,9 @@ export async function POST(req: NextRequest, res: NextResponse) {
   try {
     const response = await axios.post(`${process.env.AEGIS_SRV}/audit/code`, {
       source: source,
+    },{
+      timeout: 1000 * 60 * 10
+    
     });
 
     return NextResponse.json(response.data);

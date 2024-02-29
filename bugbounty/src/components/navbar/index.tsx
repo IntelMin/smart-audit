@@ -17,8 +17,8 @@ export const Navbar = (props: Props) => {
   const path = pathName.split("/")[1];
   const isActive = (ele: string) => ele.substring(1) === path;
   return (
-    <header className="top-0 left-0 z-[99] fixed w-full backdrop-blur-2xl">
-      <div className="flex items-center justify-between px-8 pt-6 pb-[18px] border-b border-[#27272A]">
+    <header className="top-0 left-0 z-[99] fixed backdrop-blur-2xl w-full">
+      <div className="flex justify-between items-center border-[#27272A] px-4 md:px-8 pt-6 pb-[18px] border-b">
         <div className="flex items-center gap-4">
           <Image src="/icons/logo.svg" alt="logo" width={48} height={48} />
           <h1 className="font-semibold text-lg text-white">SmartAudit Dapp</h1>
@@ -27,7 +27,7 @@ export const Navbar = (props: Props) => {
           <div className="flex items-center gap-4">
             <button
               type="button"
-              className="flex gap-2 px-[22px] py-[11px] border border-[#3F3F46] rounded-[100px]"
+              className="flex gap-2 border-[#3F3F46] px-[22px] py-[11px] border rounded-[100px]"
             >
               <h1 className="font-[500] text-[#fff] text-[16px]">
                 {formatAddress(address as string)}
@@ -35,7 +35,7 @@ export const Navbar = (props: Props) => {
             </button>
             <button
               type="button"
-              className="flex gap-2 px-[22px] py-[11px] border border-[#F44336] rounded-[100px]"
+              className="flex gap-2 border-[#F44336] px-[22px] py-[11px] border rounded-[100px]"
             >
               <Image
                 src="/icons/disconnect.svg"
@@ -60,7 +60,7 @@ export const Navbar = (props: Props) => {
           </div>
         )}
       </div>
-      {/* <nav className="flex items-center gap-12 pt-[18px] pl-6 border-b border-[#272727]">
+      {/* <nav className="flex items-center gap-12 border-[#272727] pt-[18px] pl-6 border-b">
         {navEle?.map((ele, i) => (
           <Link
             href={ele.href}
