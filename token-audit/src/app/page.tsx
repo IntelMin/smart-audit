@@ -5,9 +5,11 @@ import { useRouter } from "next/navigation";
 import LoadingModal from "@/components/loadingModal";
 import { useEffect, useState } from "react";
 import { MoonLoader } from "react-spinners";
+import { useAccount } from "wagmi";
 
 export default function TokenAudit() {
   const [loading, setLoading] = useState(false);
+  const {isConnected} = useAccount()
   const router = useRouter();
   const [tokenAddress, setTokenAddress] = useState("");
   const { toast } = useToast();
@@ -15,6 +17,13 @@ export default function TokenAudit() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!isConnected) {
+      toast({
+        title: "Connect your wallet to continue",
+        variant: "destructive",
+      });
+      return;
+    }
     if (tokenAddress.trim() === "") {
       toast({
         title: "Token address is required",
