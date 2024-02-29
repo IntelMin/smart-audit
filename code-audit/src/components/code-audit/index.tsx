@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Editor, { Monaco, loader } from "@monaco-editor/react";
 import { useRef } from "react";
-import { toast, useToast } from "../ui/use-toast";
+import {  useToast } from "../ui/use-toast";
 import { MoonLoader } from "react-spinners";
 import Status from "./status";
+import axios from "axios";
 
 const Index = () => {
   loader.init().then((monaco) => {
@@ -49,12 +50,13 @@ const Index = () => {
         source: sourceCode,
       };
 
-      const response = await fetch("/api/audit/code", {
-        method: "POST",
-        body: JSON.stringify(data),
+      const response = await axios.post("/api/audit/code", {
+        data,
+      },{
+        timeout: 1000 * 60 * 5
       });
 
-      if (!response.ok) {
+      if (response.status !== 200) {
         toast({
           title: "An error occurred during code audit",
           variant: "destructive",
@@ -64,7 +66,7 @@ const Index = () => {
 
       setLoading(false);
 
-      const result = await response.json();
+      const result = response.data;
       console.log(result);
       if (result.message === "No vulnerabilities found.") {
         setNoFindings(true);
