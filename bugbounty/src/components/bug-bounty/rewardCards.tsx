@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-async function RewardCards() {
+function RewardCards() {
   const [cards, setCards] = React.useState<any[]>([]);
   React.useEffect(() => {
     async function getBounties() {
@@ -18,7 +18,7 @@ async function RewardCards() {
   }, []
     )
   return (
-    <div className="gap-6 grid grid-cols-4 mt-4">
+    <div className="gap-6 grid grid-cols-1 md:grid-cols-4 mt-4">
       {cards?.map((item: any, i: number) => {
         return (
           <div key={i}>
