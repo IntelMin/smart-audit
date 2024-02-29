@@ -17,6 +17,8 @@ import { useToast } from "@/components/ui/use-toast";
 import { Progress } from "@/components/ui/progress";
 import LoadingModal from "@/components/loadingModal";
 import axios from "axios";
+import { useAccount } from "wagmi";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 type Props = {
   params: {
@@ -30,7 +32,7 @@ type statusType = {
 };
 const TokenResult = ({ params }: Props) => {
   const router = useRouter();
-
+  const {isConnected}= useAccount()
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [findings, setFindings] = useState<any[]>([] as any[]);
@@ -68,7 +70,7 @@ const TokenResult = ({ params }: Props) => {
         if (isTokenValid) {
           const statusRes = await fetch(`/api/audit/status`, {
             method: "POST",
-            body: JSON.stringify({ address: id }),
+            body: JSON.stringify({ address: (id as string).toLowerCase() }),
             headers: {
               "Content-Type": "application/json",
             },
@@ -85,7 +87,7 @@ const TokenResult = ({ params }: Props) => {
       } catch (error:any) {
         console.error("Error fetching status:", error);
         toast({ 
-          title: error,
+          title: error.message,
           variant: "destructive",
         });
         router.push("/");
@@ -102,7 +104,6 @@ const TokenResult = ({ params }: Props) => {
 
     pollStatus();
   }, [id, loading, isTokenValid, router, toast]);
-
 
 
   useEffect(() => {
@@ -231,6 +232,10 @@ const TokenResult = ({ params }: Props) => {
     router.push(`/${tokenAddress}`);
     setLoading(false);
   };
+if(!isConnected){
+  router.push('/')
+    }
+
   if (loading) {
     return (
       <div className='inset-0 absolute top-0 left-0 h-screen flex flex-col justify-center items-center backdrop-blur-lg  bg-[url(/backgrounds/token.svg)] bg-cover bg-center  '>
