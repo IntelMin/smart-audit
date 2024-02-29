@@ -2,6 +2,7 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 generator client {
     provider = "prisma-client-js"
+    output   = "./generated/client"
 }
 
 datasource db {
@@ -43,4 +44,35 @@ model bounties {
     source_code_list             String[]
     reference_list               String[]
 }
+
+model Contract {
+  id            Int   @id @default(autoincrement())
+  userId        Int
+  price         Int
+  title         String
+  description   String
+}
+
+model User {
+  id        Int    @id @default(autoincrement())
+  wallet    String
+  contract  Int[]
+}
+
+model SellContract {
+  
+  id            Int  @id @default(autoincrement())
+  name          String
+  price         String
+  contract      String
+  description   String
+  code          String
+  address       String
+}
+
+model BuyContract {
+  id            Int  @id @default(autoincrement())
+  contractInfo  String 
+}
+
 
