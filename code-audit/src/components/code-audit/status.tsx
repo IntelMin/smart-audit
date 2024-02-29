@@ -24,7 +24,7 @@ function status({ findings }: any) {
        {finding.mitigation}
       </p>
     </div>
-      )
+      )})
   }
   </>
   )
