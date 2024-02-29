@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Editor, { Monaco, loader } from "@monaco-editor/react";
 import { useRef } from "react";
-import { toast, useToast } from "../ui/use-toast";
+import {  useToast } from "../ui/use-toast";
 import { MoonLoader } from "react-spinners";
 import Status from "./status";
 import axios from "axios";
-import { time } from "console";
 
 const Index = () => {
   loader.init().then((monaco) => {
