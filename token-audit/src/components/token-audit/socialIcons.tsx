@@ -63,8 +63,8 @@ function socialIcons({ scanData }: any) {
   ];
 
   return (
-    <div className="flex flex-grow gap-2">
-      {socialIcons.map((icon, index) => (
+    <div className='flex flex-grow gap-2'>
+      {socialIcons.map((icon, index) =>
         icon.link.length > 0 ? (
           <Link
             key={index}
@@ -81,8 +81,7 @@ function socialIcons({ scanData }: any) {
             />
           </Link>
         ) : null
-      ))}
-        
+      )}
     </div>
   );
 }
