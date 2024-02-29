@@ -223,6 +223,7 @@ const TokenResult = ({ params }: Props) => {
     checkToken();
     if (!setIsinputTokenValid) return;
 
+    if (tokenAddress === "") return;
     const request = await fetch(`/api/audit/request`, {
       method: "POST",
       body: JSON.stringify({ address: tokenAddress.toLowerCase() }),
@@ -230,11 +231,10 @@ const TokenResult = ({ params }: Props) => {
         "Content-Type": "application/json",
       },
     });
+    router.push(`/${tokenAddress}`);
 
     const data = await request.json();
 
-    if (tokenAddress === "") return;
-    router.push(`/${tokenAddress}`);
     setLoading(false);
   };
 if(!isConnected){
