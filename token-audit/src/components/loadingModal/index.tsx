@@ -46,7 +46,7 @@ function Confirmation({ setLoading }: any) {
 export default function LoadingModal({ setLoading, activeStep }: any) {
   return (
     <div className='relative flex flex-col items-center gap-8 bg-[#FFFFFF0D] p-6 rounded-[16px] text-center overflow-hidden text-white justify-start lg:mx-0 md:mx-28 mx-4'>
-      <div className='flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 relative items-center'>
+      <div className='flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 relative justify-even items-center'>
         {/* <div className=' absolute h-[2px] bg-white w-full left-0 right-0 top-1/2 transform md:-translate-y-1/2 translate-y-1/2'></div>
         
         */}

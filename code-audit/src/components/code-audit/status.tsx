@@ -8,7 +8,10 @@ function status({ findings }: any) {
   return (
 
     <>
- { findings.map((finding: any, index: any) => 
+
+ { findings.map((finding: any, index: any) => {
+    return(
+
       <div className="bg-white rounded-xl py-1 md:py-2 px-4 rounded-xl flex  justify-start items-center text-black w-full space-x-2 font-bold" key={index}>
       <i className="p-1 rounded-full mb-1 animate-ping" style={
         {
@@ -21,7 +24,7 @@ function status({ findings }: any) {
        {finding.mitigation}
       </p>
     </div>
-      )
+      )})
   }
   </>
   )
