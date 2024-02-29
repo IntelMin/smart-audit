@@ -53,26 +53,32 @@ model Contract {
   description   String
 }
 
-model User {
-  id        Int    @id @default(autoincrement())
+model user {
+  id        Int    @id @default(autoincrement()) @unique
   wallet    String
-  contract  Int[]
+  listedcontracts listedcontracts[]
+  ownedcontracts  ownedcontracts[]
 }
 
-model SellContract {
-  
-  id            Int  @id @default(autoincrement())
+model listedcontracts {
+  id            Int  @id @default(autoincrement()) @unique
   name          String
   price         String
   contract      String
   description   String
   code          String
   address       String
-}
+  user_id       Int
+  user          user @relation(fields: [user_id], references: [id])
+  }
+  model ownedcontracts {
+  id            Int  @id @default(autoincrement()) @unique
+  name          String
+  contract_id  Int
+  user_id       Int
+  user          user @relation(fields: [user_id], references: [id])
+  }
 
-model BuyContract {
-  id            Int  @id @default(autoincrement())
-  contractInfo  String 
-}
+
 
 
