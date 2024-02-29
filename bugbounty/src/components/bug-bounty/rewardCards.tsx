@@ -5,7 +5,7 @@ import Link from "next/link";
 import React from "react";
 
 async function RewardCards() {
-  let res = await axios.get("http://localhost:3000/api/bounty/filter?limit=46");
+  let res = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN}/api/bounty/filter?limit=46`);
   let cards = await res.data?.bounties;
   return (
     <div className="gap-6 grid grid-cols-4 mt-4">
