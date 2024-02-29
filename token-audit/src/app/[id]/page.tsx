@@ -150,7 +150,7 @@ const TokenResult = ({ params }: Props) => {
     }
     async function fetchliveData() {
       if (status.status !== AUDIT_STATUS_RETURN_CODE.complete) return;
-      const res = await fetch(`/api/token/live?address=${id}`);
+      const res = await fetch(`/api/token/live?address=${(id as string).toLowerCase()}`);
       const data = await res.json();
       setLiveData(data);
     }
