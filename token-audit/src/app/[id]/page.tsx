@@ -43,7 +43,7 @@ const TokenResult = ({ params }: Props) => {
   const [liveData, setLiveData] = useState<any | null>(null);
   const [isTokenValid, setIsTokenValid] = useState(false);
   const [isinputTokenValid, setIsinputTokenValid] = useState(false);
-
+  const [timeoutid, setTimeoutid] = useState<any>(null);
   const [tokenAddress, setTokenAddress] = useState("");
   const { toast } = useToast();
   const [status, setStatus] = useState<statusType>({
@@ -54,6 +54,8 @@ const TokenResult = ({ params }: Props) => {
 
   useEffect(() => {
     const fetchStatus = async () => {
+      if(!loading) return
+      if(status.status === AUDIT_STATUS_RETURN_CODE.complete) return
       if (!loading || id === "") return;
 
       try {
@@ -95,16 +97,20 @@ const TokenResult = ({ params }: Props) => {
     };
 
     const pollStatus = () => {
+      console.log(status)
+      if(!loading) {
+        clearTimeout(timeoutid);
+      };
       if (loading) {
         fetchStatus();
         if (!isTokenValid) return;
-        setTimeout(pollStatus, 1000); // Poll every 1 second
+        const tid = setTimeout(pollStatus, 1000); 
+        setTimeoutid(tid);
       }
     };
 
     pollStatus();
   }, [id, loading, isTokenValid, router, toast]);
-
 
   useEffect(() => {
     async function fetchMeta() {
@@ -190,7 +196,7 @@ const TokenResult = ({ params }: Props) => {
     }
 
     fetchData();
-  }, [id, isTokenValid, status.status]);
+  }, [id, isTokenValid,loading, status.status]);
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsinputTokenValid(false);
@@ -217,7 +223,6 @@ const TokenResult = ({ params }: Props) => {
     checkToken();
     if (!setIsinputTokenValid) return;
 
-    setLoading(true);
     const request = await fetch(`/api/audit/request`, {
       method: "POST",
       body: JSON.stringify({ address: tokenAddress.toLowerCase() }),

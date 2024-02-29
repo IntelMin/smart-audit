@@ -11,8 +11,15 @@ router.get('/live/:address', async (req, res) => {
   try {
     const response = await axios.get(url);
     const filedata = response.data;
+    console.log(filedata);
     const pair = filedata['pairs'][0];
-
+    if(pair.chainId ==="pulsechain"){
+      const defillama_res = await axios.get(`https://coins.llama.fi/prices/current/ethereum:${address},?searchWidth=4h`);
+      const defillama_data = defillama_res.data.coins;
+      console.log( defillama_data[`ethereum:${address}`]);
+      delete pair['priceUsd'];
+      pair['priceUsd'] = defillama_data[`ethereum:${address}`].price;
+    }
     // remove unnecessary fields
     delete pair['url'];
 
