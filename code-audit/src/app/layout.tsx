@@ -5,7 +5,6 @@ import { Providers } from "@/components/wallet-provider";
 import { Navbar } from "@/components/navbar";
 import { Toaster } from "@/components/ui/toaster";
 export const metadata: Metadata = {
-  metadataBase: new URL("https://smart-audit-three.vercel.app/"),
   title: "SmartAudit Dapp",
   description: "Handle auditing smartly",
   openGraph: {
