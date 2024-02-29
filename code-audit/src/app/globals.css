@@ -94,3 +94,10 @@ monaco-editor no-user-select mac  showUnused showDeprecated vs{
 .custom-editor {
   background: #ee0000 !important;
 }
+
+.line-numbers.active-line-number{
+  color:white !important;
+}
+.mtk10{
+  color:white !important;
+}

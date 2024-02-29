@@ -5,6 +5,7 @@ import {  useToast } from "../ui/use-toast";
 import { MoonLoader } from "react-spinners";
 import Status from "./status";
 import axios from "axios";
+import { Loader } from "lucide-react";
 
 const Index = () => {
   loader.init().then((monaco) => {
@@ -16,6 +17,10 @@ const Index = () => {
         "editor.background": "#eeeeee00",
         "editor.foreground": "#ffffff",
         "editor.lineHighlightBackground": "#eeeeee00",
+        "editor.textcolor": "#ffffff",
+        "editorCursor.foreground":"#ffffff",
+        "textSeparator.foreground":"#eeeeee00",
+        "textCodeBlock.background":"#eeeeee00",
       },
     });
   });
@@ -171,7 +176,7 @@ console.log(noFindings)
           onClick={() => auditCode(contractCode)}
           disabled={loading}
         >
-          {loading ? "Auditing..." : "Audit"}
+          {loading ? (<div className="flex w-full justify-center items-center space-x-3 text-center"><p>Auditing...</p><Loader/></div>) : "Audit"}
         </button>
       </div>
     </div>
