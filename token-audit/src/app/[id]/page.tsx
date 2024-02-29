@@ -240,7 +240,6 @@ const TokenResult = ({ params }: Props) => {
   if (!isConnected) {
     router.push("/");
   }
-  console.log("address", liveData?.baseToken.address);
 
   if (loading) {
     return (
