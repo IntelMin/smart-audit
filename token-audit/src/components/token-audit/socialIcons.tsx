@@ -1,58 +1,101 @@
-import { Link } from 'lucide-react';
-import Image from 'next/image';
-import React from 'react'
+import Link from "next/link";
+import Image from "next/image";
+import React from "react";
 
-function socialIcons({scanData}:any) {
-    // if(!scanData) return (
-    //     <>
-    //     </>
-    // )
-    console.log("scan dtaa",scanData)
-    const socialIcons = [
-        {
-            name: "twitter",
-            url: "/socialIcons/dis.svg"
-            
-        },
-        {
-            name: "discord",
-            url: "/socialIcons/x.svg"
-            
-        },
-        {
-            name: "telegram",
-            url: "/socialIcons/tele.svg"
-        },
-        {
-            name: "website",
-            url: "/socialIcons/block.svg"
-            
-        },
-        
-    ];
+function socialIcons({ scanData }: any) {
+  const {
+    discord,
+    facebook,
+    github,
+    linkedin,
+    medium,
+    reddit,
+    twitter,
+    website,
+    telegram,
+  } = scanData;
+  console.log(
+    discord,
+    facebook,
+    github,
+    linkedin,
+    medium,
+    reddit,
+    twitter,
+    website,
+    telegram
+  );
+  const socialIcons = [
+    {
+      name: "discord",
+      url: "/socialIcons/discord.svg",
+      link: discord,
+    },
+    {
+      name: "facebook",
+      url: "/socialIcons/facebook.svg",
+      link: facebook,
+    },
+    {
+      name: "github",
+      url: "/socialIcons/github.svg",
+      link: github,
+    },
+    {
+      name: "linkedin",
+      url: "/socialIcons/linkedin.svg",
+      link: linkedin,
+    },
+    {
+      name: "medium",
+      url: "/socialIcons/medium.svg",
+      link: medium,
+    },
+    {
+      name: "reddit",
+      url: "/socialIcons/reddit.svg",
+      link: reddit,
+    },
+    {
+      name: "twitter",
+      url: "/socialIcons/twitter.svg",
+      link: twitter,
+    },
+    {
+      name: "website",
+      url: "/socialIcons/website.svg",
+      link: website,
+    },
+    {
+      name: "telegram",
+      url: "/socialIcons/telegram.svg",
+      link: telegram,
+    },
+  ];
 
   return (
-    <div className='flex space-x-8'>
-
+    <div className="flex flex-grow gap-2">
       {socialIcons.map((icon, index) => (
-        <button
-          key={index}
-          className=' rounded-full  border-neutral-400'
-        >
-          <div key={index}>
+        icon.link.length > 0 ? (
+          <Link
+            key={index}
+            href={icon.link}
+            target='_blank'
+            rel='noopener noreferrer'
+            className='hover:opacity-80'
+          >
             <Image
               src={icon.url}
-              width={80}
-              height={80}
-              alt='icon'
-              className='w-[80px] h-[80px]'
+              alt={icon.name}
+              width={50}
+              height={50}
             />
-          </div>
-        </button>
+          </Link>
+        ) : null
       ))}
-
+        
     </div>
   );
 }
 
-export default socialIcons
+export default socialIcons;

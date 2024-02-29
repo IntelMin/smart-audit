@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -9,88 +9,96 @@
 
     --card: 0 0% 100%;
     --card-foreground: 20 14.3% 4.1%;
- 
+
     --popover: 0 0% 100%;
     --popover-foreground: 20 14.3% 4.1%;
- 
+
     --primary: 24 9.8% 10%;
     --primary-foreground: 60 9.1% 97.8%;
- 
+
     --secondary: 60 4.8% 95.9%;
     --secondary-foreground: 24 9.8% 10%;
- 
+
     --muted: 60 4.8% 95.9%;
     --muted-foreground: 25 5.3% 44.7%;
- 
+
     --accent: 60 4.8% 95.9%;
     --accent-foreground: 24 9.8% 10%;
- 
+
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 60 9.1% 97.8%;
 
     --border: 20 5.9% 90%;
     --input: 20 5.9% 90%;
     --ring: 20 14.3% 4.1%;
- 
+
     --radius: 0.5rem;
   }
- 
+
   .dark {
     --background: 20 14.3% 4.1%;
     --foreground: 60 9.1% 97.8%;
- 
+
     --card: 20 14.3% 4.1%;
     --card-foreground: 60 9.1% 97.8%;
- 
+
     --popover: 20 14.3% 4.1%;
     --popover-foreground: 60 9.1% 97.8%;
- 
+
     --primary: 60 9.1% 97.8%;
     --primary-foreground: 24 9.8% 10%;
- 
+
     --secondary: 12 6.5% 15.1%;
     --secondary-foreground: 60 9.1% 97.8%;
- 
+
     --muted: 12 6.5% 15.1%;
     --muted-foreground: 24 5.4% 63.9%;
- 
+
     --accent: 12 6.5% 15.1%;
     --accent-foreground: 60 9.1% 97.8%;
- 
+
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 60 9.1% 97.8%;
- 
+
     --border: 12 6.5% 15.1%;
     --input: 12 6.5% 15.1%;
     --ring: 24 5.7% 82.9%;
   }
 }
- 
+
 @layer base {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
 }
+
 .monaco-editor {
-  background-color: rgba(0, 0, 0, 0.5); /* Background color with transparency */
-  border-radius: 10px; /* Rounded border */
-  backdrop-filter: blur(10px); /* Backdrop blur */
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Background color with transparency */
+  border-radius: 10px;
+  /* Rounded border */
+  backdrop-filter: blur(10px);
+  /* Backdrop blur */
 }
+
 .margin-view-overlays {
   background: transparent !important;
   /* border-radius: 200px; */
 }
+
 /* .margin{
   background: #ee0000 !important;
 
 } */
-monaco-editor no-user-select mac  showUnused showDeprecated vs{
+monaco-editor no-user-select mac showUnused showDeprecated vs {
   background: #ee0000 !important;
   border-radius: 200px;
 }
+
 .custom-editor {
   background: #ee0000 !important;
 }
@@ -115,60 +123,126 @@ monaco-editor no-user-select mac  showUnused showDeprecated vs{
 }
 
 @keyframes f {
-	0% {
-		background-position: 40px 0;
-	}
+  0% {
+    background-position: 40px 0;
+  }
 
-	to {
-		background-position: 0 0;
-	}
+  to {
+    background-position: 0 0;
+  }
 }
 
 .progress {
-	overflow: hidden;
-	margin-top: 2em;
-	height: 80px;
-	border-radius: 10px;
-	box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-top: 2em;
+  height: 80px;
+  border-radius: 10px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .progress-bar {
-	height: 100%;
-	box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  height: 100%;
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
 }
 
 .progress-bar-striped,
 .progress-striped .progress-bar {
-	background-image: linear-gradient(
-		45deg,
-		hsla(0, 0%, 95%, 0.8) 25%,
-		transparent 0,
-		transparent 50%,
-		hsla(0, 0%, 95%, 0.8) 0,
-		hsla(0, 0%, 95%, 0.8) 75%,
-		transparent 0,
-		transparent
-	);
-	background-size: 40px 40px;
+  background-image: linear-gradient(45deg,
+      hsla(0, 0%, 95%, 0.8) 25%,
+      transparent 0,
+      transparent 50%,
+      hsla(0, 0%, 95%, 0.8) 0,
+      hsla(0, 0%, 95%, 0.8) 75%,
+      transparent 0,
+      transparent);
+  background-size: 40px 40px;
 }
 
 .progress-bar.active,
 .progress.active .progress-bar {
-	-webkit-animation: f 2s linear infinite;
-	animation: f 2s linear infinite;
+  -webkit-animation: f 2s linear infinite;
+  animation: f 2s linear infinite;
 }
 
 
 
 .progress-striped .progress-bar-success {
-	background-image: linear-gradient(
-		45deg,
-		hsla(0, 0%, 100%, 0.15) 25%,
-		transparent 0,
-		transparent 50%,
-		hsla(0, 0%, 100%, 0.15) 0,
-		hsla(0, 0%, 100%, 0.15) 75%,
-		transparent 0,
-		transparent
-	);
+  background-image: linear-gradient(45deg,
+      hsla(0, 0%, 100%, 0.15) 25%,
+      transparent 0,
+      transparent 50%,
+      hsla(0, 0%, 100%, 0.15) 0,
+      hsla(0, 0%, 100%, 0.15) 75%,
+      transparent 0,
+      transparent);
 }
+
+
+.order-tracking{
+	text-align: center;
+	width: 33.33%;
+	position: relative;
+	display: block;
+}
+.order-tracking .is-complete{
+	display: block;
+	position: relative;
+	border-radius: 50%;
+	height: 30px;
+	width: 30px;
+	border: 0px solid #AFAFAF;
+	background-color: #f7be16;
+	margin: 0 auto;
+	transition: background 0.25s linear;
+	-webkit-transition: background 0.25s linear;
+	z-index: 2;
+}
+.order-tracking .is-complete:after {
+	display: block;
+	position: absolute;
+	content: '';
+	height: 14px;
+	width: 7px;
+	top: -2px;
+	bottom: 0;
+	left: 5px;
+	margin: auto 0;
+	border: 0px solid #AFAFAF;
+	border-width: 0px 2px 2px 0;
+	transform: rotate(45deg);
+	opacity: 0;
+}
+.order-tracking.completed .is-complete{
+	border-color: #27aa80;
+	border-width: 0px;
+	background-color: #27aa80;
+}
+.order-tracking.completed .is-complete:after {
+	border-color: #fff;
+	border-width: 0px 3px 3px 0;
+	width: 7px;
+	left: 11px;
+	opacity: 1;
+}
+.order-tracking p {
+	color: #A4A4A4;
+	font-size: 16px;
+	margin-top: 8px;
+	margin-bottom: 0;
+	line-height: 20px;
+}
+.order-tracking p span{font-size: 14px;}
+.order-tracking.completed p{color: #000;}
+.order-tracking::before {
+	content: '';
+	display: block;
+	height: 3px;
+	width: calc(100% - 40px);
+	background-color: #f7be16;
+	top: 13px;
+	position: absolute;
+	left: calc(-50% + 20px);
+	z-index: 0;
+}
+.order-tracking:first-child:before{display: none;}
+.order-tracking.completed:before{background-color: #27aa80;}

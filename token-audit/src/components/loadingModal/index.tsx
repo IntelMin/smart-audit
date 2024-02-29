@@ -3,27 +3,24 @@ import Image from "next/image";
 
 function ShippingStep({ label, status }: any) {
   return (
-    <div className='grid items-center md:gap-2 md:grid-cols-3 grid-cols-1 justify-start '>
-      <div className='flex md:flex-col flex-row  justify-center gap-1 items-center w-full'>
+    <div className='flex items-center md:flex-col flex-row z-[100] '>
+      <div className=' mr-4 '>
         <div
-          className={`w-8 h-8 rounded-full flex items-center justify-center ${
-            status === "completed"
-              ? "bg-transparent rounded-full"
-              : "whiteGlassmorphism"
+          className={`w-10 h-10 rounded-full flex items-center justify-center ${
+            status === "completed" ? "whiteGlassmorphism" : "whiteGlassmorphism"
           }`}
         >
           {status === "completed" && (
             <Image
               src='/tick.svg'
               alt='tick'
-              width={20}
-              height={20}
+              width={40}
+              height={40}
             />
           )}
         </div>
-        {/* <div className='h-.5 whiteGlassmorphism w-20'></div> */}
-        <h1 className='text-sm font-semibold w-full text-nowrap'>{label}</h1>
       </div>
+      <h1 className='text-sm font-semibold'>{label}</h1>
     </div>
   );
 }
@@ -42,33 +39,38 @@ export default function LoadingModal({ setLoading, activeStep }: any) {
   ];
 
   return (
-    <div className='relative flex flex-col items-center gap-8 bg-[#FFFFFF0D] p-6 rounded-[16px] text-center overflow-hidden text-white justify-start lg:mx-0 md:mx-28 mx-4'>
-      <div className='flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 relative justify-even items-center'>
+    <div className='relative flex flex-col items-center gap-8 bg-[#FFFFFF0D] p-4 md:w-1/2 rounded-[16px] text-center overflow-hidden text-white mx-2'>
+      <div className='flex flex-col md:flex-row md:items-center items-start gap-5 justify-center'>
         {steps.map((step, index) => (
           <React.Fragment key={index}>
             <ShippingStep
               label={step.label}
               status={step.status}
+              // className='flex items-center md:flex-col flex-row'
             />
+
             {index !== steps.length - 1 && (
-              <div className='h-0.5 bg-transparent w-16 md:w-20 md:h-20 md:ml-2 md:mt-4 md:absolute md:top-1/4 md:left-1/2 md:-translate-x-1/2 md:rounded-full' />
+              <div className='h-1 bg-[#FFFFFF0D] backdrop-blur-sm hidden md:block w-20 absolute top-8 px-24 -z-0 md:rotate-0 rotate-90' />
+            )}
+            {index !== steps.length - 1 && (
+              <div className='h-1 bg-[#FFFFFF0D] backdrop-blur-sm md:hidden block  w-20 sticky top-18 -left-[8x]  px-12 -z-0 md:rotate-0 rotate-90' />
             )}
           </React.Fragment>
         ))}
       </div>
 
-      <div className='flex flex-col text-center px-7'>
+      <div className='flex flex-col text-center'>
         {activeStep === 0 && (
           <div className='py-3'>
             <h1 className='text-medium'>Requested Audit</h1>
             <p className='font-normal text-sm'>
-              Request Audit in progress. Thank you for your patience; we&apos;ll
-              inform you once it&apos;s done.
+              Request Audit in progress. Thank you for your patience; we'll
+              inform you once it's done.
             </p>
           </div>
         )}
         {activeStep === 1 && (
-          <div className='text-center mt-4 px-7 space-y-3'>
+          <div className='text-center mt-4 space-y-3'>
             <h1 className='font-bold'>AI is Auditing</h1>
             <p className='font-normal text-sm'>
               AI auditing is ongoing, please bear with us through this stage.
@@ -77,13 +79,13 @@ export default function LoadingModal({ setLoading, activeStep }: any) {
         )}
 
         {activeStep === 2 && (
-          <div className='flex flex-col text-center space-y-3 w-full'>
+          <div className='flex flex-col space-y-3'>
             <h1>Complete</h1>
             <p className='font-normal text-sm'>
-              Your audit is ready! Let’s see it
+              Your audit is ready! Let’s see it.
             </p>
             <button
-              className='py-2 flex justify-center w-full items-center rounded-[24px] text-white md:flex'
+              className='py-2 w-full rounded-[24px] text-white'
               onClick={() => setLoading(false)}
               style={{
                 background:

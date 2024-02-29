@@ -276,7 +276,7 @@ const TokenResult = ({ params }: Props) => {
             <input
               className='px-4 py-2 rounded-full font-medium text-sm text-white bg-[#FFFFFF14]'
               onChange={(e) => setTokenAddress(e.target.value)}
-              value={tokenAddress || liveData?.baseToken.address}
+              value={tokenAddress || liveData?.baseToken?.address}
             />
             <button
               type='submit'

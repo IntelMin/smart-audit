@@ -7,6 +7,7 @@ import copy from "copy-to-clipboard";
 import { useToast } from "../ui/use-toast";
 import Logo from "../../../public/icons/logo.svg";
 function ContractCard({ token, scanData, finding }: any) {
+ 
   const { toast } = useToast();
 
   if (!token)
@@ -62,7 +63,7 @@ function ContractCard({ token, scanData, finding }: any) {
           )}{" "}
           {/* finding?.text */}
         </p>
-        <SocialIcons />
+        <SocialIcons scanData={scanData} />
         <div className='flex flex-col flex-end h-full justify-end w-full space-y-1 relative py-2'>
           <label className='font-medium  py-3 lg:text-[16px] text-[10px] text-white flex justify-between lg:px-3 px-1'>
             Contract Address
