@@ -14,17 +14,6 @@ function socialIcons({ scanData }: any) {
     website,
     telegram,
   } = scanData;
-  console.log(
-    discord,
-    facebook,
-    github,
-    linkedin,
-    medium,
-    reddit,
-    twitter,
-    website,
-    telegram
-  );
   const socialIcons = [
     {
       name: "discord",
