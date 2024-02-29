@@ -33,7 +33,13 @@ const auditData =[
             <h1>Security Score</h1>
         </header>
         <div className='relative '>
-        <Progress  value={scanData.auditScore??0} className='h-[100px] '/>
+        {/* <Progress  value={scanData.auditScore??0} className='h-[100px] '/> */}
+        <div className=''>
+            <Image src="/icons/tokenaudit/progress.svg" 
+            alt='' width={100} height={100} 
+            className='absolute top-1/2 left-1/2 w-full my-auto h-[500px] justify-start transform -translate-x-1/2 -translate-y-1/2 rotate-90' />
+           
+        </div>
 
         <p className='absolute text-white p-3 right-2 flex flex-col text-center top-2' >
             <p className='font-bold text-xl'>{( scanData.auditScore??0).toFixed(2)??0}%</p>
