@@ -66,7 +66,6 @@ const TokenResult = ({ params }: Props) => {
         setIsTokenValid(true);
 
         if (isTokenValid) {
-          console.log("fetching status");
           const statusRes = await fetch(`/api/audit/status`, {
             method: "POST",
             body: JSON.stringify({ address: id }),
@@ -78,16 +77,15 @@ const TokenResult = ({ params }: Props) => {
             throw new Error("Failed to fetch status");
           }
           const statusData = await statusRes.json();
-          console.log(statusData);
           setStatus(statusData);
-          if (statusData.status === AUDIT_STATUS_RETURN_CODE.complete) {
-            setLoading(false);
-          }
+          // if (statusData.status === AUDIT_STATUS_RETURN_CODE.complete) {
+          //   setLoading(false);
+          // }
         }
-      } catch (error) {
-        console.error("Error fetching status:", error.message);
-        toast({
-          title: error.message,
+      } catch (error:any) {
+        console.error("Error fetching status:", error);
+        toast({ 
+          title: error,
           variant: "destructive",
         });
         router.push("/");
@@ -98,7 +96,6 @@ const TokenResult = ({ params }: Props) => {
       if (loading) {
         fetchStatus();
         if (!isTokenValid) return;
-        console.log("polling status");
         setTimeout(pollStatus, 1000); // Poll every 1 second
       }
     };
@@ -106,90 +103,21 @@ const TokenResult = ({ params }: Props) => {
     pollStatus();
   }, [id, loading, isTokenValid, router, toast]);
 
-  useEffect(() => {
-    async function fetchStatus() {
-      if (!loading) return;
-      if (id === "") return;
-      const res = await fetch(`/api/token/check?token=${id}`);
-      if (!res.ok) {
-        toast({
-          title: "Token address is invalid",
-          variant: "destructive",
-        });
-        router.push("/");
-      }
-      const token_data = await res.json();
-      if (!token_data.address) {
-        toast({
-          title: "Token address is invalid",
-          variant: "destructive",
-        });
-        router.push("/");
-      } else {
-        setIsTokenValid(true);
-      }
-      if (isTokenValid) {
-        console.log("fetching status");
-        const status = await fetch(`/api/audit/status`, {
-          method: "POST",
-          body: JSON.stringify({ address: id }),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-        if (!status.ok) return;
 
-        console.log(status);
-        const statusData = await status.json();
-        if (statusData.status === AUDIT_STATUS_RETURN_CODE.notRequested) {
-          const req = await fetch(`/api/audit/request`, {
-            method: "POST",
-            body: JSON.stringify({ address: (id as string).toLowerCase() }),
-            headers: {
-              "Content-Type": "application/json",
-            },
-          });
-          const req_data = await req.json();
-          console.log(req_data);
-        }
-        console.log(statusData);
-        setStatus(statusData);
-        if (statusData.status === AUDIT_STATUS_RETURN_CODE.complete) {
-          setLoading(false);
-        }
-      }
-    }
-    const pollStatus = () => {
-      if(!loading) return;
-      if (loading ) {
-        fetchStatus();
-        if(!isTokenValid) return;
-        
-        setTimeout(pollStatus, 1000); // Poll every 1 second
-      }else{
- 
-      }
-
-    };
-
-    pollStatus();
-  }, [id, isTokenValid, loading, router, toast]);
 
   useEffect(() => {
     async function fetchMeta() {
       if (!isTokenValid) return;
       if (status.status !== AUDIT_STATUS_RETURN_CODE.complete) return;
-      const res = await fetch(`/api/token/info?address=${id}&type=meta`);
+      const res = await fetch(`/api/token/info?address=${(id as string).toLowerCase()}&type=meta`);
       const data = await res.json();
       setMetaData(data);
     }
     async function fetchAudit() {
       if (!isTokenValid) return;
       if (status.status !== AUDIT_STATUS_RETURN_CODE.complete) return;
-      const request = await fetch(`/api/audit/findings?address=${id}`);
-      console.log(request);
+      const request = await fetch(`/api/audit/findings?address=${(id as string).toLowerCase()}`);
       const data = await request.json();
-      console.log({ data });
       setFindings(data);
 
       if (status.status !== AUDIT_STATUS_RETURN_CODE.complete) return;
@@ -211,7 +139,6 @@ const TokenResult = ({ params }: Props) => {
         },
       });
       const scan_data = await scan_res.json();
-      console.log(scan_data);
       setScanData(scan_data);
       const data_fetch = await res_fetch.json();
       if (data_fetch.token) {
@@ -243,17 +170,26 @@ const TokenResult = ({ params }: Props) => {
       setInfoData(data);
     }
     async function fetchData() {
-      await Promise.all([
-        fetchAudit(),
-        fetchInfo(),
-        fetchliveData(),
-        fetchMeta(),
-      ]);
+      try{
+
+        await Promise.all([
+          fetchAudit(),
+          fetchInfo(),
+          fetchliveData(),
+          fetchMeta(),
+        ])
+      }catch(e){
+        console.error(e);
+        toast({
+          title: "Failed to fetch data",
+          variant: "destructive",
+        });
+        // setLoading(false);
+      }
     }
 
     fetchData();
   }, [id, isTokenValid, status.status]);
-  console.log(scanData);
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsinputTokenValid(false);
@@ -315,7 +251,7 @@ const TokenResult = ({ params }: Props) => {
           <div className='bottom-0 left-0 z-[-1] absolute rounded-full -translate-x-[calc(50%-20px)] translate-y-[10px] size-[136px]'>
             <Image
               alt='logo'
-              src={tokenData?.icon_url ?? "/icons/logo.svg"}
+              src={ "/icons/logo.svg"}
               width={136}
               height={136}
             />
@@ -324,7 +260,7 @@ const TokenResult = ({ params }: Props) => {
           <div className='top-0 right-0 z-[-1] absolute rounded-full -translate-y-[20px] translate-x-[calc(50%-23px)] size-[136px]'>
             <Image
               alt='logo'
-              src={tokenData?.icon_url ?? "/icons/logo.svg"}
+              src={"/icons/logo.svg"}
               width={136}
               height={136}
             />
