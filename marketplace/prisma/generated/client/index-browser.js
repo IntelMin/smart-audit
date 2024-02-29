@@ -146,25 +146,28 @@ exports.Prisma.ContractScalarFieldEnum = {
   description: 'description'
 };
 
-exports.Prisma.UserScalarFieldEnum = {
+exports.Prisma.UsersScalarFieldEnum = {
   id: 'id',
-  wallet: 'wallet',
-  contract: 'contract'
+  address: 'address'
 };
 
-exports.Prisma.SellContractScalarFieldEnum = {
+exports.Prisma.ListedcontractsScalarFieldEnum = {
   id: 'id',
   name: 'name',
   price: 'price',
   contract: 'contract',
   description: 'description',
+  code_hash: 'code_hash',
   code: 'code',
-  address: 'address'
+  address: 'address',
+  user_id: 'user_id'
 };
 
-exports.Prisma.BuyContractScalarFieldEnum = {
+exports.Prisma.OwnedcontractsScalarFieldEnum = {
   id: 'id',
-  contractInfo: 'contractInfo'
+  name: 'name',
+  contract_id: 'contract_id',
+  user_id: 'user_id'
 };
 
 exports.Prisma.SortOrder = {
@@ -197,9 +200,9 @@ exports.Prisma.ModelName = {
   audit_requests: 'audit_requests',
   bounties: 'bounties',
   Contract: 'Contract',
-  User: 'User',
-  SellContract: 'SellContract',
-  BuyContract: 'BuyContract'
+  users: 'users',
+  listedcontracts: 'listedcontracts',
+  ownedcontracts: 'ownedcontracts'
 };
 
 /**

@@ -29,20 +29,20 @@ export type bounties = $Result.DefaultSelection<Prisma.$bountiesPayload>
  */
 export type Contract = $Result.DefaultSelection<Prisma.$ContractPayload>
 /**
- * Model User
+ * Model users
  * 
  */
-export type User = $Result.DefaultSelection<Prisma.$UserPayload>
+export type users = $Result.DefaultSelection<Prisma.$usersPayload>
 /**
- * Model SellContract
+ * Model listedcontracts
  * 
  */
-export type SellContract = $Result.DefaultSelection<Prisma.$SellContractPayload>
+export type listedcontracts = $Result.DefaultSelection<Prisma.$listedcontractsPayload>
 /**
- * Model BuyContract
+ * Model ownedcontracts
  * 
  */
-export type BuyContract = $Result.DefaultSelection<Prisma.$BuyContractPayload>
+export type ownedcontracts = $Result.DefaultSelection<Prisma.$ownedcontractsPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -197,34 +197,34 @@ export class PrismaClient<
   get contract(): Prisma.ContractDelegate<ExtArgs>;
 
   /**
-   * `prisma.user`: Exposes CRUD operations for the **User** model.
+   * `prisma.users`: Exposes CRUD operations for the **users** model.
     * Example usage:
     * ```ts
     * // Fetch zero or more Users
-    * const users = await prisma.user.findMany()
+    * const users = await prisma.users.findMany()
     * ```
     */
-  get user(): Prisma.UserDelegate<ExtArgs>;
+  get users(): Prisma.usersDelegate<ExtArgs>;
 
   /**
-   * `prisma.sellContract`: Exposes CRUD operations for the **SellContract** model.
+   * `prisma.listedcontracts`: Exposes CRUD operations for the **listedcontracts** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more SellContracts
-    * const sellContracts = await prisma.sellContract.findMany()
+    * // Fetch zero or more Listedcontracts
+    * const listedcontracts = await prisma.listedcontracts.findMany()
     * ```
     */
-  get sellContract(): Prisma.SellContractDelegate<ExtArgs>;
+  get listedcontracts(): Prisma.listedcontractsDelegate<ExtArgs>;
 
   /**
-   * `prisma.buyContract`: Exposes CRUD operations for the **BuyContract** model.
+   * `prisma.ownedcontracts`: Exposes CRUD operations for the **ownedcontracts** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more BuyContracts
-    * const buyContracts = await prisma.buyContract.findMany()
+    * // Fetch zero or more Ownedcontracts
+    * const ownedcontracts = await prisma.ownedcontracts.findMany()
     * ```
     */
-  get buyContract(): Prisma.BuyContractDelegate<ExtArgs>;
+  get ownedcontracts(): Prisma.ownedcontractsDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -698,9 +698,9 @@ export namespace Prisma {
     audit_requests: 'audit_requests',
     bounties: 'bounties',
     Contract: 'Contract',
-    User: 'User',
-    SellContract: 'SellContract',
-    BuyContract: 'BuyContract'
+    users: 'users',
+    listedcontracts: 'listedcontracts',
+    ownedcontracts: 'ownedcontracts'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -717,7 +717,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'audit_requests' | 'bounties' | 'contract' | 'user' | 'sellContract' | 'buyContract'
+      modelProps: 'audit_requests' | 'bounties' | 'contract' | 'users' | 'listedcontracts' | 'ownedcontracts'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -919,201 +919,201 @@ export namespace Prisma {
           }
         }
       }
-      User: {
-        payload: Prisma.$UserPayload<ExtArgs>
-        fields: Prisma.UserFieldRefs
+      users: {
+        payload: Prisma.$usersPayload<ExtArgs>
+        fields: Prisma.usersFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.UserFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserPayload> | null
+            args: Prisma.usersFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$usersPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.UserFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+            args: Prisma.usersFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>
           }
           findFirst: {
-            args: Prisma.UserFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserPayload> | null
+            args: Prisma.usersFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$usersPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.UserFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+            args: Prisma.usersFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>
           }
           findMany: {
-            args: Prisma.UserFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>[]
+            args: Prisma.usersFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>[]
           }
           create: {
-            args: Prisma.UserCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+            args: Prisma.usersCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>
           }
           createMany: {
-            args: Prisma.UserCreateManyArgs<ExtArgs>,
+            args: Prisma.usersCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           delete: {
-            args: Prisma.UserDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+            args: Prisma.usersDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>
           }
           update: {
-            args: Prisma.UserUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+            args: Prisma.usersUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>
           }
           deleteMany: {
-            args: Prisma.UserDeleteManyArgs<ExtArgs>,
+            args: Prisma.usersDeleteManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           updateMany: {
-            args: Prisma.UserUpdateManyArgs<ExtArgs>,
+            args: Prisma.usersUpdateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           upsert: {
-            args: Prisma.UserUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+            args: Prisma.usersUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>
           }
           aggregate: {
-            args: Prisma.UserAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateUser>
+            args: Prisma.UsersAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateUsers>
           }
           groupBy: {
-            args: Prisma.UserGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<UserGroupByOutputType>[]
+            args: Prisma.usersGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<UsersGroupByOutputType>[]
           }
           count: {
-            args: Prisma.UserCountArgs<ExtArgs>,
-            result: $Utils.Optional<UserCountAggregateOutputType> | number
+            args: Prisma.usersCountArgs<ExtArgs>,
+            result: $Utils.Optional<UsersCountAggregateOutputType> | number
           }
         }
       }
-      SellContract: {
-        payload: Prisma.$SellContractPayload<ExtArgs>
-        fields: Prisma.SellContractFieldRefs
+      listedcontracts: {
+        payload: Prisma.$listedcontractsPayload<ExtArgs>
+        fields: Prisma.listedcontractsFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.SellContractFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$SellContractPayload> | null
+            args: Prisma.listedcontractsFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$listedcontractsPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.SellContractFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$SellContractPayload>
+            args: Prisma.listedcontractsFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$listedcontractsPayload>
           }
           findFirst: {
-            args: Prisma.SellContractFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$SellContractPayload> | null
+            args: Prisma.listedcontractsFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$listedcontractsPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.SellContractFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$SellContractPayload>
+            args: Prisma.listedcontractsFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$listedcontractsPayload>
           }
           findMany: {
-            args: Prisma.SellContractFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$SellContractPayload>[]
+            args: Prisma.listedcontractsFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$listedcontractsPayload>[]
           }
           create: {
-            args: Prisma.SellContractCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$SellContractPayload>
+            args: Prisma.listedcontractsCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$listedcontractsPayload>
           }
           createMany: {
-            args: Prisma.SellContractCreateManyArgs<ExtArgs>,
+            args: Prisma.listedcontractsCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           delete: {
-            args: Prisma.SellContractDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$SellContractPayload>
+            args: Prisma.listedcontractsDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$listedcontractsPayload>
           }
           update: {
-            args: Prisma.SellContractUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$SellContractPayload>
+            args: Prisma.listedcontractsUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$listedcontractsPayload>
           }
           deleteMany: {
-            args: Prisma.SellContractDeleteManyArgs<ExtArgs>,
+            args: Prisma.listedcontractsDeleteManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           updateMany: {
-            args: Prisma.SellContractUpdateManyArgs<ExtArgs>,
+            args: Prisma.listedcontractsUpdateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           upsert: {
-            args: Prisma.SellContractUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$SellContractPayload>
+            args: Prisma.listedcontractsUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$listedcontractsPayload>
           }
           aggregate: {
-            args: Prisma.SellContractAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateSellContract>
+            args: Prisma.ListedcontractsAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateListedcontracts>
           }
           groupBy: {
-            args: Prisma.SellContractGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<SellContractGroupByOutputType>[]
+            args: Prisma.listedcontractsGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<ListedcontractsGroupByOutputType>[]
           }
           count: {
-            args: Prisma.SellContractCountArgs<ExtArgs>,
-            result: $Utils.Optional<SellContractCountAggregateOutputType> | number
+            args: Prisma.listedcontractsCountArgs<ExtArgs>,
+            result: $Utils.Optional<ListedcontractsCountAggregateOutputType> | number
           }
         }
       }
-      BuyContract: {
-        payload: Prisma.$BuyContractPayload<ExtArgs>
-        fields: Prisma.BuyContractFieldRefs
+      ownedcontracts: {
+        payload: Prisma.$ownedcontractsPayload<ExtArgs>
+        fields: Prisma.ownedcontractsFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.BuyContractFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$BuyContractPayload> | null
+            args: Prisma.ownedcontractsFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ownedcontractsPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.BuyContractFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$BuyContractPayload>
+            args: Prisma.ownedcontractsFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ownedcontractsPayload>
           }
           findFirst: {
-            args: Prisma.BuyContractFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$BuyContractPayload> | null
+            args: Prisma.ownedcontractsFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ownedcontractsPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.BuyContractFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$BuyContractPayload>
+            args: Prisma.ownedcontractsFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ownedcontractsPayload>
           }
           findMany: {
-            args: Prisma.BuyContractFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$BuyContractPayload>[]
+            args: Prisma.ownedcontractsFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ownedcontractsPayload>[]
           }
           create: {
-            args: Prisma.BuyContractCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$BuyContractPayload>
+            args: Prisma.ownedcontractsCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ownedcontractsPayload>
           }
           createMany: {
-            args: Prisma.BuyContractCreateManyArgs<ExtArgs>,
+            args: Prisma.ownedcontractsCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           delete: {
-            args: Prisma.BuyContractDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$BuyContractPayload>
+            args: Prisma.ownedcontractsDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ownedcontractsPayload>
           }
           update: {
-            args: Prisma.BuyContractUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$BuyContractPayload>
+            args: Prisma.ownedcontractsUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ownedcontractsPayload>
           }
           deleteMany: {
-            args: Prisma.BuyContractDeleteManyArgs<ExtArgs>,
+            args: Prisma.ownedcontractsDeleteManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           updateMany: {
-            args: Prisma.BuyContractUpdateManyArgs<ExtArgs>,
+            args: Prisma.ownedcontractsUpdateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           upsert: {
-            args: Prisma.BuyContractUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$BuyContractPayload>
+            args: Prisma.ownedcontractsUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ownedcontractsPayload>
           }
           aggregate: {
-            args: Prisma.BuyContractAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateBuyContract>
+            args: Prisma.OwnedcontractsAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateOwnedcontracts>
           }
           groupBy: {
-            args: Prisma.BuyContractGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<BuyContractGroupByOutputType>[]
+            args: Prisma.ownedcontractsGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<OwnedcontractsGroupByOutputType>[]
           }
           count: {
-            args: Prisma.BuyContractCountArgs<ExtArgs>,
-            result: $Utils.Optional<BuyContractCountAggregateOutputType> | number
+            args: Prisma.ownedcontractsCountArgs<ExtArgs>,
+            result: $Utils.Optional<OwnedcontractsCountAggregateOutputType> | number
           }
         }
       }
@@ -1269,6 +1269,49 @@ export namespace Prisma {
   /**
    * Count Types
    */
+
+
+  /**
+   * Count Type UsersCountOutputType
+   */
+
+  export type UsersCountOutputType = {
+    listedcontracts: number
+    ownedcontracts: number
+  }
+
+  export type UsersCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    listedcontracts?: boolean | UsersCountOutputTypeCountListedcontractsArgs
+    ownedcontracts?: boolean | UsersCountOutputTypeCountOwnedcontractsArgs
+  }
+
+  // Custom InputTypes
+
+  /**
+   * UsersCountOutputType without action
+   */
+  export type UsersCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UsersCountOutputType
+     */
+    select?: UsersCountOutputTypeSelect<ExtArgs> | null
+  }
+
+
+  /**
+   * UsersCountOutputType without action
+   */
+  export type UsersCountOutputTypeCountListedcontractsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: listedcontractsWhereInput
+  }
+
+
+  /**
+   * UsersCountOutputType without action
+   */
+  export type UsersCountOutputTypeCountOwnedcontractsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ownedcontractsWhereInput
+  }
 
 
 
@@ -4162,357 +4205,359 @@ export namespace Prisma {
 
 
   /**
-   * Model User
+   * Model users
    */
 
-  export type AggregateUser = {
-    _count: UserCountAggregateOutputType | null
-    _avg: UserAvgAggregateOutputType | null
-    _sum: UserSumAggregateOutputType | null
-    _min: UserMinAggregateOutputType | null
-    _max: UserMaxAggregateOutputType | null
+  export type AggregateUsers = {
+    _count: UsersCountAggregateOutputType | null
+    _avg: UsersAvgAggregateOutputType | null
+    _sum: UsersSumAggregateOutputType | null
+    _min: UsersMinAggregateOutputType | null
+    _max: UsersMaxAggregateOutputType | null
   }
 
-  export type UserAvgAggregateOutputType = {
+  export type UsersAvgAggregateOutputType = {
     id: number | null
-    contract: number | null
   }
 
-  export type UserSumAggregateOutputType = {
+  export type UsersSumAggregateOutputType = {
     id: number | null
-    contract: number[]
   }
 
-  export type UserMinAggregateOutputType = {
+  export type UsersMinAggregateOutputType = {
     id: number | null
-    wallet: string | null
+    address: string | null
   }
 
-  export type UserMaxAggregateOutputType = {
+  export type UsersMaxAggregateOutputType = {
     id: number | null
-    wallet: string | null
+    address: string | null
   }
 
-  export type UserCountAggregateOutputType = {
+  export type UsersCountAggregateOutputType = {
     id: number
-    wallet: number
-    contract: number
+    address: number
     _all: number
   }
 
 
-  export type UserAvgAggregateInputType = {
+  export type UsersAvgAggregateInputType = {
     id?: true
-    contract?: true
   }
 
-  export type UserSumAggregateInputType = {
+  export type UsersSumAggregateInputType = {
     id?: true
-    contract?: true
   }
 
-  export type UserMinAggregateInputType = {
+  export type UsersMinAggregateInputType = {
     id?: true
-    wallet?: true
+    address?: true
   }
 
-  export type UserMaxAggregateInputType = {
+  export type UsersMaxAggregateInputType = {
     id?: true
-    wallet?: true
+    address?: true
   }
 
-  export type UserCountAggregateInputType = {
+  export type UsersCountAggregateInputType = {
     id?: true
-    wallet?: true
-    contract?: true
+    address?: true
     _all?: true
   }
 
-  export type UserAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UsersAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which User to aggregate.
+     * Filter which users to aggregate.
      */
-    where?: UserWhereInput
+    where?: usersWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Users to fetch.
+     * Determine the order of users to fetch.
      */
-    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
+    orderBy?: usersOrderByWithRelationInput | usersOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: UserWhereUniqueInput
+    cursor?: usersWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Users from the position of the cursor.
+     * Take `±n` users from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Users.
+     * Skip the first `n` users.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Users
+     * Count returned users
     **/
-    _count?: true | UserCountAggregateInputType
+    _count?: true | UsersCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: UserAvgAggregateInputType
+    _avg?: UsersAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: UserSumAggregateInputType
+    _sum?: UsersSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: UserMinAggregateInputType
+    _min?: UsersMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: UserMaxAggregateInputType
+    _max?: UsersMaxAggregateInputType
   }
 
-  export type GetUserAggregateType<T extends UserAggregateArgs> = {
-        [P in keyof T & keyof AggregateUser]: P extends '_count' | 'count'
+  export type GetUsersAggregateType<T extends UsersAggregateArgs> = {
+        [P in keyof T & keyof AggregateUsers]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateUser[P]>
-      : GetScalarType<T[P], AggregateUser[P]>
+        : GetScalarType<T[P], AggregateUsers[P]>
+      : GetScalarType<T[P], AggregateUsers[P]>
   }
 
 
 
 
-  export type UserGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserWhereInput
-    orderBy?: UserOrderByWithAggregationInput | UserOrderByWithAggregationInput[]
-    by: UserScalarFieldEnum[] | UserScalarFieldEnum
-    having?: UserScalarWhereWithAggregatesInput
+  export type usersGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: usersWhereInput
+    orderBy?: usersOrderByWithAggregationInput | usersOrderByWithAggregationInput[]
+    by: UsersScalarFieldEnum[] | UsersScalarFieldEnum
+    having?: usersScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: UserCountAggregateInputType | true
-    _avg?: UserAvgAggregateInputType
-    _sum?: UserSumAggregateInputType
-    _min?: UserMinAggregateInputType
-    _max?: UserMaxAggregateInputType
+    _count?: UsersCountAggregateInputType | true
+    _avg?: UsersAvgAggregateInputType
+    _sum?: UsersSumAggregateInputType
+    _min?: UsersMinAggregateInputType
+    _max?: UsersMaxAggregateInputType
   }
 
-  export type UserGroupByOutputType = {
+  export type UsersGroupByOutputType = {
     id: number
-    wallet: string
-    contract: number[]
-    _count: UserCountAggregateOutputType | null
-    _avg: UserAvgAggregateOutputType | null
-    _sum: UserSumAggregateOutputType | null
-    _min: UserMinAggregateOutputType | null
-    _max: UserMaxAggregateOutputType | null
+    address: string
+    _count: UsersCountAggregateOutputType | null
+    _avg: UsersAvgAggregateOutputType | null
+    _sum: UsersSumAggregateOutputType | null
+    _min: UsersMinAggregateOutputType | null
+    _max: UsersMaxAggregateOutputType | null
   }
 
-  type GetUserGroupByPayload<T extends UserGroupByArgs> = Prisma.PrismaPromise<
+  type GetUsersGroupByPayload<T extends usersGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<UserGroupByOutputType, T['by']> &
+      PickEnumerable<UsersGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof UserGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof UsersGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], UserGroupByOutputType[P]>
-            : GetScalarType<T[P], UserGroupByOutputType[P]>
+              : GetScalarType<T[P], UsersGroupByOutputType[P]>
+            : GetScalarType<T[P], UsersGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type usersSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    wallet?: boolean
-    contract?: boolean
-  }, ExtArgs["result"]["user"]>
+    address?: boolean
+    listedcontracts?: boolean | users$listedcontractsArgs<ExtArgs>
+    ownedcontracts?: boolean | users$ownedcontractsArgs<ExtArgs>
+    _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["users"]>
 
-  export type UserSelectScalar = {
+  export type usersSelectScalar = {
     id?: boolean
-    wallet?: boolean
-    contract?: boolean
+    address?: boolean
+  }
+
+  export type usersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    listedcontracts?: boolean | users$listedcontractsArgs<ExtArgs>
+    ownedcontracts?: boolean | users$ownedcontractsArgs<ExtArgs>
+    _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
   }
 
 
-  export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "User"
-    objects: {}
+  export type $usersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "users"
+    objects: {
+      listedcontracts: Prisma.$listedcontractsPayload<ExtArgs>[]
+      ownedcontracts: Prisma.$ownedcontractsPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      wallet: string
-      contract: number[]
-    }, ExtArgs["result"]["user"]>
+      address: string
+    }, ExtArgs["result"]["users"]>
     composites: {}
   }
 
 
-  type UserGetPayload<S extends boolean | null | undefined | UserDefaultArgs> = $Result.GetResult<Prisma.$UserPayload, S>
+  type usersGetPayload<S extends boolean | null | undefined | usersDefaultArgs> = $Result.GetResult<Prisma.$usersPayload, S>
 
-  type UserCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<UserFindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: UserCountAggregateInputType | true
+  type usersCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<usersFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: UsersCountAggregateInputType | true
     }
 
-  export interface UserDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['User'], meta: { name: 'User' } }
+  export interface usersDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['users'], meta: { name: 'users' } }
     /**
-     * Find zero or one User that matches the filter.
-     * @param {UserFindUniqueArgs} args - Arguments to find a User
+     * Find zero or one Users that matches the filter.
+     * @param {usersFindUniqueArgs} args - Arguments to find a Users
      * @example
-     * // Get one User
-     * const user = await prisma.user.findUnique({
+     * // Get one Users
+     * const users = await prisma.users.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUnique<T extends UserFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, UserFindUniqueArgs<ExtArgs>>
-    ): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+    findUnique<T extends usersFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, usersFindUniqueArgs<ExtArgs>>
+    ): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
 
     /**
-     * Find one User that matches the filter or throw an error  with `error.code='P2025'` 
+     * Find one Users that matches the filter or throw an error  with `error.code='P2025'` 
      *     if no matches were found.
-     * @param {UserFindUniqueOrThrowArgs} args - Arguments to find a User
+     * @param {usersFindUniqueOrThrowArgs} args - Arguments to find a Users
      * @example
-     * // Get one User
-     * const user = await prisma.user.findUniqueOrThrow({
+     * // Get one Users
+     * const users = await prisma.users.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUniqueOrThrow<T extends UserFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, UserFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+    findUniqueOrThrow<T extends usersFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, usersFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
 
     /**
-     * Find the first User that matches the filter.
+     * Find the first Users that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserFindFirstArgs} args - Arguments to find a User
+     * @param {usersFindFirstArgs} args - Arguments to find a Users
      * @example
-     * // Get one User
-     * const user = await prisma.user.findFirst({
+     * // Get one Users
+     * const users = await prisma.users.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirst<T extends UserFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, UserFindFirstArgs<ExtArgs>>
-    ): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+    findFirst<T extends usersFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, usersFindFirstArgs<ExtArgs>>
+    ): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
 
     /**
-     * Find the first User that matches the filter or
+     * Find the first Users that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserFindFirstOrThrowArgs} args - Arguments to find a User
+     * @param {usersFindFirstOrThrowArgs} args - Arguments to find a Users
      * @example
-     * // Get one User
-     * const user = await prisma.user.findFirstOrThrow({
+     * // Get one Users
+     * const users = await prisma.users.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirstOrThrow<T extends UserFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, UserFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+    findFirstOrThrow<T extends usersFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, usersFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
 
     /**
      * Find zero or more Users that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @param {usersFindManyArgs=} args - Arguments to filter and select certain fields only.
      * @example
      * // Get all Users
-     * const users = await prisma.user.findMany()
+     * const users = await prisma.users.findMany()
      * 
      * // Get first 10 Users
-     * const users = await prisma.user.findMany({ take: 10 })
+     * const users = await prisma.users.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const userWithIdOnly = await prisma.user.findMany({ select: { id: true } })
+     * const usersWithIdOnly = await prisma.users.findMany({ select: { id: true } })
      * 
     **/
-    findMany<T extends UserFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, UserFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findMany'>>
+    findMany<T extends usersFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, usersFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, 'findMany'>>
 
     /**
-     * Create a User.
-     * @param {UserCreateArgs} args - Arguments to create a User.
+     * Create a Users.
+     * @param {usersCreateArgs} args - Arguments to create a Users.
      * @example
-     * // Create one User
-     * const User = await prisma.user.create({
+     * // Create one Users
+     * const Users = await prisma.users.create({
      *   data: {
-     *     // ... data to create a User
+     *     // ... data to create a Users
      *   }
      * })
      * 
     **/
-    create<T extends UserCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, UserCreateArgs<ExtArgs>>
-    ): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+    create<T extends usersCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, usersCreateArgs<ExtArgs>>
+    ): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
 
     /**
      * Create many Users.
-     *     @param {UserCreateManyArgs} args - Arguments to create many Users.
+     *     @param {usersCreateManyArgs} args - Arguments to create many Users.
      *     @example
      *     // Create many Users
-     *     const user = await prisma.user.createMany({
+     *     const users = await prisma.users.createMany({
      *       data: {
      *         // ... provide data here
      *       }
      *     })
      *     
     **/
-    createMany<T extends UserCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, UserCreateManyArgs<ExtArgs>>
+    createMany<T extends usersCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, usersCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Delete a User.
-     * @param {UserDeleteArgs} args - Arguments to delete one User.
+     * Delete a Users.
+     * @param {usersDeleteArgs} args - Arguments to delete one Users.
      * @example
-     * // Delete one User
-     * const User = await prisma.user.delete({
+     * // Delete one Users
+     * const Users = await prisma.users.delete({
      *   where: {
-     *     // ... filter to delete one User
+     *     // ... filter to delete one Users
      *   }
      * })
      * 
     **/
-    delete<T extends UserDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, UserDeleteArgs<ExtArgs>>
-    ): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+    delete<T extends usersDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, usersDeleteArgs<ExtArgs>>
+    ): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
 
     /**
-     * Update one User.
-     * @param {UserUpdateArgs} args - Arguments to update one User.
+     * Update one Users.
+     * @param {usersUpdateArgs} args - Arguments to update one Users.
      * @example
-     * // Update one User
-     * const user = await prisma.user.update({
+     * // Update one Users
+     * const users = await prisma.users.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -4522,34 +4567,34 @@ export namespace Prisma {
      * })
      * 
     **/
-    update<T extends UserUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, UserUpdateArgs<ExtArgs>>
-    ): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+    update<T extends usersUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, usersUpdateArgs<ExtArgs>>
+    ): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
 
     /**
      * Delete zero or more Users.
-     * @param {UserDeleteManyArgs} args - Arguments to filter Users to delete.
+     * @param {usersDeleteManyArgs} args - Arguments to filter Users to delete.
      * @example
      * // Delete a few Users
-     * const { count } = await prisma.user.deleteMany({
+     * const { count } = await prisma.users.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
     **/
-    deleteMany<T extends UserDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, UserDeleteManyArgs<ExtArgs>>
+    deleteMany<T extends usersDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, usersDeleteManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more Users.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {usersUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
      * // Update many Users
-     * const user = await prisma.user.updateMany({
+     * const users = await prisma.users.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -4559,59 +4604,59 @@ export namespace Prisma {
      * })
      * 
     **/
-    updateMany<T extends UserUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, UserUpdateManyArgs<ExtArgs>>
+    updateMany<T extends usersUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, usersUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one User.
-     * @param {UserUpsertArgs} args - Arguments to update or create a User.
+     * Create or update one Users.
+     * @param {usersUpsertArgs} args - Arguments to update or create a Users.
      * @example
-     * // Update or create a User
-     * const user = await prisma.user.upsert({
+     * // Update or create a Users
+     * const users = await prisma.users.upsert({
      *   create: {
-     *     // ... data to create a User
+     *     // ... data to create a Users
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the User we want to update
+     *     // ... the filter for the Users we want to update
      *   }
      * })
     **/
-    upsert<T extends UserUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, UserUpsertArgs<ExtArgs>>
-    ): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+    upsert<T extends usersUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, usersUpsertArgs<ExtArgs>>
+    ): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
 
     /**
      * Count the number of Users.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserCountArgs} args - Arguments to filter Users to count.
+     * @param {usersCountArgs} args - Arguments to filter Users to count.
      * @example
      * // Count the number of Users
-     * const count = await prisma.user.count({
+     * const count = await prisma.users.count({
      *   where: {
      *     // ... the filter for the Users we want to count
      *   }
      * })
     **/
-    count<T extends UserCountArgs>(
-      args?: Subset<T, UserCountArgs>,
+    count<T extends usersCountArgs>(
+      args?: Subset<T, usersCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], UserCountAggregateOutputType>
+          : GetScalarType<T['select'], UsersCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a User.
+     * Allows you to perform aggregations operations on a Users.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {UsersAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -4631,13 +4676,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends UserAggregateArgs>(args: Subset<T, UserAggregateArgs>): Prisma.PrismaPromise<GetUserAggregateType<T>>
+    aggregate<T extends UsersAggregateArgs>(args: Subset<T, UsersAggregateArgs>): Prisma.PrismaPromise<GetUsersAggregateType<T>>
 
     /**
-     * Group by User.
+     * Group by Users.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserGroupByArgs} args - Group by arguments.
+     * @param {usersGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -4652,14 +4697,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends UserGroupByArgs,
+      T extends usersGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: UserGroupByArgs['orderBy'] }
-        : { orderBy?: UserGroupByArgs['orderBy'] },
+        ? { orderBy: usersGroupByArgs['orderBy'] }
+        : { orderBy?: usersGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -4708,22 +4753,25 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, UserGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, usersGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUsersGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the User model
+   * Fields of the users model
    */
-  readonly fields: UserFieldRefs;
+  readonly fields: usersFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for User.
+   * The delegate class that acts as a "Promise-like" for users.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__usersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
+    listedcontracts<T extends users$listedcontractsArgs<ExtArgs> = {}>(args?: Subset<T, users$listedcontractsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$listedcontractsPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    ownedcontracts<T extends users$ownedcontractsArgs<ExtArgs> = {}>(args?: Subset<T, users$ownedcontractsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ownedcontractsPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -4750,691 +4798,803 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the User model
+   * Fields of the users model
    */ 
-  interface UserFieldRefs {
-    readonly id: FieldRef<"User", 'Int'>
-    readonly wallet: FieldRef<"User", 'String'>
-    readonly contract: FieldRef<"User", 'Int[]'>
+  interface usersFieldRefs {
+    readonly id: FieldRef<"users", 'Int'>
+    readonly address: FieldRef<"users", 'String'>
   }
     
 
   // Custom InputTypes
 
   /**
-   * User findUnique
+   * users findUnique
    */
-  export type UserFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the User
+     * Select specific fields to fetch from the users
      */
-    select?: UserSelect<ExtArgs> | null
+    select?: usersSelect<ExtArgs> | null
     /**
-     * Filter, which User to fetch.
+     * Choose, which related nodes to fetch as well.
      */
-    where: UserWhereUniqueInput
+    include?: usersInclude<ExtArgs> | null
+    /**
+     * Filter, which users to fetch.
+     */
+    where: usersWhereUniqueInput
   }
 
 
   /**
-   * User findUniqueOrThrow
+   * users findUniqueOrThrow
    */
-  export type UserFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the User
+     * Select specific fields to fetch from the users
      */
-    select?: UserSelect<ExtArgs> | null
+    select?: usersSelect<ExtArgs> | null
     /**
-     * Filter, which User to fetch.
+     * Choose, which related nodes to fetch as well.
      */
-    where: UserWhereUniqueInput
+    include?: usersInclude<ExtArgs> | null
+    /**
+     * Filter, which users to fetch.
+     */
+    where: usersWhereUniqueInput
   }
 
 
   /**
-   * User findFirst
+   * users findFirst
    */
-  export type UserFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the User
+     * Select specific fields to fetch from the users
      */
-    select?: UserSelect<ExtArgs> | null
+    select?: usersSelect<ExtArgs> | null
     /**
-     * Filter, which User to fetch.
+     * Choose, which related nodes to fetch as well.
      */
-    where?: UserWhereInput
+    include?: usersInclude<ExtArgs> | null
+    /**
+     * Filter, which users to fetch.
+     */
+    where?: usersWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Users to fetch.
+     * Determine the order of users to fetch.
      */
-    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
+    orderBy?: usersOrderByWithRelationInput | usersOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Users.
+     * Sets the position for searching for users.
      */
-    cursor?: UserWhereUniqueInput
+    cursor?: usersWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Users from the position of the cursor.
+     * Take `±n` users from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Users.
+     * Skip the first `n` users.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Users.
+     * Filter by unique combinations of users.
      */
-    distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
+    distinct?: UsersScalarFieldEnum | UsersScalarFieldEnum[]
   }
 
 
   /**
-   * User findFirstOrThrow
+   * users findFirstOrThrow
    */
-  export type UserFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the User
+     * Select specific fields to fetch from the users
      */
-    select?: UserSelect<ExtArgs> | null
+    select?: usersSelect<ExtArgs> | null
     /**
-     * Filter, which User to fetch.
+     * Choose, which related nodes to fetch as well.
      */
-    where?: UserWhereInput
+    include?: usersInclude<ExtArgs> | null
+    /**
+     * Filter, which users to fetch.
+     */
+    where?: usersWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Users to fetch.
+     * Determine the order of users to fetch.
      */
-    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
+    orderBy?: usersOrderByWithRelationInput | usersOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Users.
+     * Sets the position for searching for users.
      */
-    cursor?: UserWhereUniqueInput
+    cursor?: usersWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Users from the position of the cursor.
+     * Take `±n` users from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Users.
+     * Skip the first `n` users.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Users.
+     * Filter by unique combinations of users.
      */
-    distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
+    distinct?: UsersScalarFieldEnum | UsersScalarFieldEnum[]
   }
 
 
   /**
-   * User findMany
+   * users findMany
    */
-  export type UserFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the User
+     * Select specific fields to fetch from the users
      */
-    select?: UserSelect<ExtArgs> | null
+    select?: usersSelect<ExtArgs> | null
     /**
-     * Filter, which Users to fetch.
+     * Choose, which related nodes to fetch as well.
      */
-    where?: UserWhereInput
+    include?: usersInclude<ExtArgs> | null
+    /**
+     * Filter, which users to fetch.
+     */
+    where?: usersWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Users to fetch.
+     * Determine the order of users to fetch.
      */
-    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
+    orderBy?: usersOrderByWithRelationInput | usersOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Users.
+     * Sets the position for listing users.
      */
-    cursor?: UserWhereUniqueInput
+    cursor?: usersWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Users from the position of the cursor.
+     * Take `±n` users from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Users.
+     * Skip the first `n` users.
      */
     skip?: number
-    distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
+    distinct?: UsersScalarFieldEnum | UsersScalarFieldEnum[]
   }
 
 
   /**
-   * User create
+   * users create
    */
-  export type UserCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the User
+     * Select specific fields to fetch from the users
      */
-    select?: UserSelect<ExtArgs> | null
+    select?: usersSelect<ExtArgs> | null
     /**
-     * The data needed to create a User.
+     * Choose, which related nodes to fetch as well.
      */
-    data: XOR<UserCreateInput, UserUncheckedCreateInput>
+    include?: usersInclude<ExtArgs> | null
+    /**
+     * The data needed to create a users.
+     */
+    data: XOR<usersCreateInput, usersUncheckedCreateInput>
   }
 
 
   /**
-   * User createMany
+   * users createMany
    */
-  export type UserCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Users.
+     * The data used to create many users.
      */
-    data: UserCreateManyInput | UserCreateManyInput[]
+    data: usersCreateManyInput | usersCreateManyInput[]
     skipDuplicates?: boolean
   }
 
 
   /**
-   * User update
+   * users update
    */
-  export type UserUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the User
+     * Select specific fields to fetch from the users
      */
-    select?: UserSelect<ExtArgs> | null
+    select?: usersSelect<ExtArgs> | null
     /**
-     * The data needed to update a User.
+     * Choose, which related nodes to fetch as well.
      */
-    data: XOR<UserUpdateInput, UserUncheckedUpdateInput>
+    include?: usersInclude<ExtArgs> | null
     /**
-     * Choose, which User to update.
+     * The data needed to update a users.
      */
-    where: UserWhereUniqueInput
+    data: XOR<usersUpdateInput, usersUncheckedUpdateInput>
+    /**
+     * Choose, which users to update.
+     */
+    where: usersWhereUniqueInput
   }
 
 
   /**
-   * User updateMany
+   * users updateMany
    */
-  export type UserUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Users.
+     * The data used to update users.
      */
-    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyInput>
+    data: XOR<usersUpdateManyMutationInput, usersUncheckedUpdateManyInput>
     /**
-     * Filter which Users to update
+     * Filter which users to update
      */
-    where?: UserWhereInput
+    where?: usersWhereInput
   }
 
 
   /**
-   * User upsert
+   * users upsert
    */
-  export type UserUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the User
+     * Select specific fields to fetch from the users
      */
-    select?: UserSelect<ExtArgs> | null
+    select?: usersSelect<ExtArgs> | null
     /**
-     * The filter to search for the User to update in case it exists.
+     * Choose, which related nodes to fetch as well.
      */
-    where: UserWhereUniqueInput
+    include?: usersInclude<ExtArgs> | null
     /**
-     * In case the User found by the `where` argument doesn't exist, create a new User with this data.
+     * The filter to search for the users to update in case it exists.
      */
-    create: XOR<UserCreateInput, UserUncheckedCreateInput>
+    where: usersWhereUniqueInput
     /**
-     * In case the User was found with the provided `where` argument, update it with this data.
+     * In case the users found by the `where` argument doesn't exist, create a new users with this data.
      */
-    update: XOR<UserUpdateInput, UserUncheckedUpdateInput>
+    create: XOR<usersCreateInput, usersUncheckedCreateInput>
+    /**
+     * In case the users was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<usersUpdateInput, usersUncheckedUpdateInput>
   }
 
 
   /**
-   * User delete
+   * users delete
    */
-  export type UserDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the User
+     * Select specific fields to fetch from the users
      */
-    select?: UserSelect<ExtArgs> | null
+    select?: usersSelect<ExtArgs> | null
     /**
-     * Filter which User to delete.
+     * Choose, which related nodes to fetch as well.
      */
-    where: UserWhereUniqueInput
+    include?: usersInclude<ExtArgs> | null
+    /**
+     * Filter which users to delete.
+     */
+    where: usersWhereUniqueInput
   }
 
 
   /**
-   * User deleteMany
+   * users deleteMany
    */
-  export type UserDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Users to delete
+     * Filter which users to delete
      */
-    where?: UserWhereInput
+    where?: usersWhereInput
   }
 
 
   /**
-   * User without action
+   * users.listedcontracts
    */
-  export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type users$listedcontractsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the User
+     * Select specific fields to fetch from the listedcontracts
      */
-    select?: UserSelect<ExtArgs> | null
+    select?: listedcontractsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: listedcontractsInclude<ExtArgs> | null
+    where?: listedcontractsWhereInput
+    orderBy?: listedcontractsOrderByWithRelationInput | listedcontractsOrderByWithRelationInput[]
+    cursor?: listedcontractsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ListedcontractsScalarFieldEnum | ListedcontractsScalarFieldEnum[]
+  }
+
+
+  /**
+   * users.ownedcontracts
+   */
+  export type users$ownedcontractsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ownedcontracts
+     */
+    select?: ownedcontractsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ownedcontractsInclude<ExtArgs> | null
+    where?: ownedcontractsWhereInput
+    orderBy?: ownedcontractsOrderByWithRelationInput | ownedcontractsOrderByWithRelationInput[]
+    cursor?: ownedcontractsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: OwnedcontractsScalarFieldEnum | OwnedcontractsScalarFieldEnum[]
+  }
+
+
+  /**
+   * users without action
+   */
+  export type usersDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: usersInclude<ExtArgs> | null
   }
 
 
 
   /**
-   * Model SellContract
+   * Model listedcontracts
    */
 
-  export type AggregateSellContract = {
-    _count: SellContractCountAggregateOutputType | null
-    _avg: SellContractAvgAggregateOutputType | null
-    _sum: SellContractSumAggregateOutputType | null
-    _min: SellContractMinAggregateOutputType | null
-    _max: SellContractMaxAggregateOutputType | null
+  export type AggregateListedcontracts = {
+    _count: ListedcontractsCountAggregateOutputType | null
+    _avg: ListedcontractsAvgAggregateOutputType | null
+    _sum: ListedcontractsSumAggregateOutputType | null
+    _min: ListedcontractsMinAggregateOutputType | null
+    _max: ListedcontractsMaxAggregateOutputType | null
   }
 
-  export type SellContractAvgAggregateOutputType = {
+  export type ListedcontractsAvgAggregateOutputType = {
     id: number | null
+    user_id: number | null
   }
 
-  export type SellContractSumAggregateOutputType = {
+  export type ListedcontractsSumAggregateOutputType = {
     id: number | null
+    user_id: number | null
   }
 
-  export type SellContractMinAggregateOutputType = {
+  export type ListedcontractsMinAggregateOutputType = {
     id: number | null
     name: string | null
     price: string | null
     contract: string | null
     description: string | null
+    code_hash: string | null
     code: string | null
     address: string | null
+    user_id: number | null
   }
 
-  export type SellContractMaxAggregateOutputType = {
+  export type ListedcontractsMaxAggregateOutputType = {
     id: number | null
     name: string | null
     price: string | null
     contract: string | null
     description: string | null
+    code_hash: string | null
     code: string | null
     address: string | null
+    user_id: number | null
   }
 
-  export type SellContractCountAggregateOutputType = {
+  export type ListedcontractsCountAggregateOutputType = {
     id: number
     name: number
     price: number
     contract: number
     description: number
+    code_hash: number
     code: number
     address: number
+    user_id: number
     _all: number
   }
 
 
-  export type SellContractAvgAggregateInputType = {
+  export type ListedcontractsAvgAggregateInputType = {
     id?: true
+    user_id?: true
   }
 
-  export type SellContractSumAggregateInputType = {
+  export type ListedcontractsSumAggregateInputType = {
     id?: true
+    user_id?: true
   }
 
-  export type SellContractMinAggregateInputType = {
+  export type ListedcontractsMinAggregateInputType = {
     id?: true
     name?: true
     price?: true
     contract?: true
     description?: true
+    code_hash?: true
     code?: true
     address?: true
+    user_id?: true
   }
 
-  export type SellContractMaxAggregateInputType = {
+  export type ListedcontractsMaxAggregateInputType = {
     id?: true
     name?: true
     price?: true
     contract?: true
     description?: true
+    code_hash?: true
     code?: true
     address?: true
+    user_id?: true
   }
 
-  export type SellContractCountAggregateInputType = {
+  export type ListedcontractsCountAggregateInputType = {
     id?: true
     name?: true
     price?: true
     contract?: true
     description?: true
+    code_hash?: true
     code?: true
     address?: true
+    user_id?: true
     _all?: true
   }
 
-  export type SellContractAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ListedcontractsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which SellContract to aggregate.
+     * Filter which listedcontracts to aggregate.
      */
-    where?: SellContractWhereInput
+    where?: listedcontractsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of SellContracts to fetch.
+     * Determine the order of listedcontracts to fetch.
      */
-    orderBy?: SellContractOrderByWithRelationInput | SellContractOrderByWithRelationInput[]
+    orderBy?: listedcontractsOrderByWithRelationInput | listedcontractsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: SellContractWhereUniqueInput
+    cursor?: listedcontractsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` SellContracts from the position of the cursor.
+     * Take `±n` listedcontracts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` SellContracts.
+     * Skip the first `n` listedcontracts.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned SellContracts
+     * Count returned listedcontracts
     **/
-    _count?: true | SellContractCountAggregateInputType
+    _count?: true | ListedcontractsCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: SellContractAvgAggregateInputType
+    _avg?: ListedcontractsAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: SellContractSumAggregateInputType
+    _sum?: ListedcontractsSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: SellContractMinAggregateInputType
+    _min?: ListedcontractsMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: SellContractMaxAggregateInputType
+    _max?: ListedcontractsMaxAggregateInputType
   }
 
-  export type GetSellContractAggregateType<T extends SellContractAggregateArgs> = {
-        [P in keyof T & keyof AggregateSellContract]: P extends '_count' | 'count'
+  export type GetListedcontractsAggregateType<T extends ListedcontractsAggregateArgs> = {
+        [P in keyof T & keyof AggregateListedcontracts]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateSellContract[P]>
-      : GetScalarType<T[P], AggregateSellContract[P]>
+        : GetScalarType<T[P], AggregateListedcontracts[P]>
+      : GetScalarType<T[P], AggregateListedcontracts[P]>
   }
 
 
 
 
-  export type SellContractGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: SellContractWhereInput
-    orderBy?: SellContractOrderByWithAggregationInput | SellContractOrderByWithAggregationInput[]
-    by: SellContractScalarFieldEnum[] | SellContractScalarFieldEnum
-    having?: SellContractScalarWhereWithAggregatesInput
+  export type listedcontractsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: listedcontractsWhereInput
+    orderBy?: listedcontractsOrderByWithAggregationInput | listedcontractsOrderByWithAggregationInput[]
+    by: ListedcontractsScalarFieldEnum[] | ListedcontractsScalarFieldEnum
+    having?: listedcontractsScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: SellContractCountAggregateInputType | true
-    _avg?: SellContractAvgAggregateInputType
-    _sum?: SellContractSumAggregateInputType
-    _min?: SellContractMinAggregateInputType
-    _max?: SellContractMaxAggregateInputType
+    _count?: ListedcontractsCountAggregateInputType | true
+    _avg?: ListedcontractsAvgAggregateInputType
+    _sum?: ListedcontractsSumAggregateInputType
+    _min?: ListedcontractsMinAggregateInputType
+    _max?: ListedcontractsMaxAggregateInputType
   }
 
-  export type SellContractGroupByOutputType = {
+  export type ListedcontractsGroupByOutputType = {
     id: number
     name: string
     price: string
     contract: string
     description: string
+    code_hash: string
     code: string
     address: string
-    _count: SellContractCountAggregateOutputType | null
-    _avg: SellContractAvgAggregateOutputType | null
-    _sum: SellContractSumAggregateOutputType | null
-    _min: SellContractMinAggregateOutputType | null
-    _max: SellContractMaxAggregateOutputType | null
+    user_id: number
+    _count: ListedcontractsCountAggregateOutputType | null
+    _avg: ListedcontractsAvgAggregateOutputType | null
+    _sum: ListedcontractsSumAggregateOutputType | null
+    _min: ListedcontractsMinAggregateOutputType | null
+    _max: ListedcontractsMaxAggregateOutputType | null
   }
 
-  type GetSellContractGroupByPayload<T extends SellContractGroupByArgs> = Prisma.PrismaPromise<
+  type GetListedcontractsGroupByPayload<T extends listedcontractsGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<SellContractGroupByOutputType, T['by']> &
+      PickEnumerable<ListedcontractsGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof SellContractGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof ListedcontractsGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], SellContractGroupByOutputType[P]>
-            : GetScalarType<T[P], SellContractGroupByOutputType[P]>
+              : GetScalarType<T[P], ListedcontractsGroupByOutputType[P]>
+            : GetScalarType<T[P], ListedcontractsGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type SellContractSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type listedcontractsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
     price?: boolean
     contract?: boolean
     description?: boolean
+    code_hash?: boolean
     code?: boolean
     address?: boolean
-  }, ExtArgs["result"]["sellContract"]>
+    user_id?: boolean
+    user?: boolean | usersDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["listedcontracts"]>
 
-  export type SellContractSelectScalar = {
+  export type listedcontractsSelectScalar = {
     id?: boolean
     name?: boolean
     price?: boolean
     contract?: boolean
     description?: boolean
+    code_hash?: boolean
     code?: boolean
     address?: boolean
+    user_id?: boolean
+  }
+
+  export type listedcontractsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | usersDefaultArgs<ExtArgs>
   }
 
 
-  export type $SellContractPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "SellContract"
-    objects: {}
+  export type $listedcontractsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "listedcontracts"
+    objects: {
+      user: Prisma.$usersPayload<ExtArgs>
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
       price: string
       contract: string
       description: string
+      code_hash: string
       code: string
       address: string
-    }, ExtArgs["result"]["sellContract"]>
+      user_id: number
+    }, ExtArgs["result"]["listedcontracts"]>
     composites: {}
   }
 
 
-  type SellContractGetPayload<S extends boolean | null | undefined | SellContractDefaultArgs> = $Result.GetResult<Prisma.$SellContractPayload, S>
+  type listedcontractsGetPayload<S extends boolean | null | undefined | listedcontractsDefaultArgs> = $Result.GetResult<Prisma.$listedcontractsPayload, S>
 
-  type SellContractCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<SellContractFindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: SellContractCountAggregateInputType | true
+  type listedcontractsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<listedcontractsFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: ListedcontractsCountAggregateInputType | true
     }
 
-  export interface SellContractDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['SellContract'], meta: { name: 'SellContract' } }
+  export interface listedcontractsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['listedcontracts'], meta: { name: 'listedcontracts' } }
     /**
-     * Find zero or one SellContract that matches the filter.
-     * @param {SellContractFindUniqueArgs} args - Arguments to find a SellContract
+     * Find zero or one Listedcontracts that matches the filter.
+     * @param {listedcontractsFindUniqueArgs} args - Arguments to find a Listedcontracts
      * @example
-     * // Get one SellContract
-     * const sellContract = await prisma.sellContract.findUnique({
+     * // Get one Listedcontracts
+     * const listedcontracts = await prisma.listedcontracts.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUnique<T extends SellContractFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, SellContractFindUniqueArgs<ExtArgs>>
-    ): Prisma__SellContractClient<$Result.GetResult<Prisma.$SellContractPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+    findUnique<T extends listedcontractsFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, listedcontractsFindUniqueArgs<ExtArgs>>
+    ): Prisma__listedcontractsClient<$Result.GetResult<Prisma.$listedcontractsPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
 
     /**
-     * Find one SellContract that matches the filter or throw an error  with `error.code='P2025'` 
+     * Find one Listedcontracts that matches the filter or throw an error  with `error.code='P2025'` 
      *     if no matches were found.
-     * @param {SellContractFindUniqueOrThrowArgs} args - Arguments to find a SellContract
+     * @param {listedcontractsFindUniqueOrThrowArgs} args - Arguments to find a Listedcontracts
      * @example
-     * // Get one SellContract
-     * const sellContract = await prisma.sellContract.findUniqueOrThrow({
+     * // Get one Listedcontracts
+     * const listedcontracts = await prisma.listedcontracts.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUniqueOrThrow<T extends SellContractFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, SellContractFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__SellContractClient<$Result.GetResult<Prisma.$SellContractPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+    findUniqueOrThrow<T extends listedcontractsFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, listedcontractsFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__listedcontractsClient<$Result.GetResult<Prisma.$listedcontractsPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
 
     /**
-     * Find the first SellContract that matches the filter.
+     * Find the first Listedcontracts that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SellContractFindFirstArgs} args - Arguments to find a SellContract
+     * @param {listedcontractsFindFirstArgs} args - Arguments to find a Listedcontracts
      * @example
-     * // Get one SellContract
-     * const sellContract = await prisma.sellContract.findFirst({
+     * // Get one Listedcontracts
+     * const listedcontracts = await prisma.listedcontracts.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirst<T extends SellContractFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, SellContractFindFirstArgs<ExtArgs>>
-    ): Prisma__SellContractClient<$Result.GetResult<Prisma.$SellContractPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+    findFirst<T extends listedcontractsFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, listedcontractsFindFirstArgs<ExtArgs>>
+    ): Prisma__listedcontractsClient<$Result.GetResult<Prisma.$listedcontractsPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
 
     /**
-     * Find the first SellContract that matches the filter or
+     * Find the first Listedcontracts that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SellContractFindFirstOrThrowArgs} args - Arguments to find a SellContract
+     * @param {listedcontractsFindFirstOrThrowArgs} args - Arguments to find a Listedcontracts
      * @example
-     * // Get one SellContract
-     * const sellContract = await prisma.sellContract.findFirstOrThrow({
+     * // Get one Listedcontracts
+     * const listedcontracts = await prisma.listedcontracts.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirstOrThrow<T extends SellContractFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, SellContractFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__SellContractClient<$Result.GetResult<Prisma.$SellContractPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+    findFirstOrThrow<T extends listedcontractsFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, listedcontractsFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__listedcontractsClient<$Result.GetResult<Prisma.$listedcontractsPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
 
     /**
-     * Find zero or more SellContracts that matches the filter.
+     * Find zero or more Listedcontracts that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SellContractFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @param {listedcontractsFindManyArgs=} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all SellContracts
-     * const sellContracts = await prisma.sellContract.findMany()
+     * // Get all Listedcontracts
+     * const listedcontracts = await prisma.listedcontracts.findMany()
      * 
-     * // Get first 10 SellContracts
-     * const sellContracts = await prisma.sellContract.findMany({ take: 10 })
+     * // Get first 10 Listedcontracts
+     * const listedcontracts = await prisma.listedcontracts.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const sellContractWithIdOnly = await prisma.sellContract.findMany({ select: { id: true } })
+     * const listedcontractsWithIdOnly = await prisma.listedcontracts.findMany({ select: { id: true } })
      * 
     **/
-    findMany<T extends SellContractFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, SellContractFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SellContractPayload<ExtArgs>, T, 'findMany'>>
+    findMany<T extends listedcontractsFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, listedcontractsFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$listedcontractsPayload<ExtArgs>, T, 'findMany'>>
 
     /**
-     * Create a SellContract.
-     * @param {SellContractCreateArgs} args - Arguments to create a SellContract.
+     * Create a Listedcontracts.
+     * @param {listedcontractsCreateArgs} args - Arguments to create a Listedcontracts.
      * @example
-     * // Create one SellContract
-     * const SellContract = await prisma.sellContract.create({
+     * // Create one Listedcontracts
+     * const Listedcontracts = await prisma.listedcontracts.create({
      *   data: {
-     *     // ... data to create a SellContract
+     *     // ... data to create a Listedcontracts
      *   }
      * })
      * 
     **/
-    create<T extends SellContractCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, SellContractCreateArgs<ExtArgs>>
-    ): Prisma__SellContractClient<$Result.GetResult<Prisma.$SellContractPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+    create<T extends listedcontractsCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, listedcontractsCreateArgs<ExtArgs>>
+    ): Prisma__listedcontractsClient<$Result.GetResult<Prisma.$listedcontractsPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
 
     /**
-     * Create many SellContracts.
-     *     @param {SellContractCreateManyArgs} args - Arguments to create many SellContracts.
+     * Create many Listedcontracts.
+     *     @param {listedcontractsCreateManyArgs} args - Arguments to create many Listedcontracts.
      *     @example
-     *     // Create many SellContracts
-     *     const sellContract = await prisma.sellContract.createMany({
+     *     // Create many Listedcontracts
+     *     const listedcontracts = await prisma.listedcontracts.createMany({
      *       data: {
      *         // ... provide data here
      *       }
      *     })
      *     
     **/
-    createMany<T extends SellContractCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, SellContractCreateManyArgs<ExtArgs>>
+    createMany<T extends listedcontractsCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, listedcontractsCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Delete a SellContract.
-     * @param {SellContractDeleteArgs} args - Arguments to delete one SellContract.
+     * Delete a Listedcontracts.
+     * @param {listedcontractsDeleteArgs} args - Arguments to delete one Listedcontracts.
      * @example
-     * // Delete one SellContract
-     * const SellContract = await prisma.sellContract.delete({
+     * // Delete one Listedcontracts
+     * const Listedcontracts = await prisma.listedcontracts.delete({
      *   where: {
-     *     // ... filter to delete one SellContract
+     *     // ... filter to delete one Listedcontracts
      *   }
      * })
      * 
     **/
-    delete<T extends SellContractDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, SellContractDeleteArgs<ExtArgs>>
-    ): Prisma__SellContractClient<$Result.GetResult<Prisma.$SellContractPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+    delete<T extends listedcontractsDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, listedcontractsDeleteArgs<ExtArgs>>
+    ): Prisma__listedcontractsClient<$Result.GetResult<Prisma.$listedcontractsPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
 
     /**
-     * Update one SellContract.
-     * @param {SellContractUpdateArgs} args - Arguments to update one SellContract.
+     * Update one Listedcontracts.
+     * @param {listedcontractsUpdateArgs} args - Arguments to update one Listedcontracts.
      * @example
-     * // Update one SellContract
-     * const sellContract = await prisma.sellContract.update({
+     * // Update one Listedcontracts
+     * const listedcontracts = await prisma.listedcontracts.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -5444,34 +5604,34 @@ export namespace Prisma {
      * })
      * 
     **/
-    update<T extends SellContractUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, SellContractUpdateArgs<ExtArgs>>
-    ): Prisma__SellContractClient<$Result.GetResult<Prisma.$SellContractPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+    update<T extends listedcontractsUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, listedcontractsUpdateArgs<ExtArgs>>
+    ): Prisma__listedcontractsClient<$Result.GetResult<Prisma.$listedcontractsPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
 
     /**
-     * Delete zero or more SellContracts.
-     * @param {SellContractDeleteManyArgs} args - Arguments to filter SellContracts to delete.
+     * Delete zero or more Listedcontracts.
+     * @param {listedcontractsDeleteManyArgs} args - Arguments to filter Listedcontracts to delete.
      * @example
-     * // Delete a few SellContracts
-     * const { count } = await prisma.sellContract.deleteMany({
+     * // Delete a few Listedcontracts
+     * const { count } = await prisma.listedcontracts.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
     **/
-    deleteMany<T extends SellContractDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, SellContractDeleteManyArgs<ExtArgs>>
+    deleteMany<T extends listedcontractsDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, listedcontractsDeleteManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more SellContracts.
+     * Update zero or more Listedcontracts.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SellContractUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {listedcontractsUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many SellContracts
-     * const sellContract = await prisma.sellContract.updateMany({
+     * // Update many Listedcontracts
+     * const listedcontracts = await prisma.listedcontracts.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -5481,59 +5641,59 @@ export namespace Prisma {
      * })
      * 
     **/
-    updateMany<T extends SellContractUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, SellContractUpdateManyArgs<ExtArgs>>
+    updateMany<T extends listedcontractsUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, listedcontractsUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one SellContract.
-     * @param {SellContractUpsertArgs} args - Arguments to update or create a SellContract.
+     * Create or update one Listedcontracts.
+     * @param {listedcontractsUpsertArgs} args - Arguments to update or create a Listedcontracts.
      * @example
-     * // Update or create a SellContract
-     * const sellContract = await prisma.sellContract.upsert({
+     * // Update or create a Listedcontracts
+     * const listedcontracts = await prisma.listedcontracts.upsert({
      *   create: {
-     *     // ... data to create a SellContract
+     *     // ... data to create a Listedcontracts
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the SellContract we want to update
+     *     // ... the filter for the Listedcontracts we want to update
      *   }
      * })
     **/
-    upsert<T extends SellContractUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, SellContractUpsertArgs<ExtArgs>>
-    ): Prisma__SellContractClient<$Result.GetResult<Prisma.$SellContractPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+    upsert<T extends listedcontractsUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, listedcontractsUpsertArgs<ExtArgs>>
+    ): Prisma__listedcontractsClient<$Result.GetResult<Prisma.$listedcontractsPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
 
     /**
-     * Count the number of SellContracts.
+     * Count the number of Listedcontracts.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SellContractCountArgs} args - Arguments to filter SellContracts to count.
+     * @param {listedcontractsCountArgs} args - Arguments to filter Listedcontracts to count.
      * @example
-     * // Count the number of SellContracts
-     * const count = await prisma.sellContract.count({
+     * // Count the number of Listedcontracts
+     * const count = await prisma.listedcontracts.count({
      *   where: {
-     *     // ... the filter for the SellContracts we want to count
+     *     // ... the filter for the Listedcontracts we want to count
      *   }
      * })
     **/
-    count<T extends SellContractCountArgs>(
-      args?: Subset<T, SellContractCountArgs>,
+    count<T extends listedcontractsCountArgs>(
+      args?: Subset<T, listedcontractsCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], SellContractCountAggregateOutputType>
+          : GetScalarType<T['select'], ListedcontractsCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a SellContract.
+     * Allows you to perform aggregations operations on a Listedcontracts.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SellContractAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {ListedcontractsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -5553,13 +5713,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends SellContractAggregateArgs>(args: Subset<T, SellContractAggregateArgs>): Prisma.PrismaPromise<GetSellContractAggregateType<T>>
+    aggregate<T extends ListedcontractsAggregateArgs>(args: Subset<T, ListedcontractsAggregateArgs>): Prisma.PrismaPromise<GetListedcontractsAggregateType<T>>
 
     /**
-     * Group by SellContract.
+     * Group by Listedcontracts.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SellContractGroupByArgs} args - Group by arguments.
+     * @param {listedcontractsGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -5574,14 +5734,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends SellContractGroupByArgs,
+      T extends listedcontractsGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: SellContractGroupByArgs['orderBy'] }
-        : { orderBy?: SellContractGroupByArgs['orderBy'] },
+        ? { orderBy: listedcontractsGroupByArgs['orderBy'] }
+        : { orderBy?: listedcontractsGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -5630,22 +5790,23 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, SellContractGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSellContractGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, listedcontractsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetListedcontractsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the SellContract model
+   * Fields of the listedcontracts model
    */
-  readonly fields: SellContractFieldRefs;
+  readonly fields: listedcontractsFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for SellContract.
+   * The delegate class that acts as a "Promise-like" for listedcontracts.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__SellContractClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__listedcontractsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
+    user<T extends usersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, usersDefaultArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -5672,645 +5833,722 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the SellContract model
+   * Fields of the listedcontracts model
    */ 
-  interface SellContractFieldRefs {
-    readonly id: FieldRef<"SellContract", 'Int'>
-    readonly name: FieldRef<"SellContract", 'String'>
-    readonly price: FieldRef<"SellContract", 'String'>
-    readonly contract: FieldRef<"SellContract", 'String'>
-    readonly description: FieldRef<"SellContract", 'String'>
-    readonly code: FieldRef<"SellContract", 'String'>
-    readonly address: FieldRef<"SellContract", 'String'>
+  interface listedcontractsFieldRefs {
+    readonly id: FieldRef<"listedcontracts", 'Int'>
+    readonly name: FieldRef<"listedcontracts", 'String'>
+    readonly price: FieldRef<"listedcontracts", 'String'>
+    readonly contract: FieldRef<"listedcontracts", 'String'>
+    readonly description: FieldRef<"listedcontracts", 'String'>
+    readonly code_hash: FieldRef<"listedcontracts", 'String'>
+    readonly code: FieldRef<"listedcontracts", 'String'>
+    readonly address: FieldRef<"listedcontracts", 'String'>
+    readonly user_id: FieldRef<"listedcontracts", 'Int'>
   }
     
 
   // Custom InputTypes
 
   /**
-   * SellContract findUnique
+   * listedcontracts findUnique
    */
-  export type SellContractFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type listedcontractsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SellContract
+     * Select specific fields to fetch from the listedcontracts
      */
-    select?: SellContractSelect<ExtArgs> | null
+    select?: listedcontractsSelect<ExtArgs> | null
     /**
-     * Filter, which SellContract to fetch.
+     * Choose, which related nodes to fetch as well.
      */
-    where: SellContractWhereUniqueInput
+    include?: listedcontractsInclude<ExtArgs> | null
+    /**
+     * Filter, which listedcontracts to fetch.
+     */
+    where: listedcontractsWhereUniqueInput
   }
 
 
   /**
-   * SellContract findUniqueOrThrow
+   * listedcontracts findUniqueOrThrow
    */
-  export type SellContractFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type listedcontractsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SellContract
+     * Select specific fields to fetch from the listedcontracts
      */
-    select?: SellContractSelect<ExtArgs> | null
+    select?: listedcontractsSelect<ExtArgs> | null
     /**
-     * Filter, which SellContract to fetch.
+     * Choose, which related nodes to fetch as well.
      */
-    where: SellContractWhereUniqueInput
+    include?: listedcontractsInclude<ExtArgs> | null
+    /**
+     * Filter, which listedcontracts to fetch.
+     */
+    where: listedcontractsWhereUniqueInput
   }
 
 
   /**
-   * SellContract findFirst
+   * listedcontracts findFirst
    */
-  export type SellContractFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type listedcontractsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SellContract
+     * Select specific fields to fetch from the listedcontracts
      */
-    select?: SellContractSelect<ExtArgs> | null
+    select?: listedcontractsSelect<ExtArgs> | null
     /**
-     * Filter, which SellContract to fetch.
+     * Choose, which related nodes to fetch as well.
      */
-    where?: SellContractWhereInput
+    include?: listedcontractsInclude<ExtArgs> | null
+    /**
+     * Filter, which listedcontracts to fetch.
+     */
+    where?: listedcontractsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of SellContracts to fetch.
+     * Determine the order of listedcontracts to fetch.
      */
-    orderBy?: SellContractOrderByWithRelationInput | SellContractOrderByWithRelationInput[]
+    orderBy?: listedcontractsOrderByWithRelationInput | listedcontractsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for SellContracts.
+     * Sets the position for searching for listedcontracts.
      */
-    cursor?: SellContractWhereUniqueInput
+    cursor?: listedcontractsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` SellContracts from the position of the cursor.
+     * Take `±n` listedcontracts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` SellContracts.
+     * Skip the first `n` listedcontracts.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of SellContracts.
+     * Filter by unique combinations of listedcontracts.
      */
-    distinct?: SellContractScalarFieldEnum | SellContractScalarFieldEnum[]
+    distinct?: ListedcontractsScalarFieldEnum | ListedcontractsScalarFieldEnum[]
   }
 
 
   /**
-   * SellContract findFirstOrThrow
+   * listedcontracts findFirstOrThrow
    */
-  export type SellContractFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type listedcontractsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SellContract
+     * Select specific fields to fetch from the listedcontracts
      */
-    select?: SellContractSelect<ExtArgs> | null
+    select?: listedcontractsSelect<ExtArgs> | null
     /**
-     * Filter, which SellContract to fetch.
+     * Choose, which related nodes to fetch as well.
      */
-    where?: SellContractWhereInput
+    include?: listedcontractsInclude<ExtArgs> | null
+    /**
+     * Filter, which listedcontracts to fetch.
+     */
+    where?: listedcontractsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of SellContracts to fetch.
+     * Determine the order of listedcontracts to fetch.
      */
-    orderBy?: SellContractOrderByWithRelationInput | SellContractOrderByWithRelationInput[]
+    orderBy?: listedcontractsOrderByWithRelationInput | listedcontractsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for SellContracts.
+     * Sets the position for searching for listedcontracts.
      */
-    cursor?: SellContractWhereUniqueInput
+    cursor?: listedcontractsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` SellContracts from the position of the cursor.
+     * Take `±n` listedcontracts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` SellContracts.
+     * Skip the first `n` listedcontracts.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of SellContracts.
+     * Filter by unique combinations of listedcontracts.
      */
-    distinct?: SellContractScalarFieldEnum | SellContractScalarFieldEnum[]
+    distinct?: ListedcontractsScalarFieldEnum | ListedcontractsScalarFieldEnum[]
   }
 
 
   /**
-   * SellContract findMany
+   * listedcontracts findMany
    */
-  export type SellContractFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type listedcontractsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SellContract
+     * Select specific fields to fetch from the listedcontracts
      */
-    select?: SellContractSelect<ExtArgs> | null
+    select?: listedcontractsSelect<ExtArgs> | null
     /**
-     * Filter, which SellContracts to fetch.
+     * Choose, which related nodes to fetch as well.
      */
-    where?: SellContractWhereInput
+    include?: listedcontractsInclude<ExtArgs> | null
+    /**
+     * Filter, which listedcontracts to fetch.
+     */
+    where?: listedcontractsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of SellContracts to fetch.
+     * Determine the order of listedcontracts to fetch.
      */
-    orderBy?: SellContractOrderByWithRelationInput | SellContractOrderByWithRelationInput[]
+    orderBy?: listedcontractsOrderByWithRelationInput | listedcontractsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing SellContracts.
+     * Sets the position for listing listedcontracts.
      */
-    cursor?: SellContractWhereUniqueInput
+    cursor?: listedcontractsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` SellContracts from the position of the cursor.
+     * Take `±n` listedcontracts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` SellContracts.
+     * Skip the first `n` listedcontracts.
      */
     skip?: number
-    distinct?: SellContractScalarFieldEnum | SellContractScalarFieldEnum[]
+    distinct?: ListedcontractsScalarFieldEnum | ListedcontractsScalarFieldEnum[]
   }
 
 
   /**
-   * SellContract create
+   * listedcontracts create
    */
-  export type SellContractCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type listedcontractsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SellContract
+     * Select specific fields to fetch from the listedcontracts
      */
-    select?: SellContractSelect<ExtArgs> | null
+    select?: listedcontractsSelect<ExtArgs> | null
     /**
-     * The data needed to create a SellContract.
+     * Choose, which related nodes to fetch as well.
      */
-    data: XOR<SellContractCreateInput, SellContractUncheckedCreateInput>
+    include?: listedcontractsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a listedcontracts.
+     */
+    data: XOR<listedcontractsCreateInput, listedcontractsUncheckedCreateInput>
   }
 
 
   /**
-   * SellContract createMany
+   * listedcontracts createMany
    */
-  export type SellContractCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type listedcontractsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many SellContracts.
+     * The data used to create many listedcontracts.
      */
-    data: SellContractCreateManyInput | SellContractCreateManyInput[]
+    data: listedcontractsCreateManyInput | listedcontractsCreateManyInput[]
     skipDuplicates?: boolean
   }
 
 
   /**
-   * SellContract update
+   * listedcontracts update
    */
-  export type SellContractUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type listedcontractsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SellContract
+     * Select specific fields to fetch from the listedcontracts
      */
-    select?: SellContractSelect<ExtArgs> | null
+    select?: listedcontractsSelect<ExtArgs> | null
     /**
-     * The data needed to update a SellContract.
+     * Choose, which related nodes to fetch as well.
      */
-    data: XOR<SellContractUpdateInput, SellContractUncheckedUpdateInput>
+    include?: listedcontractsInclude<ExtArgs> | null
     /**
-     * Choose, which SellContract to update.
+     * The data needed to update a listedcontracts.
      */
-    where: SellContractWhereUniqueInput
+    data: XOR<listedcontractsUpdateInput, listedcontractsUncheckedUpdateInput>
+    /**
+     * Choose, which listedcontracts to update.
+     */
+    where: listedcontractsWhereUniqueInput
   }
 
 
   /**
-   * SellContract updateMany
+   * listedcontracts updateMany
    */
-  export type SellContractUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type listedcontractsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update SellContracts.
+     * The data used to update listedcontracts.
      */
-    data: XOR<SellContractUpdateManyMutationInput, SellContractUncheckedUpdateManyInput>
+    data: XOR<listedcontractsUpdateManyMutationInput, listedcontractsUncheckedUpdateManyInput>
     /**
-     * Filter which SellContracts to update
+     * Filter which listedcontracts to update
      */
-    where?: SellContractWhereInput
+    where?: listedcontractsWhereInput
   }
 
 
   /**
-   * SellContract upsert
+   * listedcontracts upsert
    */
-  export type SellContractUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type listedcontractsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SellContract
+     * Select specific fields to fetch from the listedcontracts
      */
-    select?: SellContractSelect<ExtArgs> | null
+    select?: listedcontractsSelect<ExtArgs> | null
     /**
-     * The filter to search for the SellContract to update in case it exists.
+     * Choose, which related nodes to fetch as well.
      */
-    where: SellContractWhereUniqueInput
+    include?: listedcontractsInclude<ExtArgs> | null
     /**
-     * In case the SellContract found by the `where` argument doesn't exist, create a new SellContract with this data.
+     * The filter to search for the listedcontracts to update in case it exists.
      */
-    create: XOR<SellContractCreateInput, SellContractUncheckedCreateInput>
+    where: listedcontractsWhereUniqueInput
     /**
-     * In case the SellContract was found with the provided `where` argument, update it with this data.
+     * In case the listedcontracts found by the `where` argument doesn't exist, create a new listedcontracts with this data.
      */
-    update: XOR<SellContractUpdateInput, SellContractUncheckedUpdateInput>
+    create: XOR<listedcontractsCreateInput, listedcontractsUncheckedCreateInput>
+    /**
+     * In case the listedcontracts was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<listedcontractsUpdateInput, listedcontractsUncheckedUpdateInput>
   }
 
 
   /**
-   * SellContract delete
+   * listedcontracts delete
    */
-  export type SellContractDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type listedcontractsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SellContract
+     * Select specific fields to fetch from the listedcontracts
      */
-    select?: SellContractSelect<ExtArgs> | null
+    select?: listedcontractsSelect<ExtArgs> | null
     /**
-     * Filter which SellContract to delete.
+     * Choose, which related nodes to fetch as well.
      */
-    where: SellContractWhereUniqueInput
+    include?: listedcontractsInclude<ExtArgs> | null
+    /**
+     * Filter which listedcontracts to delete.
+     */
+    where: listedcontractsWhereUniqueInput
   }
 
 
   /**
-   * SellContract deleteMany
+   * listedcontracts deleteMany
    */
-  export type SellContractDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type listedcontractsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which SellContracts to delete
+     * Filter which listedcontracts to delete
      */
-    where?: SellContractWhereInput
+    where?: listedcontractsWhereInput
   }
 
 
   /**
-   * SellContract without action
+   * listedcontracts without action
    */
-  export type SellContractDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type listedcontractsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SellContract
+     * Select specific fields to fetch from the listedcontracts
      */
-    select?: SellContractSelect<ExtArgs> | null
+    select?: listedcontractsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: listedcontractsInclude<ExtArgs> | null
   }
 
 
 
   /**
-   * Model BuyContract
+   * Model ownedcontracts
    */
 
-  export type AggregateBuyContract = {
-    _count: BuyContractCountAggregateOutputType | null
-    _avg: BuyContractAvgAggregateOutputType | null
-    _sum: BuyContractSumAggregateOutputType | null
-    _min: BuyContractMinAggregateOutputType | null
-    _max: BuyContractMaxAggregateOutputType | null
+  export type AggregateOwnedcontracts = {
+    _count: OwnedcontractsCountAggregateOutputType | null
+    _avg: OwnedcontractsAvgAggregateOutputType | null
+    _sum: OwnedcontractsSumAggregateOutputType | null
+    _min: OwnedcontractsMinAggregateOutputType | null
+    _max: OwnedcontractsMaxAggregateOutputType | null
   }
 
-  export type BuyContractAvgAggregateOutputType = {
+  export type OwnedcontractsAvgAggregateOutputType = {
     id: number | null
+    contract_id: number | null
+    user_id: number | null
   }
 
-  export type BuyContractSumAggregateOutputType = {
+  export type OwnedcontractsSumAggregateOutputType = {
     id: number | null
+    contract_id: number | null
+    user_id: number | null
   }
 
-  export type BuyContractMinAggregateOutputType = {
+  export type OwnedcontractsMinAggregateOutputType = {
     id: number | null
-    contractInfo: string | null
+    name: string | null
+    contract_id: number | null
+    user_id: number | null
   }
 
-  export type BuyContractMaxAggregateOutputType = {
+  export type OwnedcontractsMaxAggregateOutputType = {
     id: number | null
-    contractInfo: string | null
+    name: string | null
+    contract_id: number | null
+    user_id: number | null
   }
 
-  export type BuyContractCountAggregateOutputType = {
+  export type OwnedcontractsCountAggregateOutputType = {
     id: number
-    contractInfo: number
+    name: number
+    contract_id: number
+    user_id: number
     _all: number
   }
 
 
-  export type BuyContractAvgAggregateInputType = {
+  export type OwnedcontractsAvgAggregateInputType = {
     id?: true
+    contract_id?: true
+    user_id?: true
   }
 
-  export type BuyContractSumAggregateInputType = {
+  export type OwnedcontractsSumAggregateInputType = {
     id?: true
+    contract_id?: true
+    user_id?: true
   }
 
-  export type BuyContractMinAggregateInputType = {
+  export type OwnedcontractsMinAggregateInputType = {
     id?: true
-    contractInfo?: true
+    name?: true
+    contract_id?: true
+    user_id?: true
   }
 
-  export type BuyContractMaxAggregateInputType = {
+  export type OwnedcontractsMaxAggregateInputType = {
     id?: true
-    contractInfo?: true
+    name?: true
+    contract_id?: true
+    user_id?: true
   }
 
-  export type BuyContractCountAggregateInputType = {
+  export type OwnedcontractsCountAggregateInputType = {
     id?: true
-    contractInfo?: true
+    name?: true
+    contract_id?: true
+    user_id?: true
     _all?: true
   }
 
-  export type BuyContractAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OwnedcontractsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which BuyContract to aggregate.
+     * Filter which ownedcontracts to aggregate.
      */
-    where?: BuyContractWhereInput
+    where?: ownedcontractsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of BuyContracts to fetch.
+     * Determine the order of ownedcontracts to fetch.
      */
-    orderBy?: BuyContractOrderByWithRelationInput | BuyContractOrderByWithRelationInput[]
+    orderBy?: ownedcontractsOrderByWithRelationInput | ownedcontractsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: BuyContractWhereUniqueInput
+    cursor?: ownedcontractsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` BuyContracts from the position of the cursor.
+     * Take `±n` ownedcontracts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` BuyContracts.
+     * Skip the first `n` ownedcontracts.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned BuyContracts
+     * Count returned ownedcontracts
     **/
-    _count?: true | BuyContractCountAggregateInputType
+    _count?: true | OwnedcontractsCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: BuyContractAvgAggregateInputType
+    _avg?: OwnedcontractsAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: BuyContractSumAggregateInputType
+    _sum?: OwnedcontractsSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: BuyContractMinAggregateInputType
+    _min?: OwnedcontractsMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: BuyContractMaxAggregateInputType
+    _max?: OwnedcontractsMaxAggregateInputType
   }
 
-  export type GetBuyContractAggregateType<T extends BuyContractAggregateArgs> = {
-        [P in keyof T & keyof AggregateBuyContract]: P extends '_count' | 'count'
+  export type GetOwnedcontractsAggregateType<T extends OwnedcontractsAggregateArgs> = {
+        [P in keyof T & keyof AggregateOwnedcontracts]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateBuyContract[P]>
-      : GetScalarType<T[P], AggregateBuyContract[P]>
+        : GetScalarType<T[P], AggregateOwnedcontracts[P]>
+      : GetScalarType<T[P], AggregateOwnedcontracts[P]>
   }
 
 
 
 
-  export type BuyContractGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: BuyContractWhereInput
-    orderBy?: BuyContractOrderByWithAggregationInput | BuyContractOrderByWithAggregationInput[]
-    by: BuyContractScalarFieldEnum[] | BuyContractScalarFieldEnum
-    having?: BuyContractScalarWhereWithAggregatesInput
+  export type ownedcontractsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ownedcontractsWhereInput
+    orderBy?: ownedcontractsOrderByWithAggregationInput | ownedcontractsOrderByWithAggregationInput[]
+    by: OwnedcontractsScalarFieldEnum[] | OwnedcontractsScalarFieldEnum
+    having?: ownedcontractsScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: BuyContractCountAggregateInputType | true
-    _avg?: BuyContractAvgAggregateInputType
-    _sum?: BuyContractSumAggregateInputType
-    _min?: BuyContractMinAggregateInputType
-    _max?: BuyContractMaxAggregateInputType
+    _count?: OwnedcontractsCountAggregateInputType | true
+    _avg?: OwnedcontractsAvgAggregateInputType
+    _sum?: OwnedcontractsSumAggregateInputType
+    _min?: OwnedcontractsMinAggregateInputType
+    _max?: OwnedcontractsMaxAggregateInputType
   }
 
-  export type BuyContractGroupByOutputType = {
+  export type OwnedcontractsGroupByOutputType = {
     id: number
-    contractInfo: string
-    _count: BuyContractCountAggregateOutputType | null
-    _avg: BuyContractAvgAggregateOutputType | null
-    _sum: BuyContractSumAggregateOutputType | null
-    _min: BuyContractMinAggregateOutputType | null
-    _max: BuyContractMaxAggregateOutputType | null
+    name: string
+    contract_id: number
+    user_id: number
+    _count: OwnedcontractsCountAggregateOutputType | null
+    _avg: OwnedcontractsAvgAggregateOutputType | null
+    _sum: OwnedcontractsSumAggregateOutputType | null
+    _min: OwnedcontractsMinAggregateOutputType | null
+    _max: OwnedcontractsMaxAggregateOutputType | null
   }
 
-  type GetBuyContractGroupByPayload<T extends BuyContractGroupByArgs> = Prisma.PrismaPromise<
+  type GetOwnedcontractsGroupByPayload<T extends ownedcontractsGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<BuyContractGroupByOutputType, T['by']> &
+      PickEnumerable<OwnedcontractsGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof BuyContractGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof OwnedcontractsGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], BuyContractGroupByOutputType[P]>
-            : GetScalarType<T[P], BuyContractGroupByOutputType[P]>
+              : GetScalarType<T[P], OwnedcontractsGroupByOutputType[P]>
+            : GetScalarType<T[P], OwnedcontractsGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type BuyContractSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ownedcontractsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    contractInfo?: boolean
-  }, ExtArgs["result"]["buyContract"]>
+    name?: boolean
+    contract_id?: boolean
+    user_id?: boolean
+    user?: boolean | usersDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["ownedcontracts"]>
 
-  export type BuyContractSelectScalar = {
+  export type ownedcontractsSelectScalar = {
     id?: boolean
-    contractInfo?: boolean
+    name?: boolean
+    contract_id?: boolean
+    user_id?: boolean
+  }
+
+  export type ownedcontractsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | usersDefaultArgs<ExtArgs>
   }
 
 
-  export type $BuyContractPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "BuyContract"
-    objects: {}
+  export type $ownedcontractsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ownedcontracts"
+    objects: {
+      user: Prisma.$usersPayload<ExtArgs>
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      contractInfo: string
-    }, ExtArgs["result"]["buyContract"]>
+      name: string
+      contract_id: number
+      user_id: number
+    }, ExtArgs["result"]["ownedcontracts"]>
     composites: {}
   }
 
 
-  type BuyContractGetPayload<S extends boolean | null | undefined | BuyContractDefaultArgs> = $Result.GetResult<Prisma.$BuyContractPayload, S>
+  type ownedcontractsGetPayload<S extends boolean | null | undefined | ownedcontractsDefaultArgs> = $Result.GetResult<Prisma.$ownedcontractsPayload, S>
 
-  type BuyContractCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<BuyContractFindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: BuyContractCountAggregateInputType | true
+  type ownedcontractsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<ownedcontractsFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: OwnedcontractsCountAggregateInputType | true
     }
 
-  export interface BuyContractDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['BuyContract'], meta: { name: 'BuyContract' } }
+  export interface ownedcontractsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ownedcontracts'], meta: { name: 'ownedcontracts' } }
     /**
-     * Find zero or one BuyContract that matches the filter.
-     * @param {BuyContractFindUniqueArgs} args - Arguments to find a BuyContract
+     * Find zero or one Ownedcontracts that matches the filter.
+     * @param {ownedcontractsFindUniqueArgs} args - Arguments to find a Ownedcontracts
      * @example
-     * // Get one BuyContract
-     * const buyContract = await prisma.buyContract.findUnique({
+     * // Get one Ownedcontracts
+     * const ownedcontracts = await prisma.ownedcontracts.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUnique<T extends BuyContractFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, BuyContractFindUniqueArgs<ExtArgs>>
-    ): Prisma__BuyContractClient<$Result.GetResult<Prisma.$BuyContractPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+    findUnique<T extends ownedcontractsFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, ownedcontractsFindUniqueArgs<ExtArgs>>
+    ): Prisma__ownedcontractsClient<$Result.GetResult<Prisma.$ownedcontractsPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
 
     /**
-     * Find one BuyContract that matches the filter or throw an error  with `error.code='P2025'` 
+     * Find one Ownedcontracts that matches the filter or throw an error  with `error.code='P2025'` 
      *     if no matches were found.
-     * @param {BuyContractFindUniqueOrThrowArgs} args - Arguments to find a BuyContract
+     * @param {ownedcontractsFindUniqueOrThrowArgs} args - Arguments to find a Ownedcontracts
      * @example
-     * // Get one BuyContract
-     * const buyContract = await prisma.buyContract.findUniqueOrThrow({
+     * // Get one Ownedcontracts
+     * const ownedcontracts = await prisma.ownedcontracts.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUniqueOrThrow<T extends BuyContractFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, BuyContractFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__BuyContractClient<$Result.GetResult<Prisma.$BuyContractPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+    findUniqueOrThrow<T extends ownedcontractsFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, ownedcontractsFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__ownedcontractsClient<$Result.GetResult<Prisma.$ownedcontractsPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
 
     /**
-     * Find the first BuyContract that matches the filter.
+     * Find the first Ownedcontracts that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {BuyContractFindFirstArgs} args - Arguments to find a BuyContract
+     * @param {ownedcontractsFindFirstArgs} args - Arguments to find a Ownedcontracts
      * @example
-     * // Get one BuyContract
-     * const buyContract = await prisma.buyContract.findFirst({
+     * // Get one Ownedcontracts
+     * const ownedcontracts = await prisma.ownedcontracts.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirst<T extends BuyContractFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, BuyContractFindFirstArgs<ExtArgs>>
-    ): Prisma__BuyContractClient<$Result.GetResult<Prisma.$BuyContractPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+    findFirst<T extends ownedcontractsFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, ownedcontractsFindFirstArgs<ExtArgs>>
+    ): Prisma__ownedcontractsClient<$Result.GetResult<Prisma.$ownedcontractsPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
 
     /**
-     * Find the first BuyContract that matches the filter or
+     * Find the first Ownedcontracts that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {BuyContractFindFirstOrThrowArgs} args - Arguments to find a BuyContract
+     * @param {ownedcontractsFindFirstOrThrowArgs} args - Arguments to find a Ownedcontracts
      * @example
-     * // Get one BuyContract
-     * const buyContract = await prisma.buyContract.findFirstOrThrow({
+     * // Get one Ownedcontracts
+     * const ownedcontracts = await prisma.ownedcontracts.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirstOrThrow<T extends BuyContractFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, BuyContractFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__BuyContractClient<$Result.GetResult<Prisma.$BuyContractPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+    findFirstOrThrow<T extends ownedcontractsFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, ownedcontractsFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__ownedcontractsClient<$Result.GetResult<Prisma.$ownedcontractsPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
 
     /**
-     * Find zero or more BuyContracts that matches the filter.
+     * Find zero or more Ownedcontracts that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {BuyContractFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @param {ownedcontractsFindManyArgs=} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all BuyContracts
-     * const buyContracts = await prisma.buyContract.findMany()
+     * // Get all Ownedcontracts
+     * const ownedcontracts = await prisma.ownedcontracts.findMany()
      * 
-     * // Get first 10 BuyContracts
-     * const buyContracts = await prisma.buyContract.findMany({ take: 10 })
+     * // Get first 10 Ownedcontracts
+     * const ownedcontracts = await prisma.ownedcontracts.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const buyContractWithIdOnly = await prisma.buyContract.findMany({ select: { id: true } })
+     * const ownedcontractsWithIdOnly = await prisma.ownedcontracts.findMany({ select: { id: true } })
      * 
     **/
-    findMany<T extends BuyContractFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, BuyContractFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BuyContractPayload<ExtArgs>, T, 'findMany'>>
+    findMany<T extends ownedcontractsFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, ownedcontractsFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ownedcontractsPayload<ExtArgs>, T, 'findMany'>>
 
     /**
-     * Create a BuyContract.
-     * @param {BuyContractCreateArgs} args - Arguments to create a BuyContract.
+     * Create a Ownedcontracts.
+     * @param {ownedcontractsCreateArgs} args - Arguments to create a Ownedcontracts.
      * @example
-     * // Create one BuyContract
-     * const BuyContract = await prisma.buyContract.create({
+     * // Create one Ownedcontracts
+     * const Ownedcontracts = await prisma.ownedcontracts.create({
      *   data: {
-     *     // ... data to create a BuyContract
+     *     // ... data to create a Ownedcontracts
      *   }
      * })
      * 
     **/
-    create<T extends BuyContractCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, BuyContractCreateArgs<ExtArgs>>
-    ): Prisma__BuyContractClient<$Result.GetResult<Prisma.$BuyContractPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+    create<T extends ownedcontractsCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, ownedcontractsCreateArgs<ExtArgs>>
+    ): Prisma__ownedcontractsClient<$Result.GetResult<Prisma.$ownedcontractsPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
 
     /**
-     * Create many BuyContracts.
-     *     @param {BuyContractCreateManyArgs} args - Arguments to create many BuyContracts.
+     * Create many Ownedcontracts.
+     *     @param {ownedcontractsCreateManyArgs} args - Arguments to create many Ownedcontracts.
      *     @example
-     *     // Create many BuyContracts
-     *     const buyContract = await prisma.buyContract.createMany({
+     *     // Create many Ownedcontracts
+     *     const ownedcontracts = await prisma.ownedcontracts.createMany({
      *       data: {
      *         // ... provide data here
      *       }
      *     })
      *     
     **/
-    createMany<T extends BuyContractCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, BuyContractCreateManyArgs<ExtArgs>>
+    createMany<T extends ownedcontractsCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, ownedcontractsCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Delete a BuyContract.
-     * @param {BuyContractDeleteArgs} args - Arguments to delete one BuyContract.
+     * Delete a Ownedcontracts.
+     * @param {ownedcontractsDeleteArgs} args - Arguments to delete one Ownedcontracts.
      * @example
-     * // Delete one BuyContract
-     * const BuyContract = await prisma.buyContract.delete({
+     * // Delete one Ownedcontracts
+     * const Ownedcontracts = await prisma.ownedcontracts.delete({
      *   where: {
-     *     // ... filter to delete one BuyContract
+     *     // ... filter to delete one Ownedcontracts
      *   }
      * })
      * 
     **/
-    delete<T extends BuyContractDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, BuyContractDeleteArgs<ExtArgs>>
-    ): Prisma__BuyContractClient<$Result.GetResult<Prisma.$BuyContractPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+    delete<T extends ownedcontractsDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, ownedcontractsDeleteArgs<ExtArgs>>
+    ): Prisma__ownedcontractsClient<$Result.GetResult<Prisma.$ownedcontractsPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
 
     /**
-     * Update one BuyContract.
-     * @param {BuyContractUpdateArgs} args - Arguments to update one BuyContract.
+     * Update one Ownedcontracts.
+     * @param {ownedcontractsUpdateArgs} args - Arguments to update one Ownedcontracts.
      * @example
-     * // Update one BuyContract
-     * const buyContract = await prisma.buyContract.update({
+     * // Update one Ownedcontracts
+     * const ownedcontracts = await prisma.ownedcontracts.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -6320,34 +6558,34 @@ export namespace Prisma {
      * })
      * 
     **/
-    update<T extends BuyContractUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, BuyContractUpdateArgs<ExtArgs>>
-    ): Prisma__BuyContractClient<$Result.GetResult<Prisma.$BuyContractPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+    update<T extends ownedcontractsUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, ownedcontractsUpdateArgs<ExtArgs>>
+    ): Prisma__ownedcontractsClient<$Result.GetResult<Prisma.$ownedcontractsPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
 
     /**
-     * Delete zero or more BuyContracts.
-     * @param {BuyContractDeleteManyArgs} args - Arguments to filter BuyContracts to delete.
+     * Delete zero or more Ownedcontracts.
+     * @param {ownedcontractsDeleteManyArgs} args - Arguments to filter Ownedcontracts to delete.
      * @example
-     * // Delete a few BuyContracts
-     * const { count } = await prisma.buyContract.deleteMany({
+     * // Delete a few Ownedcontracts
+     * const { count } = await prisma.ownedcontracts.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
     **/
-    deleteMany<T extends BuyContractDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, BuyContractDeleteManyArgs<ExtArgs>>
+    deleteMany<T extends ownedcontractsDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, ownedcontractsDeleteManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more BuyContracts.
+     * Update zero or more Ownedcontracts.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {BuyContractUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {ownedcontractsUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many BuyContracts
-     * const buyContract = await prisma.buyContract.updateMany({
+     * // Update many Ownedcontracts
+     * const ownedcontracts = await prisma.ownedcontracts.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -6357,59 +6595,59 @@ export namespace Prisma {
      * })
      * 
     **/
-    updateMany<T extends BuyContractUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, BuyContractUpdateManyArgs<ExtArgs>>
+    updateMany<T extends ownedcontractsUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, ownedcontractsUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one BuyContract.
-     * @param {BuyContractUpsertArgs} args - Arguments to update or create a BuyContract.
+     * Create or update one Ownedcontracts.
+     * @param {ownedcontractsUpsertArgs} args - Arguments to update or create a Ownedcontracts.
      * @example
-     * // Update or create a BuyContract
-     * const buyContract = await prisma.buyContract.upsert({
+     * // Update or create a Ownedcontracts
+     * const ownedcontracts = await prisma.ownedcontracts.upsert({
      *   create: {
-     *     // ... data to create a BuyContract
+     *     // ... data to create a Ownedcontracts
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the BuyContract we want to update
+     *     // ... the filter for the Ownedcontracts we want to update
      *   }
      * })
     **/
-    upsert<T extends BuyContractUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, BuyContractUpsertArgs<ExtArgs>>
-    ): Prisma__BuyContractClient<$Result.GetResult<Prisma.$BuyContractPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+    upsert<T extends ownedcontractsUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, ownedcontractsUpsertArgs<ExtArgs>>
+    ): Prisma__ownedcontractsClient<$Result.GetResult<Prisma.$ownedcontractsPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
 
     /**
-     * Count the number of BuyContracts.
+     * Count the number of Ownedcontracts.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {BuyContractCountArgs} args - Arguments to filter BuyContracts to count.
+     * @param {ownedcontractsCountArgs} args - Arguments to filter Ownedcontracts to count.
      * @example
-     * // Count the number of BuyContracts
-     * const count = await prisma.buyContract.count({
+     * // Count the number of Ownedcontracts
+     * const count = await prisma.ownedcontracts.count({
      *   where: {
-     *     // ... the filter for the BuyContracts we want to count
+     *     // ... the filter for the Ownedcontracts we want to count
      *   }
      * })
     **/
-    count<T extends BuyContractCountArgs>(
-      args?: Subset<T, BuyContractCountArgs>,
+    count<T extends ownedcontractsCountArgs>(
+      args?: Subset<T, ownedcontractsCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], BuyContractCountAggregateOutputType>
+          : GetScalarType<T['select'], OwnedcontractsCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a BuyContract.
+     * Allows you to perform aggregations operations on a Ownedcontracts.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {BuyContractAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {OwnedcontractsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -6429,13 +6667,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends BuyContractAggregateArgs>(args: Subset<T, BuyContractAggregateArgs>): Prisma.PrismaPromise<GetBuyContractAggregateType<T>>
+    aggregate<T extends OwnedcontractsAggregateArgs>(args: Subset<T, OwnedcontractsAggregateArgs>): Prisma.PrismaPromise<GetOwnedcontractsAggregateType<T>>
 
     /**
-     * Group by BuyContract.
+     * Group by Ownedcontracts.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {BuyContractGroupByArgs} args - Group by arguments.
+     * @param {ownedcontractsGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -6450,14 +6688,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends BuyContractGroupByArgs,
+      T extends ownedcontractsGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: BuyContractGroupByArgs['orderBy'] }
-        : { orderBy?: BuyContractGroupByArgs['orderBy'] },
+        ? { orderBy: ownedcontractsGroupByArgs['orderBy'] }
+        : { orderBy?: ownedcontractsGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -6506,22 +6744,23 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, BuyContractGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBuyContractGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, ownedcontractsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetOwnedcontractsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the BuyContract model
+   * Fields of the ownedcontracts model
    */
-  readonly fields: BuyContractFieldRefs;
+  readonly fields: ownedcontractsFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for BuyContract.
+   * The delegate class that acts as a "Promise-like" for ownedcontracts.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__BuyContractClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__ownedcontractsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
+    user<T extends usersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, usersDefaultArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -6548,294 +6787,336 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the BuyContract model
+   * Fields of the ownedcontracts model
    */ 
-  interface BuyContractFieldRefs {
-    readonly id: FieldRef<"BuyContract", 'Int'>
-    readonly contractInfo: FieldRef<"BuyContract", 'String'>
+  interface ownedcontractsFieldRefs {
+    readonly id: FieldRef<"ownedcontracts", 'Int'>
+    readonly name: FieldRef<"ownedcontracts", 'String'>
+    readonly contract_id: FieldRef<"ownedcontracts", 'Int'>
+    readonly user_id: FieldRef<"ownedcontracts", 'Int'>
   }
     
 
   // Custom InputTypes
 
   /**
-   * BuyContract findUnique
+   * ownedcontracts findUnique
    */
-  export type BuyContractFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ownedcontractsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the BuyContract
+     * Select specific fields to fetch from the ownedcontracts
      */
-    select?: BuyContractSelect<ExtArgs> | null
+    select?: ownedcontractsSelect<ExtArgs> | null
     /**
-     * Filter, which BuyContract to fetch.
+     * Choose, which related nodes to fetch as well.
      */
-    where: BuyContractWhereUniqueInput
+    include?: ownedcontractsInclude<ExtArgs> | null
+    /**
+     * Filter, which ownedcontracts to fetch.
+     */
+    where: ownedcontractsWhereUniqueInput
   }
 
 
   /**
-   * BuyContract findUniqueOrThrow
+   * ownedcontracts findUniqueOrThrow
    */
-  export type BuyContractFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ownedcontractsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the BuyContract
+     * Select specific fields to fetch from the ownedcontracts
      */
-    select?: BuyContractSelect<ExtArgs> | null
+    select?: ownedcontractsSelect<ExtArgs> | null
     /**
-     * Filter, which BuyContract to fetch.
+     * Choose, which related nodes to fetch as well.
      */
-    where: BuyContractWhereUniqueInput
+    include?: ownedcontractsInclude<ExtArgs> | null
+    /**
+     * Filter, which ownedcontracts to fetch.
+     */
+    where: ownedcontractsWhereUniqueInput
   }
 
 
   /**
-   * BuyContract findFirst
+   * ownedcontracts findFirst
    */
-  export type BuyContractFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ownedcontractsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the BuyContract
+     * Select specific fields to fetch from the ownedcontracts
      */
-    select?: BuyContractSelect<ExtArgs> | null
+    select?: ownedcontractsSelect<ExtArgs> | null
     /**
-     * Filter, which BuyContract to fetch.
+     * Choose, which related nodes to fetch as well.
      */
-    where?: BuyContractWhereInput
+    include?: ownedcontractsInclude<ExtArgs> | null
+    /**
+     * Filter, which ownedcontracts to fetch.
+     */
+    where?: ownedcontractsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of BuyContracts to fetch.
+     * Determine the order of ownedcontracts to fetch.
      */
-    orderBy?: BuyContractOrderByWithRelationInput | BuyContractOrderByWithRelationInput[]
+    orderBy?: ownedcontractsOrderByWithRelationInput | ownedcontractsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for BuyContracts.
+     * Sets the position for searching for ownedcontracts.
      */
-    cursor?: BuyContractWhereUniqueInput
+    cursor?: ownedcontractsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` BuyContracts from the position of the cursor.
+     * Take `±n` ownedcontracts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` BuyContracts.
+     * Skip the first `n` ownedcontracts.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of BuyContracts.
+     * Filter by unique combinations of ownedcontracts.
      */
-    distinct?: BuyContractScalarFieldEnum | BuyContractScalarFieldEnum[]
+    distinct?: OwnedcontractsScalarFieldEnum | OwnedcontractsScalarFieldEnum[]
   }
 
 
   /**
-   * BuyContract findFirstOrThrow
+   * ownedcontracts findFirstOrThrow
    */
-  export type BuyContractFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ownedcontractsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the BuyContract
+     * Select specific fields to fetch from the ownedcontracts
      */
-    select?: BuyContractSelect<ExtArgs> | null
+    select?: ownedcontractsSelect<ExtArgs> | null
     /**
-     * Filter, which BuyContract to fetch.
+     * Choose, which related nodes to fetch as well.
      */
-    where?: BuyContractWhereInput
+    include?: ownedcontractsInclude<ExtArgs> | null
+    /**
+     * Filter, which ownedcontracts to fetch.
+     */
+    where?: ownedcontractsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of BuyContracts to fetch.
+     * Determine the order of ownedcontracts to fetch.
      */
-    orderBy?: BuyContractOrderByWithRelationInput | BuyContractOrderByWithRelationInput[]
+    orderBy?: ownedcontractsOrderByWithRelationInput | ownedcontractsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for BuyContracts.
+     * Sets the position for searching for ownedcontracts.
      */
-    cursor?: BuyContractWhereUniqueInput
+    cursor?: ownedcontractsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` BuyContracts from the position of the cursor.
+     * Take `±n` ownedcontracts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` BuyContracts.
+     * Skip the first `n` ownedcontracts.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of BuyContracts.
+     * Filter by unique combinations of ownedcontracts.
      */
-    distinct?: BuyContractScalarFieldEnum | BuyContractScalarFieldEnum[]
+    distinct?: OwnedcontractsScalarFieldEnum | OwnedcontractsScalarFieldEnum[]
   }
 
 
   /**
-   * BuyContract findMany
+   * ownedcontracts findMany
    */
-  export type BuyContractFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ownedcontractsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the BuyContract
+     * Select specific fields to fetch from the ownedcontracts
      */
-    select?: BuyContractSelect<ExtArgs> | null
+    select?: ownedcontractsSelect<ExtArgs> | null
     /**
-     * Filter, which BuyContracts to fetch.
+     * Choose, which related nodes to fetch as well.
      */
-    where?: BuyContractWhereInput
+    include?: ownedcontractsInclude<ExtArgs> | null
+    /**
+     * Filter, which ownedcontracts to fetch.
+     */
+    where?: ownedcontractsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of BuyContracts to fetch.
+     * Determine the order of ownedcontracts to fetch.
      */
-    orderBy?: BuyContractOrderByWithRelationInput | BuyContractOrderByWithRelationInput[]
+    orderBy?: ownedcontractsOrderByWithRelationInput | ownedcontractsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing BuyContracts.
+     * Sets the position for listing ownedcontracts.
      */
-    cursor?: BuyContractWhereUniqueInput
+    cursor?: ownedcontractsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` BuyContracts from the position of the cursor.
+     * Take `±n` ownedcontracts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` BuyContracts.
+     * Skip the first `n` ownedcontracts.
      */
     skip?: number
-    distinct?: BuyContractScalarFieldEnum | BuyContractScalarFieldEnum[]
+    distinct?: OwnedcontractsScalarFieldEnum | OwnedcontractsScalarFieldEnum[]
   }
 
 
   /**
-   * BuyContract create
+   * ownedcontracts create
    */
-  export type BuyContractCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ownedcontractsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the BuyContract
+     * Select specific fields to fetch from the ownedcontracts
      */
-    select?: BuyContractSelect<ExtArgs> | null
+    select?: ownedcontractsSelect<ExtArgs> | null
     /**
-     * The data needed to create a BuyContract.
+     * Choose, which related nodes to fetch as well.
      */
-    data: XOR<BuyContractCreateInput, BuyContractUncheckedCreateInput>
+    include?: ownedcontractsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ownedcontracts.
+     */
+    data: XOR<ownedcontractsCreateInput, ownedcontractsUncheckedCreateInput>
   }
 
 
   /**
-   * BuyContract createMany
+   * ownedcontracts createMany
    */
-  export type BuyContractCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ownedcontractsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many BuyContracts.
+     * The data used to create many ownedcontracts.
      */
-    data: BuyContractCreateManyInput | BuyContractCreateManyInput[]
+    data: ownedcontractsCreateManyInput | ownedcontractsCreateManyInput[]
     skipDuplicates?: boolean
   }
 
 
   /**
-   * BuyContract update
+   * ownedcontracts update
    */
-  export type BuyContractUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ownedcontractsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the BuyContract
+     * Select specific fields to fetch from the ownedcontracts
      */
-    select?: BuyContractSelect<ExtArgs> | null
+    select?: ownedcontractsSelect<ExtArgs> | null
     /**
-     * The data needed to update a BuyContract.
+     * Choose, which related nodes to fetch as well.
      */
-    data: XOR<BuyContractUpdateInput, BuyContractUncheckedUpdateInput>
+    include?: ownedcontractsInclude<ExtArgs> | null
     /**
-     * Choose, which BuyContract to update.
+     * The data needed to update a ownedcontracts.
      */
-    where: BuyContractWhereUniqueInput
+    data: XOR<ownedcontractsUpdateInput, ownedcontractsUncheckedUpdateInput>
+    /**
+     * Choose, which ownedcontracts to update.
+     */
+    where: ownedcontractsWhereUniqueInput
   }
 
 
   /**
-   * BuyContract updateMany
+   * ownedcontracts updateMany
    */
-  export type BuyContractUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ownedcontractsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update BuyContracts.
+     * The data used to update ownedcontracts.
      */
-    data: XOR<BuyContractUpdateManyMutationInput, BuyContractUncheckedUpdateManyInput>
+    data: XOR<ownedcontractsUpdateManyMutationInput, ownedcontractsUncheckedUpdateManyInput>
     /**
-     * Filter which BuyContracts to update
+     * Filter which ownedcontracts to update
      */
-    where?: BuyContractWhereInput
+    where?: ownedcontractsWhereInput
   }
 
 
   /**
-   * BuyContract upsert
+   * ownedcontracts upsert
    */
-  export type BuyContractUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ownedcontractsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the BuyContract
+     * Select specific fields to fetch from the ownedcontracts
      */
-    select?: BuyContractSelect<ExtArgs> | null
+    select?: ownedcontractsSelect<ExtArgs> | null
     /**
-     * The filter to search for the BuyContract to update in case it exists.
+     * Choose, which related nodes to fetch as well.
      */
-    where: BuyContractWhereUniqueInput
+    include?: ownedcontractsInclude<ExtArgs> | null
     /**
-     * In case the BuyContract found by the `where` argument doesn't exist, create a new BuyContract with this data.
+     * The filter to search for the ownedcontracts to update in case it exists.
      */
-    create: XOR<BuyContractCreateInput, BuyContractUncheckedCreateInput>
+    where: ownedcontractsWhereUniqueInput
     /**
-     * In case the BuyContract was found with the provided `where` argument, update it with this data.
+     * In case the ownedcontracts found by the `where` argument doesn't exist, create a new ownedcontracts with this data.
      */
-    update: XOR<BuyContractUpdateInput, BuyContractUncheckedUpdateInput>
+    create: XOR<ownedcontractsCreateInput, ownedcontractsUncheckedCreateInput>
+    /**
+     * In case the ownedcontracts was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ownedcontractsUpdateInput, ownedcontractsUncheckedUpdateInput>
   }
 
 
   /**
-   * BuyContract delete
+   * ownedcontracts delete
    */
-  export type BuyContractDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ownedcontractsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the BuyContract
+     * Select specific fields to fetch from the ownedcontracts
      */
-    select?: BuyContractSelect<ExtArgs> | null
+    select?: ownedcontractsSelect<ExtArgs> | null
     /**
-     * Filter which BuyContract to delete.
+     * Choose, which related nodes to fetch as well.
      */
-    where: BuyContractWhereUniqueInput
+    include?: ownedcontractsInclude<ExtArgs> | null
+    /**
+     * Filter which ownedcontracts to delete.
+     */
+    where: ownedcontractsWhereUniqueInput
   }
 
 
   /**
-   * BuyContract deleteMany
+   * ownedcontracts deleteMany
    */
-  export type BuyContractDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ownedcontractsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which BuyContracts to delete
+     * Filter which ownedcontracts to delete
      */
-    where?: BuyContractWhereInput
+    where?: ownedcontractsWhereInput
   }
 
 
   /**
-   * BuyContract without action
+   * ownedcontracts without action
    */
-  export type BuyContractDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ownedcontractsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the BuyContract
+     * Select specific fields to fetch from the ownedcontracts
      */
-    select?: BuyContractSelect<ExtArgs> | null
+    select?: ownedcontractsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ownedcontractsInclude<ExtArgs> | null
   }
 
 
@@ -6902,34 +7183,37 @@ export namespace Prisma {
   export type ContractScalarFieldEnum = (typeof ContractScalarFieldEnum)[keyof typeof ContractScalarFieldEnum]
 
 
-  export const UserScalarFieldEnum: {
+  export const UsersScalarFieldEnum: {
     id: 'id',
-    wallet: 'wallet',
-    contract: 'contract'
+    address: 'address'
   };
 
-  export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+  export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum]
 
 
-  export const SellContractScalarFieldEnum: {
+  export const ListedcontractsScalarFieldEnum: {
     id: 'id',
     name: 'name',
     price: 'price',
     contract: 'contract',
     description: 'description',
+    code_hash: 'code_hash',
     code: 'code',
-    address: 'address'
+    address: 'address',
+    user_id: 'user_id'
   };
 
-  export type SellContractScalarFieldEnum = (typeof SellContractScalarFieldEnum)[keyof typeof SellContractScalarFieldEnum]
+  export type ListedcontractsScalarFieldEnum = (typeof ListedcontractsScalarFieldEnum)[keyof typeof ListedcontractsScalarFieldEnum]
 
 
-  export const BuyContractScalarFieldEnum: {
+  export const OwnedcontractsScalarFieldEnum: {
     id: 'id',
-    contractInfo: 'contractInfo'
+    name: 'name',
+    contract_id: 'contract_id',
+    user_id: 'user_id'
   };
 
-  export type BuyContractScalarFieldEnum = (typeof BuyContractScalarFieldEnum)[keyof typeof BuyContractScalarFieldEnum]
+  export type OwnedcontractsScalarFieldEnum = (typeof OwnedcontractsScalarFieldEnum)[keyof typeof OwnedcontractsScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -7287,151 +7571,179 @@ export namespace Prisma {
     description?: StringWithAggregatesFilter<"Contract"> | string
   }
 
-  export type UserWhereInput = {
-    AND?: UserWhereInput | UserWhereInput[]
-    OR?: UserWhereInput[]
-    NOT?: UserWhereInput | UserWhereInput[]
-    id?: IntFilter<"User"> | number
-    wallet?: StringFilter<"User"> | string
-    contract?: IntNullableListFilter<"User">
+  export type usersWhereInput = {
+    AND?: usersWhereInput | usersWhereInput[]
+    OR?: usersWhereInput[]
+    NOT?: usersWhereInput | usersWhereInput[]
+    id?: IntFilter<"users"> | number
+    address?: StringFilter<"users"> | string
+    listedcontracts?: ListedcontractsListRelationFilter
+    ownedcontracts?: OwnedcontractsListRelationFilter
   }
 
-  export type UserOrderByWithRelationInput = {
+  export type usersOrderByWithRelationInput = {
     id?: SortOrder
-    wallet?: SortOrder
-    contract?: SortOrder
+    address?: SortOrder
+    listedcontracts?: listedcontractsOrderByRelationAggregateInput
+    ownedcontracts?: ownedcontractsOrderByRelationAggregateInput
   }
 
-  export type UserWhereUniqueInput = Prisma.AtLeast<{
+  export type usersWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    AND?: UserWhereInput | UserWhereInput[]
-    OR?: UserWhereInput[]
-    NOT?: UserWhereInput | UserWhereInput[]
-    wallet?: StringFilter<"User"> | string
-    contract?: IntNullableListFilter<"User">
-  }, "id">
+    address?: string
+    AND?: usersWhereInput | usersWhereInput[]
+    OR?: usersWhereInput[]
+    NOT?: usersWhereInput | usersWhereInput[]
+    listedcontracts?: ListedcontractsListRelationFilter
+    ownedcontracts?: OwnedcontractsListRelationFilter
+  }, "id" | "id" | "address">
 
-  export type UserOrderByWithAggregationInput = {
+  export type usersOrderByWithAggregationInput = {
     id?: SortOrder
-    wallet?: SortOrder
-    contract?: SortOrder
-    _count?: UserCountOrderByAggregateInput
-    _avg?: UserAvgOrderByAggregateInput
-    _max?: UserMaxOrderByAggregateInput
-    _min?: UserMinOrderByAggregateInput
-    _sum?: UserSumOrderByAggregateInput
+    address?: SortOrder
+    _count?: usersCountOrderByAggregateInput
+    _avg?: usersAvgOrderByAggregateInput
+    _max?: usersMaxOrderByAggregateInput
+    _min?: usersMinOrderByAggregateInput
+    _sum?: usersSumOrderByAggregateInput
   }
 
-  export type UserScalarWhereWithAggregatesInput = {
-    AND?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
-    OR?: UserScalarWhereWithAggregatesInput[]
-    NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"User"> | number
-    wallet?: StringWithAggregatesFilter<"User"> | string
-    contract?: IntNullableListFilter<"User">
+  export type usersScalarWhereWithAggregatesInput = {
+    AND?: usersScalarWhereWithAggregatesInput | usersScalarWhereWithAggregatesInput[]
+    OR?: usersScalarWhereWithAggregatesInput[]
+    NOT?: usersScalarWhereWithAggregatesInput | usersScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"users"> | number
+    address?: StringWithAggregatesFilter<"users"> | string
   }
 
-  export type SellContractWhereInput = {
-    AND?: SellContractWhereInput | SellContractWhereInput[]
-    OR?: SellContractWhereInput[]
-    NOT?: SellContractWhereInput | SellContractWhereInput[]
-    id?: IntFilter<"SellContract"> | number
-    name?: StringFilter<"SellContract"> | string
-    price?: StringFilter<"SellContract"> | string
-    contract?: StringFilter<"SellContract"> | string
-    description?: StringFilter<"SellContract"> | string
-    code?: StringFilter<"SellContract"> | string
-    address?: StringFilter<"SellContract"> | string
+  export type listedcontractsWhereInput = {
+    AND?: listedcontractsWhereInput | listedcontractsWhereInput[]
+    OR?: listedcontractsWhereInput[]
+    NOT?: listedcontractsWhereInput | listedcontractsWhereInput[]
+    id?: IntFilter<"listedcontracts"> | number
+    name?: StringFilter<"listedcontracts"> | string
+    price?: StringFilter<"listedcontracts"> | string
+    contract?: StringFilter<"listedcontracts"> | string
+    description?: StringFilter<"listedcontracts"> | string
+    code_hash?: StringFilter<"listedcontracts"> | string
+    code?: StringFilter<"listedcontracts"> | string
+    address?: StringFilter<"listedcontracts"> | string
+    user_id?: IntFilter<"listedcontracts"> | number
+    user?: XOR<UsersRelationFilter, usersWhereInput>
   }
 
-  export type SellContractOrderByWithRelationInput = {
+  export type listedcontractsOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
     price?: SortOrder
     contract?: SortOrder
     description?: SortOrder
+    code_hash?: SortOrder
     code?: SortOrder
     address?: SortOrder
+    user_id?: SortOrder
+    user?: usersOrderByWithRelationInput
   }
 
-  export type SellContractWhereUniqueInput = Prisma.AtLeast<{
+  export type listedcontractsWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    AND?: SellContractWhereInput | SellContractWhereInput[]
-    OR?: SellContractWhereInput[]
-    NOT?: SellContractWhereInput | SellContractWhereInput[]
-    name?: StringFilter<"SellContract"> | string
-    price?: StringFilter<"SellContract"> | string
-    contract?: StringFilter<"SellContract"> | string
-    description?: StringFilter<"SellContract"> | string
-    code?: StringFilter<"SellContract"> | string
-    address?: StringFilter<"SellContract"> | string
-  }, "id">
+    AND?: listedcontractsWhereInput | listedcontractsWhereInput[]
+    OR?: listedcontractsWhereInput[]
+    NOT?: listedcontractsWhereInput | listedcontractsWhereInput[]
+    name?: StringFilter<"listedcontracts"> | string
+    price?: StringFilter<"listedcontracts"> | string
+    contract?: StringFilter<"listedcontracts"> | string
+    description?: StringFilter<"listedcontracts"> | string
+    code_hash?: StringFilter<"listedcontracts"> | string
+    code?: StringFilter<"listedcontracts"> | string
+    address?: StringFilter<"listedcontracts"> | string
+    user_id?: IntFilter<"listedcontracts"> | number
+    user?: XOR<UsersRelationFilter, usersWhereInput>
+  }, "id" | "id">
 
-  export type SellContractOrderByWithAggregationInput = {
+  export type listedcontractsOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
     price?: SortOrder
     contract?: SortOrder
     description?: SortOrder
+    code_hash?: SortOrder
     code?: SortOrder
     address?: SortOrder
-    _count?: SellContractCountOrderByAggregateInput
-    _avg?: SellContractAvgOrderByAggregateInput
-    _max?: SellContractMaxOrderByAggregateInput
-    _min?: SellContractMinOrderByAggregateInput
-    _sum?: SellContractSumOrderByAggregateInput
+    user_id?: SortOrder
+    _count?: listedcontractsCountOrderByAggregateInput
+    _avg?: listedcontractsAvgOrderByAggregateInput
+    _max?: listedcontractsMaxOrderByAggregateInput
+    _min?: listedcontractsMinOrderByAggregateInput
+    _sum?: listedcontractsSumOrderByAggregateInput
   }
 
-  export type SellContractScalarWhereWithAggregatesInput = {
-    AND?: SellContractScalarWhereWithAggregatesInput | SellContractScalarWhereWithAggregatesInput[]
-    OR?: SellContractScalarWhereWithAggregatesInput[]
-    NOT?: SellContractScalarWhereWithAggregatesInput | SellContractScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"SellContract"> | number
-    name?: StringWithAggregatesFilter<"SellContract"> | string
-    price?: StringWithAggregatesFilter<"SellContract"> | string
-    contract?: StringWithAggregatesFilter<"SellContract"> | string
-    description?: StringWithAggregatesFilter<"SellContract"> | string
-    code?: StringWithAggregatesFilter<"SellContract"> | string
-    address?: StringWithAggregatesFilter<"SellContract"> | string
+  export type listedcontractsScalarWhereWithAggregatesInput = {
+    AND?: listedcontractsScalarWhereWithAggregatesInput | listedcontractsScalarWhereWithAggregatesInput[]
+    OR?: listedcontractsScalarWhereWithAggregatesInput[]
+    NOT?: listedcontractsScalarWhereWithAggregatesInput | listedcontractsScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"listedcontracts"> | number
+    name?: StringWithAggregatesFilter<"listedcontracts"> | string
+    price?: StringWithAggregatesFilter<"listedcontracts"> | string
+    contract?: StringWithAggregatesFilter<"listedcontracts"> | string
+    description?: StringWithAggregatesFilter<"listedcontracts"> | string
+    code_hash?: StringWithAggregatesFilter<"listedcontracts"> | string
+    code?: StringWithAggregatesFilter<"listedcontracts"> | string
+    address?: StringWithAggregatesFilter<"listedcontracts"> | string
+    user_id?: IntWithAggregatesFilter<"listedcontracts"> | number
   }
 
-  export type BuyContractWhereInput = {
-    AND?: BuyContractWhereInput | BuyContractWhereInput[]
-    OR?: BuyContractWhereInput[]
-    NOT?: BuyContractWhereInput | BuyContractWhereInput[]
-    id?: IntFilter<"BuyContract"> | number
-    contractInfo?: StringFilter<"BuyContract"> | string
+  export type ownedcontractsWhereInput = {
+    AND?: ownedcontractsWhereInput | ownedcontractsWhereInput[]
+    OR?: ownedcontractsWhereInput[]
+    NOT?: ownedcontractsWhereInput | ownedcontractsWhereInput[]
+    id?: IntFilter<"ownedcontracts"> | number
+    name?: StringFilter<"ownedcontracts"> | string
+    contract_id?: IntFilter<"ownedcontracts"> | number
+    user_id?: IntFilter<"ownedcontracts"> | number
+    user?: XOR<UsersRelationFilter, usersWhereInput>
   }
 
-  export type BuyContractOrderByWithRelationInput = {
+  export type ownedcontractsOrderByWithRelationInput = {
     id?: SortOrder
-    contractInfo?: SortOrder
+    name?: SortOrder
+    contract_id?: SortOrder
+    user_id?: SortOrder
+    user?: usersOrderByWithRelationInput
   }
 
-  export type BuyContractWhereUniqueInput = Prisma.AtLeast<{
+  export type ownedcontractsWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    AND?: BuyContractWhereInput | BuyContractWhereInput[]
-    OR?: BuyContractWhereInput[]
-    NOT?: BuyContractWhereInput | BuyContractWhereInput[]
-    contractInfo?: StringFilter<"BuyContract"> | string
-  }, "id">
+    user_id_contract_id?: ownedcontractsUser_idContract_idCompoundUniqueInput
+    AND?: ownedcontractsWhereInput | ownedcontractsWhereInput[]
+    OR?: ownedcontractsWhereInput[]
+    NOT?: ownedcontractsWhereInput | ownedcontractsWhereInput[]
+    name?: StringFilter<"ownedcontracts"> | string
+    contract_id?: IntFilter<"ownedcontracts"> | number
+    user_id?: IntFilter<"ownedcontracts"> | number
+    user?: XOR<UsersRelationFilter, usersWhereInput>
+  }, "id" | "id" | "user_id_contract_id">
 
-  export type BuyContractOrderByWithAggregationInput = {
+  export type ownedcontractsOrderByWithAggregationInput = {
     id?: SortOrder
-    contractInfo?: SortOrder
-    _count?: BuyContractCountOrderByAggregateInput
-    _avg?: BuyContractAvgOrderByAggregateInput
-    _max?: BuyContractMaxOrderByAggregateInput
-    _min?: BuyContractMinOrderByAggregateInput
-    _sum?: BuyContractSumOrderByAggregateInput
+    name?: SortOrder
+    contract_id?: SortOrder
+    user_id?: SortOrder
+    _count?: ownedcontractsCountOrderByAggregateInput
+    _avg?: ownedcontractsAvgOrderByAggregateInput
+    _max?: ownedcontractsMaxOrderByAggregateInput
+    _min?: ownedcontractsMinOrderByAggregateInput
+    _sum?: ownedcontractsSumOrderByAggregateInput
   }
 
-  export type BuyContractScalarWhereWithAggregatesInput = {
-    AND?: BuyContractScalarWhereWithAggregatesInput | BuyContractScalarWhereWithAggregatesInput[]
-    OR?: BuyContractScalarWhereWithAggregatesInput[]
-    NOT?: BuyContractScalarWhereWithAggregatesInput | BuyContractScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"BuyContract"> | number
-    contractInfo?: StringWithAggregatesFilter<"BuyContract"> | string
+  export type ownedcontractsScalarWhereWithAggregatesInput = {
+    AND?: ownedcontractsScalarWhereWithAggregatesInput | ownedcontractsScalarWhereWithAggregatesInput[]
+    OR?: ownedcontractsScalarWhereWithAggregatesInput[]
+    NOT?: ownedcontractsScalarWhereWithAggregatesInput | ownedcontractsScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"ownedcontracts"> | number
+    name?: StringWithAggregatesFilter<"ownedcontracts"> | string
+    contract_id?: IntWithAggregatesFilter<"ownedcontracts"> | number
+    user_id?: IntWithAggregatesFilter<"ownedcontracts"> | number
   }
 
   export type audit_requestsCreateInput = {
@@ -7698,142 +8010,169 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
   }
 
-  export type UserCreateInput = {
-    wallet: string
-    contract?: UserCreatecontractInput | number[]
+  export type usersCreateInput = {
+    address: string
+    listedcontracts?: listedcontractsCreateNestedManyWithoutUserInput
+    ownedcontracts?: ownedcontractsCreateNestedManyWithoutUserInput
   }
 
-  export type UserUncheckedCreateInput = {
+  export type usersUncheckedCreateInput = {
     id?: number
-    wallet: string
-    contract?: UserCreatecontractInput | number[]
+    address: string
+    listedcontracts?: listedcontractsUncheckedCreateNestedManyWithoutUserInput
+    ownedcontracts?: ownedcontractsUncheckedCreateNestedManyWithoutUserInput
   }
 
-  export type UserUpdateInput = {
-    wallet?: StringFieldUpdateOperationsInput | string
-    contract?: UserUpdatecontractInput | number[]
+  export type usersUpdateInput = {
+    address?: StringFieldUpdateOperationsInput | string
+    listedcontracts?: listedcontractsUpdateManyWithoutUserNestedInput
+    ownedcontracts?: ownedcontractsUpdateManyWithoutUserNestedInput
   }
 
-  export type UserUncheckedUpdateInput = {
+  export type usersUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    wallet?: StringFieldUpdateOperationsInput | string
-    contract?: UserUpdatecontractInput | number[]
+    address?: StringFieldUpdateOperationsInput | string
+    listedcontracts?: listedcontractsUncheckedUpdateManyWithoutUserNestedInput
+    ownedcontracts?: ownedcontractsUncheckedUpdateManyWithoutUserNestedInput
   }
 
-  export type UserCreateManyInput = {
+  export type usersCreateManyInput = {
     id?: number
-    wallet: string
-    contract?: UserCreatecontractInput | number[]
+    address: string
   }
 
-  export type UserUpdateManyMutationInput = {
-    wallet?: StringFieldUpdateOperationsInput | string
-    contract?: UserUpdatecontractInput | number[]
+  export type usersUpdateManyMutationInput = {
+    address?: StringFieldUpdateOperationsInput | string
   }
 
-  export type UserUncheckedUpdateManyInput = {
+  export type usersUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    wallet?: StringFieldUpdateOperationsInput | string
-    contract?: UserUpdatecontractInput | number[]
+    address?: StringFieldUpdateOperationsInput | string
   }
 
-  export type SellContractCreateInput = {
+  export type listedcontractsCreateInput = {
     name: string
     price: string
     contract: string
     description: string
+    code_hash: string
     code: string
     address: string
+    user: usersCreateNestedOneWithoutListedcontractsInput
   }
 
-  export type SellContractUncheckedCreateInput = {
-    id?: number
-    name: string
-    price: string
-    contract: string
-    description: string
-    code: string
-    address: string
-  }
-
-  export type SellContractUpdateInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    price?: StringFieldUpdateOperationsInput | string
-    contract?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type SellContractUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    price?: StringFieldUpdateOperationsInput | string
-    contract?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type SellContractCreateManyInput = {
+  export type listedcontractsUncheckedCreateInput = {
     id?: number
     name: string
     price: string
     contract: string
     description: string
+    code_hash: string
     code: string
     address: string
+    user_id: number
   }
 
-  export type SellContractUpdateManyMutationInput = {
+  export type listedcontractsUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
     price?: StringFieldUpdateOperationsInput | string
     contract?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    code_hash?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
+    user?: usersUpdateOneRequiredWithoutListedcontractsNestedInput
   }
 
-  export type SellContractUncheckedUpdateManyInput = {
+  export type listedcontractsUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     price?: StringFieldUpdateOperationsInput | string
     contract?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    code_hash?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    user_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type listedcontractsCreateManyInput = {
+    id?: number
+    name: string
+    price: string
+    contract: string
+    description: string
+    code_hash: string
+    code: string
+    address: string
+    user_id: number
+  }
+
+  export type listedcontractsUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    price?: StringFieldUpdateOperationsInput | string
+    contract?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    code_hash?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
   }
 
-  export type BuyContractCreateInput = {
-    contractInfo: string
-  }
-
-  export type BuyContractUncheckedCreateInput = {
-    id?: number
-    contractInfo: string
-  }
-
-  export type BuyContractUpdateInput = {
-    contractInfo?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type BuyContractUncheckedUpdateInput = {
+  export type listedcontractsUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    contractInfo?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: StringFieldUpdateOperationsInput | string
+    contract?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    code_hash?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    user_id?: IntFieldUpdateOperationsInput | number
   }
 
-  export type BuyContractCreateManyInput = {
+  export type ownedcontractsCreateInput = {
+    name: string
+    contract_id: number
+    user: usersCreateNestedOneWithoutOwnedcontractsInput
+  }
+
+  export type ownedcontractsUncheckedCreateInput = {
     id?: number
-    contractInfo: string
+    name: string
+    contract_id: number
+    user_id: number
   }
 
-  export type BuyContractUpdateManyMutationInput = {
-    contractInfo?: StringFieldUpdateOperationsInput | string
+  export type ownedcontractsUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    contract_id?: IntFieldUpdateOperationsInput | number
+    user?: usersUpdateOneRequiredWithoutOwnedcontractsNestedInput
   }
 
-  export type BuyContractUncheckedUpdateManyInput = {
+  export type ownedcontractsUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    contractInfo?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    contract_id?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ownedcontractsCreateManyInput = {
+    id?: number
+    name: string
+    contract_id: number
+    user_id: number
+  }
+
+  export type ownedcontractsUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    contract_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ownedcontractsUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    contract_id?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -8251,99 +8590,136 @@ export namespace Prisma {
     price?: SortOrder
   }
 
-  export type IntNullableListFilter<$PrismaModel = never> = {
-    equals?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    has?: number | IntFieldRefInput<$PrismaModel> | null
-    hasEvery?: number[] | ListIntFieldRefInput<$PrismaModel>
-    hasSome?: number[] | ListIntFieldRefInput<$PrismaModel>
-    isEmpty?: boolean
+  export type ListedcontractsListRelationFilter = {
+    every?: listedcontractsWhereInput
+    some?: listedcontractsWhereInput
+    none?: listedcontractsWhereInput
   }
 
-  export type UserCountOrderByAggregateInput = {
+  export type OwnedcontractsListRelationFilter = {
+    every?: ownedcontractsWhereInput
+    some?: ownedcontractsWhereInput
+    none?: ownedcontractsWhereInput
+  }
+
+  export type listedcontractsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ownedcontractsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type usersCountOrderByAggregateInput = {
     id?: SortOrder
-    wallet?: SortOrder
-    contract?: SortOrder
+    address?: SortOrder
   }
 
-  export type UserAvgOrderByAggregateInput = {
+  export type usersAvgOrderByAggregateInput = {
     id?: SortOrder
-    contract?: SortOrder
   }
 
-  export type UserMaxOrderByAggregateInput = {
+  export type usersMaxOrderByAggregateInput = {
     id?: SortOrder
-    wallet?: SortOrder
+    address?: SortOrder
   }
 
-  export type UserMinOrderByAggregateInput = {
+  export type usersMinOrderByAggregateInput = {
     id?: SortOrder
-    wallet?: SortOrder
+    address?: SortOrder
   }
 
-  export type UserSumOrderByAggregateInput = {
+  export type usersSumOrderByAggregateInput = {
     id?: SortOrder
-    contract?: SortOrder
   }
 
-  export type SellContractCountOrderByAggregateInput = {
+  export type UsersRelationFilter = {
+    is?: usersWhereInput
+    isNot?: usersWhereInput
+  }
+
+  export type listedcontractsCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     price?: SortOrder
     contract?: SortOrder
     description?: SortOrder
+    code_hash?: SortOrder
     code?: SortOrder
     address?: SortOrder
+    user_id?: SortOrder
   }
 
-  export type SellContractAvgOrderByAggregateInput = {
+  export type listedcontractsAvgOrderByAggregateInput = {
     id?: SortOrder
+    user_id?: SortOrder
   }
 
-  export type SellContractMaxOrderByAggregateInput = {
+  export type listedcontractsMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     price?: SortOrder
     contract?: SortOrder
     description?: SortOrder
+    code_hash?: SortOrder
     code?: SortOrder
     address?: SortOrder
+    user_id?: SortOrder
   }
 
-  export type SellContractMinOrderByAggregateInput = {
+  export type listedcontractsMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     price?: SortOrder
     contract?: SortOrder
     description?: SortOrder
+    code_hash?: SortOrder
     code?: SortOrder
     address?: SortOrder
+    user_id?: SortOrder
   }
 
-  export type SellContractSumOrderByAggregateInput = {
+  export type listedcontractsSumOrderByAggregateInput = {
     id?: SortOrder
+    user_id?: SortOrder
   }
 
-  export type BuyContractCountOrderByAggregateInput = {
-    id?: SortOrder
-    contractInfo?: SortOrder
+  export type ownedcontractsUser_idContract_idCompoundUniqueInput = {
+    user_id: number
+    contract_id: number
   }
 
-  export type BuyContractAvgOrderByAggregateInput = {
+  export type ownedcontractsCountOrderByAggregateInput = {
     id?: SortOrder
+    name?: SortOrder
+    contract_id?: SortOrder
+    user_id?: SortOrder
   }
 
-  export type BuyContractMaxOrderByAggregateInput = {
+  export type ownedcontractsAvgOrderByAggregateInput = {
     id?: SortOrder
-    contractInfo?: SortOrder
+    contract_id?: SortOrder
+    user_id?: SortOrder
   }
 
-  export type BuyContractMinOrderByAggregateInput = {
+  export type ownedcontractsMaxOrderByAggregateInput = {
     id?: SortOrder
-    contractInfo?: SortOrder
+    name?: SortOrder
+    contract_id?: SortOrder
+    user_id?: SortOrder
   }
 
-  export type BuyContractSumOrderByAggregateInput = {
+  export type ownedcontractsMinOrderByAggregateInput = {
     id?: SortOrder
+    name?: SortOrder
+    contract_id?: SortOrder
+    user_id?: SortOrder
+  }
+
+  export type ownedcontractsSumOrderByAggregateInput = {
+    id?: SortOrder
+    contract_id?: SortOrder
+    user_id?: SortOrder
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -8426,13 +8802,116 @@ export namespace Prisma {
     push?: string | string[]
   }
 
-  export type UserCreatecontractInput = {
-    set: number[]
+  export type listedcontractsCreateNestedManyWithoutUserInput = {
+    create?: XOR<listedcontractsCreateWithoutUserInput, listedcontractsUncheckedCreateWithoutUserInput> | listedcontractsCreateWithoutUserInput[] | listedcontractsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: listedcontractsCreateOrConnectWithoutUserInput | listedcontractsCreateOrConnectWithoutUserInput[]
+    createMany?: listedcontractsCreateManyUserInputEnvelope
+    connect?: listedcontractsWhereUniqueInput | listedcontractsWhereUniqueInput[]
   }
 
-  export type UserUpdatecontractInput = {
-    set?: number[]
-    push?: number | number[]
+  export type ownedcontractsCreateNestedManyWithoutUserInput = {
+    create?: XOR<ownedcontractsCreateWithoutUserInput, ownedcontractsUncheckedCreateWithoutUserInput> | ownedcontractsCreateWithoutUserInput[] | ownedcontractsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ownedcontractsCreateOrConnectWithoutUserInput | ownedcontractsCreateOrConnectWithoutUserInput[]
+    createMany?: ownedcontractsCreateManyUserInputEnvelope
+    connect?: ownedcontractsWhereUniqueInput | ownedcontractsWhereUniqueInput[]
+  }
+
+  export type listedcontractsUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<listedcontractsCreateWithoutUserInput, listedcontractsUncheckedCreateWithoutUserInput> | listedcontractsCreateWithoutUserInput[] | listedcontractsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: listedcontractsCreateOrConnectWithoutUserInput | listedcontractsCreateOrConnectWithoutUserInput[]
+    createMany?: listedcontractsCreateManyUserInputEnvelope
+    connect?: listedcontractsWhereUniqueInput | listedcontractsWhereUniqueInput[]
+  }
+
+  export type ownedcontractsUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<ownedcontractsCreateWithoutUserInput, ownedcontractsUncheckedCreateWithoutUserInput> | ownedcontractsCreateWithoutUserInput[] | ownedcontractsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ownedcontractsCreateOrConnectWithoutUserInput | ownedcontractsCreateOrConnectWithoutUserInput[]
+    createMany?: ownedcontractsCreateManyUserInputEnvelope
+    connect?: ownedcontractsWhereUniqueInput | ownedcontractsWhereUniqueInput[]
+  }
+
+  export type listedcontractsUpdateManyWithoutUserNestedInput = {
+    create?: XOR<listedcontractsCreateWithoutUserInput, listedcontractsUncheckedCreateWithoutUserInput> | listedcontractsCreateWithoutUserInput[] | listedcontractsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: listedcontractsCreateOrConnectWithoutUserInput | listedcontractsCreateOrConnectWithoutUserInput[]
+    upsert?: listedcontractsUpsertWithWhereUniqueWithoutUserInput | listedcontractsUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: listedcontractsCreateManyUserInputEnvelope
+    set?: listedcontractsWhereUniqueInput | listedcontractsWhereUniqueInput[]
+    disconnect?: listedcontractsWhereUniqueInput | listedcontractsWhereUniqueInput[]
+    delete?: listedcontractsWhereUniqueInput | listedcontractsWhereUniqueInput[]
+    connect?: listedcontractsWhereUniqueInput | listedcontractsWhereUniqueInput[]
+    update?: listedcontractsUpdateWithWhereUniqueWithoutUserInput | listedcontractsUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: listedcontractsUpdateManyWithWhereWithoutUserInput | listedcontractsUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: listedcontractsScalarWhereInput | listedcontractsScalarWhereInput[]
+  }
+
+  export type ownedcontractsUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ownedcontractsCreateWithoutUserInput, ownedcontractsUncheckedCreateWithoutUserInput> | ownedcontractsCreateWithoutUserInput[] | ownedcontractsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ownedcontractsCreateOrConnectWithoutUserInput | ownedcontractsCreateOrConnectWithoutUserInput[]
+    upsert?: ownedcontractsUpsertWithWhereUniqueWithoutUserInput | ownedcontractsUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ownedcontractsCreateManyUserInputEnvelope
+    set?: ownedcontractsWhereUniqueInput | ownedcontractsWhereUniqueInput[]
+    disconnect?: ownedcontractsWhereUniqueInput | ownedcontractsWhereUniqueInput[]
+    delete?: ownedcontractsWhereUniqueInput | ownedcontractsWhereUniqueInput[]
+    connect?: ownedcontractsWhereUniqueInput | ownedcontractsWhereUniqueInput[]
+    update?: ownedcontractsUpdateWithWhereUniqueWithoutUserInput | ownedcontractsUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ownedcontractsUpdateManyWithWhereWithoutUserInput | ownedcontractsUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ownedcontractsScalarWhereInput | ownedcontractsScalarWhereInput[]
+  }
+
+  export type listedcontractsUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<listedcontractsCreateWithoutUserInput, listedcontractsUncheckedCreateWithoutUserInput> | listedcontractsCreateWithoutUserInput[] | listedcontractsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: listedcontractsCreateOrConnectWithoutUserInput | listedcontractsCreateOrConnectWithoutUserInput[]
+    upsert?: listedcontractsUpsertWithWhereUniqueWithoutUserInput | listedcontractsUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: listedcontractsCreateManyUserInputEnvelope
+    set?: listedcontractsWhereUniqueInput | listedcontractsWhereUniqueInput[]
+    disconnect?: listedcontractsWhereUniqueInput | listedcontractsWhereUniqueInput[]
+    delete?: listedcontractsWhereUniqueInput | listedcontractsWhereUniqueInput[]
+    connect?: listedcontractsWhereUniqueInput | listedcontractsWhereUniqueInput[]
+    update?: listedcontractsUpdateWithWhereUniqueWithoutUserInput | listedcontractsUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: listedcontractsUpdateManyWithWhereWithoutUserInput | listedcontractsUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: listedcontractsScalarWhereInput | listedcontractsScalarWhereInput[]
+  }
+
+  export type ownedcontractsUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ownedcontractsCreateWithoutUserInput, ownedcontractsUncheckedCreateWithoutUserInput> | ownedcontractsCreateWithoutUserInput[] | ownedcontractsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ownedcontractsCreateOrConnectWithoutUserInput | ownedcontractsCreateOrConnectWithoutUserInput[]
+    upsert?: ownedcontractsUpsertWithWhereUniqueWithoutUserInput | ownedcontractsUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ownedcontractsCreateManyUserInputEnvelope
+    set?: ownedcontractsWhereUniqueInput | ownedcontractsWhereUniqueInput[]
+    disconnect?: ownedcontractsWhereUniqueInput | ownedcontractsWhereUniqueInput[]
+    delete?: ownedcontractsWhereUniqueInput | ownedcontractsWhereUniqueInput[]
+    connect?: ownedcontractsWhereUniqueInput | ownedcontractsWhereUniqueInput[]
+    update?: ownedcontractsUpdateWithWhereUniqueWithoutUserInput | ownedcontractsUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ownedcontractsUpdateManyWithWhereWithoutUserInput | ownedcontractsUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ownedcontractsScalarWhereInput | ownedcontractsScalarWhereInput[]
+  }
+
+  export type usersCreateNestedOneWithoutListedcontractsInput = {
+    create?: XOR<usersCreateWithoutListedcontractsInput, usersUncheckedCreateWithoutListedcontractsInput>
+    connectOrCreate?: usersCreateOrConnectWithoutListedcontractsInput
+    connect?: usersWhereUniqueInput
+  }
+
+  export type usersUpdateOneRequiredWithoutListedcontractsNestedInput = {
+    create?: XOR<usersCreateWithoutListedcontractsInput, usersUncheckedCreateWithoutListedcontractsInput>
+    connectOrCreate?: usersCreateOrConnectWithoutListedcontractsInput
+    upsert?: usersUpsertWithoutListedcontractsInput
+    connect?: usersWhereUniqueInput
+    update?: XOR<XOR<usersUpdateToOneWithWhereWithoutListedcontractsInput, usersUpdateWithoutListedcontractsInput>, usersUncheckedUpdateWithoutListedcontractsInput>
+  }
+
+  export type usersCreateNestedOneWithoutOwnedcontractsInput = {
+    create?: XOR<usersCreateWithoutOwnedcontractsInput, usersUncheckedCreateWithoutOwnedcontractsInput>
+    connectOrCreate?: usersCreateOrConnectWithoutOwnedcontractsInput
+    connect?: usersWhereUniqueInput
+  }
+
+  export type usersUpdateOneRequiredWithoutOwnedcontractsNestedInput = {
+    create?: XOR<usersCreateWithoutOwnedcontractsInput, usersUncheckedCreateWithoutOwnedcontractsInput>
+    connectOrCreate?: usersCreateOrConnectWithoutOwnedcontractsInput
+    upsert?: usersUpsertWithoutOwnedcontractsInput
+    connect?: usersWhereUniqueInput
+    update?: XOR<XOR<usersUpdateToOneWithWhereWithoutOwnedcontractsInput, usersUpdateWithoutOwnedcontractsInput>, usersUncheckedUpdateWithoutOwnedcontractsInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -8674,11 +9153,266 @@ export namespace Prisma {
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
+  export type listedcontractsCreateWithoutUserInput = {
+    name: string
+    price: string
+    contract: string
+    description: string
+    code_hash: string
+    code: string
+    address: string
+  }
+
+  export type listedcontractsUncheckedCreateWithoutUserInput = {
+    id?: number
+    name: string
+    price: string
+    contract: string
+    description: string
+    code_hash: string
+    code: string
+    address: string
+  }
+
+  export type listedcontractsCreateOrConnectWithoutUserInput = {
+    where: listedcontractsWhereUniqueInput
+    create: XOR<listedcontractsCreateWithoutUserInput, listedcontractsUncheckedCreateWithoutUserInput>
+  }
+
+  export type listedcontractsCreateManyUserInputEnvelope = {
+    data: listedcontractsCreateManyUserInput | listedcontractsCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ownedcontractsCreateWithoutUserInput = {
+    name: string
+    contract_id: number
+  }
+
+  export type ownedcontractsUncheckedCreateWithoutUserInput = {
+    id?: number
+    name: string
+    contract_id: number
+  }
+
+  export type ownedcontractsCreateOrConnectWithoutUserInput = {
+    where: ownedcontractsWhereUniqueInput
+    create: XOR<ownedcontractsCreateWithoutUserInput, ownedcontractsUncheckedCreateWithoutUserInput>
+  }
+
+  export type ownedcontractsCreateManyUserInputEnvelope = {
+    data: ownedcontractsCreateManyUserInput | ownedcontractsCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type listedcontractsUpsertWithWhereUniqueWithoutUserInput = {
+    where: listedcontractsWhereUniqueInput
+    update: XOR<listedcontractsUpdateWithoutUserInput, listedcontractsUncheckedUpdateWithoutUserInput>
+    create: XOR<listedcontractsCreateWithoutUserInput, listedcontractsUncheckedCreateWithoutUserInput>
+  }
+
+  export type listedcontractsUpdateWithWhereUniqueWithoutUserInput = {
+    where: listedcontractsWhereUniqueInput
+    data: XOR<listedcontractsUpdateWithoutUserInput, listedcontractsUncheckedUpdateWithoutUserInput>
+  }
+
+  export type listedcontractsUpdateManyWithWhereWithoutUserInput = {
+    where: listedcontractsScalarWhereInput
+    data: XOR<listedcontractsUpdateManyMutationInput, listedcontractsUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type listedcontractsScalarWhereInput = {
+    AND?: listedcontractsScalarWhereInput | listedcontractsScalarWhereInput[]
+    OR?: listedcontractsScalarWhereInput[]
+    NOT?: listedcontractsScalarWhereInput | listedcontractsScalarWhereInput[]
+    id?: IntFilter<"listedcontracts"> | number
+    name?: StringFilter<"listedcontracts"> | string
+    price?: StringFilter<"listedcontracts"> | string
+    contract?: StringFilter<"listedcontracts"> | string
+    description?: StringFilter<"listedcontracts"> | string
+    code_hash?: StringFilter<"listedcontracts"> | string
+    code?: StringFilter<"listedcontracts"> | string
+    address?: StringFilter<"listedcontracts"> | string
+    user_id?: IntFilter<"listedcontracts"> | number
+  }
+
+  export type ownedcontractsUpsertWithWhereUniqueWithoutUserInput = {
+    where: ownedcontractsWhereUniqueInput
+    update: XOR<ownedcontractsUpdateWithoutUserInput, ownedcontractsUncheckedUpdateWithoutUserInput>
+    create: XOR<ownedcontractsCreateWithoutUserInput, ownedcontractsUncheckedCreateWithoutUserInput>
+  }
+
+  export type ownedcontractsUpdateWithWhereUniqueWithoutUserInput = {
+    where: ownedcontractsWhereUniqueInput
+    data: XOR<ownedcontractsUpdateWithoutUserInput, ownedcontractsUncheckedUpdateWithoutUserInput>
+  }
+
+  export type ownedcontractsUpdateManyWithWhereWithoutUserInput = {
+    where: ownedcontractsScalarWhereInput
+    data: XOR<ownedcontractsUpdateManyMutationInput, ownedcontractsUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type ownedcontractsScalarWhereInput = {
+    AND?: ownedcontractsScalarWhereInput | ownedcontractsScalarWhereInput[]
+    OR?: ownedcontractsScalarWhereInput[]
+    NOT?: ownedcontractsScalarWhereInput | ownedcontractsScalarWhereInput[]
+    id?: IntFilter<"ownedcontracts"> | number
+    name?: StringFilter<"ownedcontracts"> | string
+    contract_id?: IntFilter<"ownedcontracts"> | number
+    user_id?: IntFilter<"ownedcontracts"> | number
+  }
+
+  export type usersCreateWithoutListedcontractsInput = {
+    address: string
+    ownedcontracts?: ownedcontractsCreateNestedManyWithoutUserInput
+  }
+
+  export type usersUncheckedCreateWithoutListedcontractsInput = {
+    id?: number
+    address: string
+    ownedcontracts?: ownedcontractsUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type usersCreateOrConnectWithoutListedcontractsInput = {
+    where: usersWhereUniqueInput
+    create: XOR<usersCreateWithoutListedcontractsInput, usersUncheckedCreateWithoutListedcontractsInput>
+  }
+
+  export type usersUpsertWithoutListedcontractsInput = {
+    update: XOR<usersUpdateWithoutListedcontractsInput, usersUncheckedUpdateWithoutListedcontractsInput>
+    create: XOR<usersCreateWithoutListedcontractsInput, usersUncheckedCreateWithoutListedcontractsInput>
+    where?: usersWhereInput
+  }
+
+  export type usersUpdateToOneWithWhereWithoutListedcontractsInput = {
+    where?: usersWhereInput
+    data: XOR<usersUpdateWithoutListedcontractsInput, usersUncheckedUpdateWithoutListedcontractsInput>
+  }
+
+  export type usersUpdateWithoutListedcontractsInput = {
+    address?: StringFieldUpdateOperationsInput | string
+    ownedcontracts?: ownedcontractsUpdateManyWithoutUserNestedInput
+  }
+
+  export type usersUncheckedUpdateWithoutListedcontractsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    address?: StringFieldUpdateOperationsInput | string
+    ownedcontracts?: ownedcontractsUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type usersCreateWithoutOwnedcontractsInput = {
+    address: string
+    listedcontracts?: listedcontractsCreateNestedManyWithoutUserInput
+  }
+
+  export type usersUncheckedCreateWithoutOwnedcontractsInput = {
+    id?: number
+    address: string
+    listedcontracts?: listedcontractsUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type usersCreateOrConnectWithoutOwnedcontractsInput = {
+    where: usersWhereUniqueInput
+    create: XOR<usersCreateWithoutOwnedcontractsInput, usersUncheckedCreateWithoutOwnedcontractsInput>
+  }
+
+  export type usersUpsertWithoutOwnedcontractsInput = {
+    update: XOR<usersUpdateWithoutOwnedcontractsInput, usersUncheckedUpdateWithoutOwnedcontractsInput>
+    create: XOR<usersCreateWithoutOwnedcontractsInput, usersUncheckedCreateWithoutOwnedcontractsInput>
+    where?: usersWhereInput
+  }
+
+  export type usersUpdateToOneWithWhereWithoutOwnedcontractsInput = {
+    where?: usersWhereInput
+    data: XOR<usersUpdateWithoutOwnedcontractsInput, usersUncheckedUpdateWithoutOwnedcontractsInput>
+  }
+
+  export type usersUpdateWithoutOwnedcontractsInput = {
+    address?: StringFieldUpdateOperationsInput | string
+    listedcontracts?: listedcontractsUpdateManyWithoutUserNestedInput
+  }
+
+  export type usersUncheckedUpdateWithoutOwnedcontractsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    address?: StringFieldUpdateOperationsInput | string
+    listedcontracts?: listedcontractsUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type listedcontractsCreateManyUserInput = {
+    id?: number
+    name: string
+    price: string
+    contract: string
+    description: string
+    code_hash: string
+    code: string
+    address: string
+  }
+
+  export type ownedcontractsCreateManyUserInput = {
+    id?: number
+    name: string
+    contract_id: number
+  }
+
+  export type listedcontractsUpdateWithoutUserInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    price?: StringFieldUpdateOperationsInput | string
+    contract?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    code_hash?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type listedcontractsUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    price?: StringFieldUpdateOperationsInput | string
+    contract?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    code_hash?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type listedcontractsUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    price?: StringFieldUpdateOperationsInput | string
+    contract?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    code_hash?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ownedcontractsUpdateWithoutUserInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    contract_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ownedcontractsUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    contract_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ownedcontractsUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    contract_id?: IntFieldUpdateOperationsInput | number
+  }
+
 
 
   /**
    * Aliases for legacy arg types
    */
+    /**
+     * @deprecated Use UsersCountOutputTypeDefaultArgs instead
+     */
+    export type UsersCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UsersCountOutputTypeDefaultArgs<ExtArgs>
     /**
      * @deprecated Use audit_requestsDefaultArgs instead
      */
@@ -8692,17 +9426,17 @@ export namespace Prisma {
      */
     export type ContractArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ContractDefaultArgs<ExtArgs>
     /**
-     * @deprecated Use UserDefaultArgs instead
+     * @deprecated Use usersDefaultArgs instead
      */
-    export type UserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserDefaultArgs<ExtArgs>
+    export type usersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = usersDefaultArgs<ExtArgs>
     /**
-     * @deprecated Use SellContractDefaultArgs instead
+     * @deprecated Use listedcontractsDefaultArgs instead
      */
-    export type SellContractArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = SellContractDefaultArgs<ExtArgs>
+    export type listedcontractsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = listedcontractsDefaultArgs<ExtArgs>
     /**
-     * @deprecated Use BuyContractDefaultArgs instead
+     * @deprecated Use ownedcontractsDefaultArgs instead
      */
-    export type BuyContractArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = BuyContractDefaultArgs<ExtArgs>
+    export type ownedcontractsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ownedcontractsDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany
