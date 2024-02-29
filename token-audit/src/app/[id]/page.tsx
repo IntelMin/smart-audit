@@ -306,32 +306,43 @@ const TokenResult = ({ params }: Props) => {
             </div>
           </form>
         </div>
-        {/* Token Result Section */}
-        <div className='grid lg:grid-cols-4  grid-cols-1 md:gap-8 gap-4'>
-          <ContractCard
-            finding={findings}
-            token={tokenData}
-            scanData={scanData}
-            metaData={metaData}
-          />
-
-          <div className='rounded-[24px] space-y-10 w-full col-span-2'>
-            <StatsComponent
-              scanData={scanData}
-              liveData={liveData}
-              tokenData={tokenData}
+        {/* Token Logo */}
+        <div className='absolute top-0 right-0 z-[-1] rounded-full -translate-y-[-20px] translate-x-1/2 size-[136px]'>
+          <Image alt='logo' src={"/icons/logo.svg"} width={136} height={136} />
+        </div>
+        <div className='flex flex-col gap-2'>
+          <h1 className='font-semibold text-lg text-white'>Token Audit</h1>
+          <p className='text-sm text-white'>
+            Submit token contract address to get a detailed analysis <br />
+            of the token, before making your trade decision.
+          </p>
+        </div>
+        <form onSubmit={handleSubmit}>
+          <div className='flex items-center gap-4 flex-col md:flex-row'>
+            <input
+              className='px-4 py-2 rounded-full font-medium text-sm text-white bg-[#FFFFFF14]'
+              onChange={(e) => setTokenAddress(e.target.value)}
+              value={tokenAddress || liveData?.baseToken.address}
             />
-            <SecurityScore scanData={scanData} />
+            <button
+              type='submit'
+              className='px-6 py-2 rounded-full font-semibold text-sm text-white bg-gradient-to-r from-[#00C5EC] via-[#423FF1] to-[#E131FD]'
+            >
+              Submit
+            </button>
           </div>
-
-          <div className='rounded-[24px] space-y-10 '>
-            <MarketCap
-              liveData={liveData}
-              infoData={infoData}
-              scanData={scanData}
-            />
-            <AuditHistory findings={findings} />
-          </div>
+        </form>
+      </div>
+      {/* Token Result Section */}
+      <div className='grid lg:grid-cols-4 gap-4'>
+        <ContractCard finding={findings} token={tokenData} scanData={scanData} metaData={metaData} />
+        <div className='rounded-lg space-y-10 col-span-2'>
+          <StatsComponent scanData={scanData} liveData={liveData} tokenData={tokenData} />
+          <SecurityScore scanData={scanData} />
+        </div>
+        <div className='rounded-lg space-y-10'>
+          <MarketCap liveData={liveData} infoData={infoData} scanData={scanData} />
+          <AuditHistory findings={findings} />
         </div>
       </div>
     </div>
