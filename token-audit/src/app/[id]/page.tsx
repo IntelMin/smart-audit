@@ -44,7 +44,7 @@ const TokenResult = ({ params }: Props) => {
   const [liveData, setLiveData] = useState<any | null>(null);
   const [isTokenValid, setIsTokenValid] = useState(false);
   const [isinputTokenValid, setIsinputTokenValid] = useState(false);
-
+  const [timeoutid, setTimeoutid] = useState<any>(null);
   const [tokenAddress, setTokenAddress] = useState("");
   const { toast } = useToast();
   const [status, setStatus] = useState<statusType>({
@@ -52,7 +52,6 @@ const TokenResult = ({ params }: Props) => {
     progress: 0,
     status: 0,
   });
-  console.log("token", tokenAddress);
   useEffect(() => {
     const fetchStatus = async () => {
       if (!loading || id === "") return;
@@ -80,6 +79,7 @@ const TokenResult = ({ params }: Props) => {
             throw new Error("Failed to fetch status");
           }
           const statusData = await statusRes.json();
+          console.log(statusData);
           setStatus(statusData);
           // if (statusData.status === AUDIT_STATUS_RETURN_CODE.complete) {
           //   setLoading(false);
@@ -96,10 +96,14 @@ const TokenResult = ({ params }: Props) => {
     };
 
     const pollStatus = () => {
+      if(!loading) {
+        clearTimeout(timeoutid);
+      };
       if (loading) {
         fetchStatus();
         if (!isTokenValid) return;
-        setTimeout(pollStatus, 1000); // Poll every 1 second
+        const tid = setTimeout(pollStatus, 1000); 
+        setTimeoutid(tid);
       }
     };
 
@@ -195,7 +199,7 @@ const TokenResult = ({ params }: Props) => {
     }
 
     fetchData();
-  }, [id, isTokenValid, status.status]);
+  }, [id, isTokenValid,loading, status.status]);
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsinputTokenValid(false);
@@ -222,7 +226,7 @@ const TokenResult = ({ params }: Props) => {
     checkToken();
     if (!setIsinputTokenValid) return;
 
-    setLoading(true);
+    if (tokenAddress === "") return;
     const request = await fetch(`/api/audit/request`, {
       method: "POST",
       body: JSON.stringify({ address: tokenAddress.toLowerCase() }),
@@ -230,11 +234,10 @@ const TokenResult = ({ params }: Props) => {
         "Content-Type": "application/json",
       },
     });
+    router.push(`/${tokenAddress}`);
 
     const data = await request.json();
 
-    if (tokenAddress === "") return;
-    router.push(`/${tokenAddress}`);
     setLoading(false);
   };
   if (!isConnected) {

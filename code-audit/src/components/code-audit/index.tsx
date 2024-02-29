@@ -53,7 +53,7 @@ const Index = () => {
       const response = await axios.post("/api/audit/code", {
         data,
       },{
-        timeout: 1000 * 60 * 5
+        timeout: 1000 * 60 * 10
       });
 
       if (response.status !== 200) {
