@@ -1,3 +1,4 @@
+"use client";
 import { formatNumber, formatString } from "@/utils/utils";
 import axios from "axios";
 import Image from "next/image";
@@ -5,8 +6,17 @@ import Link from "next/link";
 import React from "react";
 
 async function RewardCards() {
-  let res = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN}/api/bounty/filter?limit=46`);
-  let cards = await res.data?.bounties;
+  const [cards, setCards] = React.useState<any[]>([]);
+  React.useEffect(() => {
+    async function getBounties() {
+
+    let res = await axios.get(`/api/bounty/filter?limit=46`);
+    let cards = await res.data?.bounties;
+    setCards(cards);
+    }
+    getBounties()
+  }, []
+    )
   return (
     <div className="gap-6 grid grid-cols-4 mt-4">
       {cards?.map((item: any, i: number) => {
