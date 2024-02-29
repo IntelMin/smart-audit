@@ -1,9 +1,8 @@
 'use client';
 
-import React from "react";
-import { useState } from "react"
+import React , { useState, useRef }from "react";
 import { useToast } from "@/components/ui/use-toast";
-
+import Editor, { Monaco } from "@monaco-editor/react";
 
 const SellContract = () => {
 
@@ -14,20 +13,21 @@ const SellContract = () => {
   const [contractData, setContractData] = useState('');
   const [addressData, setAddressData] = useState('');
   const [showModal, setShowModal] = useState(false);
+  const editorRef = useRef(null);
 
   const { toast } = useToast()
 
-  const getContracts = async () => {
-    try {
-      const contracts = await prisma.sellContract.findMany();
-      console.log('contracts: ', contracts);
-      return contracts;
-    } catch (error) {
-      console.error("Getting user error: ", error.message);
-    }
-  };
+  // const getContracts = async () => {
+  //   try {
+  //     const contracts = await prisma.sellContract.findMany();
+  //     console.log('contracts: ', contracts);
+  //     return contracts;
+  //   } catch (error) {
+  //     console.error("Getting user error: ", error.message);
+  //   }
+  // };
 
-  getContracts();
+  // getContracts();
 
 
   const handleSave = async () => {
@@ -68,6 +68,13 @@ const SellContract = () => {
   }
 
   const contractList = ['ERC20', 'ERC21', 'ERC404', 'ERC721', 'IERC20', 'ERC165', 'Token', 'NFT']
+
+  function handleEditorDidMount(editor: any, monaco: Monaco) {
+    // here is the editor instance
+    // you can store it in `useRef` for further usage
+    console.log("hhh", editor, monaco);
+    editorRef.current = editor;
+  }
 
   return (
     <div className=" items-center justify-center bg-[url(/backgrounds/token-result.svg)] bg-cover bg-center min-h-screen mt-[170px] mx-auto">
@@ -152,7 +159,36 @@ const SellContract = () => {
                 <textarea id="description" rows={3} onChange={(e) => setDescriptionData(e.target.value)} className="  block p-2.5 w-full text-sm text-gray-900 rounded-lg border border-gray-300 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" style={{ "resize": "none" }} placeholder="This smart contract can..."></textarea>
               </div>
               <div className="pt-10 mt-2">
-                <textarea id="contents" rows={20} onChange={(e) => setCodeData(e.target.value)} className=" block p-2.5 w-full text-sm text-gray-900 rounded-lg border border-gray-300 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" style={{ "resize": "none" }} placeholder=""></textarea>
+                {/* <textarea id="contents" rows={20} onChange={(e) => setCodeData(e.target.value)} className=" block p-2.5 w-full text-sm text-gray-900 rounded-lg border border-gray-300 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" style={{ "resize": "none" }} placeholder=""></textarea> */}
+                <Editor
+                  height="50vh"
+                  defaultLanguage="sol"
+                  defaultValue="// some comment"
+                  onMount={handleEditorDidMount}
+                  theme='vs-dark'
+                  options={{
+                      autoIndent: 'full',
+                      contextmenu: true,
+                      fontFamily: 'monospace',
+                      fontSize: 13,
+                      lineHeight: 24,
+                      wordWrap: 'on',
+                      cursorStyle: 'block',
+                      hideCursorInOverviewRuler: true,
+                      matchBrackets: 'always',
+                      minimap: {
+                        enabled: false,
+                      },
+                      scrollbar: {
+                        horizontalSliderSize: 4,
+                        verticalSliderSize: 18,
+                      },
+                      selectOnLineNumbers: true,
+                      roundedSelection: false,
+                      automaticLayout: true,
+                    }}
+
+                />
               </div>
               <div className="flex pt-8 flex-grow">
                 <button
