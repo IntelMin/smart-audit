@@ -63,6 +63,6 @@ export async function GET(req: NextRequest) {
   }
   catch (error) {
     console.error(error);
-    return NextResponse.json({ message: 'An error occurred' }, { status: 500 });
+    return NextResponse.json({ message: 'An error occurred', error }, { status: 500 });
   }
 }
