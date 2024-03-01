@@ -21,9 +21,9 @@ function marketCap({ scanData, liveData, infoData }: any) {
       Number(infoData?.exchange_rate ?? 0)) *
     Number(liveData?.priceUsd ?? 0);
   return (
-    <div className='bg-[#18181B]  h-[180px] rounded-xl flex flex-col justify-center items-center text-white space-y-3 '>
+    <div className='bg-[#18181B]  h-[180px] rounded-xl flex flex-col justify-center items-center text-white gap-4 px-[1px]'>
       <div className='flex space-x-2'>
-        <p className='text-[32px] font-bold text-white'>
+        <p className='text-[28px] font-bold text-white'>
           ${Number(liveData?.priceUsd ?? 0).toFixed(4)}{" "}
         </p>
         <div className='flex justify-center items-center  '>
@@ -42,15 +42,15 @@ function marketCap({ scanData, liveData, infoData }: any) {
           </p>
         </div>
       </div>
-      <div className='space-x-4'>
-        <button className='bg-[#27272A] px-4 py-2 text-center rounded-[100px]'>
+      <div className='flex flex-row gap-2'>
+        <div className='bg-[#27272A] px-4 py-1 text-center rounded-[80px]'>
           <p>${formatNumber(Number((marketCap ?? 0).toFixed(0)))}</p>
           <p className='uppercase text-[#71717A] text-sm'>Market Cap</p>
-        </button>
-        <button className='bg-[#27272A] px-8 py-2 text-center rounded-[100px]'>
+        </div>
+        <div className='bg-[#27272A] px-4 py-1 text-center rounded-[80px]'>
           <p>{scanData?.topHolders?.total}</p>
           <p className='uppercase text-[#71717A] text-sm'>Holders</p>
-        </button>
+        </div>
       </div>
     </div>
   );
