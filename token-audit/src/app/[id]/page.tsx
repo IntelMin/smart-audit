@@ -228,7 +228,7 @@ const TokenResult = ({ params }: Props) => {
     if (tokenAddress === "") return;
     const request = await fetch(`/api/audit/request`, {
       method: "POST",
-      body: JSON.stringify({ address: tokenAddress.toLowerCase() }),
+      body: JSON.stringify({ address: tokenAddress?.toLowerCase() }),
       headers: {
         "Content-Type": "application/json",
       },
@@ -291,7 +291,7 @@ const TokenResult = ({ params }: Props) => {
               <input
                 className='bg-[#FFFFFF14] px-[16px] py-[10px] rounded-[80px] font-[500] text-[16px] text-white'
                 onChange={(e) => setTokenAddress(e.target.value)}
-                value={tokenAddress || liveData?.baseToken.address}
+                value={tokenAddress || liveData?.baseToken?.address}
                 // value='0x514910771AF9Ca656af840dff83E8264EcF986CA'
               />
 

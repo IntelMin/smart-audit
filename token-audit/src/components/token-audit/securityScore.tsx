@@ -21,12 +21,12 @@ function securityScore({ scanData }: any) {
   const statsData = [
     { Audits: 1 },
     { "Onboarded Date": formattedDate },
-    { "Market Stability": scanData.marketScore }, //96.22
-    { "Code Security": scanData.securityScore }, //99.38
+    { "Market Stability": scanData?.marketScore }, //96.22
+    { "Code Security": scanData?.securityScore }, //99.38
     // { "Governance Score": scanData.liquidityScore }, // 99.38
-    { "Community Score": scanData.communityScore }, // 99.38
-    { "Decentralization Score": scanData.decentralisationScore }, // 99.38
-    { "Fundamental Score": scanData.fundamentalsScore.toFixed(2) }, // 99.38
+    { "Community Score": scanData?.communityScore }, // 99.38
+    { "Decentralization Score": scanData?.decentralisationScore }, // 99.38
+    { "Fundamental Score": scanData?.fundamentalsScore?.toFixed(2) }, // 99.38
   ];
   return (
     <div className='flex flex-col space-y-4 bg-[#18181B] py-4 px-4 rounded-lg text-white '>
@@ -35,7 +35,7 @@ function securityScore({ scanData }: any) {
       </header>
       <div className='relative'>
         <div
-          className={`w-[${scanData.auditScore}px]   rounded-3xl relative progress overflow-hidden mt-8`}
+          className={`w-[${scanData?.auditScore}px]   rounded-3xl relative progress overflow-hidden mt-8`}
         >
           <div
             className='h-[140px] progress-bar bg-gradient-to-r from-[#11a2ed] to-[#8e35ea] progress-bar-striped  absolute left-0 top-0 transition-all'

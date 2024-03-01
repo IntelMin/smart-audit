@@ -67,18 +67,28 @@ export default function TokenAudit() {
   };
 
   return (
-    <main className='relative flex items-center justify-center bg-[url(/backgrounds/token.svg)] bg-cover bg-center min-h-screen'>
+    <main className='relative flex items-center justify-center bg-[url(/backgrounds/token.svg)] bg-cover bg-center min-h-screen flex-col text-white gap-5 '>
       {loading && (
         <>
           <div className='flex h-screen  justify-center items-center absolute z-10 backdrop-blur-3xl min-w-full  '>
             <LoadingModal
-            // setLoading={setLoading}
-            // activeStep={0}
+              setLoading={setLoading}
+              activeStep={0}
             />
           </div>
         </>
       )}{" "}
       {/* Show loading modal if loading state is true */}
+      <div className=' relative flex mx-auto -top-20 px-4 md:px-0 justify-center items-center max-h-7xl lg:w-[40vw] md:w-[50vw] w-full flex-col'>
+        <h1 className='text-4xl font-bold py-3'>Token Audit</h1>
+        <p className=' text-center text-sm space-x-3 leading-6 font-medium  '>
+          Experience unparalleled security with our AI-driven Token Audit,
+          meticulously analyzing technical, financial, and regulatory aspects
+          for comprehensive assurance. Our advanced algorithms provide
+          transparent insights, ensuring trust and confidence for token issuers
+          and investors.
+        </p>
+      </div>
       <div className='flex flex-col justify-between gap-8 bg-[#FFFFFF0D] p-6 rounded-[16px] w-[430px] h-[260px] text-center'>
         <div className='flex flex-col gap-2'>
           <h1 className='font-[700] text-lg text-white'>Token Audit</h1>
