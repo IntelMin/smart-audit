@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import Editor, { Monaco, loader } from "@monaco-editor/react";
 import { useRef } from "react";
 import {  useToast } from "../ui/use-toast";
-import { MoonLoader } from "react-spinners";
 import Status from "./status";
 import axios from "axios";
 import { Loader } from "lucide-react";
+import { useAccount } from "wagmi";
 
 const Index = () => {
+  const { isConnected, address } = useAccount();
   loader.init().then((monaco) => {
     monaco.editor.defineTheme("custom-theme", {
       base: "vs",
@@ -48,48 +49,57 @@ const Index = () => {
   };
 
   const auditCode = async (sourceCode: string) => {
-    try {
-      setLoading(true);
-      const data = {
-        type: "code",
-        source: sourceCode,
-      };
-
-      const response = await axios.post("/api/audit/code", {
-        data,
-      },{
-        timeout: 1000 * 60 * 10
-      });
-
-      if (response.status !== 200) {
+    if(isConnected){
+      try {
+        setLoading(true);
+        const data = {
+          type: "code",
+          source: sourceCode,
+        };
+  
+        const response = await axios.post("/api/audit/code", {
+          data,
+        },{
+          timeout: 1000 * 60 * 5
+        });
+  
+        if (response.status !== 200) {
+          toast({
+            title: "An error occurred during code audit",
+            variant: "destructive",
+          });
+          return false;
+        }
+  
+        setLoading(false);
+  
+        const result = response.data;
+        console.log(result);
+        if (result.message === "No vulnerabilities found.") {
+          setNoFindings(true);
+          toast({
+            title: "No vulnerabilities found",
+            variant: "default",
+          });
+        }
+  
+        setFindings(result.findings);
+        console.log(result.findings);
+      } catch (error) {
+        console.error("Error during code audit: ", error);
         toast({
           title: "An error occurred during code audit",
           variant: "destructive",
         });
-        return false;
       }
-
-      setLoading(false);
-
-      const result = response.data;
-      console.log(result);
-      if (result.message === "No vulnerabilities found.") {
-        setNoFindings(true);
-        toast({
-          title: "No vulnerabilities found",
-          variant: "default",
-        });
-      }
-
-      setFindings(result.findings);
-      console.log(result.findings);
-    } catch (error) {
-      console.error("Error during code audit: ", error);
+    }
+    else{
       toast({
-        title: "An error occurred during code audit",
+        title: "Please connect your wallet",
         variant: "destructive",
       });
     }
+    
   };
 
   useEffect(() => {
