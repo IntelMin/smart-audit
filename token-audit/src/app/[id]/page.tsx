@@ -20,7 +20,6 @@ import axios from "axios";
 import { useAccount } from "wagmi";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 
-
 type Props = {
   params: {
     id: string;
@@ -96,13 +95,13 @@ const TokenResult = ({ params }: Props) => {
     };
 
     const pollStatus = () => {
-      if(!loading) {
+      if (!loading) {
         clearTimeout(timeoutid);
-      };
+      }
       if (loading) {
         fetchStatus();
         if (!isTokenValid) return;
-        const tid = setTimeout(pollStatus, 1000); 
+        const tid = setTimeout(pollStatus, 1000);
         setTimeoutid(tid);
       }
     };
@@ -199,7 +198,7 @@ const TokenResult = ({ params }: Props) => {
     }
 
     fetchData();
-  }, [id, isTokenValid,loading, status.status]);
+  }, [id, isTokenValid, loading, status.status]);
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsinputTokenValid(false);
@@ -229,7 +228,7 @@ const TokenResult = ({ params }: Props) => {
     if (tokenAddress === "") return;
     const request = await fetch(`/api/audit/request`, {
       method: "POST",
-      body: JSON.stringify({ address: tokenAddress.toLowerCase() }),
+      body: JSON.stringify({ address: tokenAddress?.toLowerCase() }),
       headers: {
         "Content-Type": "application/json",
       },
@@ -264,7 +263,8 @@ const TokenResult = ({ params }: Props) => {
           <div className='bottom-0 left-0 z-[-1] absolute rounded-full -translate-x-[calc(50%-20px)] translate-y-[10px] size-[136px]'>
             <Image
               alt='logo'
-              src={"/icons/logo.svg"}
+              src={tokenData?.icon_url ?? scanData?.logo ?? "/icons/logo.svg"}
+              // src={"/icons/logo.svg"}
               width={136}
               height={136}
             />
@@ -273,7 +273,8 @@ const TokenResult = ({ params }: Props) => {
           <div className='top-0 right-0 z-[-1] absolute rounded-full -translate-y-[20px] translate-x-[calc(50%-23px)] size-[136px]'>
             <Image
               alt='logo'
-              src={"/icons/logo.svg"}
+              src={tokenData?.icon_url ?? scanData?.logo ?? "/icons/logo.svg"}
+              // src={"/icons/logo.svg"}
               width={136}
               height={136}
             />
@@ -290,7 +291,7 @@ const TokenResult = ({ params }: Props) => {
               <input
                 className='bg-[#FFFFFF14] px-[16px] py-[10px] rounded-[80px] font-[500] text-[16px] text-white'
                 onChange={(e) => setTokenAddress(e.target.value)}
-                value={tokenAddress || liveData?.baseToken.address}
+                value={tokenAddress || liveData?.baseToken?.address}
                 // value='0x514910771AF9Ca656af840dff83E8264EcF986CA'
               />
 
