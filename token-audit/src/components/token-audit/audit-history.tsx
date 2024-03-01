@@ -10,7 +10,7 @@ function AuditHistory({ findings }: any) {
     if (findings.high && findings.med && findings.low > 0) {
       setData(true);
     }
-  }, [findings.high, findings.med, findings.low]);
+  }, [findings]);
   console.log("data", data);
   const auditData = [
     {
