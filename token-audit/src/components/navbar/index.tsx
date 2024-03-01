@@ -126,27 +126,45 @@ export const Navbar = (props: Props) => {
                   <div className='text-white justify-end items-center text-center'>
                     <div className='flex flex-col gap-4 px-4'>
                       <div className='flex space-x-1'>
-                        <ButtonWithImage
-                          src={"/icons/tokenaudit/xBtn.svg"}
-                          alt='xBtn'
-                          width={240}
-                          height={24}
-                        />
-                        <ButtonWithImage
-                          src={"/icons/tokenaudit/telegramBtn.svg"}
-                          alt='telegramBtn'
-                          width={240}
-                          height={24}
-                        />
+                        <Link
+                          href='https://twitter.com/SmartauditAI'
+                          rel='noopener noreffer'
+                          target='_blank'
+                        >
+                          <ButtonWithImage
+                            src={"/icons/tokenaudit/xBtn.svg"}
+                            alt='xBtn'
+                            width={240}
+                            height={24}
+                          />
+                        </Link>
+                        <Link
+                          href='https://t.me/SmartauditAI'
+                          rel='noopener noreffer'
+                          target='_blank'
+                        >
+                          <ButtonWithImage
+                            src={"/icons/tokenaudit/telegramBtn.svg"}
+                            alt='telegramBtn'
+                            width={240}
+                            height={24}
+                          />
+                        </Link>
                       </div>
                       <div className=''>
-                        <ButtonWithImage
-                          src={"/icons/tokenaudit/privacy.svg"}
-                          alt='privacy'
-                          width={480}
-                          height={48}
-                          // className='h-28'
-                        />
+                        <Link
+                          href='https://smartauditai.org/'
+                          rel='noopener noreffer'
+                          target='_blank'
+                        >
+                          <ButtonWithImage
+                            src={"/icons/tokenaudit/privacy.svg"}
+                            alt='privacy'
+                            width={480}
+                            height={48}
+                            // className='h-28'
+                          />
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -172,7 +190,7 @@ export const Navbar = (props: Props) => {
 
 const ButtonWithImage = ({ src, alt, width, height }: any) => {
   return (
-    <div className="w-full flex justify-center">
+    <div className='w-full flex justify-center'>
       <Image
         src={src}
         alt={alt}
