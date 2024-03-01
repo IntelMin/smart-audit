@@ -124,31 +124,32 @@ export const Navbar = (props: Props) => {
                   </div>
 
                   <div className='text-white justify-end items-center text-center'>
-      <div className="flex flex-col gap-4">
-        <div className='flex space-x-4 px-2'>
-          <ButtonWithImage
-            src={"/icons/tokenaudit/xBtn.svg"}
-            alt='xBtn'
-            width={240}
-            height={24}
-          />
-          <ButtonWithImage
-            src={"/icons/tokenaudit/telegramBtn.svg"}
-            alt='telegramBtn'
-            width={240}
-            height={24}
-          />
-        </div>
-        <div className="flex space-x-4 justify-center items-center">
-          <ButtonWithImage
-            src={"/icons/tokenaudit/privacy.svg"}
-            alt='privacy'
-            width={300}
-            height={24}
-          />
-        </div>
-      </div>
-    </div>
+                    <div className='flex flex-col gap-4 px-4'>
+                      <div className='flex space-x-1'>
+                        <ButtonWithImage
+                          src={"/icons/tokenaudit/xBtn.svg"}
+                          alt='xBtn'
+                          width={240}
+                          height={24}
+                        />
+                        <ButtonWithImage
+                          src={"/icons/tokenaudit/telegramBtn.svg"}
+                          alt='telegramBtn'
+                          width={240}
+                          height={24}
+                        />
+                      </div>
+                      <div className=''>
+                        <ButtonWithImage
+                          src={"/icons/tokenaudit/privacy.svg"}
+                          alt='privacy'
+                          width={480}
+                          height={48}
+                          // className='h-28'
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               ) : (
                 <div
@@ -169,9 +170,9 @@ export const Navbar = (props: Props) => {
   );
 };
 
-const ButtonWithImage = ({ src, alt, width, height }:any) => {
+const ButtonWithImage = ({ src, alt, width, height }: any) => {
   return (
-    <div>
+    <div className="w-full flex justify-center">
       <Image
         src={src}
         alt={alt}
