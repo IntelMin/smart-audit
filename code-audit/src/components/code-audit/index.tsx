@@ -186,7 +186,7 @@ console.log(noFindings)
           onClick={() => auditCode(contractCode)}
           disabled={loading}
         >
-          {loading ? (<div className="flex w-full justify-center items-center space-x-3 text-center"><p>Auditing...</p><Loader/></div>) : "Audit"}
+          {loading ? (<div className="flex w-full justify-center items-center space-x-3 text-center"><p>Auditing...</p><Loader className="opacity-60 ml-3 w-6 h-6 animate-spin ease-in-out" /></div>) : "Audit"}
         </button>
       </div>
     </div>
