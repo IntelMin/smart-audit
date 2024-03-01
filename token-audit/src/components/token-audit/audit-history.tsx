@@ -4,13 +4,13 @@ import { Progress } from "../ui/progress";
 import Image from "next/image";
 
 function AuditHistory({ findings }: any) {
-  console.log("audit score", findings);
+  // console.log("audit score", findings);
   const [data, setData] = useState<any>(false);
   useEffect(() => {
     if (findings.high && findings.med && findings.low > 0) {
       setData(true);
     }
-  }, []);
+  }, [findings.high, findings.med, findings.low]);
   console.log("data", data);
   const auditData = [
     {

@@ -107,7 +107,7 @@ const TokenResult = ({ params }: Props) => {
     };
 
     pollStatus();
-  }, [id, loading, isTokenValid, router, toast]);
+  }, [id, loading, isTokenValid, router, timeoutid]);
 
   useEffect(() => {
     async function fetchMeta() {
