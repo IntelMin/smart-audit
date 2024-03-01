@@ -4,10 +4,12 @@ import Image from "next/image";
 function ShippingStep({ label, status }: any) {
   return (
     <div className='flex items-center md:flex-col flex-row z-[100] '>
-      <div className=' mr-4 '>
+      <div className='relative mr-4 '>
         <div
           className={`w-10 h-10 rounded-full flex items-center justify-center ${
-            status === "completed" ? "whiteGlassmorphism" : "whiteGlassmorphism"
+            status === "completed"
+              ? "whiteGlassmorphism"
+              : "bg-[#FFFFFF0D] backdrop-blur-sm opacity-80"
           }`}
         >
           {status === "completed" && (
@@ -50,10 +52,10 @@ export default function LoadingModal({ setLoading, activeStep }: any) {
             />
 
             {index !== steps.length - 1 && (
-              <div className='h-1 bg-[#FFFFFF0D] backdrop-blur-sm hidden md:block w-20 absolute top-8 px-24 -z-0 md:rotate-0 rotate-90' />
+              <div className='h-1 bg-[#FFFFFF0D] backdrop-blur-sm hidden md:block w-18 absolute top-8 px-24 -z-10 md:rotate-0 rotate-90 opacity-60' />
             )}
             {index !== steps.length - 1 && (
-              <div className='h-1 bg-[#FFFFFF0D] backdrop-blur-sm md:hidden block  w-20 sticky top-18 -left-[8x]  px-12 -z-0 md:rotate-0 rotate-90' />
+              <div className='h-1 bg-[#FFFFFF0D] backdrop-blur-sm md:hidden block  w-12 relative top-18 right-[5px]  px-5 -z-10 md:rotate-0 rotate-90 opacity-60' />
             )}
           </React.Fragment>
         ))}

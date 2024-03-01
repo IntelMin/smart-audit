@@ -57,7 +57,7 @@ function securityScore({ scanData }: any) {
 
       <div className='space-y-2'>
         <div className='flex md:hidden rounded-md justify-between text-start  w-full '>
-          <p className='font-[500] text-[14px] text-[#A3A3A3] w-full '>
+          <p className='font-bold text-[18px] text-[#e5e5e5] w-full '>
             {(scanData.auditScore ?? 0).toFixed(2) ?? 0}%
           </p>
           <p className='text-[14px] text-[#E5E5E5] font-bold w-full text-end'>

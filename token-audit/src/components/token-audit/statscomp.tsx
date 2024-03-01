@@ -22,9 +22,9 @@ export default function statscomp({ scanData, tokenData }: any) {
   
     function formatNumberToMillionOrBillion(number: number) {
       if (number >= 1000000000) {
-        return (number / 1000000000).toFixed(2) + "B";
+        return (number / 1000000000).toFixed(0) + "B";
       } else if (number >= 1000000) {
-        return (number / 1000000).toFixed(2) + "M";
+        return (number / 1000000).toFixed(0) + "M";
       } else {
         return number;
       }
