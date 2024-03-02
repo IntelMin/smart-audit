@@ -4,11 +4,11 @@ import { useRef } from "react";
 import {  useToast } from "../ui/use-toast";
 import Status from "./status";
 import axios from "axios";
-import { Loader } from "lucide-react";
 import { useAccount } from "wagmi";
+import { Loader } from "lucide-react";
 
 const Index = () => {
-  const { isConnected, address } = useAccount();
+
   loader.init().then((monaco) => {
     monaco.editor.defineTheme("custom-theme", {
       base: "vs",
@@ -25,12 +25,15 @@ const Index = () => {
       },
     });
   });
+  const {isConnected} = useAccount()
   const editorRef = useRef(null);
   const [contractCode, setContractCode] = useState("");
   const [codeHash, setCodeHash] = useState("");
   const [loading, setLoading] = useState(false);
+  const [processing,setProcessing] = useState(false);
   const [findings, setFindings] = useState([]);
   const [noFindings, setNoFindings] = useState(false);
+
   const { toast } = useToast();
 
   const generateHash = async () => {
@@ -47,74 +50,113 @@ const Index = () => {
       return "";
     }
   };
+  useEffect(()=>{
+    async function fetchAudit(){
+      if(processing){
+        const res =  await fetch(`/api/audit/code?hash=${codeHash}`)
+        if(!res.ok){
+          toast({
+          title: "An error occurred during code audit",
+          variant: "destructive",
+        });
+        setProcessing(false)
+        
+      }
+      const audit = await res.json()
+      if(audit?.message =="No audit found"){
+        setProcessing(false)
+      }
+      if(audit?.message =="Audit pending"){
+        return
+      }
+      if(!audit.result){
+        return
+      }
+      if (audit.result === "No vulnerabilities found.") {
+        setNoFindings(true);
+        toast({
+          title: "No vulnerabilities found",
+          variant: "default",
+        });
+        setLoading(false)
+        setProcessing(false)
+      }
+      // setFindings(audit.result);
+      setProcessing(false)
+      setLoading(false)
+
+    }
+    }
+
+    if (!processing) return;
+
+    const intervalId = setInterval(() => {
+      fetchAudit();
+    }, 5000); 
+    return () => clearInterval(intervalId);
+  },[loading,processing])
 
   const auditCode = async (sourceCode: string) => {
-    if(isConnected){
-      try {
-        setLoading(true);
-        const data = {
-          type: "code",
-          source: sourceCode,
-        };
-  
-        const response = await axios.post("/api/audit/code", {
-          data,
-        },{
-          timeout: 1000 * 60 * 5
-        });
-  
-        if (response.status !== 200) {
-          toast({
-            title: "An error occurred during code audit",
-            variant: "destructive",
-          });
-          return false;
-        }
-  
-        setLoading(false);
-  
-        const result = response.data;
-        console.log(result);
-        if (result.message === "No vulnerabilities found.") {
-          setNoFindings(true);
-          toast({
-            title: "No vulnerabilities found",
-            variant: "default",
-          });
-        }
-  
-        setFindings(result.findings);
-        console.log(result.findings);
-      } catch (error) {
-        console.error("Error during code audit: ", error);
+    if(!isConnected){
+      toast({
+        title:"Connect you wallet",
+        variant:"default"
+      })
+      return
+    }
+    try {
+      setLoading(true);
+      const data = {
+        type: "code",
+        source: sourceCode,
+        hash: codeHash,
+      };
+      setProcessing(true)
+      const response = await axios.post("/api/audit/code", {
+        data,
+      });
+
+      if (response.status !== 200) {
         toast({
           title: "An error occurred during code audit",
           variant: "destructive",
         });
+        setLoading(false)
+        return false;
       }
-    }
-    else{
+      
+      
+      const result = response.data;
+
+      if(result.message == "Auditing added to queu." ){
+        toast({
+          title: "Audit requested",
+          variant: "default",
+        });
+
+      }
+
+    } catch (error) {
+      console.error("Error during code audit: ", error);
       toast({
-        title: "Please connect your wallet",
+        title: "An error occurred during code audit",
         variant: "destructive",
       });
+      setLoading(false)
     }
-    
   };
 
   useEffect(() => {
     setLoading(true);
+
     generateHash().then((hash) => {
-      console.log(hash);
+      setNoFindings(false)
       setCodeHash(hash);
-      setLoading(false);
+      setLoading(false)
     });
   }, [contractCode]);
 
   const handleEditorDidMount = (editor: any, monaco: Monaco) => {
-    // here is the editor instance
-    // you can store it in `useRef` for further usage
-    console.log("hhh", editor, monaco);
     editorRef.current = editor;
   };
 console.log(noFindings)
@@ -149,6 +191,7 @@ console.log(noFindings)
           value={contractCode}
           onMount={handleEditorDidMount}
           theme="custom-theme"
+          
           className=""
           onChange={(value: any) => {
             setContractCode(value);

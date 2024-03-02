@@ -1,11 +1,7 @@
 "use client";
 
 import { formatAddress } from "@/lib/utils";
-import {
-  ConnectButton,
-  useAccountModal,
-  useConnectModal,
-} from "@rainbow-me/rainbowkit";
+import { ConnectButton, useAccountModal } from "@rainbow-me/rainbowkit";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -24,9 +20,7 @@ export const Navbar = (props: Props) => {
     setMobileMenuOpen(false);
   };
   const { isConnected, address } = useAccount();
-
   const { openAccountModal } = useAccountModal();
-
   const pathName = usePathname();
   const path = pathName.split("/")[1];
   const isActive = (ele: string) => ele.substring(1) === path;
