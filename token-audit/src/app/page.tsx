@@ -50,7 +50,7 @@ export default function TokenAudit() {
       });
       const data = await request.json();
 
-      console.log(data);
+      // console.log(data);
 
       if (tokenAddress !== "") {
         router.push(`/${tokenAddress}`);
@@ -66,9 +66,20 @@ export default function TokenAudit() {
     }
   };
 
+  if (loading && tokenAddress.trim() === "") {
+    return (
+      <div className='inset-0 absolute top-0 left-0 h-screen flex flex-col justify-center items-center backdrop-blur-lg  bg-[url(/backgrounds/token.svg)] bg-cover bg-center  '>
+        <LoadingModal
+          activeStep={0}
+          setLoading={setLoading}
+        />
+      </div>
+    );
+  }
+
   return (
     <main className='relative flex items-center justify-center bg-[url(/backgrounds/token.svg)] bg-cover bg-center min-h-screen flex-col text-white gap-5 '>
-      {loading && (
+      {/* {loading && (
         <>
           <div className='flex h-screen  justify-center items-center absolute z-10 backdrop-blur-3xl min-w-full  '>
             <LoadingModal
@@ -77,7 +88,7 @@ export default function TokenAudit() {
             />
           </div>
         </>
-      )}{" "}
+      )} */}
       {/* Show loading modal if loading state is true */}
       <div className=' relative flex mx-auto -top-20 px-4 md:px-0 justify-center items-center max-h-7xl lg:w-[40vw] md:w-[50vw] w-full flex-col'>
         <h1 className='text-4xl font-bold py-3'>Token Audit</h1>
