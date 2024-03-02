@@ -5,6 +5,7 @@ import {  useToast } from "../ui/use-toast";
 import Status from "./status";
 import axios from "axios";
 import { useAccount } from "wagmi";
+import { Loader } from "lucide-react";
 
 const Index = () => {
 
