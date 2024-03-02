@@ -12,19 +12,19 @@ router.post('/code', async (req, res) => {
     const sourceCode = data.source;
     const hash = data.hash;
     console.log(hash);
-    await supabase.from("code_audit").update({status:"processing"}).eq('hash',hash)
+    const sup = await supabase.from("code_audit").update({status:"processing"}).eq('hash',hash)
     res.status(200)
     .json({ message: 'Auditing added to queu.', message: sup });
     const processedCode = removeAnnotations(sourceCode);
     const findings = await runAudit(processedCode, 'gpt-4', 0.7, 3, 1, true);
     if (findings.length === 0) {
-      const sup = await supabase.from("code_audit").update({status:"completed",result:"No vulnerabilities found."}).eq('hash',hash)
+      await supabase.from("code_audit").update({status:"completed",result:"No vulnerabilities found."}).eq('hash',hash)
     } else {
       const findingswithcritic = await run_critic(findings, 'gpt-4', 0, 2);
       console.log({ findingswithcritic });
       const findingswithrank = await run_rank(findingswithcritic);
       console.log(findingswithrank);
-      const sup = await supabase.from("code_audit").update({status:"completed",result:findingswithrank}).eq('hash',hash)
+      await supabase.from("code_audit").update({status:"completed",result:findingswithrank}).eq('hash',hash)
     }
   } catch (err) {
     console.log(err);
