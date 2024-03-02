@@ -52,9 +52,7 @@ const Index = () => {
   };
   useEffect(()=>{
     async function fetchAudit(){
-      console.log("1")
       if(processing){
-        console.log("2")
         const res =  await fetch(`/api/audit/code?hash=${codeHash}`)
         if(!res.ok){
           toast({
@@ -83,7 +81,6 @@ const Index = () => {
         setLoading(false)
         setProcessing(false)
       }
-      console.log(audit.result)
       // setFindings(audit.result);
       setProcessing(false)
       setLoading(false)
@@ -92,6 +89,7 @@ const Index = () => {
     }
 
     if (!processing) return;
+
     const intervalId = setInterval(() => {
       fetchAudit();
     }, 5000); 
@@ -153,16 +151,12 @@ const Index = () => {
 
     generateHash().then((hash) => {
       setNoFindings(false)
-      console.log(hash);
       setCodeHash(hash);
       setLoading(false)
     });
   }, [contractCode]);
 
   const handleEditorDidMount = (editor: any, monaco: Monaco) => {
-    // here is the editor instance
-    // you can store it in `useRef` for further usage
-    // console.log("hhh", editor, monaco);
     editorRef.current = editor;
   };
 console.log(noFindings)
