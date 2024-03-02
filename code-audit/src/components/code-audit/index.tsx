@@ -17,6 +17,10 @@ const Index = () => {
         "editor.background": "#eeeeee00",
         "editor.foreground": "#ffffff",
         "editor.lineHighlightBackground": "#eeeeee00",
+        "editor.textcolor": "#ffffff",
+        "editorCursor.foreground":"#ffffff",
+        "textSeparator.foreground":"#eeeeee00",
+        "textCodeBlock.background":"#eeeeee00",
       },
     });
   });
@@ -230,7 +234,7 @@ console.log(noFindings)
           onClick={() => auditCode(contractCode)}
           disabled={loading}
         >
-          {loading ? "Auditing..." : "Audit"}
+          {loading ? (<div className="flex w-full justify-center items-center space-x-3 text-center"><p>Auditing...</p><Loader className="opacity-60 ml-3 w-6 h-6 animate-spin ease-in-out" /></div>) : "Audit"}
         </button>
       </div>
     </div>
