@@ -162,6 +162,7 @@ export const Navbar = (props: Props) => {
                             alt='privacy'
                             width={480}
                             height={48}
+
                             // className='h-28'
                           />
                         </Link>
@@ -196,6 +197,10 @@ const ButtonWithImage = ({ src, alt, width, height }: any) => {
         alt={alt}
         width={width}
         height={height}
+        className='cursor-pointer  transition-all duration-300 ease-in-out z-[10000]'
+        style={{ 
+          filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",
+      color: "rgba(0,0,0,0.25)" }}
       />
     </div>
   );
