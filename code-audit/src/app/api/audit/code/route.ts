@@ -47,7 +47,6 @@ export async function GET(req: NextRequest) {
       hash: hash as string,
     },
   });
-  console
   if(!db_exist){
     return NextResponse.json({message: 'No audit found'}, { status: 404 });
   }
