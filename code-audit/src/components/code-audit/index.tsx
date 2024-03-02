@@ -1,7 +1,6 @@
 "use client"
-import React from 'react'
+import React, {useRef} from 'react'
 import Editor, { Monaco } from "@monaco-editor/react";
-import { useRef } from 'react';
 
 function index() {
     const editorRef = useRef(null);
