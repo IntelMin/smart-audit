@@ -208,6 +208,7 @@ console.log(noFindings)
             cursorStyle: "block",
             hideCursorInOverviewRuler: true,
             matchBrackets: "always",
+            readOnly:processing,
             minimap: {
               enabled: false,
             },
