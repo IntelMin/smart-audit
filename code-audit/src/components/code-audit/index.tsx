@@ -63,6 +63,7 @@ const Index = () => {
         
       }
       const audit = await res.json()
+      console.log({audit})
       if(audit?.message =="No audit found"){
         setProcessing(false)
       }
@@ -81,7 +82,8 @@ const Index = () => {
         setLoading(false)
         setProcessing(false)
       }
-      // setFindings(audit.result);
+
+      setFindings(JSON.parse(audit.result));
       setProcessing(false)
       setLoading(false)
 
@@ -206,6 +208,7 @@ console.log(noFindings)
             cursorStyle: "block",
             hideCursorInOverviewRuler: true,
             matchBrackets: "always",
+            readOnly:processing,
             minimap: {
               enabled: false,
             },
