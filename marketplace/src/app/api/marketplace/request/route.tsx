@@ -9,7 +9,7 @@ export async function GET(req: NextRequest) {
 
   try {
 
-    const result = await prisma.sellContract.findMany();
+    const result = await prisma.listedcontracts.findMany();
     console.log('result :' , result)
     return NextResponse.json({data:result}, {status:200});
 

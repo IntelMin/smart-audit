@@ -101,10 +101,7 @@ const SellContract = () => {
         contract: contractData,
         description: descriptionData,
         code: codeData,
-        code_hash: '',
         address: addressData,
-        // user_id
-        user: { connect: { id: 2 } }
       }
     })
 

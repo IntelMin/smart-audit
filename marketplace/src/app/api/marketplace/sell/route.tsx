@@ -22,37 +22,39 @@ const generateHash = async (code:string) => {
 export async function POST(req:NextRequest) {
 
   const request = await req.json();
-  const {sourcecode, name ,price,contract,user_address,description} = request
-  const user_exists = await prisma.users.findUnique({
+  const {code, name ,price,contract,address,description} = request.data
+  let userId  = 0 ;
+  console.log('name -- :', name)
+  const user_exists = await prisma.users.findFirst({
     where: {
-      address: user_address
+      address: address
     }
   })
   if(!user_exists){
     const createdUser = await prisma.users.create({
       data: {
-        address: user_address
+        address: address
       }
     })
+    userId = createdUser.id
+  }else{
+    userId = user_exists.id
   }
-  const generate_hash  = await generateHash(sourcecode)
-
-
-
+  const generate_hash  = await generateHash(code)
 
   try {
     const createdContract = await prisma.listedcontracts.create({
       data: {
         code_hash: generate_hash,
-        name: name,
+        name: name, 
         description: description,
         price: price,
-        address: user_address,
+        address: address,
         contract: contract,
-        code:sourcecode,
+        code:code,
         user: {
           connect: {
-            address: user_address
+            id: userId
           }
         }
       }
