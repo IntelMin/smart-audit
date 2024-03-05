@@ -1,59 +1,97 @@
-import React from 'react'
-import { Progress } from '../ui/progress'
-import Image from 'next/image'
+"use client";
+import React, { use, useEffect, useState } from "react";
+import { Progress } from "../ui/progress";
+import Image from "next/image";
 
-function auditHistory({findings}:any) {
-  console.log(findings)
+function AuditHistory({ findings }: any) {
+  // console.log("audit score", findings);
+  const [data, setData] = useState<any>(false);
+  useEffect(() => {
+    if (findings.high && findings.med && findings.low > 0) {
+      setData(true);
+    }
+  }, [findings]);
+  console.log("data", data);
   const auditData = [
     {
-      "Severity": "High",
-      "Value": findings.high,
-      "url":"/icons/tokenaudit/progress.svg"
+      Severity: "High",
+      Value: findings.high,
+      // Value: 100,
     },
     {
-      "Severity": "Medium",
-      "Value": findings.med,
-      "url":"/icons/tokenaudit/progress1.svg"
+      Severity: "Medium",
+      Value: findings.med,
+      // Value: 50,
     },
     {
-      "Severity": "Low",
-      "Value": findings?.low,
-      "url":"/icons/tokenaudit/progress2.svg"
+      Severity: "Low",
+      Value: findings?.low,
+      // Value: 25,
     },
-    {
-      "Severity": "Info",
-      "Value": findings?.info,
-      "url":"/icons/tokenaudit/progress.svg"
-    }
+    // {
+    //   Severity: "Info",
+    //   // Value: findings?.info,
+    //   Value: 10,
+    // },
   ];
-  
+
   return (
-    <div className='text-white bg-[#18181B] rounded-xl p-4 space-y-5 '>
+    <div className='text-white bg-[#18181B] h-auto  md:p-6 p-3 rounded-[24px] '>
       <div className='flex w-full justify-between pt-2'>
-        <p className='font-semibold'>
-          Audit History
-        </p>
+        <p className='font-semibold'>Audit History</p>
         {/* <div className='flex flex-col text-end'>
-          <p>+500</p>
-          <p className='text-sm'>From Last Audit</p>
-        </div> */}
-        
+        <p>+500</p>
+        <p className='text-sm'>From Last Audit</p>
+      </div> */}
       </div>
-      <div className='flex space-x-10 justify-center items-end'>
-        {
-          auditData.map((data, index) => (
-            <div className='flex flex-col items-center justify-center space-y-2' key={index}>
-              <button className='text-white bg-[#FFFFFF1A] rounded-xl  px-3 py-1'>{data.Value}</button>
+      <div className='w-full h-[1px] bg-[#2a2a2d] my-2 '></div>
+      {data === false ? (
+        <div className='flex justify-center items-center min-h-[300px]'>
+          <Image
+            src='/icons/tokenaudit/no-history.svg'
+            width={400}
+            height={400}
+            alt='No History Found'
+          />
+        </div>
+      ) : (
+        <div className='flex space-x-10 justify-center items-end'>
+          {auditData.map((data, index) => (
+            <div
+              className='flex flex-col items-center justify-center space-y-2'
+              key={index}
+            >
+              <button className='text-white bg-[#FFFFFF1A] rounded-xl  px-3 py-1'>
+                {data.Value}
+              </button>
               <div className={``}>
-              <Image src={data.url} alt='progress' width={data.Value===0?0:30} height={data.Value??0} className={`object-cover  h-[${data.Value}px]`} />
+                <VerticalProgressBar progress={data.Value} />
               </div>
               <h1 className=''>{data.Severity}</h1>
             </div>
-          ))
-        }
-      </div>
+          ))}
+        </div>
+      )}
     </div>
-  )
+  );
 }
 
-export default auditHistory;
+export default AuditHistory;
+
+function VerticalProgressBar({ progress }: any) {
+  return (
+    <>
+      <div className='h-[300px]  w-8 bg-[#18181b] rounded-xl relative progress-vertical overflow-hidden rotate-180'>
+        <div
+          className='w-full progress-bar bg-gradient-to-t  from-[#11a2ed] to-[#8e35ea] progress-bar-striped absolute  transition-all'
+          style={{ height: `${progress ?? 0}%` }}
+        ></div>
+
+        <div
+          className='w-full  absolute bg-gradient-to-t  from-[#11a2ed] to-[#8e35ea] opacity-85 '
+          style={{ height: `${progress ?? 0}%` }}
+        ></div>
+      </div>
+    </>
+  );
+}

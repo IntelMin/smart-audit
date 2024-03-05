@@ -1,10 +1,12 @@
-import { redirect } from "next/navigation";
+"use client"
+import React from 'react'
+import CodeEditor from "@/components/code-audit"
+export default function CodeAudit() {
 
-export default function Home() {
-  redirect("/code-audit");
-  return (
-    <main className="min-h-screen p-64">
-      <h1>Welcome! Redirecting to token-audit Page</h1>
-    </main>
-  );
-}
+    return (
+      <main className="relative flex flex-col items-center md:mx-[100px] justify-center bg-[url(/backgrounds/token.svg)] bg-cover bg-center min-h-screen  text-white pt-[123px] space-x-4">
+        <CodeEditor/>
+      </main>
+    );
+  }
+  

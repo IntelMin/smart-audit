@@ -4,9 +4,14 @@ import "./globals.css";
 import { Providers } from "@/components/wallet-provider";
 import { Navbar } from "@/components/navbar";
 import { Toaster } from "@/components/ui/toaster";
+
 export const metadata: Metadata = {
+  // metadataBase: new URL(`${process.env.NEXT_META_URL}`),  //need to add in the env file
   title: "SmartAudit Dapp",
   description: "Handle auditing smartly",
+  openGraph: {
+    images: "/opengraph-image.png",
+  },
 };
 
 export default function RootLayout({
@@ -20,7 +25,7 @@ export default function RootLayout({
         <Providers>
           <Navbar />
           {children}
-          <Toaster/>
+          <Toaster />
         </Providers>
       </body>
     </html>
