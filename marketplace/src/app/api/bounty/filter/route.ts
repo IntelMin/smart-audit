@@ -4,8 +4,6 @@ import { db } from '@/lib/db';
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
 
-  console.log(`searchParams: ${searchParams}`);
-
   const name = searchParams.get('name');
   const category = searchParams.get('category');
   const language = searchParams.get('language');

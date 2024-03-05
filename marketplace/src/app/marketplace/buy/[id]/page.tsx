@@ -7,7 +7,8 @@ import faTwitter from '@/../../public/icons/lock.png';
 import blurImage from '@/../../public/icons/blur-back.png'
 
 import { useSendTransaction, usePrepareSendTransaction } from 'wagmi'
-import { parseEther } from 'viem' 
+import { parseEther } from 'viem'
+import Editor from '@monaco-editor/react';
 
 const isReadOnly = true
 
@@ -42,11 +43,11 @@ const BuyContract = () => {
   const buyDataString = localStorage.getItem('buyData');
   const BuyData = buyDataString ? JSON.parse(buyDataString) : '';
   const editorRef = useRef<any>(null);
-  
+
   const [flag, setFlag] = useState<Boolean>(false)
   const { data, isLoading, isSuccess, sendTransaction } = useSendTransaction({
-    to: '0x7aB23cdC966c744D33c86bA36f387AE2ac116178',
-    value: parseEther('0.01'),
+    to: BuyData.address,
+    value: parseEther(BuyData.price),
     onSuccess(data) {
       console.log('Success', data)
     },
@@ -55,18 +56,21 @@ const BuyContract = () => {
   const handleDownload = async () => {
     alert('code downloaded!!')
   }
+
+  const handleEditorDidMount = (editor: any, monaco: any) => {
+    editorRef.current = editor;
+  };
+
   const handleBuy = async () => {
-    sendTransaction();
+    //  sendTransaction();
+
+    //   if(!isSuccess)return
 
     const newData = JSON.stringify({
       data: {
-        name: 'New Contract1',
+        name: BuyData.name,
         contract_id: BuyData.id,
-        user: {
-          connect: {
-            id: 2 // Assuming you want to connect to the user with id 2
-          }
-        }
+        address: BuyData.address,
       }
     })
 
@@ -85,7 +89,7 @@ const BuyContract = () => {
 
   useEffect(() => {
 
-    const walletAddress = 'seconduser'
+    const walletAddress = BuyData.address
     const getOwnerContract = async () => {
       try {
         const users = await fetch(`/api/marketplace/buy?search=${walletAddress}`,
@@ -106,10 +110,6 @@ const BuyContract = () => {
           setFlag(true);
         }
 
-
-        console.log("Users: ", report_response.data);
-
-
       } catch (error) {
 
         console.error("Error: ", error);
@@ -119,7 +119,7 @@ const BuyContract = () => {
 
     getOwnerContract();
 
-  }, [BuyData.contract, BuyData.id])
+  }, [BuyData.address, BuyData.contract, BuyData.id])
 
   return (
     <div className="bg-[url(/backgrounds/token-result.svg)] bg-cover bg-center pt-[148px]">
@@ -143,21 +143,54 @@ const BuyContract = () => {
           <div className="px-6">
             <div className="text-white text-xl rounded-[24px] ">
               {
-                !flag && (<div className="justify-center items-center">
+                !flag ? (<div className="justify-center items-center">
                   <div className={`relative bg-cover bg-center rounded-b-[24px] `}>
                     <Image src={blurImage} alt="lock" />
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="flex md:w-[150px] md:h-[150px] bg-[#FFFFFF] bg-opacity-10 rounded-[8px]" onMouseDown={handleBuy}>
                         <div className="w-full flex justify-center items-center cursor-pointer">
                           <div>
-                            <Image src={faTwitter} alt="lock" className="m-auto w-[40px] h-[40px]" /> 
+                            <Image src={faTwitter} alt="lock" className="m-auto w-[40px] h-[40px]" />
                             <div className="text-[14px]">Buy to unlock</div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>)
+                </div>):(<div className="flex flex-grow">
+                <Editor
+                  className='rounded-b-[24px] bg-opacity-99 pt-6'
+                  height={flag ? '40vh' : '10vh'}
+                  theme="vs-dark"
+                  language="sol"
+                  defaultLanguage="node"
+                  defaultValue=""
+                  value={BuyData.code}
+                  onMount={handleEditorDidMount}
+                  options={{
+                    autoIndent: 'full',
+                    contextmenu: true,
+                    fontFamily: 'monospace',
+                    fontSize: 16,
+                    lineHeight: 24,
+                    wordWrap: 'on',
+                    cursorStyle: 'block',
+                    hideCursorInOverviewRuler: true,
+                    matchBrackets: 'always',
+                    minimap: {
+                      enabled: true,
+                    },
+                    scrollbar: {
+                      horizontalSliderSize: 4,
+                      verticalSliderSize: 0,
+                    },
+                    selectOnLineNumbers: true,
+                    roundedSelection: false,
+                    readOnly: isReadOnly,
+                    automaticLayout: true,
+                  }}
+                />
+              </div>)
               }
 
             </div>
@@ -188,16 +221,16 @@ const BuyContract = () => {
             <div className="h-full ">
               {
                 flag ? (
-                  <button className="flex w-full pt-2 pb-2 items-center rounded-[24px] text-center bg-gradient-to-r from-blue-500 via-indigo-500 to-pink-500"  onMouseDown={handleDownload}>
+                  <button className="flex w-full pt-2 pb-2 items-center rounded-[24px] text-center bg-gradient-to-r from-blue-500 via-indigo-500 to-pink-500" onMouseDown={handleDownload}>
                     <label className="flex-grow md:text-[24px]">Download</label>
                   </button>
-                ) 
-                :
-                (
-                  <button className="flex w-full pt-2 pb-2 items-center rounded-[24px] text-center bg-gradient-to-r from-blue-500 via-indigo-500 to-pink-500"  onMouseDown={handleBuy}>
-                    <span className="flex-grow md:text-[24px]">{ isLoading ? "Loading..." : "Buy" }</span>
-                  </button>
                 )
+                  :
+                  (
+                    <button className="flex w-full pt-2 pb-2 items-center rounded-[24px] text-center bg-gradient-to-r from-blue-500 via-indigo-500 to-pink-500" onMouseDown={handleBuy}>
+                      <span className="flex-grow md:text-[24px]">{isLoading ? "Loading..." : "Buy"}</span>
+                    </button>
+                  )
               }
             </div>
           </div>

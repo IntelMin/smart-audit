@@ -1,8 +1,5 @@
-import { db } from "@/lib/db";
-import { PrismaClient } from "../../../../../prisma/generated/client";
 import { NextRequest, NextResponse } from 'next/server';
-
-const prisma = new PrismaClient();
+import { db } from "@/lib/db";
 
 const generateHash = async (code:string) => {
   try {
@@ -24,14 +21,14 @@ export async function POST(req:NextRequest) {
   const request = await req.json();
   const {code, name ,price,contract,address,description} = request.data
   let userId  = 0 ;
-  console.log('name -- :', name)
-  const user_exists = await prisma.users.findFirst({
+  
+  const user_exists = await db.users.findFirst({
     where: {
       address: address
     }
   })
   if(!user_exists){
-    const createdUser = await prisma.users.create({
+    const createdUser = await db.users.create({
       data: {
         address: address
       }
@@ -43,7 +40,7 @@ export async function POST(req:NextRequest) {
   const generate_hash  = await generateHash(code)
 
   try {
-    const createdContract = await prisma.listedcontracts.create({
+    const createdContract = await db.listedcontracts.create({
       data: {
         code_hash: generate_hash,
         name: name, 
@@ -68,7 +65,6 @@ export async function POST(req:NextRequest) {
 
   } catch (error) {
 
-    console.log("Save error", error)
     return NextResponse.json(
       { message: error },
       { status: 500 }

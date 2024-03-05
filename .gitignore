@@ -57,3 +57,5 @@ package-lock.json
 frontend/.env
 /marketplace/.next
 /marketplace/.next
+/marketplace/prisma/generated/*
+/marketplace/prisma/migrations/*
