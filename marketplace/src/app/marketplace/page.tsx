@@ -4,6 +4,10 @@ import ContractCard from "../../components/ui/contract-card";
 import Coin from "../../components/ui/coin";
 import { useEffect, useState } from "react";
 import { Contact } from "lucide-react";
+import { useAccount } from "wagmi";
+// import { redirect } from "next/navigation";
+import {  useToast } from "../../components/ui/use-toast";
+import { useRouter } from 'next/navigation';
 
 interface contracts {
   id:number,
@@ -16,28 +20,35 @@ interface contracts {
 }
 
 export default function Marketplace() {
-
+  const { isConnected, address} = useAccount();
   const [contractData, setContractData] =  useState<contracts[]>([])
+  const { toast } = useToast();
+  const { push } = useRouter();
 
   useEffect(() => {
-
     const getContracts = async () => {
-  
       const res = await fetch('/api/marketplace/request', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
         },
       })
-     
       const report_response = await res.json();
       setContractData(report_response.data)
     };
-  
     getContracts()
-  
   },[])
 
+  const handleSell = () => {
+    if(address) push('/marketplace/sell')
+    else {  
+      toast({
+        title: "Authentication Error!",
+        description: "You must connect to the wallet!",
+        variant: "destructive",
+      });
+    }
+  }
 
   return (
 
@@ -73,8 +84,8 @@ export default function Marketplace() {
           <div className="md:w-1/4 sm:w-full pl-12 pt-8 m-4">
             <div className="text-2xl"><b>Sell your smart contracts</b></div>
             <p className="font-size-16 mt-3">Sign up today and begin selling your smart contract source codes.</p>
-            <button className="w-full h-11 rounded-full fon-size-16 mt-9" type="button" style={{ background: "linear-gradient(93.06deg, #00C5EC -1.37%, #423FF1 45.43%, #E131FD 94.83%)" }}>
-              <a href="/marketplace/sell" className="bold h-full flex items-center justify-center md:text-[18px] md:text-[18px] sm:text-[14px]">Sell Contract</a>
+            <button className="w-full h-11 rounded-full bold items-center fon-size-16 mt-9 md:text-[18px] md:text-[18px] sm:text-[14px]" type="button" style={{ background: "linear-gradient(93.06deg, #00C5EC -1.37%, #423FF1 45.43%, #E131FD 94.83%)" }} onClick={()=>handleSell()}>
+              Sell Contract
             </button>
           </div>
         </div>
