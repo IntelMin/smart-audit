@@ -44,6 +44,7 @@ const BuyContract = () => {
   const BuyData = buyDataString ? JSON.parse(buyDataString) : '';
   const editorRef = useRef<any>(null);
 
+  const [curDate, setCurDate] = useState<string>()
   const [flag, setFlag] = useState<Boolean>(false)
   const { data, isLoading, isSuccess, sendTransaction } = useSendTransaction({
     to: BuyData.address,
@@ -54,7 +55,15 @@ const BuyContract = () => {
   })
 
   const handleDownload = async () => {
-    alert('code downloaded!!')
+
+    const type = 'application/javascript';
+    const url = window.URL.createObjectURL(new Blob([BuyData.code], { type }));
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', `${BuyData.name}.txt`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   }
 
   const handleEditorDidMount = (editor: any, monaco: any) => {
@@ -62,15 +71,16 @@ const BuyContract = () => {
   };
 
   const handleBuy = async () => {
-    //  sendTransaction();
+      sendTransaction();
 
-    //   if(!isSuccess)return
+     // if(!isSuccess)return
 
     const newData = JSON.stringify({
       data: {
         name: BuyData.name,
         contract_id: BuyData.id,
         address: BuyData.address,
+        date:curDate
       }
     })
 
@@ -85,6 +95,24 @@ const BuyContract = () => {
     if (res.status === 200) {
       setFlag(true)
     }
+  }
+
+  const getCurrentDate = () => 
+  {
+    const currentDate = new Date();
+
+    const monthNames = [
+      'Jan', 'Feb', 'Mar', 'Apr',
+      'May', 'Jun', 'Jul', 'Aug',
+      'Sep', 'Oct', 'Nov', 'Dec'
+    ];
+   
+    const currentYear = currentDate.getFullYear().toString().slice(-2);
+    const currentMonth = monthNames[currentDate.getMonth() + 1]; 
+    const currentDay = currentDate.getDate().toString().padStart(2, '0');
+
+    setCurDate(currentDay+currentMonth + ', ' + currentYear) 
+    console.log('wfeewfewf :' , curDate)
   }
 
   useEffect(() => {
@@ -110,6 +138,8 @@ const BuyContract = () => {
           setFlag(true);
         }
 
+        getCurrentDate()
+
       } catch (error) {
 
         console.error("Error: ", error);
@@ -122,7 +152,7 @@ const BuyContract = () => {
   }, [BuyData.address, BuyData.contract, BuyData.id])
 
   return (
-    <div className="bg-[url(/backgrounds/token-result.svg)] bg-cover bg-center pt-[148px]">
+    <div className="bg-[url(/backgrounds/token-result.svg)] bg-cover bg-center pt-[148px] min-h-screen">
       <div className="flex flex-col md:flex-row gap-8 lg:mx-16 mt-8">
 
         {/* Column 1 */}
@@ -141,11 +171,10 @@ const BuyContract = () => {
           </div>
 
           <div className="px-6">
-            <div className="text-white text-xl rounded-[24px] ">
-              {
-                !flag ? (<div className="justify-center items-center">
+            <div className="text-white text-xl rounded-[24px] mb-6 h-full">
+              {!flag ? (<div className="justify-center items-center">
                   <div className={`relative bg-cover bg-center rounded-b-[24px] `}>
-                    <Image src={blurImage} alt="lock" />
+                    <Image src={blurImage} alt="lock" className="w-full h-[40vh]"/>
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="flex md:w-[150px] md:h-[150px] bg-[#FFFFFF] bg-opacity-10 rounded-[8px]" onMouseDown={handleBuy}>
                         <div className="w-full flex justify-center items-center cursor-pointer">
@@ -157,40 +186,40 @@ const BuyContract = () => {
                       </div>
                     </div>
                   </div>
-                </div>):(<div className="flex flex-grow">
-                <Editor
-                  className='rounded-b-[24px] bg-opacity-99 pt-6'
-                  height={flag ? '40vh' : '10vh'}
-                  theme="vs-dark"
-                  language="sol"
-                  defaultLanguage="node"
-                  defaultValue=""
-                  value={BuyData.code}
-                  onMount={handleEditorDidMount}
-                  options={{
-                    autoIndent: 'full',
-                    contextmenu: true,
-                    fontFamily: 'monospace',
-                    fontSize: 16,
-                    lineHeight: 24,
-                    wordWrap: 'on',
-                    cursorStyle: 'block',
-                    hideCursorInOverviewRuler: true,
-                    matchBrackets: 'always',
-                    minimap: {
-                      enabled: true,
-                    },
-                    scrollbar: {
-                      horizontalSliderSize: 4,
-                      verticalSliderSize: 0,
-                    },
-                    selectOnLineNumbers: true,
-                    roundedSelection: false,
-                    readOnly: isReadOnly,
-                    automaticLayout: true,
-                  }}
-                />
-              </div>)
+                </div>) : (<div className="flex ">
+                  <Editor
+                    className='rounded-b-[24px] bg-opacity-99 pt-6'
+                    height="40vh"
+                    theme="vs-dark"
+                    language="sol"
+                    defaultLanguage="node"
+                    defaultValue=""
+                    value={BuyData.code}
+                    onMount={handleEditorDidMount}
+                    options={{
+                      autoIndent: 'full',
+                      contextmenu: true,
+                      fontFamily: 'monospace',
+                      fontSize: 16,
+                      lineHeight: 24,
+                      wordWrap: 'on',
+                      cursorStyle: 'block',
+                      hideCursorInOverviewRuler: true,
+                      matchBrackets: 'always',
+                      minimap: {
+                        enabled: true,
+                      },
+                      scrollbar: {
+                        horizontalSliderSize: 4,
+                        verticalSliderSize: 0,
+                      },
+                      selectOnLineNumbers: true,
+                      roundedSelection: false,
+                      readOnly: isReadOnly,
+                      automaticLayout: true,
+                    }}
+                  />
+                </div>)
               }
 
             </div>
@@ -214,15 +243,15 @@ const BuyContract = () => {
                 <div className="flex-grow">
                   <p className="text-center"></p>
                 </div>
-                <p className="md:text-[24px] md:text-right">{BuyData.date ? BuyData.date : '22 Feb, 24'}</p>
+                <p className="md:text-[24px] md:text-right">{BuyData.date ? BuyData.date : curDate}</p>
               </div>
             </div>
 
             <div className="h-full ">
               {
                 flag ? (
-                  <button className="flex w-full pt-2 pb-2 items-center rounded-[24px] text-center bg-gradient-to-r from-blue-500 via-indigo-500 to-pink-500" onMouseDown={handleDownload}>
-                    <label className="flex-grow md:text-[24px]">Download</label>
+                  <button className="flex w-full justify-center pt-2 pb-2 md:text-[24px] items-center rounded-[24px] text-center bg-gradient-to-r from-blue-500 via-indigo-500 to-pink-500" onMouseDown={handleDownload}>
+                    Download
                   </button>
                 )
                   :

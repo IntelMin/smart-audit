@@ -208,7 +208,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
         listedcontracts: true
       }
     });
-    console.log("userDAta :: ", userItem)
+   
     return NextResponse.json({
       status: 200,
       data: userItem,
