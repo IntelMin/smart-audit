@@ -19,7 +19,7 @@ const Contract = (props:any) => {
                 </div>
                 <div className="mt-4 w-full pt-2">
                     <button className="w-full bg-gradient-to-r from-blue-500 to-red-500 text-white font-semibold rounded-full flex " style={{padding: "2px"}} >
-                        <a className="flex w-full text-white rounded-full py-10rem justify-center items-center pt-2 pb-2" onClick={() => localStorage.setItem('buyData', JSON.stringify(props))} style={{backgroundColor: "#222327"}} href={`/marketplace/buy/${props.id}`}>Buy</a>
+                        <a className="flex w-full text-white rounded-full py-10rem justify-center items-center pt-2 pb-2" onClick={() => localStorage.setItem('buyData', JSON.stringify(props))} style={{backgroundColor: "#222327"}} href={`/buy/${props.id}`}>Buy</a>
                     </button>
                 </div>
             </div>
