@@ -54,3 +54,39 @@ model bounties {
     reference_list               String[]
 }
 
+model contract {
+  id            Int   @id @default(autoincrement())
+  userId        Int
+  price         Int
+  title         String
+  description   String
+}
+
+model users {
+  id        Int    @id @default(autoincrement()) @unique
+  address    String @unique
+  listedcontracts listedcontracts[]
+  ownedcontracts  ownedcontracts[]
+}
+
+model listedcontracts {
+  id            Int  @id @default(autoincrement()) @unique
+  name          String
+  price         String
+  contract      String
+  description   String
+  code_hash     String
+  code          String
+  address       String
+  user_id       Int
+  user          users @relation(fields: [user_id], references: [id])
+  }
+  model ownedcontracts {
+  id            Int  @id @default(autoincrement()) @unique
+  name          String
+  contract_id   Int
+  user_id       Int
+  user          users @relation(fields: [user_id], references: [id])
+    @@unique([user_id, contract_id])
+
+  }

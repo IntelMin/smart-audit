@@ -6,16 +6,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
-import { useAccount } from "wagmi";
-import { navEle } from "./constant";
+import { useAccount, useDisconnect } from "wagmi";
+// import { navEle } from "./constant";
 
 type Props = {};
 
 export const Navbar = (props: Props) => {
   const { isConnected, address } = useAccount();
+  const { disconnect } = useDisconnect();
   const pathName = usePathname();
   const path = pathName.split("/")[1];
   const isActive = (ele: string) => ele.substring(1) === path;
+
   return (
     <header className="top-0 left-0 z-[99] fixed w-full backdrop-blur-2xl">
       <div className="flex items-center justify-between px-8 pt-6 pb-[18px] border-b border-[#27272A]">
@@ -35,17 +37,10 @@ export const Navbar = (props: Props) => {
             </button>
             <button
               type="button"
-              className="flex gap-2 px-[22px] py-[11px] border border-[#F44336] rounded-[100px]"
+              className="flex gap-2 px-[22px] py-[11px] border border-[#F44336] rounded-[100px] font-[500] text-[#F44336] text-[16px]"
+              onClick={()=>disconnect()}
             >
-              <Image
-                src="/icons/disconnect.svg"
-                alt="setting"
-                width={24}
-                height={24}
-              />
-              <h1 className="font-[500] text-[#F44336] text-[16px] ">
-                Disconnect
-              </h1>
+              Disconnect
             </button>
           </div>
         ) : (
@@ -60,7 +55,7 @@ export const Navbar = (props: Props) => {
           </div>
         )}
       </div>
-      <nav className="flex items-center gap-12 pt-[18px] pl-6 border-b border-[#272727]">
+      {/* <nav className="flex items-center gap-12 pt-[18px] pl-6 border-b border-[#272727]">
         {navEle?.map((ele, i) => (
           <Link
             href={ele.href}
@@ -80,7 +75,7 @@ export const Navbar = (props: Props) => {
             </h1>
           </Link>
         ))}
-      </nav>
+      </nav> */}
     </header>
   );
 };

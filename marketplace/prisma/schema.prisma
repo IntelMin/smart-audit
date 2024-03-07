@@ -20,6 +20,17 @@ model audit_requests {
 
     @@map(name: "audit_requests")
 }
+model code_audit {
+    request_id Int      @id @default(autoincrement())
+    hash   String   @unique
+    status     String   @db.VarChar(50) @default("pending")
+    status_log String?  
+    created_on DateTime @default(now())
+    updated_on DateTime @default(now())
+    result     String?  
+    @@map(name: "code_audit")
+}
+
 
 
 
@@ -45,7 +56,7 @@ model bounties {
     reference_list               String[]
 }
 
-model Contract {
+model contract {
   id            Int   @id @default(autoincrement())
   userId        Int
   price         Int
@@ -53,9 +64,9 @@ model Contract {
   description   String
 }
 
-model user {
+model users {
   id        Int    @id @default(autoincrement()) @unique
-  wallet    String
+  address    String @unique
   listedcontracts listedcontracts[]
   ownedcontracts  ownedcontracts[]
 }
@@ -66,17 +77,20 @@ model listedcontracts {
   price         String
   contract      String
   description   String
+  code_hash     String
   code          String
   address       String
   user_id       Int
-  user          user @relation(fields: [user_id], references: [id])
+  user          users @relation(fields: [user_id], references: [id])
   }
   model ownedcontracts {
   id            Int  @id @default(autoincrement()) @unique
   name          String
-  contract_id  Int
+  contract_id   Int
   user_id       Int
-  user          user @relation(fields: [user_id], references: [id])
+  user          users @relation(fields: [user_id], references: [id])
+    @@unique([user_id, contract_id])
+
   }
 
 
