@@ -14,8 +14,49 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
   const request = await req.json();
   let userId = 0;
-  const {name, contract_id ,address} = request.data
+  const {name, contract_id ,address,txhash} = request.data
+  const txn = await publicClient.getTransaction({
+    hash: txhash,
+  });
+  console.log(txn)
   
+  if(!txn){
+    return NextResponse.json({
+      status: 500,
+      message: 'Error requesting report 1',
+    });
+  }
+
+  const { from, to, value } = txn;
+
+  const amount = formatUnits(value,18)
+  const contract = await db.listedcontracts.findUnique({
+    where:{
+      id:contract_id
+    }})
+    if(!contract){
+      return NextResponse.json({
+        status: 500,
+        message: 'Error requesting report  3',
+      });
+    }
+  if(amount != contract.price){
+    return NextResponse.json({
+      status: 500,
+      message: 'Error requesting report 4',
+    });
+  }
+  if(to?.toLowerCase() != contract.address?.toLowerCase() || from?.toLowerCase() != address?.toLowerCase()){
+    return NextResponse.json({
+      status: 500,
+      message: 'Error requesting report 5',
+    });
+  }
+  const txnr = await publicClient.waitForTransactionReceipt({
+    hash: txhash,
+  });
+  console.log(txnr)
+
     try {
 
       const findUser = await db.users.findFirst({

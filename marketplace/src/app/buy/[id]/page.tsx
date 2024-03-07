@@ -6,12 +6,14 @@ import tempImage from './cute_dev.jpg'
 import faTwitter from '@/../../public/icons/lock.png';
 import blurImage from '@/../../public/icons/blur-back.png'
 
-import { useSendTransaction, usePrepareSendTransaction } from 'wagmi'
+
+import { useSendTransaction, usePrepareSendTransaction, useWaitForTransaction, useAccount } from 'wagmi'
 import { parseEther } from 'viem'
 import Editor from '@monaco-editor/react';
+import { Loader } from "lucide-react";
+import { toast } from "@/components/ui/use-toast";
 
 const isReadOnly = true
-
 type ownedcontracts = {
   id: number,
   name: string,
@@ -41,21 +43,49 @@ export type UserData = {
 
 const BuyContract = () => {
   const buyDataString = localStorage.getItem('buyData');
+  const {isConnected,address} = useAccount()
   const BuyData = buyDataString ? JSON.parse(buyDataString) : '';
   const editorRef = useRef<any>(null);
 
   const [curDate, setCurDate] = useState<string>()
   const [flag, setFlag] = useState<Boolean>(false)
+  const [txhash, setTxhash] = useState<string>("")
+  const [loading, setLoading] = useState<Boolean>(false)
+
+  const {status} = useWaitForTransaction({
+    hash: txhash as `0x${string}`,
+    onSuccess(data) {
+      console.log('Success', data)
+      handleBuy()
+    },
+    onError(error) {
+      console.error('Error', error)
+      setLoading(false)
+      toast({
+        title: "Error",
+        description: "Error sending transaction",
+      })
+    }
+  })
   const { data, isLoading, isSuccess, sendTransaction } = useSendTransaction({
     to: BuyData.address,
     value: parseEther(BuyData.price),
     onSuccess(data) {
       console.log('Success', data)
+      setLoading(true)
+      setTxhash(data.hash)
     },
+    onError(error) {
+      console.error('Error', error)
+      setLoading(false)
+      toast({
+        title: "Error",
+        description: "Error sending transaction",
+      })
+    }
   })
 
   const handleDownload = async () => {
-
     const type = 'application/javascript';
     const url = window.URL.createObjectURL(new Blob([BuyData.code], { type }));
     const link = document.createElement('a');
@@ -71,7 +101,6 @@ const BuyContract = () => {
   };
 
   const handleBuy = async () => {
-      sendTransaction();
 
      // if(!isSuccess)return
 
@@ -79,8 +108,9 @@ const BuyContract = () => {
       data: {
         name: BuyData.name,
         contract_id: BuyData.id,
-        address: BuyData.address,
-        date:curDate
+        address: address,
+        date:curDate,
+        txhash: txhash,
       }
     })
 
@@ -91,10 +121,23 @@ const BuyContract = () => {
         'Content-Type': 'application/json',
       },
     });
-
+    console.log('res :', res)
+    const data = await res.json()
+    console.log('data :', data)
     if (res.status === 200) {
       setFlag(true)
+      toast({
+        title: "Success",
+        description: "Contract bought successfully",
+      })
+    }else{
+      toast({
+        title: "Error",
+        description: "Error buying contract",
+      })
     }
+    
+    setLoading(false)
   }
 
   const getCurrentDate = () => 
@@ -117,7 +160,7 @@ const BuyContract = () => {
 
   useEffect(() => {
 
-    const walletAddress = BuyData.address
+    const walletAddress = address
     const getOwnerContract = async () => {
       try {
         const users = await fetch(`/api/marketplace/buy?search=${walletAddress}`,
@@ -130,10 +173,12 @@ const BuyContract = () => {
         );
 
         const report_response = await users.json();
+        console.log("Users: ", BuyData);
+        console.log("Users: ", report_response.data.ownedcontracts);
         const contractList = report_response.data.ownedcontracts
 
         const hasMatchingContract = contractList.some((oneRecord: { contract_id: any; }) => oneRecord.contract_id === BuyData.id);
-
+        console.log('hasMatchingContract :', hasMatchingContract)
         if (hasMatchingContract) {
           setFlag(true);
         }
@@ -150,6 +195,7 @@ const BuyContract = () => {
     getOwnerContract();
 
   }, [BuyData.address, BuyData.contract, BuyData.id])
+
 
   return (
     <div className="bg-[url(/backgrounds/token-result.svg)] bg-cover bg-center pt-[148px] min-h-screen">
@@ -256,7 +302,7 @@ const BuyContract = () => {
                 )
                   :
                   (
-                    <button className="flex w-full pt-2 pb-2 items-center rounded-[24px] text-center bg-gradient-to-r from-blue-500 via-indigo-500 to-pink-500" onMouseDown={handleBuy}>
+                    <button className="flex w-full pt-2 pb-2 items-center rounded-[24px] text-center bg-gradient-to-r from-blue-500 via-indigo-500 to-pink-500" onClick={()=>sendTransaction()}>
                       <span className="flex-grow md:text-[24px]">{isLoading ? "Loading..." : "Buy"}</span>
                     </button>
                   )
