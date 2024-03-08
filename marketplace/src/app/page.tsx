@@ -48,7 +48,7 @@ export default function Marketplace() {
   }, [])
 
   const handleSell = () => {
-    if (address) push('/marketplace/sell')
+    if (address) push('/sell')
     else {
       toast({
         title: "Authentication Error!",
